@@ -16,24 +16,14 @@
     <meta name="msapplication-TileColor" content="#5bc0de" />
     <meta name="msapplication-TileImage" content="img/metis-tile.png" />
     
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
-    
-    <!-- Metis core stylesheet -->
-    <link rel="stylesheet" href="css/main.css">
-    
-    <!-- metisMenu stylesheet -->
-    <link rel="stylesheet" href="lib/metismenu/metisMenu.css">
-    
-    <!-- onoffcanvas stylesheet -->
-    <link rel="stylesheet" href="lib/onoffcanvas/onoffcanvas.css">
-    
-    <!-- animate.css stylesheet -->
-    <link rel="stylesheet" href="lib/animate.css/animate.css">
-
+  
+                    {!!Html::style('lib/animate.css/animate.css')!!}  
+                    {!!Html::style('lib/onoffcanvas/onoffcanvas.css')!!}  
+                    {!!Html::style('lib/metismenu/metisMenu.css')!!}  
+                    {!!Html::style('css/main.css')!!}
+                    {!!Html::style('lib/font-awesome/css/font-awesome.css')!!}  
+                    {!!Html::style('lib/bootstrap/css/bootstrap.css')!!} 
+                    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -48,11 +38,13 @@
         less = {
             env: "development",
             relativeUrls: false,
-            rootpath: "/assets/"
+            rootpath: "/public/"
         };
     </script>
-    <link rel="stylesheet" href="assets/css/style-switcher.css">
-    <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
+     {!!Html::style('css/style-switcher.css')!!} 
+     {!!Html::style('less/theme.less')!!} 
+    
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
 
   </head>
@@ -202,7 +194,7 @@
                                   <li class="nav-divider"></li>
                                   <li class="">
                                     <a href="dashboard.html">
-                                      <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+                                      <i class="fa fa-book bigicon"></i><span class="link-title">&nbsp;Dashboard</span>
                                     </a>
                                   </li>
                                   <li class="">

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Kairos\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use Kairos\User;
+use Kairos\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 

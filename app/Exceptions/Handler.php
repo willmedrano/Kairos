@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Kairos\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

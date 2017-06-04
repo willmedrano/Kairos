@@ -1,599 +1,471 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <!--IE Compatibility modes-->
+  <head>
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--Mobile first-->
+
+    <title>KAIROS</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Kairos</title>
-    
-    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
-    <meta name="author" content="">
-    
-    <meta name="msapplication-TileColor" content="#5bc0de" />
-    <meta name="msapplication-TileImage" content="img/metis-tile.png" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    {!!Html::style('css/vendor.css')!!}  
+    {!!Html::style('css/app-seagreen.css')!!}  
+         
+    </head>
 
-    
-  
-                    {!!Html::style('lib/animate.css/animate.css')!!}  
-                    {!!Html::style('lib/onoffcanvas/onoffcanvas.css')!!}  
-                    {!!Html::style('lib/metismenu/metisMenu.css')!!}  
-                    {!!Html::style('css/main.css')!!}
-                    {!!Html::style('lib/font-awesome/css/font-awesome.css')!!}  
-                    {!!Html::style('lib/bootstrap/css/bootstrap.css')!!} 
-                    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <body>
 
+        <div class="main-wrapper">
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+            <div class="app" id="app">
 
-    <!--For Development Only. Not required -->
-    <script>
-        less = {
-            env: "development",
-            relativeUrls: false,
-            rootpath: "/public/"
-        };
-    </script>
-     {!!Html::style('css/style-switcher.css')!!} 
-     {!!Html::style('less/theme.less')!!} 
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
+                <header class="header">
 
-  </head>
+                    <div class="header-block header-block-collapse hidden-lg-up">
 
-        <body class="  ">
-            <div class="bg-dark dk" id="wrap">
-                <div id="top">
-                    <!-- .navbar -->
-                    <nav class="navbar navbar-inverse navbar-static-top">
-                        <div class="container-fluid">
+                        <button class="collapse-btn" id="sidebar-collapse-btn">
+                            <i class="fa fa-bars"></i>
+                        </button> 
+
+                    </div>
                     
-                    
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <header class="navbar-header">
-                    
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                               <a class="user-link" href="/kairos/public/">
-                                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="img/KairosLogo.png" height="200" width="100"> 
-                                    
+                    <div class="header-block header-block-nav">
+
+                        <ul class="nav-profile">
+
+                           
+
+                            <li class="profile dropdown">
+
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+
+                                    <div class="img"   style="background-image: url('../public/img/KairosLogo.png')">
+                                    </div>
+
+                                    <span class="name">
+
+                                        
+
+                                    </span>
                                 </a>
-                            </header>
-                    
-                    
-                    
-                            <div class="topnav">
-                                <div class="btn-group">
-                                    <a data-placement="bottom" data-original-title="Fullscreen" data-toggle="tooltip"
-                                       class="btn btn-default btn-sm" id="toggleFullScreen">
-                                        <i class="glyphicon glyphicon-fullscreen"></i>
+
+                                <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    
+                                    
+                                    <a class="dropdown-item" href="/notificaciones">
+
+                                        <i class="fa fa-bell icon"></i>
+                                         Notificaciones
                                     </a>
+
+                                    <a class="dropdown-item" href="/cambiousuario">
+
+                                        <i class="fa fa-gear icon"></i>
+                                             Configuraciones
+                                     </a>
+
+                                    <div class="dropdown-divider">
+                                        
+                                    </div>
+
+                                    <a class="dropdown-item" href="/logout">
+
+                                        <i class="fa fa-power-off icon"></i>
+                                             Salir
+                                    </a>
+
                                 </div>
-                                <div class="btn-group">
-                                    <a data-placement="bottom" data-original-title="E-mail" data-toggle="tooltip"
-                                       class="btn btn-default btn-sm">
-                                        <i class="fa fa-envelope"></i>
-                                        <span class="label label-warning">5</span>
-                                    </a>
-                                    <a data-placement="bottom" data-original-title="Messages" href="#" data-toggle="tooltip"
-                                       class="btn btn-default btn-sm">
-                                        <i class="fa fa-comments"></i>
-                                        <span class="label label-danger">4</span>
-                                    </a>
-                                    <a data-toggle="modal" data-original-title="Help" data-placement="bottom"
-                                       class="btn btn-default btn-sm"
-                                       href="#helpModal">
-                                        <i class="fa fa-question"></i>
-                                    </a>
-                                </div>
-                                <div class="btn-group">
-                                    <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
-                                       class="btn btn-metis-1 btn-sm">
-                                        <i class="fa fa-power-off"></i>
-                                    </a>
-                                </div>
-                                <div class="btn-group">
-                                    <a data-placement="bottom" data-original-title="Show / Hide Left" data-toggle="tooltip"
-                                       class="btn btn-primary btn-sm toggle-left" id="menu-toggle">
-                                        <i class="fa fa-bars"></i>
-                                    </a>
-                                    <a href="#right" data-toggle="onoffcanvas" class="btn btn-default btn-sm" aria-expanded="false">
-                                        <span class="fa fa-fw fa-comment"></span>
-                                    </a>
-                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </header>
+
+                <aside class="sidebar">
                     
+                    <div class="sidebar-container">
+
+                        <div class="sidebar-header">
+
+                            <div class="brand">
+                                <div class="logo">
+                                    <span class="l l1"></span>
+                                    <span class="l l2"></span>
+                                    <span class="l l3"></span> 
+                                    <span class="l l4"></span>
+                                    <span class="l l5"></span>
+                                </div>
+
+                                KAIROS
+
                             </div>
-                    
-                    
-                    
-                    
-                            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    
-                                <!-- .nav -->
-                                <ul class="nav navbar-nav">
-                                    <li><a href="dashboard.html">Dashboard</a></li>
-                                    <li><a href="table.html">Tables</a></li>
-                                    <li class='dropdown '>
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            Form Elements <b class="caret"></b>
+                        </div>
+                        
+                        <!-- Aqui inicia el menu nav  -->
+                        <nav class="menu">
+                           
+                            <ul class="nav metismenu" id="sidebar-menu"><!-- Aqui inicia la lista del menu u-->
+                                
+                                <li class="active"><!-- inicia el menu Inicio i -->
+                                    <a href="/inicio"> <i class="fa fa-home"></i> Inicio </a>
+                                </li> <!-- Aqui finaliza el menu i-->
+
+                                <li><!-- Aqui inicia el menu de los empleados i con sus respectivas opciones -->
+
+                                    <a href="">
+                                        <i class="fa fa-user"></i>
+                                            Motoristas y Operadores
+                                        <i class="fa arrow"></i>
+                                    </a>
+
+                                    <ul>
+                                        
+                                        <li> 
+                                            <a href="/log/create">
+                                                Ingresar Operario o Motorista
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/log/">
+                                                Modificar Operario o Motorista
+                                            </a>
+                                        </li>
+                                        <li> 
+                                            <a href="/pagar/create">
+                                                Ver Operario
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/pagar">
+                                                Ver Motorista
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de empleados i -->
+
+                                <li><!-- Aqui inicia el menu de los Inventario i con sus respectivas opciones -->
+                                    <a href="">
+                                        <i class="fa fa-th-large"></i>
+                                          Vehiculos y Maquinarias 
+                                        <i class="fa arrow"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/inve/create">
+                                                Registrar Marca
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/inve/">
+                                                Editar Marca
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/lotes/">
+                                                Ver Vehiculos
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de Inventario i -->
+
+                                <li><!-- Aqui inicia el menu de los Escuelas i con sus respectivas opciones -->
+                                    <a href="">
+                                        <i class="fa fa-th-large"></i>
+                                          Mantenimientos
+                                        <i class="fa arrow"></i>
+                                    </a>
+                                    <ul>
+                                        <li> 
+                                            <a href="/escuela/create">
+                                                Registrar Taller
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/escuela/">
+                                                Editar Taller
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de Escuelas i -->
+
+                                <li><!-- Aqui inicia el menu de los paquetes i con sus respectivas opciones -->
+                                    <a href="">
+                                        <i class="fa fa-dropbox"></i>
+                                             División Politica 
+                                        <i class="fa arrow"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="division">
+                                               Registrar Colonia/Canton
+                                            </a>
+                                        </li>
+                                        <li>
+                                        <a href="/comprapaquete/create">
+                                            Ver Colonias/Cantones
                                         </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="form-general.html">General</a></li>
-                                            <li><a href="form-validation.html">Validation</a></li>
-                                            <li><a href="form-wysiwyg.html">WYSIWYG</a></li>
-                                            <li><a href="form-wizard.html">Wizard &amp; File Upload</a></li>
-                                        </ul>
+                                        <li>
+                                            <a href="/contrato/create">
+                                             Ver Barrios/Caserios   
+                                            </a>
+                                        </li>                                        
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de Paquete i -->
+
+                                <li><!-- Aqui inicia el menu de los compras i con sus respectivas opciones -->
+                                    <a href="">
+                                        <i class="fa fa-shopping-cart "></i>
+                                            Gestión de Actividad
+                                        <i class="fa arrow"></i> 
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/compra/create">
+                                                Registrar Actividad
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/cuotas/">
+                                                Asignar ubicación 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/compra/">
+                                                Ver  Actividades
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de Compras i -->
+
+                                <li><!-- Aqui inicia el menu de los Proveedores i con sus respectivas opciones -->
+                                    <a href="">
+                                        <i class="fa fa-truck"></i>
+                                            Vales de Combustible
+                                        <i class="fa arrow"></i> 
+                                    </a> 
+                                   <ul>
+                                        <li>
+                                            <a href="/prove/create">
+                                            
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/prove/">
+                                                Asignar vale a Vehículo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/prove/">
+                                                Asignar vale a Maquinaria
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/prove/">
+                                                Ver Vales 
+                                            </a>
+                                        </li>
+                                        
+
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de Proveedor i -->
+
+                               
+
+                                <li><!-- Aqui inicia el menu de los Ventas i con sus respectivas opciones -->
+                                    <a href=""> 
+                                        <i class="fa fa-file-text-o"></i>
+                                         Entradas y Salidas 
+                                        <i class="fa arrow"></i> 
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/ventas/create">
+                                                Registrar salida
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/ventas">
+                                                registrar salida
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/aux5">
+                                                Asignar Actividad
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de Ventas i -->
+
+                                <li><!-- Aqui inicia el menu de los Reportes i con sus respectivas opciones -->
+                                    <a href="">
+                                        <i class="fa fa-file-text-o"></i>
+                                            Seguridad
+                                        <i class="fa arrow"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/reporte2">
+                                                Registar usuario
+                                            </a>
+                                            <a href="/reporte8">
+                                                Ver Usuarios
+                                            </a>
+                                            <a href="/reporte3">
+                                                Bitácora de usuarios
+                                            </a>
+                                          
+                                            
+                                        </li>
+                                    </ul>
+                                </li> <!-- Aqui finaliza el menu de Reportes i -->
+                                    
+<li><!-- Aqui inicia el menu de los Reportes i con sus respectivas opciones -->
+                                    <a href="">
+                                        <i class="fa ">$</i>
+                                            Reportes
+                                        <i class="fa arrow"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/aux5/create">
+                                                Todos lo reportes
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                    
+                        
+                            </ul>
+                        </nav>
+                    </div>
+                    <footer class="sidebar-footer">
+                        <ul class="nav metismenu" id="customize-menu">
+                            <li>
+                                <ul>
+                                    <li class="customize">
+                                        <div class="customize-item">
+                                            <div class="row customize-header">
+                                            
+                                                <div class="col-xs-4" align="center">
+                                                    <label class="title">Estatico</label> 
+                                                </div>
+                                                <div class="col-xs-4" align="center">
+                                                    <label class="title">Normal</label> 
+                                                </div>
+                                            </div>
+
+                                            <div class="row hidden-md-down">
+
+                                                <div class="col-xs-4">
+                                                    <label class="title">Scroll:</label>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <label>
+                                                        <input class="radio" type="radio" name="sidebarPosition" value="sidebar-fixed">
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <label>
+                                                        <input class="radio" type="radio" name="sidebarPosition" value="">
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <label class="title">
+                                                        Cabeza:
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <label>
+                                                        <input class="radio" type="radio" name="headerPosition" value="header-fixed">
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <label>
+                                                        <input class="radio" type="radio" name="headerPosition" value="">
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <label class="title">
+                                                        Pie:
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <label>
+                                                        <input class="radio" type="radio" name="footerPosition" value="footer-fixed">
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <label>
+                                                        <input class="radio" type="radio" name="footerPosition" value="">
+                                                        <span></span>
+                                                    </label>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="customize-item">
+                                            <ul class="customize-colors">
+                                                <li> <span class="color-item color-red" data-theme="red"></span> </li>
+                                                <li> <span class="color-item color-orange" data-theme="orange"></span> </li>
+                                                <li> <span class="color-item color-green" data-theme="green"></span> </li>
+                                                <li> <span class="color-item color-seagreen" data-theme="seagreen"></span> </li>
+                                                <li> <span class="color-item color-blue active" data-theme=""></span> </li>
+                                                <li> <span class="color-item color-purple" data-theme="purple"></span> </li>
+                                            </ul>
+                                        </div>
                                     </li>
                                 </ul>
-                                <!-- /.nav -->
-                            </div>
-                        </div>
-                        <!-- /.container-fluid -->
-                    </nav>
-                    <!-- /.navbar -->
-                        <header class="head">
-                              
-                                <!-- /.search-bar -->
-                            <div class="main-bar">
-                                <h3>
-              <i class="fa fa-home"></i>&nbsp;
-            Alcaldia Municipal de Ilobasco
-          </h3>
-                            </div>
-                            <!-- /.main-bar -->
-                        </header>
-                        <!-- /.head -->
-                </div>
-                <!-- /#top -->
-                    <div id="left">
-                        
-                        <!-- #menu -->
-                        <ul id="menu" class="bg-blue dker">
-                                  <li class="nav-header">Menu</li>
-                                  <li class="nav-divider"></li>
-                                  <li class="">
-                                    <a href="dashboard.html">
-                                      <i class="fa fa-book bigicon"></i><span class="link-title">&nbsp;Dashboard</span>
-                                    </a>
-                                  </li>
-                                  <li class="">
-                                    <a href="javascript:;">
-                                      <i class="fa fa-building "></i>
-                                      <span class="link-title">Layouts</span>
-                                      <span class="fa arrow"></span>
-                                    </a>
-                                    <ul class="collapse">
-                                      <li>
-                                        <a href="boxed.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Boxed Layout </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-header-boxed.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Boxed Layout &amp; Fixed Header </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-header-fixed-mini-sidebar.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Fixed Header and Fixed Mini Menu </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-header-menu.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Fixed Header &amp; Menu </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-header-mini-sidebar.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Fixed Header &amp; Mini Menu </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-header.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Fixed Header </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-menu-boxed.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Boxed Layout &amp; Fixed Menu </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-menu.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Fixed Menu </a>
-                                      </li>
-                                      <li>
-                                        <a href="fixed-mini-sidebar.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Fixed &amp; Mini Menu </a>
-                                      </li>
-                                      <li>
-                                        <a href="fxhmoxed.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Boxed and Fixed Header &amp; Nav </a>
-                                      </li>
-                                      <li>
-                                        <a href="no-header-sidebar.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; No Header &amp; Sidebars </a>
-                                      </li>
-                                      <li>
-                                        <a href="no-header.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; No Header </a>
-                                      </li>
-                                      <li>
-                                        <a href="no-left-right-sidebar.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; No Left &amp; Right Sidebar </a>
-                                      </li>
-                                      <li>
-                                        <a href="no-left-sidebar-main-search.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; No Left Sidebar &amp; Main Search </a>
-                                      </li>
-                                      <li>
-                                        <a href="no-left-sidebar.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; No Left Sidebar </a>
-                                      </li>
-                                      <li>
-                                        <a href="no-main-search.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; No Main Search </a>
-                                      </li>
-                                      <li>
-                                        <a href="no-right-sidebar.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; No Right Sidebar </a>
-                                      </li>
-                                      <li>
-                                        <a href="sm.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Mini Sidebar </a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="">
-                                    <a href="javascript:;">
-                                      <i class="fa fa-tasks"></i>
-                                      <span class="link-title">Components</span>
-                                      <span class="fa arrow"></span>
-                                    </a>
-                                    <ul class="collapse">
-                                      <li>
-                                        <a href="bgcolor.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Bg Color </a>
-                                      </li>
-                                      <li>
-                                        <a href="bgimage.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Bg Image </a>
-                                      </li>
-                                      <li>
-                                        <a href="button.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Buttons </a>
-                                      </li>
-                                      <li>
-                                        <a href="icon.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Icon </a>
-                                      </li>
-                                      <li>
-                                        <a href="pricing.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Pricing Table </a>
-                                      </li>
-                                      <li>
-                                        <a href="progress.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Progress </a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="">
-                                    <a href="javascript:;">
-                                      <i class="fa fa-pencil"></i>
-                                      <span class="link-title">
-                                    Forms
-                        	  </span>
-                                      <span class="fa arrow"></span>
-                                    </a>
-                                    <ul class="collapse">
-                                      <li>
-                                        <a href="form-general.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Form General </a>
-                                      </li>
-                                      <li>
-                                        <a href="form-validation.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Form Validation </a>
-                                      </li>
-                                      <li>
-                                        <a href="form-wizard.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Form Wizard </a>
-                                      </li>
-                                      <li>
-                                        <a href="form-wysiwyg.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Form WYSIWYG </a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li>
-                                    <a href="table.html">
-                                      <i class="fa fa-table"></i>
-                                      <span class="link-title">Tables</span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="typography.html">
-                                      <i class="fa fa-font"></i>
-                                      <span class="link-title">
-                                    Typography
-                                  </span>  </a>
-                                  </li>
-                                  <li>
-                                    <a href="maps.html">
-                                      <i class="fa fa-map-marker"></i><span class="link-title">
-                                    Maps
-                                  </span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="chart.html">
-                                      <i class="fa fa fa-bar-chart-o"></i>
-                                      <span class="link-title">
-                                    Charts
-                                  </span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="calendar.html">
-                                      <i class="fa fa-calendar"></i>
-                                      <span class="link-title">
-                                    Calendar
-                                  </span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="javascript:;">
-                                      <i class="fa fa-exclamation-triangle"></i>
-                                      <span class="link-title">
-                                      Error Pages
-                                    </span>
-                                      <span class="fa arrow"></span>
-                                    </a>
-                                    <ul class="collapse">
-                                      <li>
-                                        <a href="403.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;403</a>
-                                      </li>
-                                      <li>
-                                        <a href="404.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;404</a>
-                                      </li>
-                                      <li>
-                                        <a href="405.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;405</a>
-                                      </li>
-                                      <li>
-                                        <a href="500.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;500</a>
-                                      </li>
-                                      <li>
-                                        <a href="503.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;503</a>
-                                      </li>
-                                      <li>
-                                        <a href="offline.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;offline</a>
-                                      </li>
-                                      <li>
-                                        <a href="countdown.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;Under Construction</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li>
-                                    <a href="grid.html">
-                                      <i class="fa fa-columns"></i>
-                                      <span class="link-title">
-                            Grid
-                            </span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="blank.html">
-                                      <i class="fa fa-square-o"></i>
-                                      <span class="link-title">
-                            Blank Page
-                            </span>
-                                    </a>
-                                  </li>
-                                  <li class="nav-divider"></li>
-                                  <li>
-                                    <a href="login.html">
-                                      <i class="fa fa-sign-in"></i>
-                                      <span class="link-title">
-                            Login Page
-                            </span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="javascript:;">
-                                      <i class="fa fa-code"></i>
-                                      <span class="link-title">
-                            	Unlimited Level Menu
-                            	</span>
-                                      <span class="fa arrow"></span>
-                                    </a>
-                                    <ul class="collapse">
-                                      <li>
-                                        <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a>
-                                        <ul class="collapse">
-                                          <li> <a href="javascript:;">Level 2</a>  </li>
-                                          <li> <a href="javascript:;">Level 2</a>  </li>
-                                          <li>
-                                            <a href="javascript:;">Level 2  <span class="fa arrow"></span>  </a>
-                                            <ul class="collapse">
-                                              <li> <a href="javascript:;">Level 3</a>  </li>
-                                              <li> <a href="javascript:;">Level 3</a>  </li>
-                                              <li>
-                                                <a href="javascript:;">Level 3  <span class="fa arrow"></span>  </a>
-                                                <ul class="collapse">
-                                                  <li> <a href="javascript:;">Level 4</a>  </li>
-                                                  <li> <a href="javascript:;">Level 4</a>  </li>
-                                                  <li>
-                                                    <a href="javascript:;">Level 4  <span class="fa arrow"></span>  </a>
-                                                    <ul class="collapse">
-                                                      <li> <a href="javascript:;">Level 5</a>  </li>
-                                                      <li> <a href="javascript:;">Level 5</a>  </li>
-                                                      <li> <a href="javascript:;">Level 5</a>  </li>
-                                                    </ul>
-                                                  </li>
-                                                </ul>
-                                              </li>
-                                              <li> <a href="javascript:;">Level 4</a>  </li>
-                                            </ul>
-                                          </li>
-                                          <li> <a href="javascript:;">Level 2</a>  </li>
-                                        </ul>
-                                      </li>
-                                      <li> <a href="javascript:;">Level 1</a>  </li>
-                                      <li>
-                                        <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a>
-                                        <ul class="collapse">
-                                          <li> <a href="javascript:;">Level 2</a>  </li>
-                                          <li> <a href="javascript:;">Level 2</a>  </li>
-                                          <li> <a href="javascript:;">Level 2</a>  </li>
-                                        </ul>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                </ul>
-                        <!-- /#menu -->
-                    </div>
-                    <!-- /#left -->
-                <div id="content">
-                    <div class="outer">
-                        <div class="inner bg-light lter">
-<div class="col-lg-12">
-@yield('content') 
-</div>
-
-                        </div>
-                        <!-- /.inner -->
-                    </div>
-                    <!-- /.outer -->
-                </div>
-                <!-- /#content -->
-
-                    <div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded=false>
-                        <a class="onoffcanvas-toggler" href="#right" data-toggle=onoffcanvas aria-expanded=false></a>
-                        <br>
-                        <br>
-                        <div class="alert alert-danger">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Warning!</strong> Best check yo self, you're not looking too good.
-                        </div>
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <ul class="list-unstyled">
-                                <li>Visitor <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
-                                <li>Online Visitor <span class="dynamicsparkline pull-right">Loading..</span></li>
-                                <li>Popularity <span class="dynamicbar pull-right">Loading..</span></li>
-                                <li>New Users <span class="inlinebar pull-right">1,3,4,5,3,5</span></li>
-                            </ul>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <button class="btn btn-block">Default</button>
-                            <button class="btn btn-primary btn-block">Primary</button>
-                            <button class="btn btn-info btn-block">Info</button>
-                            <button class="btn btn-success btn-block">Success</button>
-                            <button class="btn btn-danger btn-block">Danger</button>
-                            <button class="btn btn-warning btn-block">Warning</button>
-                            <button class="btn btn-inverse btn-block">Inverse</button>
-                            <button class="btn btn-metis-1 btn-block">btn-metis-1</button>
-                            <button class="btn btn-metis-2 btn-block">btn-metis-2</button>
-                            <button class="btn btn-metis-3 btn-block">btn-metis-3</button>
-                            <button class="btn btn-metis-4 btn-block">btn-metis-4</button>
-                            <button class="btn btn-metis-5 btn-block">btn-metis-5</button>
-                            <button class="btn btn-metis-6 btn-block">btn-metis-6</button>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <span>Default</span><span class="pull-right"><small>20%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-                            </div>
-                            <span>Success</span><span class="pull-right"><small>40%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-                            </div>
-                            <span>warning</span><span class="pull-right"><small>60%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-                            </div>
-                            <span>Danger</span><span class="pull-right"><small>80%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /#right -->
+                                <a href="">
+                                     <i class="fa fa-cog"></i>
+                                        Personalizar
+                                </a>
+                            </li>
+                        </ul>
+                    </footer>
+                </aside>
+            <div>      
+                @yield('content') 
             </div>
-            <!-- /#wrap -->
-            <footer class="Footer bg-dark dker">
-                <p>2017 &copy; Metis Bootstrap Admin Template v2.4.2</p>
-            </footer>
-            <!-- /#footer -->
-            <!-- #helpModal -->
-            <div id="helpModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
+            
+            <div class="ref" id="ref">
+                <div class="color-primary"></div>
+                <div class="chart">
+                    <div class="color-primary"></div>
+                    <div class="color-secondary"></div>
                 </div>
-                <!-- /.modal-dialog -->
             </div>
-            <!-- /.modal -->
-            <!-- /#helpModal -->
-            <!--jQuery -->
-            <script src="lib/jquery/jquery.js"></script>
 
+        {!!Html::script('js/vendor.js')!!}
+        {!!Html::script('js/app.js')!!}
+        @section('scripts')
+      <!-- Theme initialization -->
+        <script>
+            var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
+            {};
+            var themeName = themeSettings.themeName || '';
+            if (themeName)
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="css/app-' + themeName + '.css">');
+            }
+            else
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="css/app.css">');
+            }
+        </script>
+        @show
 
-            <!--Bootstrap -->
-            <script src="lib/bootstrap/js/bootstrap.js"></script>
-            <!-- MetisMenu -->
-            <script src="lib/metismenu/metisMenu.js"></script>
-            <!-- onoffcanvas -->
-            <script src="lib/onoffcanvas/onoffcanvas.js"></script>
-            <!-- Screenfull -->
-            <script src="lib/screenfull/screenfull.js"></script>
-
-
-            <!-- Metis core scripts -->
-            <script src="js/core.js"></script>
-            <!-- Metis demo scripts -->
-            <script src="js/app.js"></script>
-
-
-            <script src="js/style-switcher.js"></script>
-        </body>
+        
+    </body>
 
 </html>

@@ -1,133 +1,70 @@
-@extends('index')
+@extends ('index')
 @section('content')
-<style type="text/css" >
-    
-
-
-.bigicon {
-    font-size: 35px;
-    color: #337ab7;
-}
-legend{
-    color: #36A0FF;
-}
-h2
-{
-    color: #36A0FF;
-}
+<style>
+  .campoObligatorio {
+  color: red;
+  }
+  .bigicon {
+      font-size: 35px;
+      color: #337ab7;
+  }
+  legend{
+      color: #36A0FF;
+  }
 </style>
- <article class="content forms-page">
-                           
-           <div class="title-block">
-                    <span class=""><i class="fa fa-archive bigicon icon_nav" > Barrios/Caserios</i></span>
-                        <h2 >
-        
-    </h2>
-                        <p class="title-description"> Registro de Barrios y Caserios </p>
+<article class="content forms-page">
+  <div class="title-block">
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > COLONIA/CANTÓN</i></span>
+       <p class="title-description"> Registro de COLONIA/CANTÓN </p>
+   </div>
+   <section class="section">
+       <div class="row sameheight-container">
+          <div>
+            <div class=\ >
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h1 class="panel-title">Formulario de COLONIA/CANTÓN</h1>
+                </div>
+                <div class="row table-responsive"> <!--Begin Datatables-->
+                    <div class="card table-responsive">
+                      <div class="card-block table-responsive">
+                {!! Form::open(['route'=>'division.store','method'=>'POST']) !!}
+                <fieldset>
+                <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
+                <div id="collapseOne" class="body">
+                  <div class="form-group">
+                  <label class="control-label col-md-1">* Tipo </label>
+                    <div class="col-lg-3">
+                      <select name="tipo" id="sport" class="validate[required] form-control">
+                        <option value="0">Selecione una opción...</option>
+                        <option value="Colonia" id="1">Colonia</option>
+                        <option value="Cantón" id="2">Cantón</option>
+                      </select>
+                    </div> 
+
+                    <label class="control-label col-md-1">* Nombre </label>
+
+                    <div class="col-lg-3">
+                      {!!Form::text('nombre',null,['id'=>'nombre','class'=>'form-control', 'placeholder'=>'Ingrese el nombre...','required'])!!}
                     </div>
-            <!--<div class="subtitle-block">
-                        <h3 class="subtitle">
-        Formulario de Producto
-    </h3> </div>-->
-                    <section class="section">
-                        <div class="row sameheight-container">
-                            <div >
-                                <div class=\ >
-                                    
+                  </div>
+                </div>
+              </fieldset>
+             <br><br>
+             <div align="center">
+  {!! Form::submit(' Registrar',['class'=>'btn btn-primary glyphicon glyphicon-floppy-disk'  ]) !!}
+  {!! Form::reset('Limpiar',['class'=>'btn btn-primary' ]) !!}
+  </div>
+  {{-- {!!link_to_action("MotoristaController@index", $title = "Salir", $parameters = 1, $attributes = ["class"=>"btn btn-danger"])!!} --}}
+{!! Form::close() !!}
 
-                  
-
-
-                
-<div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h1 class="panel-title">Formulario de Barrios y Caserios</h1>
-
-                             </div>
-                             <div align="center">
-                             
-                             <br>
-</div>
-                 {!! Form::open(['route'=>'division.store','method'=>'POST','class'=>'form-horizontal']) !!}
-                
-                    <fieldset>
-                        
-
-                        <div class="form-group">
-            
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-barcode bigicon icon_nav" ></i></span >
-                             <div class="col-xs-3">
-                                <select class=" form-control" name="idTipo">
-                                    <option  value="1" >Barrio</option> 
-                                    <option  value="2" >Barrio</option>
-                                </select>
-                            </div>
+              </div> 
+                          </div> 
                         </div>
-                        <br>
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-book bigicon"></i></span>
-                            <div class="col-md-3">
-                                <input id="nombre" name="nombre" type="text" placeholder="Nombre del Lugar" required class="form-control">
-                                
-                            </div>
-
-                            <span class="col-md-1  text-center"><i class="fa fa-dropbox bigicon"></i></span>
-                            <div class="col-md-3">
-                                <input id="uniCaja" name="uniCaja" type="number" min="1" placeholder="Unidades de una Caja" class="form-control" required pattern="[0-9]{1,3}" max="1000">
-                                
-                            </div>
-                        </div>
-
-                        
-<br>
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-tags bigicon"></i></span>
-                            <div class="col-md-3">
-                                <input id="marca" required name="marca" type="text" required placeholder="Marca" class="form-control" >
-                            </div>
-
-                            <span class="col-md-1  text-center"><i class="fa bigicon" style=" font-weight: bold;">M</i></span>
-                            <div class="col-xs-3">
-                                <input id="minimo" name="minimo" type="number" placeholder="unidades minimas requeridas" class="form-control" pattern="[0-9]{1,3}" required min="0" max="99999"> 
-                            </div>
-                        </div>
-                        <br>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa  bigicon" style=" font-weight: bold;">%</i></span>
-                            <div class="col-xs-3">
-                                <input id="gUni"
-                                 name="gUni" type="number" placeholder="porcentaje de ganancia por unidad" pattern="[0-9]{1,3}"  class="form-control" required="" min="0" max="999">
-                            </div>
-
-                            <span class="col-md-1  text-center"><i class="fa bigicon" style=" font-weight: bold;">%</i></span>
-                            <div class="col-xs-3">
-                                <input id="gCaja" name="gCaja" type="text" placeholder="porcentaje de ganancia por Caja" class="form-control" pattern="[0-9]{1,3}"  required >
-                            </div>
-
-                        </div>
-                      
-                        <br>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-md-7">
-                                <textarea rows="2" class="form-control" id="desc" name="desc" placeholder="Agregue la descripcion del producto" rows="7" required=></textarea>
-                            </div>
-                        </div>
-                            <br>
-                        <div class="form-group">
-                            <div class="col-md-12 text-center" align="center">
-                                <button type="submit"  class="btn btn-primary btn-lg">Guardar</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                {!! Form::close() !!}
             </div>
-        </div>
-        </div>
-    </div>
-</section> 
-</article>
-
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div>
+    </section>
+  </article>
 @stop

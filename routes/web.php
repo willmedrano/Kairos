@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('division', 'controladoDiv');
+Route::resource('division', 'DivisionController');
 
 Route::resource('motorista','MotoristaController');
 Route::resource('usuario','UsuarioController');

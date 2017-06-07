@@ -3,10 +3,15 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+use Redirect;
+use DB;
+use Input;
+use Kairos\ColoniaCanton;
 
-class controladoDiv extends Controller
+class DivisionController extends Controller
 {
-    //
+//
      /**
      * Display a listing of the resource.
      *
@@ -17,9 +22,9 @@ class controladoDiv extends Controller
     public function index()
     {
         //
-        
-       // return view('layouts.inicio');
-       return view('divPolitica.formDivision');
+        $cc=ColoniaCanton::All();
+      return view('divPolitica.index',compact('cc'));
+       
         
     }
 
@@ -31,7 +36,7 @@ class controladoDiv extends Controller
     public function create()
     {
         //
-       return view('divPolitica.formDivision');
+       return view('divPolitica.create');
 
     }
 
@@ -41,10 +46,15 @@ class controladoDiv extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestProductoInv $request)
+    public function store(Request $request)
     {
         //
-
+        ColoniaCanton::create([
+            'nombre'=>$request['nombre'],
+            'tipo'=>$request['tipo'],
+        
+        ]);
+        return redirect('/division');
        
     }
 
@@ -70,7 +80,9 @@ class controladoDiv extends Controller
      */
     public function edit($id)
     {
-        
+      $cc=ColoniaCanton::find($id);
+
+      return view('divPolitica.edit',compact('cc'));  
     }
 
     /**
@@ -83,6 +95,13 @@ class controladoDiv extends Controller
     public function update(Request $request, $id)
     {
         //
+        $cc = ColoniaCanton::find($id);
+        $cc->nombre = $request['nombre'];
+        $cc->tipo = $request['tipo'];
+        $cc->save();
+
+        Session::flash('mensaje','¡Registro Actualizado!');
+        return redirect::to('/division')->with('message','update');
        
     }
      

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColoniaCantosTable extends Migration
+class CreateColoniaCantonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateColoniaCantosTable extends Migration
      */
     public function up()
     {
-        Schema::create('colonia_cantos', function (Blueprint $table) {
+        Schema::create('colonia_cantons', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->string('tipo');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateColoniaCantosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colonia_cantos');
+        Schema::dropIfExists('colonia_cantons');
     }
 }

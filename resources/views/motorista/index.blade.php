@@ -40,6 +40,8 @@
                            </thead>
                            <tbody>
                              @foreach ($motorista as $m)
+                             @include('motorista.baja')
+                             @include('motorista.alta')
                                <tr>
                                  <td>
                                    <div class="pull-left image">
@@ -58,6 +60,13 @@
                                        </tr>
                                      </table>
                                    </div><!-- fin tabla que centra los botones-->
+                                   @if($m->estadoMot==true)
+                                                            <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$m->id}}">A c t i v o</button></td>
+                                                        @endif
+
+                                                        @if($m->estadoMot==false)
+                                                            <td><button type="submit"  class="btn btn-sm gris" data-toggle="modal" data-target="#gridSystemModal3{{$m->id}}">Desactivo</button></td>
+                                                        @endif
                                  </td>
                                </tr>
                              @endforeach

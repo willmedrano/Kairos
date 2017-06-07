@@ -100,7 +100,19 @@ class MotoristaController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $aux=$request['hi2'];
       $motorista= Motorista::find($id);
+
+      if($aux=='2')
+        {
+            $motorista->estadoMot =true;
+        }
+        else if($aux=='3')
+        {
+            $motorista->estadoMot =false;
+        }
+
+else{
        $motorista->nombresMot=$request['nombresMot'];
        $motorista->apellidosMot=$request['apellidosMot'];
        $motorista->direccionMot=$request['direccionMot'];
@@ -110,7 +122,7 @@ class MotoristaController extends Controller
        $motorista->licencia=$request['licencia'];
        $motorista->fechaNacimiento=$request['fechaNacimiento'];
        $motorista->fechaContrato=$request['fechaContrato'];
-
+}
       $motorista->save();
       return Redirect::to('/motorista');
 

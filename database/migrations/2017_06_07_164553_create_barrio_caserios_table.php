@@ -15,6 +15,10 @@ class CreateBarrioCaseriosTable extends Migration
     {
         Schema::create('barrio_caserios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->Integer('idCC')->unsigned();
+            $table->foreign('idCC')->references('id')->on('colonia_cantons');
+            $table->string('nombre_img');
             $table->timestamps();
         });
     }

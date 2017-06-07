@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('division', 'controladoDiv');
+
+Route::resource('motorista','MotoristaController');
+Route::resource('usuario','UsuarioController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

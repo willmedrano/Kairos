@@ -10,9 +10,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    {!!Html::style('css/vendor.css')!!}  
-    {!!Html::style('css/app-seagreen.css')!!}  
-         
+    {!!Html::style('css/vendor.css')!!}
+    {!!Html::style('css/app-seagreen.css')!!}
+
     </head>
 
     <body>
@@ -27,15 +27,15 @@
 
                         <button class="collapse-btn" id="sidebar-collapse-btn">
                             <i class="fa fa-bars"></i>
-                        </button> 
+                        </button>
 
                     </div>
-                    
+
                     <div class="header-block header-block-nav">
 
                         <ul class="nav-profile">
 
-                           
+
 
                             <li class="profile dropdown">
 
@@ -46,14 +46,14 @@
 
                                     <span class="name">
 
-                                        
+
 
                                     </span>
                                 </a>
 
                                 <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    
-                                    
+
+
                                     <a class="dropdown-item" href="/notificaciones">
 
                                         <i class="fa fa-bell icon"></i>
@@ -67,7 +67,7 @@
                                      </a>
 
                                     <div class="dropdown-divider">
-                                        
+
                                     </div>
 
                                     <a class="dropdown-item" href="/logout">
@@ -84,7 +84,7 @@
                 </header>
 
                 <aside class="sidebar">
-                    
+
                     <div class="sidebar-container">
 
                         <div class="sidebar-header">
@@ -93,7 +93,7 @@
                                 <div class="logo">
                                     <span class="l l1"></span>
                                     <span class="l l2"></span>
-                                    <span class="l l3"></span> 
+                                    <span class="l l3"></span>
                                     <span class="l l4"></span>
                                     <span class="l l5"></span>
                                 </div>
@@ -102,12 +102,12 @@
 
                             </div>
                         </div>
-                        
+
                         <!-- Aqui inicia el menu nav  -->
                         <nav class="menu">
-                           
+
                             <ul class="nav metismenu" id="sidebar-menu"><!-- Aqui inicia la lista del menu u-->
-                                
+
                                 <li class="active"><!-- inicia el menu Inicio i -->
                                     <a href="/inicio"> <i class="fa fa-home"></i> Inicio </a>
                                 </li> <!-- Aqui finaliza el menu i-->
@@ -121,9 +121,9 @@
                                     </a>
 
                                     <ul>
-                                        
-                                        <li> 
-                                            <a href="/log/create">
+
+                                        <li>
+                                            <a href="/motorista/create">
                                                 Ingresar Operario o Motorista
                                             </a>
                                         </li>
@@ -132,8 +132,8 @@
                                                 Modificar Operario o Motorista
                                             </a>
                                         </li>
-                                        <li> 
-                                            <a href="/pagar/create">
+                                        <li>
+                                            <a href="/motorista">
                                                 Ver Operario
                                             </a>
                                         </li>
@@ -148,7 +148,7 @@
                                 <li><!-- Aqui inicia el menu de los Inventario i con sus respectivas opciones -->
                                     <a href="">
                                         <i class="fa fa-th-large"></i>
-                                          Vehiculos y Maquinarias 
+                                          Vehiculos y Maquinarias
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul>
@@ -177,7 +177,7 @@
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul>
-                                        <li> 
+                                        <li>
                                             <a href="/escuela/create">
                                                 Registrar Taller
                                             </a>
@@ -193,7 +193,7 @@
                                 <li><!-- Aqui inicia el menu de los paquetes i con sus respectivas opciones -->
                                     <a href="">
                                         <i class="fa fa-dropbox"></i>
-                                             División Politica 
+                                             División Politica
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul>
@@ -208,9 +208,9 @@
                                         </a>
                                         <li>
                                             <a href="/contrato/create">
-                                             Ver Barrios/Caserios   
+                                             Ver Barrios/Caserios
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </li><!-- Aqui finaliza el menu de Paquete i -->
 
@@ -218,7 +218,7 @@
                                     <a href="">
                                         <i class="fa fa-shopping-cart "></i>
                                             Gestión de Actividad
-                                        <i class="fa arrow"></i> 
+                                        <i class="fa arrow"></i>
                                     </a>
                                     <ul>
                                         <li>
@@ -228,7 +228,7 @@
                                         </li>
                                         <li>
                                             <a href="/cuotas/">
-                                                Asignar ubicación 
+                                                Asignar ubicación
                                             </a>
                                         </li>
                                         <li>
@@ -243,12 +243,12 @@
                                     <a href="">
                                         <i class="fa fa-truck"></i>
                                             Vales de Combustible
-                                        <i class="fa arrow"></i> 
-                                    </a> 
+                                        <i class="fa arrow"></i>
+                                    </a>
                                    <ul>
                                         <li>
                                             <a href="/prove/create">
-                                            
+
                                             </a>
                                         </li>
                                         <li>
@@ -263,21 +263,21 @@
                                         </li>
                                         <li>
                                             <a href="/prove/">
-                                                Ver Vales 
+                                                Ver Vales
                                             </a>
                                         </li>
-                                        
+
 
                                     </ul>
                                 </li><!-- Aqui finaliza el menu de Proveedor i -->
 
-                               
+
 
                                 <li><!-- Aqui inicia el menu de los Ventas i con sus respectivas opciones -->
-                                    <a href=""> 
+                                    <a href="">
                                         <i class="fa fa-file-text-o"></i>
-                                         Entradas y Salidas 
-                                        <i class="fa arrow"></i> 
+                                         Entradas y Salidas
+                                        <i class="fa arrow"></i>
                                     </a>
                                     <ul>
                                         <li>
@@ -295,7 +295,7 @@
                                                 Asignar Actividad
                                             </a>
                                         </li>
-                                        
+
                                     </ul>
                                 </li><!-- Aqui finaliza el menu de Ventas i -->
 
@@ -307,21 +307,21 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="/reporte2">
+                                            <a href="/usuario/create">
                                                 Registar usuario
                                             </a>
-                                            <a href="/reporte8">
+                                            <a href="/usuario">
                                                 Ver Usuarios
                                             </a>
                                             <a href="/reporte3">
                                                 Bitácora de usuarios
                                             </a>
-                                          
-                                            
+
+
                                         </li>
                                     </ul>
                                 </li> <!-- Aqui finaliza el menu de Reportes i -->
-                                    
+
 <li><!-- Aqui inicia el menu de los Reportes i con sus respectivas opciones -->
                                     <a href="">
                                         <i class="fa ">$</i>
@@ -336,8 +336,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                    
-                        
+
+
                             </ul>
                         </nav>
                     </div>
@@ -348,12 +348,12 @@
                                     <li class="customize">
                                         <div class="customize-item">
                                             <div class="row customize-header">
-                                            
+
                                                 <div class="col-xs-4" align="center">
-                                                    <label class="title">Estatico</label> 
+                                                    <label class="title">Estatico</label>
                                                 </div>
                                                 <div class="col-xs-4" align="center">
-                                                    <label class="title">Normal</label> 
+                                                    <label class="title">Normal</label>
                                                 </div>
                                             </div>
 
@@ -434,10 +434,10 @@
                         </ul>
                     </footer>
                 </aside>
-            <div>      
-                @yield('content') 
+            <div>
+                @yield('content')
             </div>
-            
+
             <div class="ref" id="ref">
                 <div class="color-primary"></div>
                 <div class="chart">
@@ -465,7 +465,7 @@
         </script>
         @show
 
-        
+
     </body>
 
 </html>

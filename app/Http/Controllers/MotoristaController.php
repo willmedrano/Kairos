@@ -3,6 +3,7 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\MotoristaRequest;
 use Session;
 use Redirect;
 use DB;
@@ -39,7 +40,7 @@ class MotoristaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MotoristaRequest $request)
     {
       //obtenemos el campo file definido en el formulario
       $file = Input::file('nombre_img');

@@ -123,23 +123,13 @@
                                     <ul>
 
                                         <li>
-                                            <a href="/motorista/create">
+                                            <a href="/Kairos/public/motorista/create">
                                                 Ingresar Operario o Motorista
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/log/">
-                                                Modificar Operario o Motorista
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/motorista">
-                                                Ver Operario
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/pagar">
-                                                Ver Motorista
+                                            <a href="/Kairos/public/motorista">
+                                                Ver Operario y Motorista
                                             </a>
                                         </li>
                                     </ul>
@@ -198,16 +188,16 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="division">
+                                            <a href="/Kairos/public/coloniaCanton/create">
                                                Registrar Colonia/Canton
                                             </a>
                                         </li>
                                         <li>
-                                        <a href="/comprapaquete/create">
+                                        <a href="/Kairos/public/coloniaCanton">
                                             Ver Colonias/Cantones
                                         </a>
                                         <li>
-                                            <a href="/contrato/create">
+                                            <a href="/Kairos/public/barrioCaserio">
                                              Ver Barrios/Caserios
                                             </a>
                                         </li>
@@ -307,10 +297,10 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="/usuario/create">
+                                            <a href="/Kairos/public/usuario/create">
                                                 Registar usuario
                                             </a>
-                                            <a href="/usuario">
+                                            <a href="/Kairos/public//usuario">
                                                 Ver Usuarios
                                             </a>
                                             <a href="/reporte3">

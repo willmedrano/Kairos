@@ -5,12 +5,12 @@
       <div class="modal-header alert-warning" bgcolor="blue">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <span class="col-md-2  text-center" style="color: white;" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></span>
-<h4 class="modal-title" id="gridModalLabel3" >Desactivar PRODUCTO</h4>
+<h4 class="modal-title" id="gridModalLabel3" >DESACTIVAR MOTORISTA</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid bd-example-row">
            {!!Form::model($motorista,['method'=>'PATCH','route'=>['motorista.update',$m->id]])!!}
-              <label for="">¿Seguro que desea cambiar el estado del producto?</label>
+              <label for="">¿Seguro que desea cambiar el estado del motorista?</label>
               <input type="hidden" name="hi" value="{{ $m->estado }}">
               <input type="hidden" name="hi2" value="3">
                 <div class="modal-footer">
@@ -20,7 +20,7 @@
           {!!Form::close()!!}
         </div>
       </div>
-      
+
     </div>
   </div>
 </div>

@@ -1,3 +1,5 @@
+@extends ('index')
+@section('content')
 <style>
   .campoObligatorio {
   color: red;
@@ -11,6 +13,7 @@
   }
 </style>
 <article class="content forms-page">
+  @include('alertas.request')
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" > Nuevo Usuario</i></span>
        <p class="title-description"> Registro de Usuario </p>
@@ -23,31 +26,43 @@
                 <div class="panel-heading">
                   <h1 class="panel-title">Formulario de Usuario</h1>
                 </div>
-                <fieldset>
-                <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
-                <div id="collapseOne" class="body">
-                  <div class="form-group">
-                    <label class="control-label col-lg-3">* usuario </label>
-                    <div class="col-lg-3">
-                      {!!Form::text('name',null,['id'=>'name','class'=>'form-control', 'placeholder'=>'Ingrese Código de usuario...','required'])!!}
+                <div class="row table-responsive"> <!--Begin Datatables-->
+                    <div class="card table-responsive">
+                      <div class="card-block table-responsive">
+                        {!! Form::open(['route'=>'usuario.store','method'=>'POST']) !!}
+                        <fieldset>
+                        <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
+                        <br>
+                        <div id="collapseOne" class="body">
+                          <div class="form-group">
+                            <label class="control-label col-md-2">* usuario </label>
+                            <div class="col-lg-3">
+                              {!!Form::text('name',null,['id'=>'name','class'=>'form-control', 'placeholder'=>'Ingrese Código de usuario...','required'])!!}
+                            </div>
+                            <label class="control-label col-md-2">* Correo </label>
+                            <div class="col-md-4">
+                              {!!Form::text('email',null,['id'=>'email','class'=>'form-control', 'placeholder'=>'Ingrese correo electrónico...','required'])!!}
+                            </div>
+                          </div>
+                          <br><br>
+                          <div class="form-group">
+                            <label class="control-label col-md-2">* Contraseña </label>
+                            <div class="col-lg-3">
+                		         {!!Form::password('password',['class'=>'form-control', 'placeholder'=>'Contrasena...', 'required'])!!}
+                            </div>
+                          </div>
+                        </div><!-- /.row -->
+                      </fieldset>
+                      <br><br>
+                      <div align="center">
+                       {!! Form::submit(' Registrar',['class'=>'btn btn-primary glyphicon glyphicon-floppy-disk'  ]) !!}
+                       {!! Form::reset('Limpiar',['class'=>'btn btn-info' ]) !!}
+                      </div>
+                      {!! Form::close() !!}
                     </div>
-                    <label class="control-label col-lg-3">* Correo </label>
-                    <div class="col-lg-3">
-                      {!!Form::text('email',null,['id'=>'email','class'=>'form-control', 'placeholder'=>'Ingrese correo electrónico...','required'])!!}
-                    </div>
-                  </div>
-                  <br><br>
-                  <div class="form-group">
-                    <label class="control-label col-lg-3">* Contraseña </label>
-                    <div class="col-lg-3">
-        		         {!!Form::password('password',['class'=>'form-control', 'placeholder'=>'Contrasena...', 'required'])!!}
-                    </div>
-                  </div>
+                  </div><!-- /.col-lg-12 -->
                 </div><!-- /.row -->
-              </fieldset>
-            </div>
-          </div><!-- /.col-lg-12 -->
-        </div><!-- /.row -->
-      </div>
-    </section>
-  </article>
+              </div>
+            </section>
+          </article>
+@stop

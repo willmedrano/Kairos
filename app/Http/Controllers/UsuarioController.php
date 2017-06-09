@@ -3,8 +3,10 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\UsuarioRequest;
 use Kairos\User;
 use Redirect;
+use Session;
 
 class UsuarioController extends Controller
 {
@@ -15,7 +17,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-      $user=\Kairos\User::All();
+       $user=\Kairos\User::All();
+      //  $user=\Kairos\User::paginate(2);
       return view('usuario.index',compact('user'));
     }
 
@@ -26,7 +29,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuario.create');
+        return view('usuario.formulario.forUsuario');
     }
 
     /**
@@ -35,14 +38,14 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
         User::create([
         'name'=>$request['name'],
         'password'=> $request['password'],
         'email'=>$request['email'],
       ]);
-      return redirect('/usuario');
+      return redirect('/usuario')->with('mensaje','Usuario ingresado correctamente');
     }
 
     /**
@@ -78,13 +81,29 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $aux=$request['hi2'];
       $user= User::find($id);
 
-      $user->name=$request['name'];
-      $user->password=$request['password'];
-      $user->email=$request['email'];
-      $user->save();
+      if($aux=='2')
+        {
+            $user->estadoUsu =true;
+            Session::flash('mensaje','Usuario Activado correctamente');
 
+        }
+        else if($aux=='3')
+        {
+            $user->estadoUsu =false;
+            Session::flash('mensaje','Usuario dado de baja correctamente');
+
+        }
+        else{
+            $user->name=$request['name'];
+            $user->password=$request['password'];
+            $user->email=$request['email'];
+            Session::flash('mensaje','Usuario editado correctamente');
+
+      }
+      $user->save();
       return Redirect::to('/usuario');
     }
 

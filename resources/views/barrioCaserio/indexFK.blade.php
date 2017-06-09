@@ -28,9 +28,11 @@
 </style>
 <article class="content forms-page">
 
+
+
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE COLONIAS/CANTÓN</i></span>
-       <p class="title-description"> Consulta de COLONIAS/CANTÓN </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE BARRIO/CASERIO</i></span>
+       <p class="title-description"> Consulta de Barrio/Caserio </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -42,6 +44,7 @@
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
+                      <label class="control-label bigicon">{{ $tipo->tipo.' '.$tipo->nombre }} </label>
                         <div class="card-title-block table-responsive">
                           <div class="card-title-block">
                             <div class="form-group" align="right">
@@ -58,29 +61,24 @@
                               <tr>                    
                                <th >N°</th>
                                <th >NOMBRE</th>
-                               <th >TIPO</th>
+                               
                                <th >ACCIÓN</th>
+                               <th >Imagen</th>
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
-                              @include('divPolitica.edit2')
+                              @include('BarrioCaserio.imagen')
+                              @include('BarrioCaserio.edit')
                               <tr>   
                                 <td>{{$c->id}}</td>
+                                
                                 <td>{{$c->nombre}}</td>
-                                <td>{{$c->tipo}}</td>
+                                
                                 <td>
-                                   <div align="center">
-                                     <table>
-                                       <tr>
-                                         <td>
-
-                                         <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a></td>
-                                         
-                                       </tr>
-                                     </table>
-                                   </div><!-- fin tabla que centra los botones-->
-                                 </td>
+                                  <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>
+                                </td>
+                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>                                 
                               </tr>
                               @endforeach
                             </tbody>

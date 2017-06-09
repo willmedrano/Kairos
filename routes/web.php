@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('division', 'DivisionController');
+Route::resource('coloniaCanton', 'ColoniaCantonController');
+Route::resource('barrioCaserio', 'BarrioCaserioController');
 
 Route::resource('motorista','MotoristaController');
 Route::resource('usuario','UsuarioController');

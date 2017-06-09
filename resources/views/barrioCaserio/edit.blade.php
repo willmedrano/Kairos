@@ -4,11 +4,11 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <span class="col-md-2  text-center" style="color: white;" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></span>
-                <h4 class="modal-title" id="gridModalLabel">Modificar Colonia/Cantón</h4>
+                <h4 class="modal-title" id="gridModalLabel">Modificar Barrio/Caserio</h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid bd-example-row">
-                    {!!Form::model($cc,['method'=>'PATCH','route'=>['division.update',$c->id]])!!}
+                    {!!Form::model($cc,['method'=>'PATCH','enctype'=>'multipart/form-data','route'=>['barrioCaserio.update',$c->id]])!!}
                         <fieldset>
                             <input type="hidden" name="hi2" value="1">
                             <br>
@@ -21,23 +21,11 @@
                             </div>            
                             <br>   
                             <div class="form-group">
-                                <span class="col-md-2  text-center"><label >Tipo: </label></span>
-                                <div class="col-md-6">
-                                    <select name="tipo" id="sport" class="validate[required] form-control">
-                                        @if($c->tipo=="Colonia")
-                                            <option  selected value="Colonia" id="1">Colonia</option>
-                                            <option value="Cantón" id="2">Cantón</option>
-
+                                <span class="col-md-2  text-center"><label >Imagen: </label></span>
+                            
+                    {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}    
+                            </div> 
                                            
-                                        @endif
-                                        @if($c->tipo=="Cantón")
-                                            <option value="Colonia" id="1">Colonia</option>
-                                            <option selected value="Cantón" id="2">Cantón</option>
-                                            
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>                
                         </fieldset>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

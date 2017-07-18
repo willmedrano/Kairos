@@ -20,6 +20,9 @@ Route::resource('barrioCaserio', 'BarrioCaserioController');
 
 Route::resource('motorista','MotoristaController');
 Route::resource('usuario','UsuarioController');
+Route::resource('marca','MarcaController');
+Route::resource('modelo','ModeloController');
+Route::resource('tipoVM','TipoVMController'); 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

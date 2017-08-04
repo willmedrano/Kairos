@@ -29,6 +29,7 @@ Route::resource('barrioCanton', 'BarrioCantonController');
 Route::resource('coloniaCaserio', 'ColoniaCaserioController');
 Route::resource('actividad', 'ActividadController');
 Route::resource('maquinaria','MaquinariaController');
+Route::resource('asignarMotVeh','AsignarMotVehController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

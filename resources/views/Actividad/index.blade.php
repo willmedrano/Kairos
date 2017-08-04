@@ -31,8 +31,8 @@
 
 
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE BARRIO/CASERIO</i></span>
-       <p class="title-description"> Consulta de Barrio/Caserio </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE ACTIVIDADES</i></span>
+       <p class="title-description"> Consulta de ACTIVIDADES </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -57,27 +57,44 @@
                         <section class="example">
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead align="center">
-                              <tr>                    
+                              <tr align="center">                    
                                <th >N°</th>
-                               <th >NOMBRE</th>
+                               <th >LUGAR</th>
+                               <th >ACTIVIDAD</th>
+                               <th >DESCRIPCIÓN</th>
+                               <th >IMAGEN</th>
+                               <th colspan="2" align="center">ACCIÓN</th>
                                
-                               <th >ACCIÓN</th>
-                               <th >Imagen</th>
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
-                              @include('BarrioCaserio.imagen')
-                              @include('BarrioCaserio.edit')
+                              @include('Actividad.imagen')
+                              @include('Actividad.terminar')
+                              @include('Actividad.edit')
                               <tr>   
                                 <td>{{$c->id}}</td>
-                                
                                 <td>{{$c->nombre}}</td>
+                                <td>{{$c->act}}</td>
+                                
+                                <td>{{$c->desc}}</td>
                                 
                                 <td>
                                   <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>
                                 </td>
-                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>                                 
+                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>
+                                @if($c->estado==false)
+                                    
+                                    <td>
+                                          <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$c->id}}">Terminar</button>
+                                    </td>
+                                @endif
+
+                                @if($c->estado==true)
+                                      
+                                      <td>Completada</td>
+                                
+                                @endif                                    
                               </tr>
                               @endforeach
                             </tbody>

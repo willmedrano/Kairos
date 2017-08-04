@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColoniaCantonsTable extends Migration
+class CreateColoniaCaseriosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateColoniaCantonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('colonia_cantons', function (Blueprint $table) {
+        Schema::create('colonia_caserios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('tipo');
+            $table->Integer('idCC')->unsigned();
+            $table->foreign('idCC')->references('id')->on('barrio_cantons');
+            $table->string('nombre_img');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateColoniaCantonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colonia_cantons');
+        Schema::dropIfExists('colonia_caserios');
     }
 }

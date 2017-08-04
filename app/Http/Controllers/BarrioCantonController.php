@@ -7,23 +7,17 @@ use Session;
 use Redirect;
 use DB;
 use Input;
-use Kairos\BarrioCaserio;
+use Kairos\BarrioCanton;
+use Kairos\ColoniaCaserio;
 
-class BarrioCaserioController extends Controller
+class BarrioCantonController extends Controller
 {
-    //
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
- 
-   
-    public function index()
+      public function index()
     {
         //
-        $cc=BarrioCaserio::All();
-      return view('BarrioCaserio.index',compact('cc'));
+        $cc=BarrioCanton::paginate(3);
+        
+      return view('BarrioCanton.index',compact('cc'));
        
         
     }
@@ -36,7 +30,7 @@ class BarrioCaserioController extends Controller
     public function create()
     {
         //
-       return view('BarrioCaserio.create');
+       return view('BarrioCanton.create');
 
     }
 
@@ -49,20 +43,12 @@ class BarrioCaserioController extends Controller
     public function store(Request $request)
     {
         //
-        $file = Input::file('nombre_img');
-       //Creamos una instancia de la libreria instalada
-       $image = \Image::make(\Input::file('nombre_img'));
-       //Ruta donde queremos guardar las imagenes
-       $path = public_path().'/imagenesBarriosCaserios/';
-       // Guardar Original
-       $image->save($path.$file->getClientOriginalName());
-        BarrioCaserio::create([
+        BarrioCanton::create([
             'nombre'=>$request['nombre'],
-            'idCC'=>$request['id'],
-            'nombre_img'=>$file->getClientOriginalName(),
+            'tipo'=>$request['tipo'],
         
         ]);
-        return redirect('/barrioCaserio');
+        return redirect('/barrioCanton');
        
     }
 
@@ -75,6 +61,8 @@ class BarrioCaserioController extends Controller
     public function show($id)
     {
         //
+        $tipo =BarrioCanton::find($id);
+        return view('ColoniaCaserio.create',compact('tipo'));
        
        
     }
@@ -88,9 +76,12 @@ class BarrioCaserioController extends Controller
      */
     public function edit($id)
     {
-      $cc=BarrioCaserio::find($id);
+      $cc =ColoniaCaserio::where('idCC',$id)->get();
+        $tipo =BarrioCanton::find($id);
+      
 
-      return view('BarrioCaserio.edit',compact('cc'));  
+        return view('ColoniaCaserio.indexFK',compact('cc','tipo'));
+         
     }
 
     /**
@@ -103,21 +94,13 @@ class BarrioCaserioController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $file = Input::file('nombre_img');
-       //Creamos una instancia de la libreria instalada
-       $image = \Image::make(\Input::file('nombre_img'));
-       //Ruta donde queremos guardar las imagenes
-       $path = public_path().'/imagenesBarriosCaserios/';
-       // Guardar Original
-       $image->save($path.$file->getClientOriginalName());
-        $cc = BarrioCaserio::find($id);
-        
-        $cc->nombre=$request['nombre'];
-         $cc->nombre_img=$file->getClientOriginalName();
+        $cc = BarrioCanton::find($id);
+        $cc->nombre = $request['nombre'];
+        $cc->tipo = $request['tipo'];
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect::to('/barrioCaserio')->with('message','update');
+        return redirect::to('/barrioCanton')->with('message','update');
        
     }
      

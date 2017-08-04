@@ -31,8 +31,8 @@
 
 
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE BARRIO/CASERIO</i></span>
-       <p class="title-description"> Consulta de Barrio/Caserio </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE COLONIA/CASERIO</i></span>
+       <p class="title-description"> Consulta de Colonia/Caserio </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -68,8 +68,8 @@
                             </thead>
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
-                              @include('BarrioCaserio.imagen')
-                              @include('BarrioCaserio.edit')
+                              @include('ColoniaCaserio.imagen')
+                              @include('ColoniaCaserio.edit')
                               <tr>   
                                 <td>{{$c->id}}</td>
                                 

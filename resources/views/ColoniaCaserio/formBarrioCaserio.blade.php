@@ -14,8 +14,8 @@
 </style>
 <article class="content forms-page">
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" > COLONIA/CANTÓN</i></span>
-       <p class="title-description"> Registro de COLONIA/CANTÓN </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > COLONIA/CASERIO</i></span>
+       <p class="title-description"> Registro de Colonia/Caserio </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -23,30 +23,30 @@
             <div class=\ >
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h1 class="panel-title">Formulario de COLONIA/CANTÓN</h1>
+                  <h1 class="panel-title">Formulario de Colonia/Caserio</h1>
                 </div>
                 <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
-                {!! Form::open(['route'=>'coloniaCanton.store','method'=>'POST']) !!}
+                {!! Form::open(['route'=>'coloniaCaserio.store','method'=>'POST','enctype'=>'multipart/form-data']) !!}
                 <fieldset>
                 <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
                 <div id="collapseOne" class="body">
+                <br>
+                    <label class="control-label bigicon">{{ $tipo->tipo.' '.$tipo->nombre }} </label>
+                       <input type="hidden" name="id" value="{{ $tipo->id }}">              
+                    <br><br>
                   <div class="form-group">
-                  <label class="control-label col-md-1">* Tipo </label>
-                    <div class="col-lg-3">
-                      <select name="tipo" id="sport" class="validate[required] form-control">
-                        <option value="0">Selecione una opción...</option>
-                        <option value="Colonia" id="1">Colonia</option>
-                        <option value="Cantón" id="2">Cantón</option>
-                      </select>
-                    </div> 
-
+                  
+                    
                     <label class="control-label col-md-1">* Nombre </label>
 
                     <div class="col-lg-3">
                       {!!Form::text('nombre',null,['id'=>'nombre','class'=>'form-control', 'placeholder'=>'Ingrese el nombre...','required'])!!}
                     </div>
+                    {!!Form::label('limagen','Imagen:')!!}
+                    {!!Form::file('nombre_img',['value'=>'Elija'])!!}
+
                   </div>
                 </div>
               </fieldset>

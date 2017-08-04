@@ -41,7 +41,7 @@
 
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 
-                                    <div class="img"   style="background-image: url('../public/img/KairosLogo.png')">
+                                    <div class="img"   style="background-image: url('/kairos/public/img/KairosLogo.png')">
                                     </div>
 
                                     <span class="name">

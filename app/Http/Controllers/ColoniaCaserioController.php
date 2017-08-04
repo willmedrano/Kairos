@@ -7,18 +7,24 @@ use Session;
 use Redirect;
 use DB;
 use Input;
-use Kairos\ColoniaCanton;
-use Kairos\BarrioCaserio;
+use Kairos\ColoniaCaserio;
 
-class ColoniaCantonController extends Controller
+class ColoniaCaserioController extends Controller
 {
+    
     //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+ 
+   
     public function index()
     {
         //
-        $cc=ColoniaCanton::paginate(3);
-        
-      return view('coloniaCanton.index',compact('cc'));
+        $cc=ColoniaCaserio::All();
+      return view('ColoniaCaserio.index',compact('cc'));
        
         
     }
@@ -31,7 +37,7 @@ class ColoniaCantonController extends Controller
     public function create()
     {
         //
-       return view('coloniaCanton.create');
+       return view('ColoniaCaserio.create');
 
     }
 
@@ -44,12 +50,20 @@ class ColoniaCantonController extends Controller
     public function store(Request $request)
     {
         //
-        ColoniaCanton::create([
+        $file = Input::file('nombre_img');
+       //Creamos una instancia de la libreria instalada
+       $image = \Image::make(\Input::file('nombre_img'));
+       //Ruta donde queremos guardar las imagenes
+       $path = public_path().'/imagenesColoniasCaserios/';
+       // Guardar Original
+       $image->save($path.$file->getClientOriginalName());
+        ColoniaCaserio::create([
             'nombre'=>$request['nombre'],
-            'tipo'=>$request['tipo'],
+            'idCC'=>$request['id'],
+            'nombre_img'=>$file->getClientOriginalName(),
         
         ]);
-        return redirect('/coloniaCanton');
+        return redirect('/coloniaCaserio');
        
     }
 
@@ -62,8 +76,6 @@ class ColoniaCantonController extends Controller
     public function show($id)
     {
         //
-        $tipo =ColoniaCanton::find($id);
-        return view('BarrioCaserio.create',compact('tipo'));
        
        
     }
@@ -77,12 +89,9 @@ class ColoniaCantonController extends Controller
      */
     public function edit($id)
     {
-      $cc =BarrioCaserio::where('idCC',$id)->get();
-        $tipo =ColoniaCanton::find($id);
-      
+      $cc=ColoniaCaserio::find($id);
 
-        return view('BarrioCaserio.indexFK',compact('cc','tipo'));
-         
+      return view('ColoniaCaserio.edit',compact('cc'));  
     }
 
     /**
@@ -95,13 +104,21 @@ class ColoniaCantonController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $cc = ColoniaCanton::find($id);
-        $cc->nombre = $request['nombre'];
-        $cc->tipo = $request['tipo'];
+        $file = Input::file('nombre_img');
+       //Creamos una instancia de la libreria instalada
+       $image = \Image::make(\Input::file('nombre_img'));
+       //Ruta donde queremos guardar las imagenes
+       $path = public_path().'/imagenesColoniasCaserios/';
+       // Guardar Original
+       $image->save($path.$file->getClientOriginalName());
+        $cc = ColoniaCaserio::find($id);
+        
+        $cc->nombre=$request['nombre'];
+         $cc->nombre_img=$file->getClientOriginalName();
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect::to('/coloniaCanton')->with('message','update');
+        return redirect::to('/coloniaCaserio')->with('message','update');
        
     }
      

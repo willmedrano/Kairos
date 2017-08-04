@@ -25,13 +25,14 @@
 
 }
 
-
 </style>
 <article class="content forms-page">
 
+
+
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE COLONIAS/CANTÓN</i></span>
-       <p class="title-description"> Consulta de COLONIAS/CANTÓN </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE COLONIA/CASERIO</i></span>
+       <p class="title-description"> Consulta de Colonia/Caserio </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -43,6 +44,7 @@
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
+                      <label class="control-label bigicon">{{ $tipo->tipo.' '.$tipo->nombre }} </label>
                         <div class="card-title-block table-responsive">
                           <div class="card-title-block">
                             <div class="form-group" align="right">
@@ -57,54 +59,31 @@
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead align="center">
                               <tr>                    
-                               <th ><div align="center">N°</div></th>
-                               <th ><div align="center">NOMBRE</div></th>
-                               <th ><div align="center">TIPO</div></th>
-                               <th ><div align="center">ACCIÓN</div></th>
-                               <th ><div align="center">AGREGAR</div></th>
-                               <th><div align="center">REGISTROS</div></th>
-
+                               <th >N°</th>
+                               <th >NOMBRE</th>
+                               
+                               <th >ACCIÓN</th>
+                               <th >Imagen</th>
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
-                              @include('coloniaCanton.edit')
+                              @include('ColoniaCaserio.imagen')
+                              @include('ColoniaCaserio.edit')
                               <tr>   
                                 <td>{{$c->id}}</td>
+                                
                                 <td>{{$c->nombre}}</td>
-                                <td>{{$c->tipo}}</td>
-                                <td align="center">
-                                   
-
-                                         <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>
+                                
+                                <td>
+                                  <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>
                                 </td>
-                                <td align="center">  
-                                  @if($c->tipo=="Cantón")
-                                   {!!Form::open(['route'=>['coloniaCanton.show',$c->id],'method'=>'GET'])!!}
-                                      <input type="submit" name="" value="Caserios"   class="btn btn btn-primary btn-sm active " >
-                                                        {!!Form::close()!!}
-                                  @endif()
-                                  @if($c->tipo=="Colonia")
-                                   {!!Form::open(['route'=>['coloniaCanton.show',$c->id],'method'=>'GET'])!!}
-                                          <input type="submit" name="" value=" B a r r i o"   class="btn btn-primary btn-sm active " >
-                                                        {!!Form::close()!!}
-                                  @endif() 
-                                
-                              </td>
-                              <td align="center">
-                                
-                                {!!link_to_route('coloniaCanton.edit',$title='', $parametro=$c->id,$atributo=['class'=>'fa fa-eye bigicon'])!!}</td>
-                                </td>
-                                
-                                      
+                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>                                 
                               </tr>
                               @endforeach
                             </tbody>
                           </table>
                         </section>
-                         <div class="row">
-                {{ $cc->links() }}
-            </div>
                       </div>
                     </div>
                   </div>

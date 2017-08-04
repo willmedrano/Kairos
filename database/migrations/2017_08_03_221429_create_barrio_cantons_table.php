@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBarrioCaseriosTable extends Migration
+class CreateBarrioCantonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateBarrioCaseriosTable extends Migration
      */
     public function up()
     {
-        Schema::create('barrio_caserios', function (Blueprint $table) {
+        Schema::create('barrio_cantons', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->Integer('idCC')->unsigned();
-            $table->foreign('idCC')->references('id')->on('colonia_cantons');
-            $table->string('nombre_img');
+            $table->string('tipo');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateBarrioCaseriosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barrio_caserios');
+        Schema::dropIfExists('barrio_cantons');
     }
 }

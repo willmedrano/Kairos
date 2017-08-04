@@ -4,11 +4,11 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <span class="col-md-2  text-center" style="color: white;" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></span>
-                <h4 class="modal-title" id="gridModalLabel">Modificar Colonia/Cantón</h4>
+                <h4 class="modal-title" id="gridModalLabel">Modificar Barrio/Cantón</h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid bd-example-row">
-                    {!!Form::model($cc,['method'=>'PATCH','route'=>['coloniaCanton.update',$c->id]])!!}
+                    {!!Form::model($cc,['method'=>'PATCH','route'=>['barrioCanton.update',$c->id]])!!}
                         <fieldset>
                             <input type="hidden" name="hi2" value="1">
                             <br>
@@ -24,14 +24,14 @@
                                 <span class="col-md-2  text-center"><label >Tipo: </label></span>
                                 <div class="col-md-6">
                                     <select name="tipo" id="sport" class="validate[required] form-control">
-                                        @if($c->tipo=="Colonia")
-                                            <option  selected value="Colonia" id="1">Colonia</option>
+                                        @if($c->tipo=="Barrio")
+                                            <option  selected value="Barrio" id="1">Barrio</option>
                                             <option value="Cantón" id="2">Cantón</option>
 
                                            
                                         @endif
                                         @if($c->tipo=="Cantón")
-                                            <option value="Colonia" id="1">Colonia</option>
+                                            <option value="Barrio" id="1">Barrio</option>
                                             <option selected value="Cantón" id="2">Cantón</option>
                                             
                                         @endif

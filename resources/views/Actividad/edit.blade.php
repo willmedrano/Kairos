@@ -4,21 +4,31 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <span class="col-md-2  text-center" style="color: white;" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></span>
-                <h4 class="modal-title" id="gridModalLabel">Modificar Barrio/Caserio</h4>
+                <h4 class="modal-title" id="gridModalLabel">Modificar Actividad</h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid bd-example-row">
-                    {!!Form::model($cc,['method'=>'PATCH','enctype'=>'multipart/form-data','route'=>['barrioCaserio.update',$c->id]])!!}
+                    {!!Form::model($cc,['method'=>'PATCH','enctype'=>'multipart/form-data','route'=>['actividad.update',$c->id]])!!}
+                    <input type="hidden" name="bandera" value="2">
                         <fieldset>
-                            <input type="hidden" name="hi2" value="1">
+                            
                             <br>
                             <div class="form-group">
-                                <span class="col-md-2  text-center" ><label >Nombre: </label></span>
+                                <span class="col-md-2  text-center" ><label >Actividad: </label></span>
                                 <div class="col-md-6">
-                                    {!!Form::text('nombre',$c->nombre,['id'=>'nombre','class'=>'form-control', 'placeholder'=>'Ingrese el nombre...','required'  ])!!}
+                                    {!!Form::text('act',$c->act,['id'=>'act','class'=>'form-control', 'placeholder'=>'Ingrese la Actividad','required'  ])!!}
                                       
                                 </div>    
-                            </div>            
+                            </div> 
+                            <br>
+                            <div class="form-group">
+                                <span class="col-md-2  text-center" ><label >Descripción: </label></span>
+                                <div class="col-md-6">
+                                    {!!Form::text('desc',$c->desc,['id'=>'desc','class'=>'form-control', 'placeholder'=>'Ingrese la Descripción...','required'  ])!!}
+                                      
+                                </div>    
+                            </div> 
+                                       
                             <br>   
                             <div class="form-group">
                                 <span class="col-md-2  text-center"><label >Imagen: </label></span>

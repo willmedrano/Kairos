@@ -213,19 +213,20 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="/Kairos/public/coloniaCanton/create">
-                                               Registrar Colonia/Canton
+                                            <a href="/Kairos/public/barrioCanton/create">
+                                               Registrar Barrio/Cantón
                                             </a>
                                         </li>
                                         <li>
-                                        <a href="/Kairos/public/coloniaCanton">
-                                            Ver Colonias/Cantones
+                                            <a href="/Kairos/public/barrioCanton">
+                                             Ver Barrios/Cantón
+                                            </a>
+                                        </li>
+                                        <li>
+                                        <a href="/Kairos/public/coloniaCaserio">
+                                            Ver Colonias/Caserios
                                         </a>
-                                        <li>
-                                            <a href="/Kairos/public/barrioCaserio">
-                                             Ver Barrios/Caserios
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                 </li><!-- Aqui finaliza el menu de Paquete i -->
 
@@ -237,7 +238,7 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="/compra/create">
+                                            <a href="/Kairos/public/actividad/create">
                                                 Registrar Actividad
                                             </a>
                                         </li>
@@ -247,7 +248,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/compra/">
+                                            <a href="/Kairos/public/actividad">
                                                 Ver  Actividades
                                             </a>
                                         </li>

@@ -25,6 +25,9 @@ Route::resource('modelo','ModeloController');
 Route::resource('tipoVM','TipoVMController');
 Route::resource('vehiculo','VehiculoController');
 Route::match(['get','post'],'/vehiculo/create/{idMarca}','VehiculoController@modelo');
+Route::resource('barrioCanton', 'BarrioCantonController');
+Route::resource('coloniaCaserio', 'ColoniaCaserioController');
+Route::resource('actividad', 'ActividadController');
 Route::resource('maquinaria','MaquinariaController');
 Auth::routes();
 

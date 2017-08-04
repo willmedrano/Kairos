@@ -143,18 +143,43 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="/inve/create">
+                                            <a href="/Kairos/public/marca/create">
                                                 Registrar Marca
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/inve/">
-                                                Editar Marca
+                                            <a href="/Kairos/public/marca">
+                                                Ver Marcas
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/lotes/">
+                                            <a href="/Kairos/public/tipoVM/create">
+                                                Registrar Tipo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Kairos/public/tipoVM">
+                                                Ver Tipos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Kairos/public/vehiculo/create">
+                                                Registrar Vehiculo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Kairos/public/vehiculo">
                                                 Ver Vehiculos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Kairos/public/maquinaria/create">
+                                                Registrar Maquinaria
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Kairos/public/maquinaria">
+                                                Ver Maquinaria
                                             </a>
                                         </li>
                                     </ul>

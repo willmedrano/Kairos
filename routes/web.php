@@ -22,7 +22,10 @@ Route::resource('motorista','MotoristaController');
 Route::resource('usuario','UsuarioController');
 Route::resource('marca','MarcaController');
 Route::resource('modelo','ModeloController');
-Route::resource('tipoVM','TipoVMController'); 
+Route::resource('tipoVM','TipoVMController');
+Route::resource('vehiculo','VehiculoController');
+Route::match(['get','post'],'/vehiculo/create/{idMarca}','VehiculoController@modelo');
+Route::resource('maquinaria','MaquinariaController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

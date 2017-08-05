@@ -20,6 +20,8 @@ class CreateActividadsTable extends Migration
             $table->foreign('idCC')->references('id')->on('barrio_cantons');
             $table->string('nombre_img');
             $table->string('desc');
+            $table->date('fechaFinal');
+            $table->date('fechaInicial'); 
             $table->boolean('estado')->default(false);
             $table->timestamps();
         });

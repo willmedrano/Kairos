@@ -10,6 +10,7 @@ use Input;
 use Kairos\BarrioCanton;
 use Kairos\ColoniaCaserio;
 use Kairos\Actividad;
+use Carbon\Carbon;
 class ActividadController extends Controller
 {
     //
@@ -51,6 +52,7 @@ class ActividadController extends Controller
     public function store(Request $request)
     {
         //
+
         $file = Input::file('nombre_img');
        //Creamos una instancia de la libreria instalada
        $image = \Image::make(\Input::file('nombre_img'));
@@ -62,6 +64,8 @@ class ActividadController extends Controller
             'act'=>$request['nombre'],
             'idCC'=>$request['idCC'],
             'desc'=>$request['desc'],
+            'fechaInicial'=>$request['fechaInicial'],
+            'fechaFinal'=>$request['fechaInicial'],
             'nombre_img'=>$file->getClientOriginalName(),
         
         ]);
@@ -118,9 +122,14 @@ class ActividadController extends Controller
             $image->save($path.$file->getClientOriginalName());
             $cc->act=$request['act'];
             $cc->desc=$request['desc'];
+            $cc->fechaInicial=$request['fechaInicial'];
+            $cc->fechaFinal=$request['fechaInicial'];
             $cc->nombre_img=$file->getClientOriginalName(); 
         }
         if ($aux=='1') {
+            date_default_timezone_set("America/El_Salvador");
+            $date = Carbon::now();
+            $cc->fechaFinal=$date;
             $cc->estado=true;
             
         }

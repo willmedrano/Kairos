@@ -28,8 +28,15 @@
                                       
                                 </div>    
                             </div> 
+                            <br>
+                            <div class="form-group">
+                                <span class="col-md-2  text-center" ><label >F/Inicio: </label></span>
+                                <div class="col-md-6">
+                                <input id="fechaInicial" name="fechaInicial" type="date" class="form-control" value="{{$c->fechaInicial  }}" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
+                                </div>   
+                            </div>
                                        
-                            <br>   
+                            <br>   <br>
                             <div class="form-group">
                                 <span class="col-md-2  text-center"><label >Imagen: </label></span>
                             

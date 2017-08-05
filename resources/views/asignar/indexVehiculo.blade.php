@@ -57,7 +57,20 @@
                         </div>
                         <section class="example">
                           <div class="row">
+
                             @foreach ($vehiculo as $v)
+                              <?php
+                              $cont=0;
+                              ?>
+                              @foreach ($v1 as $v2)
+                               @if($v->id==$v2->idVehiculo)
+                               <?php
+                              $cont++;
+                              ?>
+                               @endif
+                              @endforeach 
+                              
+                              @if($cont==0)
                              <div class="col-xl-4">
                                  <div class="card card-primary" align="center">
                                      <div class="card-header" >
@@ -87,6 +100,7 @@
                                       </div>
                                  </div>
                              </div>
+                             @endif
                            @endforeach
                          </div>
                         </section>

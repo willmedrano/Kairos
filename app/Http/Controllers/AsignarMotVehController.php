@@ -20,10 +20,12 @@ class AsignarMotVehController extends Controller
     public function index()
       {
         // $vehiculo=DB::select('SELECT * FROM vehiculos where estadoVeh=1 ');
-        $vehiculo=\Kairos\Vehiculo::All();
+        $vehiculo=\Kairos\Vehiculo::where('estadoVeh',1)->get();
         $marca=\Kairos\Marca::All();
         $tipo=\Kairos\TipoVmq::All();
-        return View('asignar.indexVehiculo',compact('vehiculo','marca','tipo'));
+        $v1=\Kairos\AsignarMotVeh::Asigna();
+
+        return View('asignar.indexVehiculo',compact('vehiculo','marca','tipo','v1'));
       }
 
       /**

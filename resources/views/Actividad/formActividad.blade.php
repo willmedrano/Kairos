@@ -47,13 +47,13 @@
                     
                         
                          <div class="form-group">
-                            <label class="control-label col-md-1">* Lugar </label>
-                            <div class="col-xs-3">
+                            <label class="control-label col-md-2">* Lugar </label>
+                            <div class="col-xs-4">
                                 <select class=" form-control" name="idCC">
                             
-                             @foreach($cc as $prov)
+                             @foreach($cc as $c)
 
-                                <option  value="{{ $prov->id }}" >{{ $prov->nombre }}</option>
+                                <option  value="{{ $c->id }}" >{{ $c->nombre }}</option>
                             @endforeach
                            
                         </select>
@@ -63,9 +63,16 @@
                     <div class="col-lg-3">
                       {!!Form::text('desc',null,['id'=>'desc','class'=>'form-control', 'placeholder'=>'Ingrese el descripcion...','required'])!!}
                     </div>
+
+                    <label class="control-label col-md-2">* Fecha de Inicio</label>
+                            <div class="col-md-4">
+                              
+                              <input id="fechaInicial" name="fechaInicial" type="date" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
+                            </div>
+                            
                         <br><br><br>
                     {!!Form::label('limagen','Imagen:')!!}
-                    {!!Form::file('nombre_img',['value'=>'Elija'])!!}
+                    {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}
 
                   </div>
                 </div>
@@ -88,3 +95,15 @@
     </section>
   </article>
 @stop
+<?php 
+$time=time();
+    
+    function dameFecha($fecha,$dia){
+        list($year,$mon,$day)=explode('-',$fecha);
+        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
+    }
+   $total=0; 
+
+
+  
+?>

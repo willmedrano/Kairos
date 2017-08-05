@@ -62,6 +62,8 @@
                                <th >LUGAR</th>
                                <th >ACTIVIDAD</th>
                                <th >DESCRIPCIÓN</th>
+                               <th >FECHA INICIO</th>
+                               <th >FECHA FINAL</th>
                                <th >IMAGEN</th>
                                <th colspan="2" align="center">ACCIÓN</th>
                                
@@ -78,11 +80,27 @@
                                 <td>{{$c->act}}</td>
                                 
                                 <td>{{$c->desc}}</td>
+                                <?php 
+                                  $date = new DateTime($c->fechaInicial); 
+                                ?>
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>
                                 
+                                
+                                @if($c->fechaInicial!=$c->fechaFinal || $c->estado==true )
+                                   <?php 
+                                  $date = new DateTime($c->fechaFinal); 
+                                ?>
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>
+                                
+                                @else
+                                <td>En Proceso</td>
+                                 
+                                @endif
                                 <td>
                                   <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>
                                 </td>
                                 <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>
+                                
                                 @if($c->estado==false)
                                     
                                     <td>
@@ -115,3 +133,15 @@
     <!--{!!Html::script('js/scriptpersanalizado.js')!!}-->
     {!!Html::script('js/buscaresc.js')!!}
   @endsection
+  <?php 
+$time=time();
+    
+    function dameFecha($fecha,$dia){
+        list($year,$mon,$day)=explode('-',$fecha);
+        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
+    }
+   $total=0; 
+
+
+  
+?>

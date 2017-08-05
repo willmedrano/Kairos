@@ -70,10 +70,10 @@
                               <div class="col-md-4">
                                 {!!Form::date('fechaContrato',$m->fechaContrato,['id'=>'fechaContrato','class'=>'form-control', 'max'=>'','placeholder'=>'Fecha de contrato...','required'])!!}
                               </div>
-                              {{-- <div class="col-md-4">
+                              {{--  <div class="col-md-4">
                               {!!Form::label('limagen','Imagen:')!!}
                               {!!Form::file('nombre_img',['value'=>'Elija'])!!}
-                              </div> --}}
+                              </div>--}} 
                             </div>
                         </fieldset>
                         <div class="modal-footer">

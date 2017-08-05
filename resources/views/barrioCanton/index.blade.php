@@ -1,12 +1,7 @@
 @extends ('index')
 <?php $message=Session::get('message');?>
 
-@if($message=='update')
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong> Sea Actualizado con exito el registro</strong>
-</div>
-@endif
+
 @section('content')
 <style>
   .campoObligatorio {
@@ -28,6 +23,18 @@
 
 </style>
 <article class="content forms-page">
+@if($message=='update')
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<strong> •Sea actualizado con éxito el registro</strong>
+</div>
+@endif
+@if($message=='create')
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<strong> •Sea creado con éxito el registro</strong>
+</div>
+@endif
 
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE BARRIO/CANTÓN</i></span>
@@ -57,9 +64,9 @@
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead align="center">
                               <tr>                    
-                               <th ><div align="center">N°</div></th>
-                               <th ><div align="center">NOMBRE</div></th>
-                               <th ><div align="center">TIPO</div></th>
+                               <th >N°</th>
+                               <th >NOMBRE</th>
+                               <th >TIPO</th>
                                <th ><div align="center">ACCIÓN</div></th>
                                <th ><div align="center">AGREGAR</div></th>
                                <th><div align="center">REGISTROS</div></th>

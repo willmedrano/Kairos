@@ -60,9 +60,9 @@
                               <tr>                    
                                <th >N°</th>
                                <th >NOMBRE</th>
-                               
+                               <th>TIPO</th>
                                <th >ACCIÓN</th>
-                               <th >Imagen</th>
+                               <th >IMAGEN</th>
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
@@ -73,6 +73,11 @@
                                 <td>{{$c->id}}</td>
                                 
                                 <td>{{$c->nombre}}</td>
+                                @if($c->tipo=='Barrio')
+                                  <td>Colonia</td>
+                                @else
+                                <td>Caserio</td>
+                                @endif
                                 
                                 <td>
                                   <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>

@@ -33,7 +33,7 @@
                         <fieldset>
                           <div class="form-group">
                             <div class="col-md-4">
-                              <a href="/Kairos/public/asignarMotVeh" class="btn btn-success btn-sm"" ">Atràs</a>
+                              <a href="/Kairos/public/asignarMotVeh" class="btn btn-success btn-sm"" ">Atrás</a>
                               <br>
                               <div class="card-block">
                                 <img src="/Kairos/public/imagenesVehiculos/{{$vehiculo->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
@@ -46,14 +46,29 @@
                               <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
                                 <option value="0">Selecione una opción...</option>
                                 @foreach($motorista as $m)
-                                    <option value="{{$m->id}}">{{$m->nombresMot}}</option>
+                                    <?php
+                                      $bandera=true;
+                                    ?>
+                                    @foreach ($asignados as $m2)
+                                      @if($m->id==$m2->idMotorista)
+                                          <?php
+                                            $bandera=false;
+                                          ?>
+                                        @endif
+                                     @endforeach 
+                              
+                                    @if($bandera)
+                                      <option value="{{$m->id}}">{{$m->nombresMot}}</option>
+                                    @endif
                                 @endforeach
                               </select>
                             </div>
                             <br><br>
                             <label class="control-label col-md-3">* Fecha de asignación </label>
                             <div class="col-md-4">
-                              {!!Form::date('fechaInicio',null,['id'=>'fechaInicio','class'=>'form-control', 'max'=>'','placeholder'=>'...','required'])!!}
+                              
+                              <input id="fechaInicio" name="fechaInicio" type="date" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
+                            
                             </div>
 
                       </div>
@@ -72,3 +87,15 @@
             </section>
           </article>
 @stop
+<?php 
+$time=time();
+    
+    function dameFecha($fecha,$dia){
+        list($year,$mon,$day)=explode('-',$fecha);
+        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
+    }
+   $total=0; 
+
+
+  
+?>

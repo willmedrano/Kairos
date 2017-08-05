@@ -9,7 +9,7 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\Motorista;
-
+use Carbon\Carbon;
 class MotoristaController extends Controller
 {
     /**
@@ -61,7 +61,7 @@ class MotoristaController extends Controller
         'licencia'=>$request['licencia'],
         'fechaNacimiento'=>$request['fechaNacimiento'],
         'fechaContrato'=>$request['fechaContrato'],
-        'fechaDespido'=>$request['fechaNacimiento'],
+        'fechaDespido'=>$request['fechaContrato'],
         'nombre_img'=>$file->getClientOriginalName(),
       ]);
       return redirect('/motorista');
@@ -106,14 +106,29 @@ class MotoristaController extends Controller
 
       if($aux=='2')
         {
+            $motorista->fechaDespido=$motorista->fechaContrato;
             $motorista->estadoMot =true;
         }
         else if($aux=='3')
         {
+            date_default_timezone_set("America/El_Salvador");
+            $date = Carbon::now();
+            $motorista->fechaDespido=$date;
             $motorista->estadoMot =false;
+        }
+        else if($aux=='4'){
+          $file = Input::file('nombre_img');
+       //Creamos una instancia de la libreria instalada
+       $image = \Image::make(\Input::file('nombre_img'));
+       //Ruta donde queremos guardar las imagenes
+       $path = public_path().'/imagenesMotoristas/';
+       // Guardar Original
+       $image->save($path.$file->getClientOriginalName());
+            $motorista->nombre_img=$file->getClientOriginalName();
         }
 
 else{
+        
        $motorista->nombresMot=$request['nombresMot'];
        $motorista->apellidosMot=$request['apellidosMot'];
        $motorista->direccionMot=$request['direccionMot'];
@@ -123,6 +138,7 @@ else{
        $motorista->licencia=$request['licencia'];
        $motorista->fechaNacimiento=$request['fechaNacimiento'];
        $motorista->fechaContrato=$request['fechaContrato'];
+       
 }
       $motorista->save();
       return Redirect::to('/motorista');

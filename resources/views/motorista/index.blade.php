@@ -49,7 +49,9 @@
                                <th >NOMBRE</th>
                                <th >DIRECCIÓN</th>
                                <th >TELÉFONO</th>
-                               <th >ACCIÓN</th>
+                               <th >FECHA CONTRATO</th>
+                               <th >FECHA DESPIDO</th>
+                               <th colspan="2" > <div align="center">ACCIÓN</div></th>
                                <th >ESTADO</th>
                              </tr>
                            </thead>
@@ -58,6 +60,7 @@
                                @include('motorista.edit')
                              @include('motorista.baja')
                              @include('motorista.alta')
+                             @include('motorista.editFoto')
                                <tr>
                                  <td>
                                    <div class="pull-left image">
@@ -67,7 +70,25 @@
                                  <td>{{$m->nombresMot.' '.$m->apellidosMot}}</td>
                                  <td>{{$m->direccionMot}}</td>
                                  <td>{{$m->telefonoMot}}</td>
+                                 <?php 
+                                  $date = new DateTime($m->fechaContrato); 
+                                ?>
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>
+                                
+                                
+                                @if($m->fechaContrato!=$m->fechaDespido || $m->estadoMot==false )
+                                   <?php 
+                                  $date = new DateTime($m->fechaDespido); 
+                                ?>
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>
+                                
+                                @else
+                                <td>En Proceso</td>
+                                 
+                                @endif
                                  <td><a href="#" class="btn btn-info btn-sm" data-id="{{ $m->id }}" data-toggle="modal" data-target="#Edit{{ $m->id }}">Modificar</a></td>
+                                 <td><button type="submit"  class="btn btn-primary btn-sm fa fa-picture-o" data-toggle="modal" data-target="#EditFoto{{$m->id}}"></button> </td>
+
                                   @if($m->estadoMot==true)
                                       <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$m->id}}">A c t i v o</button></td>
                                   @endif

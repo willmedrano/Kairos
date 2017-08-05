@@ -48,7 +48,7 @@ class BarrioCantonController extends Controller
             'tipo'=>$request['tipo'],
         
         ]);
-        return redirect('/barrioCanton');
+        return redirect('/barrioCanton')->with('message','create');
        
     }
 

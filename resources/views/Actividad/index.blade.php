@@ -65,7 +65,7 @@
                                <th >FECHA INICIO</th>
                                <th >FECHA FINAL</th>
                                <th >IMAGEN</th>
-                               <th colspan="2" align="center">ACCIÓN</th>
+                               <th colspan="2"> <div align="center">ACCIÓN</div></th>
                                
                               </tr>
                             </thead>

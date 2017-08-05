@@ -10,4 +10,6 @@ class BarrioCanton extends Model
     
      protected $table="barrio_cantons";
   protected $fillable = ['nombre','tipo'];
+
+  
 }

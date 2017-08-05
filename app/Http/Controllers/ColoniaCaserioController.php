@@ -23,7 +23,7 @@ class ColoniaCaserioController extends Controller
     public function index()
     {
         //
-        $cc=ColoniaCaserio::All();
+        $cc=ColoniaCaserio::BarCan();
       return view('ColoniaCaserio.index',compact('cc'));
        
         
@@ -103,18 +103,21 @@ class ColoniaCaserioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $file = Input::file('nombre_img');
-       //Creamos una instancia de la libreria instalada
-       $image = \Image::make(\Input::file('nombre_img'));
-       //Ruta donde queremos guardar las imagenes
-       $path = public_path().'/imagenesColoniasCaserios/';
-       // Guardar Original
-       $image->save($path.$file->getClientOriginalName());
+        $aux=$request['hi2'];
         $cc = ColoniaCaserio::find($id);
-        
-        $cc->nombre=$request['nombre'];
-         $cc->nombre_img=$file->getClientOriginalName();
+        if($aux=='4'){
+            $file = Input::file('nombre_img');
+            //Creamos una instancia de la libreria instalada
+            $image = \Image::make(\Input::file('nombre_img'));
+            //Ruta donde queremos guardar las imagenes
+            $path = public_path().'/imagenesColoniasCaserios/';
+            // Guardar Original
+            $image->save($path.$file->getClientOriginalName());
+            $cc->nombre_img=$file->getClientOriginalName();
+        }
+        else{
+            $cc->nombre=$request['nombre'];
+         }
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');

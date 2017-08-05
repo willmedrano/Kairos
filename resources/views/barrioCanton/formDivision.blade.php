@@ -54,7 +54,7 @@
              <br><br>
              <div align="center">
   {!! Form::submit(' Registrar',['class'=>'btn btn-primary glyphicon glyphicon-floppy-disk'  ]) !!}
-  {!! Form::reset('Limpiar',['class'=>'btn btn-primary' ]) !!}
+  {!! Form::reset('Limpiar',['class'=>'btn btn-info' ]) !!}
   </div>
   {{-- {!!link_to_action("MotoristaController@index", $title = "Salir", $parameters = 1, $attributes = ["class"=>"btn btn-danger"])!!} --}}
 {!! Form::close() !!}

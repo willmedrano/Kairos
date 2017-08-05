@@ -23,9 +23,9 @@ class AsignarMotVehController extends Controller
         $vehiculo=\Kairos\Vehiculo::where('estadoVeh',1)->get();
         $marca=\Kairos\Marca::All();
         $tipo=\Kairos\TipoVmq::All();
-        $v1=\Kairos\AsignarMotVeh::Asigna();
+        $asignados=\Kairos\AsignarMotVeh::Asigna();
 
-        return View('asignar.indexVehiculo',compact('vehiculo','marca','tipo','v1'));
+        return View('asignar.indexVehiculo',compact('vehiculo','marca','tipo','asignados'));
       }
 
       /**
@@ -65,8 +65,9 @@ class AsignarMotVehController extends Controller
       public function show($id)
       {
         $vehiculo =Vehiculo::find($id);
-        $motorista=Motorista::All();
-        return view('asignar.showVehiculo',compact('vehiculo','motorista'));
+        $motorista=Motorista::where('estadoMot',1)->get();
+        $asignados=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();
+        return view('asignar.showVehiculo',compact('vehiculo','motorista','asignados'));
       }
 
       /**

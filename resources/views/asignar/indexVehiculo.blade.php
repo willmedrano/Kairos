@@ -46,7 +46,7 @@
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
-                        <a href="/Kairos/public/marca" class="btn btn-success btn-sm"" ">Atràs</a>
+                        
                         <br>
                         <div class="card-title-block table-responsive">
                           <div class="card-title-block">
@@ -60,17 +60,17 @@
 
                             @foreach ($vehiculo as $v)
                               <?php
-                              $cont=0;
+                              $bandera=true;
                               ?>
-                              @foreach ($v1 as $v2)
+                              @foreach ($asignados as $v2)
                                @if($v->id==$v2->idVehiculo)
                                <?php
-                              $cont++;
+                              $bandera=false;
                               ?>
                                @endif
                               @endforeach 
                               
-                              @if($cont==0)
+                              @if($bandera)
                              <div class="col-xl-4">
                                  <div class="card card-primary" align="center">
                                      <div class="card-header" >
@@ -84,7 +84,7 @@
                                      <div class="card-footer">
                                        @if($v->estadoVeh==true)
                                          {!!Form::open(['route'=>['asignarMotVeh.show',$v->id],'method'=>'GET'])!!}
-                                            <input type="submit" name="" value=" Asignar_Motorista"   class="btn btn btn-primary btn-sm active " >
+                                            <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
                                          {!!Form::close()!!}
                                             @endif
                                        @if($v->semaforo==1)

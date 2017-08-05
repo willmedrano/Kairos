@@ -1,4 +1,4 @@
-<div id="Edit{{ $c->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">> 
+<div id="Edit{{ $c->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,12 +20,7 @@
                                 </div>    
                             </div>            
                             <br>   
-                            <div class="form-group">
-                                <span class="col-md-2  text-center"><label >Imagen: </label></span>
-                            
-                    {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}    
-                            </div> 
-                                           
+                                                                       
                         </fieldset>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

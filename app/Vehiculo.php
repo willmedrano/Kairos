@@ -19,4 +19,6 @@ class Vehiculo extends Model
     $t=TipoVmq::find($id);
     return $t->TipoVM;
   }
+
+  
 }

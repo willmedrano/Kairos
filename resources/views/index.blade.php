@@ -187,6 +187,25 @@
 
                                 <li><!-- Aqui inicia el menu de los Escuelas i con sus respectivas opciones -->
                                     <a href="">
+                                        <i class="fa fa-edit"></i>
+                                          Asignaciones
+                                        <i class="fa arrow"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/Kairos/public/asignarMotVeh">
+                                                Asignar Motorista-Vehiculo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Kairos/public/asignarMotVeh/create">
+                                               Ver asignaciones 
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li><!-- Aqui finaliza el menu de Escuelas i -->
+                                <li><!-- Aqui inicia el menu de los Escuelas i con sus respectivas opciones -->
+                                    <a href="">
                                         <i class="fa fa-th-large"></i>
                                           Mantenimientos
                                         <i class="fa arrow"></i>
@@ -226,7 +245,7 @@
                                         <a href="/Kairos/public/coloniaCaserio">
                                             Ver Colonias/Caserios
                                         </a>
-                                        
+
                                     </ul>
                                 </li><!-- Aqui finaliza el menu de Paquete i -->
 

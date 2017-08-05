@@ -35,6 +35,8 @@ class AsignarMotVehController extends Controller
        */
       public function create()
       {
+        $asignado=\Kairos\AsignarMotVeh::All();
+        return View('asignar.VehiculoAsignado',compact('asignado'));
       }
 
       /**

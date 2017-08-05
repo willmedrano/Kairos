@@ -90,7 +90,18 @@ class AsignarMotVehController extends Controller
        */
       public function update(Request $request, $id)
       {
-          //
+          $cc = AsignarMotVeh::find($id);
+          $aux=$request['bandera'];
+          if ($aux=='1') {
+              date_default_timezone_set("America/El_Salvador");
+              $date = Carbon::now();
+              $cc->fechaFin=$date;
+              $cc->estadoAsignacion=false;
+
+          }
+          $cc->save();
+          Session::flash('mensaje','¡Registro Actualizado!');
+          return redirect::to('/asignarMotVeh/create')->with('message','update');
       }
 
       /**

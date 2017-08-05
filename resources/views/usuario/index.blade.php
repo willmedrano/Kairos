@@ -51,10 +51,10 @@
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead>
                                <tr>
-                                 <th>USUARIO</th>
-                                 <th >CORREO</th>
-                                 <th >ACCIÓN</th>
-                                 <th >ESTADO</th>
+                                 <th><div align="center">USUARIO</div></th>
+                                 <th ><div align="center">CORREO</div></th>
+                                 <th ><div align="center">ACCIÓN</div></th>
+                                 <th ><div align="center">ESTADO</div></th>
                                </tr>
                              </thead>
                              <tbody id="hola" class="buscar">

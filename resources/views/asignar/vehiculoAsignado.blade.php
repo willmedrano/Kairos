@@ -51,21 +51,47 @@
                                <th >MODELO</th>
                                <th >PLACA</th>
                                <th >F_ASIGNACION</th>
+                               <th >FINALIZACIÓN</th>
+                               <th >ASIGNACIÓN</th>
                              </tr>
                            </thead>
                            <tbody id="hola" class="buscar">
                              @foreach ($asignado as $a)
+                               @include('asignar.terminarV')
+                               <?php
+                                 $date = new DateTime($a->fechaInicio);
+                               ?>
                                <tr>
                                  <td>
                                    <div class="pull-left image">
                  						         <img src="/Kairos/public/imagenesVehiculos/{{$a->imgVehiculo($a->idVehiculo) }}" class="img-circle" alt="User Image" width="50px" height="50px">
                  					         </div>
                                  </td>
-                                 <td>{{$a->motorista($a->idMotorista)}}</td>
-                                 <td>{{$a->nomTipo($a->idVehiculo)}}</td>
-                                 <td>{{$a->nomModelo($a->idVehiculo)}}</td>
-                                 <td>{{$a->numPlaca($a->idVehiculo)}}</td>
-                                 <td>{{$a->fechaInicio}}</td>
+                                   <td>{{$a->motorista($a->idMotorista)}}</td>
+                                   <td>{{$a->nomTipo($a->idVehiculo)}}</td>
+                                   <td>{{$a->nomModelo($a->idVehiculo)}}</td>
+                                   <td>{{$a->numPlaca($a->idVehiculo)}}</td>
+                                   <td><?php  echo $date->format('d/m/Y'); ?></td>
+                                   @if($a->fechaInicio!=$a->fechaFin || $a->estadoAsignacion==false )
+                                      <?php
+                                     $date = new DateTime($a->fechaFin);
+                                   ?>
+                                   <td><?php  echo $date->format('d/m/Y'); ?></td>
+
+                                   @else
+                                   <td>Pendiente</td>
+
+                                   @endif
+                                   @if($a->estadoAsignacion==true)
+                                       <td>
+                                             <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$a->id}}">Terminar</button>
+                                       </td>
+                                   @endif
+                                   @if($a->estadoAsignacion==false)
+
+                                         <td>Finalizada</td>
+
+                                   @endif
                                </tr>
                              @endforeach
                            </tbody>

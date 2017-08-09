@@ -4,7 +4,7 @@
 @if($message=='update')
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong> Sea Actualizado con exito el registro</strong>
+<strong> Sea Actualizado con éxito el registro</strong>
 </div>
 @endif
 @section('content')
@@ -27,27 +27,15 @@
 
 </style>
 <article class="content forms-page">
-  @if (Session::has('create'))
-  <div class="alert alert-success alert-dismissible" role="alert" >
-  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
-  {{Session::get('create')}}
-  </div>
-  @endif
-  @if (Session::has('update'))
-  <div class="alert alert-info alert-dismissible" role="alert" >
-  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
-  {{Session::get('update')}}
-  </div>
-  @endif
   @if (Session::has('mensaje'))
-  <div class="alert alert-warning alert-dismissible" role="alert" >
-  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
-  {{Session::get('mensaje')}}
-  </div>
-  @endif
+<div class="alert alert-success" role="alert" >
+<button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+{{Session::get('mensaje')}}
+</div>
+@endif
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE MAQUINARIA</i></span>
-       <p class="title-description"> Consulta de maquinaria</p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE ASIGNACIÓN DE MAQUINARIA</i></span>
+       <p class="title-description"> Consulta de maquinarias no asignadas</p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -58,23 +46,28 @@
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
-                        <a href="/Kairos/public/marca" class="btn btn-success btn-sm"" ">Atràs</a>
                         <br>
                         <div class="card-title-block table-responsive">
                           <div class="card-title-block">
                             <div class="form-group" align="right">
-
                             </div>
                           </div>
                         </div>
                         <section class="example">
                           <div class="row">
                             @foreach ($maquinaria as $m)
-                              @include('maquinaria.show')
-                              @include('maquinaria.edit')
-                              @include('maquinaria.editFoto')
-                              @include('maquinaria.DardeBaja')
-                              @include('maquinaria.DardeAlta')
+                              <?php
+                              $bandera=true;
+                              ?>
+                              @foreach ($asignados as $m2)
+                               @if($m->id==$m2->idMaquinaria)
+                               <?php
+                              $bandera=false;
+                              ?>
+                               @endif
+                              @endforeach
+
+                              @if($bandera)
                              <div class="col-xl-4">
                                  <div class="card card-primary" align="center">
                                      <div class="card-header" >
@@ -86,15 +79,11 @@
                                        <img src="/Kairos/public/imagenesMaquinaria/{{$m->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                                     </div>
                                      <div class="card-footer">
-                                       <td><button type="submit"  class="btn btn-primary btn-sm fa fa-eye" data-toggle="modal" data-target="#ModalVehiculo{{$m->id}}"></button> </td>
-                                       <td><button type="submit"  class="btn btn-primary btn-sm fa fa-edit" data-toggle="modal" data-target="#Edit{{$m->id}}"></button> </td>
-                                       <td><button type="submit"  class="btn btn-primary btn-sm fa fa-picture-o" data-toggle="modal" data-target="#EditFoto{{$m->id}}"></button> </td>
                                        @if($m->estadoMaq==true)
-                                           <td><button type="submit"  class="btn btn-info btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$m->id}}">A c t i v o</button></td>
-                                       @endif
-                                       @if($m->estadoMaq==false)
-                                           <td><button type="submit"  class="btn btn-sm gris" data-toggle="modal" data-target="#gridSystemModal3{{$m->id}}">Desactivo</button></td>
-                                       @endif
+                                         {!!Form::open(['route'=>['asignarMotMaq.show',$m->id],'method'=>'GET'])!!}
+                                            <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
+                                         {!!Form::close()!!}
+                                            @endif
                                        @if($m->semaforo==1)
                                            <img src="/Kairos/public/img/verde.png" class="" alt="User Image" width="25px" height="25px">
                                        @endif
@@ -108,6 +97,7 @@
                                       </div>
                                  </div>
                              </div>
+                             @endif
                            @endforeach
                          </div>
                         </section>

@@ -27,12 +27,25 @@
 
 </style>
 <article class="content forms-page">
+  @if (Session::has('update'))
+  <div class="alert alert-info alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('update')}}
+  </div>
+  @endif
+  @if($message=='create')
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong> • Sea creado con éxito el registro</strong>
+  </div>
+  @endif
   @if (Session::has('mensaje'))
-<div class="alert alert-success" role="alert" >
-<button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
-{{Session::get('mensaje')}}
-</div>
-@endif
+  <div class="alert alert-warning alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('mensaje')}}
+  </div>
+  @endif
+
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE VEHICULOS</i></span>
        <p class="title-description"> Consulta de vehiculos</p>

@@ -42,7 +42,7 @@ class MarcaController extends Controller
       Marca::create([
       'nomMarca'=>$request['nomMarca'],
     ]);
-    return redirect('/marca')->with('mensaje','Marca ingresada correctamente');
+    return redirect('/marca')->with('create','• Marca ingresada correctamente');
     }
 
     /**
@@ -81,7 +81,7 @@ class MarcaController extends Controller
     {
       $marca= Marca::find($id);
       $marca->nomMarca=$request['nomMarca'];
-      Session::flash('mensaje','Marca editada correctamente');
+      Session::flash('update','• Marca editada correctamente');
       $marca->save();
       return Redirect::to('/marca');
     }

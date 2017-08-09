@@ -17,6 +17,24 @@
 }
 </style>
 <article class="content forms-page">
+  @if (Session::has('create'))
+  <div class="alert alert-success alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('create')}}
+  </div>
+  @endif
+  @if (Session::has('update'))
+  <div class="alert alert-info alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('update')}}
+  </div>
+  @endif
+  @if (Session::has('mensaje'))
+  <div class="alert alert-warning alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('mensaje')}}
+  </div>
+  @endif
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE MOTORISTA/OPERARIO</i></span>
        <p class="title-description"> Consulta de Motorista/Operario </p>
@@ -70,21 +88,21 @@
                                  <td>{{$m->nombresMot.' '.$m->apellidosMot}}</td>
                                  <td>{{$m->direccionMot}}</td>
                                  <td>{{$m->telefonoMot}}</td>
-                                 <?php 
-                                  $date = new DateTime($m->fechaContrato); 
+                                 <?php
+                                  $date = new DateTime($m->fechaContrato);
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                
-                                
+
+
                                 @if($m->fechaContrato!=$m->fechaDespido || $m->estadoMot==false )
-                                   <?php 
-                                  $date = new DateTime($m->fechaDespido); 
+                                   <?php
+                                  $date = new DateTime($m->fechaDespido);
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                
+
                                 @else
                                 <td>En Proceso</td>
-                                 
+
                                 @endif
                                  <td><a href="#" class="btn btn-info btn-sm" data-id="{{ $m->id }}" data-toggle="modal" data-target="#Edit{{ $m->id }}">Modificar</a></td>
                                  <td><button type="submit"  class="btn btn-primary btn-sm fa fa-picture-o" data-toggle="modal" data-target="#EditFoto{{$m->id}}"></button> </td>

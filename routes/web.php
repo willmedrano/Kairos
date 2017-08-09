@@ -30,6 +30,7 @@ Route::resource('coloniaCaserio', 'ColoniaCaserioController');
 Route::resource('actividad', 'ActividadController');
 Route::resource('maquinaria','MaquinariaController');
 Route::resource('asignarMotVeh','AsignarMotVehController');
+Route::resource('asignarMotMaq','AsignarMotMaqController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

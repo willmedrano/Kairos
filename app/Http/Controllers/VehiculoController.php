@@ -68,7 +68,7 @@ class VehiculoController extends Controller
         'kilometrajeM'=>$request['kilometrajeM'],
         'nombre_img'=>$file->getClientOriginalName(),
       ]);
-      return redirect('/vehiculo');
+      return redirect('/vehiculo')->with('message','create');
     }
 
     /**
@@ -108,13 +108,13 @@ class VehiculoController extends Controller
       if($aux=='2')
         {
             $v->estadoVeh =true;
-            Session::flash('mensaje','Vehiculo Activado correctamente');
+            Session::flash('mensaje','• Vehiculo Activado correctamente');
 
         }
         else if($aux=='3')
         {
             $v->estadoVeh =false;
-            Session::flash('mensaje','Vehiculo dado de baja correctamente');
+            Session::flash('mensaje','• Vehiculo dado de baja correctamente');
 
         }
         else if($aux=='4')
@@ -137,7 +137,7 @@ class VehiculoController extends Controller
           $v->nPlaca=$request['nPlaca'];
           $v->nInventario=$request['nInventario'];
           $v->kilometrajeM=$request['kilometrajeM'];
-          Session::flash('mensaje','Vehiculo modificado correctamente');
+          Session::flash('update','• Sea actualizado con éxito el registro');
 
       }
 

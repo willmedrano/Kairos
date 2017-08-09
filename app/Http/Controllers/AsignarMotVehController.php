@@ -11,6 +11,7 @@ use Kairos\Marca;
 use Kairos\TipoVmq;
 use Kairos\Motorista;
 use Kairos\AsignarMotVeh;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 

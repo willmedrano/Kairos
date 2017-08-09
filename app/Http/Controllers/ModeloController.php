@@ -17,7 +17,7 @@ class ModeloController extends Controller
      */
     public function index()
     {
-      
+
     }
 
     /**
@@ -42,7 +42,7 @@ class ModeloController extends Controller
       'nomModelo'=>$request['nomModelo'],
       'idMarca'=>$request['id'],
     ]);
-    return redirect('/marca')->with('mensaje','Modelo ingresado correctamente');
+    return redirect('/marca')->with('create','• Modelo ingresado correctamente');
 
     }
 
@@ -79,7 +79,7 @@ class ModeloController extends Controller
     {
       $modelo= Modelo::find($id);
       $modelo->nomModelo=$request['nomModelo'];
-      Session::flash('mensaje','¡Registro Actualizado!');
+      Session::flash('update','• Registro Actualizado');
       $modelo->save();
 
       $aux = Modelo::where('id','=', $id)->first(); //obtener datos del modelo modificado

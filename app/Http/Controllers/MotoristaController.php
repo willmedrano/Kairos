@@ -64,7 +64,7 @@ class MotoristaController extends Controller
         'fechaDespido'=>$request['fechaContrato'],
         'nombre_img'=>$file->getClientOriginalName(),
       ]);
-      return redirect('/motorista');
+      return redirect('/motorista')->with('create','• Sea creado con éxito el registro');
     }
 
     /**
@@ -108,6 +108,7 @@ class MotoristaController extends Controller
         {
             $motorista->fechaDespido=$motorista->fechaContrato;
             $motorista->estadoMot =true;
+            Session::flash('mensaje','• Motorista Activado correctamente');
         }
         else if($aux=='3')
         {
@@ -115,6 +116,7 @@ class MotoristaController extends Controller
             $date = Carbon::now();
             $motorista->fechaDespido=$date;
             $motorista->estadoMot =false;
+            Session::flash('mensaje','• Motorista Desactivado correctamente');
         }
         else if($aux=='4'){
           $file = Input::file('nombre_img');
@@ -128,7 +130,7 @@ class MotoristaController extends Controller
         }
 
 else{
-        
+
        $motorista->nombresMot=$request['nombresMot'];
        $motorista->apellidosMot=$request['apellidosMot'];
        $motorista->direccionMot=$request['direccionMot'];
@@ -138,7 +140,8 @@ else{
        $motorista->licencia=$request['licencia'];
        $motorista->fechaNacimiento=$request['fechaNacimiento'];
        $motorista->fechaContrato=$request['fechaContrato'];
-       
+       Session::flash('update','• Motorista editado correctamente');
+
 }
       $motorista->save();
       return Redirect::to('/motorista');

@@ -17,12 +17,18 @@
 }
 </style>
 <article class="content forms-page">
-  @if (Session::has('mensaje'))
-<div class="alert alert-success" role="alert" >
-<button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
-{{Session::get('mensaje')}}
-</div>
-@endif
+  @if (Session::has('create'))
+  <div class="alert alert-success alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('create')}}
+  </div>
+  @endif
+  @if (Session::has('update'))
+  <div class="alert alert-info alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('update')}}
+  </div>
+  @endif
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE TIPO  V/M</i></span>
        <p class="title-description">  Vehiculo y Maquinaria </p>

@@ -68,7 +68,7 @@ class MaquinariaController extends Controller
         'horaM'=>$request['horaM'],
         'nombre_img'=>$file->getClientOriginalName(),
       ]);
-      return redirect('/maquinaria');
+      return redirect('/maquinaria')->with('create','• Maquinaria ingresada correctamente');
     }
 
     /**
@@ -108,13 +108,13 @@ class MaquinariaController extends Controller
       if($aux=='2')
         {
             $m->estadoMaq =true;
-            Session::flash('mensaje','Maquinaria Activada correctamente');
+            Session::flash('mensaje','• Maquinaria Activada correctamente');
 
         }
         else if($aux=='3')
         {
             $m->estadoMaq =false;
-            Session::flash('mensaje','Maquinaria dada de baja correctamente');
+            Session::flash('mensaje','• Maquinaria dada de baja correctamente');
 
         }
         else if($aux=='4')
@@ -136,7 +136,7 @@ class MaquinariaController extends Controller
           $m->anio=$request['anio'];
           $m->nEquipo=$request['nEquipo'];
           $m->nInventario=$request['nInventario'];
-          Session::flash('mensaje','Maquinaria modificada correctamente');
+          Session::flash('update','• Maquinaria modificada correctamente');
 
       }
 

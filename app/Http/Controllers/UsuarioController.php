@@ -45,7 +45,7 @@ class UsuarioController extends Controller
         'password'=> $request['password'],
         'email'=>$request['email'],
       ]);
-      return redirect('/usuario')->with('mensaje','Usuario ingresado correctamente');
+      return redirect('/usuario')->with('create','• Usuario ingresado correctamente');
     }
 
     /**
@@ -87,20 +87,20 @@ class UsuarioController extends Controller
       if($aux=='2')
         {
             $user->estadoUsu =true;
-            Session::flash('mensaje','Usuario Activado correctamente');
+            Session::flash('mensaje','• Usuario Activado correctamente');
 
         }
         else if($aux=='3')
         {
             $user->estadoUsu =false;
-            Session::flash('mensaje','Usuario dado de baja correctamente');
+            Session::flash('mensaje','• Usuario dado de baja correctamente');
 
         }
         else{
             $user->name=$request['name'];
             $user->password=$request['password'];
             $user->email=$request['email'];
-            Session::flash('mensaje','Usuario editado correctamente');
+            Session::flash('update','• Usuario editado correctamente');
 
       }
       $user->save();

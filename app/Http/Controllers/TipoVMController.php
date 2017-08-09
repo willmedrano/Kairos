@@ -41,7 +41,7 @@ class TipoVMController extends Controller
       TipoVmq::create([
       'TipoVM'=>$request['TipoVM'],
       ]);
-      return redirect('/tipoVM')->with('mensaje','Registro ingresado correctamente');
+      return redirect('/tipoVM')->with('create','• Registro ingresado correctamente');
     }
 
     /**
@@ -77,7 +77,7 @@ class TipoVMController extends Controller
     {
       $tipo= TipoVmq::find($id);
       $tipo->TipoVM=$request['TipoVM'];
-      Session::flash('mensaje','Tipo V/M editado correctamente');
+      Session::flash('update','• Tipo V/M editado correctamente');
       $tipo->save();
       return Redirect::to('/tipoVM');
     }

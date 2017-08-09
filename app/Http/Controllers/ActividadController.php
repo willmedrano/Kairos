@@ -69,7 +69,7 @@ class ActividadController extends Controller
             'nombre_img'=>$file->getClientOriginalName(),
         
         ]);
-        return redirect('/actividad');
+        return redirect('/actividad')->with('message','create');
        
     }
 

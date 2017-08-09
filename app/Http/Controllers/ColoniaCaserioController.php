@@ -63,7 +63,7 @@ class ColoniaCaserioController extends Controller
             'nombre_img'=>$file->getClientOriginalName(),
         
         ]);
-        return redirect('/coloniaCaserio');
+        return redirect('/coloniaCaserio')->with('message','create');
        
     }
 

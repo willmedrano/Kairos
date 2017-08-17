@@ -10,7 +10,7 @@ use Kairos\Vehiculo;
 use Kairos\TipoVmq;
 use Kairos\Modelo;
 use Kairos\Marca;
-
+use Kairos\AsignarMotVeh;
 use Illuminate\Http\Request;
 
 class VehiculoController extends Controller
@@ -164,4 +164,10 @@ class VehiculoController extends Controller
         $modeloArray=Modelo::where('idMarca', '=', $marca)->get();
         return Response::json($modeloArray);
     }
+     public function modelo2($marca){
+     $var=AsignarMotVeh::find($marca);
+        $modeloArray=Vehiculo::where('id', '=', $var->idVehiculo)->get();
+        return Response::json($modeloArray);
+    }
+       
 }

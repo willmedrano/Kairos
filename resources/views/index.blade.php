@@ -327,12 +327,12 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="/ventas/create">
+                                            <a href="/Kairos/public/salidaEntrada/create">
                                                 Registrar salida
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/ventas">
+                                            <a href="/Kairos/public/salidaEntrada">
                                                 registrar salida
                                             </a>
                                         </li>

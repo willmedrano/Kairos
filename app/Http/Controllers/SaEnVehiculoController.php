@@ -1,24 +1,36 @@
 <?php
 
 namespace Kairos\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Session;
 use Redirect;
 use DB;
 use Input;
 use Kairos\BarrioCanton;
-use Kairos\ColoniaCaserio;
+use Kairos\AsignarMotVeh;
 use Kairos\Actividad;
-use Carbon\Carbon;
+use Kairos\SaEnVehiculo;
+use Kairos\Vehiculo;
+use Kairos\ValesCombustible;
 
-class ValesCombustibleController extends Controller
+use Carbon\Carbon;
+class SaEnVehiculoController extends Controller
 {
     //
-     public function index()
+    //
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+ 
+   
+    public function index()
     {
         //
-        $cc=Actividad::ActCol();
-      return view('actividad.index',compact('cc'));
+        $cc=SaEnVehiculo::disponibles();
+      return view('SaEnVehiculo.index',compact('cc'));
        
         
     }
@@ -30,9 +42,9 @@ class ValesCombustibleController extends Controller
      */
     public function create()
     {
-        //
-        $cc=BarrioCanton::All();
-       return view('Actividad.create',compact('cc'));
+      $asignado=\Kairos\AsignarMotVeh::disponibles();
+      $actividad= Actividad::Act();
+       return view('SaEnVehiculo.frmSaEnVehiculo',compact('asignado','actividad'));
 
     }
 
@@ -46,23 +58,31 @@ class ValesCombustibleController extends Controller
     {
         //
 
-        $file = Input::file('nombre_img');
-       //Creamos una instancia de la libreria instalada
-       $image = \Image::make(\Input::file('nombre_img'));
-       //Ruta donde queremos guardar las imagenes
-       $path = public_path().'/imagenesActividades/';
-       // Guardar Original
-       $image->save($path.$file->getClientOriginalName());
-        Actividad::create([
-            'act'=>$request['nombre'],
-            'idCC'=>$request['idCC'],
-            'desc'=>$request['desc'],
-            'fechaInicial'=>$request['fechaInicial'],
-            'fechaFinal'=>$request['fechaInicial'],
-            'nombre_img'=>$file->getClientOriginalName(),
+        ValesCombustible::create([]);
+        $ids;
+        $gAux =ValesCombustible::All();
+        foreach ($gAux as $valor2) {
+            $ids=$valor2->id;
+        }
+        SaEnVehiculo::create([
+            'idAsignacion'=>$request['selectMarca'],
+            'idVale'=>$ids,
+            'idActividad'=>$request['idActividad'],
+            'fecha'=>$request['fecha'],
+            'kilometrajeS'=>$request['kilometrajeS'],
+            'tanqueS'=>1,
+            'horaSalida'=>$request['horaS'],
+            'observacionS'=>$request['observacionesS'],
+            'observacionE'=>$request['observacionesS'],
+            
+            
         
         ]);
-        return redirect('/actividad')->with('message','create');
+        $var=AsignarMotVeh::find($request['selectMarca']);
+        $v=Vehiculo::find($var->idVehiculo);
+        $v->semaforo=3;
+        $v->save();
+        return redirect('/salidaEntrada')->with('message','create');
        
     }
 
@@ -143,5 +163,10 @@ class ValesCombustibleController extends Controller
     public function destroy($id)
     {
         //
+    }
+   public function modelo($marca){
+     $var=AsignarMotVeh::find($marca);
+        $modeloArray=Vehiculo::where('id', '=', $var->idVehiculo)->get();
+        return Response::json($modeloArray);
     }
 }

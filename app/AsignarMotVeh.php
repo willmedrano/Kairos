@@ -16,6 +16,17 @@ class AsignarMotVeh extends Model
             ->orderBy('asignar_mot_vehs.id')
             ->get();
    }
+   public static function disponibles(){
+       return DB::table('asignar_mot_vehs')
+       ->join('vehiculos', 'asignar_mot_vehs.idVehiculo', '=', 'vehiculos.id')
+       ->join('motoristas', 'asignar_mot_vehs.idMotorista', '=', 'motoristas.id')
+
+            ->where('asignar_mot_vehs.estadoAsignacion','=',true)
+            ->where('vehiculos.semaforo','=',1)
+            ->select('vehiculos.*','motoristas.*', 'asignar_mot_vehs.*')
+            ->orderBy('asignar_mot_vehs.id')
+            ->get();
+   }
 
    public static function asignados($id){
      $a = AsignarMotVeh::where('idVehiculo',$id);

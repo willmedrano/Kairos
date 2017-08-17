@@ -15,6 +15,11 @@ class CreateValesCombustiblesTable extends Migration
     {
         Schema::create('vales_combustibles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('nVale')->default(0);
+            $table->string('tipo')->default("Diesel");
+            $table->Double('galones')->default(0.0);
+            $table->Double('PrecioU')->default(0.0);
+            $table->boolean('estadoVale')->default(false);
             $table->timestamps();
         });
     }

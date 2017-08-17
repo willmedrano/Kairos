@@ -17,4 +17,12 @@ class Actividad extends Model
             ->orderBy('actividads.id')
             ->get();
    } 
+   public static function Act(){
+       return DB::table('actividads')
+            ->join('barrio_cantons', 'actividads.idCC', '=', 'barrio_cantons.id')
+            ->where('actividads.estado','=',false)
+            ->select('actividads.*',  'barrio_cantons.nombre')
+            ->orderBy('actividads.id')
+            ->get();
+   } 
 }

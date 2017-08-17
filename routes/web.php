@@ -31,6 +31,8 @@ Route::resource('actividad', 'ActividadController');
 Route::resource('maquinaria','MaquinariaController');
 Route::resource('asignarMotVeh','AsignarMotVehController');
 Route::resource('asignarMotMaq','AsignarMotMaqController');
+Route::resource('salidaEntrada','SaEnVehiculoController');
+Route::match(['get','post'],'/vehiculo2/create/{idMarca}','VehiculoController@modelo2');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

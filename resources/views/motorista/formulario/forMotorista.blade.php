@@ -63,7 +63,7 @@
                           <div class="form-group">
                             <label class="control-label col-md-2">* Teléfono </label>
                             <div class="col-md-4">
-                              {!!Form::text('telefonoMot',null,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::text('telefonoMot',null,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'Numero de teléfono celular...','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* DUI </label>
                             <div class="col-md-4">
@@ -89,7 +89,22 @@
                             </div>
                             <div class="col-md-4">
                             {!!Form::label('limagen','* Imagen:')!!}
-                            {!!Form::file('nombre_img',['value'=>'Elija'])!!}
+                            {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}
+                            </div>
+                          </div>
+                          <br><br>
+                          <div class="form-group">
+                            <label class="control-label col-md-2">* Tipo </label>
+                            <div class="col-md-4">
+                              <select name="tipoMot" id="" class="validate[required] form-control">
+                                <option value="0">Selecione una opción...</option>
+                                <option value="Operario">Operario</option>
+                                <option value="Motorista">Motorista</option>
+                              </select>
+                            </div>
+                            <label class="control-label col-md-2">* Observación </label>
+                            <div class="col-md-4">
+        		                    {!!Form::textarea('observacionMot',null,['class'=>'form-control', 'placeholder'=>'Observaciones...', 'rows'=>'3', 'cols'=>'5','required'])!!}
                             </div>
                           </div>
                         </div>

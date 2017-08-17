@@ -66,36 +66,25 @@
                               ?>
                                @endif
                               @endforeach
-
                               @if($bandera)
                              <div class="col-xl-4">
-                                 <div class="card card-primary" align="center">
-                                     <div class="card-header" >
-                                         <div class="header-block" align="center">
-                                           <p class="title"> {{$m->modelo($m->idModelo)}} </p>
-                                         </div>
-                                     </div>
-                                     <div class="card-block">
-                                       <img src="/Kairos/public/imagenesMaquinaria/{{$m->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
-                                    </div>
-                                     <div class="card-footer">
-                                       @if($m->estadoMaq==true)
-                                         {!!Form::open(['route'=>['asignarMotMaq.show',$m->id],'method'=>'GET'])!!}
-                                            <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
-                                         {!!Form::close()!!}
-                                            @endif
-                                       @if($m->semaforo==1)
-                                           <img src="/Kairos/public/img/verde.png" class="" alt="User Image" width="25px" height="25px">
-                                       @endif
-                                       @if($m->semaforo==2)
-                                           <img src="/Kairos/public/img/amarillo.jpg" class="" alt="User Image" width="25px" height="25px">
-                                       @endif
-                                       @if($m->semaforo==3)
-                                           <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px">
-                                       @endif
-
-                                      </div>
+                               <div class="card card-primary" align="center">
+                                 <div class="card-header" >
+                                   <div class="header-block" align="center">
+                                     <p class="title"> {{$m->nomModelo}} </p>
+                                   </div>
                                  </div>
+                                 <div class="card-block">
+                                   <img src="/Kairos/public/imagenesMaquinaria/{{$m->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
+                                  </div>
+                                   <div class="card-footer">
+                                     @if($m->estadoMaq==true)
+                                       {!!Form::open(['route'=>['asignarMotMaq.show',$m->id],'method'=>'GET'])!!}
+                                          <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
+                                       {!!Form::close()!!}
+                                      @endif
+                                  </div>
+                               </div>
                              </div>
                              @endif
                            @endforeach
@@ -104,7 +93,6 @@
                       </div>
                     </div>
                   </div>
-
                </fieldset>
              </div>
            </div><!-- /.col-lg-12 -->

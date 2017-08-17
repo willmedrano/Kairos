@@ -40,6 +40,7 @@ class TipoVMController extends Controller
     {
       TipoVmq::create([
       'TipoVM'=>$request['TipoVM'],
+      'TipoVM2'=>$request['TipoVM2'],
       ]);
       return redirect('/tipoVM')->with('create','• Registro ingresado correctamente');
     }
@@ -77,6 +78,7 @@ class TipoVMController extends Controller
     {
       $tipo= TipoVmq::find($id);
       $tipo->TipoVM=$request['TipoVM'];
+      $tipo->TipoVM2=$request['TipoVM2'];
       Session::flash('update','• Tipo V/M editado correctamente');
       $tipo->save();
       return Redirect::to('/tipoVM');

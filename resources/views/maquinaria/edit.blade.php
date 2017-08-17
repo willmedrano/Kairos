@@ -13,24 +13,41 @@
                             <input type="hidden" name="hi2" value="1">
                             <br>
                             <div class="form-group">
-                              <label class="control-label col-md-2">* Color </label>
-                              <div class="col-md-4">
+                              <label class="control-label col-md-6">* Color </label>
+                              <label class="control-label col-md-6">* Año </label>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-md-6">
                                 {!!Form::text('color',$m->color,['id'=>'color','class'=>'form-control', 'placeholder'=>'color del vehiculo...','required'])!!}
                             </div>
-                              <label class="control-label col-md-2">* Año </label>
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 {!!Form::text('anio',$m->anio,['id'=>'anio','class'=>'form-control', 'placeholder'=>'','required'])!!}
                               </div>
                             </div>
                             <br><br><br>
                             <div class="form-group">
-                              <label class="control-label col-md-2">* Nº Equipo </label>
-                              <div class="col-md-4">
+                              <label class="control-label col-md-6">* Nº Equipo </label>
+                              <label class="control-label col-md-6">* Nº Inventario </label>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-md-6">
                                 {!!Form::text('nEquipo',$m->nEquipo,['id'=>'nEquipo','class'=>'form-control', 'placeholder'=>'','required'])!!}
                               </div>
-                              <label class="control-label col-md-2">* Nº Inventario </label>
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 {!!Form::text('nInventario',$m->nInventario,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              </div>
+                            </div>
+                            <br><br><br>
+                            <div class="form-group">
+                              <label class="control-label col-md-6">* Horas para mantenimiento </label>
+                              <label class="control-label col-md-6">* Observación </label>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-md-6">
+                                {!!Form::text('horaM',$m->horaM,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              </div>
+                              <div class="col-md-6">
+                                {!!Form::textarea('observacionMaq',$m->ObservacionMaq,['id'=>'observacionMaq','class'=>'form-control', 'placeholder'=>'','required','rows'=>'3', 'cols'=>'5'])!!}
                               </div>
                             </div>
                         </fieldset>

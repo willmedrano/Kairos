@@ -46,10 +46,10 @@
                             <thead align="center">
                               <tr>
                                <th >MAQUINARIA </th>
-                               <th >ASIGNADA A </th>
+                               <th >OPERARIO </th>
                                <th >TIPO</th>
                                <th >MODELO</th>
-                               <th >Nº EQUIPO</th>
+                               <th >EQUIPO</th>
                                <th >F_ASIGNACION</th>
                                <th >FINALIZACIÓN</th>
                                <th >ASIGNACIÓN</th>

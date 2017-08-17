@@ -65,20 +65,20 @@
                               <tr>
                                <th >FOTO</th>
                                <th >NOMBRE</th>
-                               <th >DIRECCIÓN</th>
-                               <th >TELÉFONO</th>
-                               <th >FECHA CONTRATO</th>
-                               <th >FECHA DESPIDO</th>
-                               <th colspan="2" > <div align="center">ACCIÓN</div></th>
+                               <th >TIPO</th>
+                               <th >F/CONTRATO</th>
+                               <th >F/DESPIDO</th>
+                               <th colspan="3" > <div align="center">ACCIÓN</div></th>
                                <th >ESTADO</th>
                              </tr>
                            </thead>
                            <tbody id="hola" class="buscar">
                              @foreach ($motorista as $m)
                                @include('motorista.edit')
-                             @include('motorista.baja')
-                             @include('motorista.alta')
-                             @include('motorista.editFoto')
+                               @include('motorista.baja')
+                               @include('motorista.alta')
+                               @include('motorista.editFoto')
+                               @include('motorista.show')
                                <tr>
                                  <td>
                                    <div class="pull-left image">
@@ -86,8 +86,7 @@
                  					         </div>
                                  </td>
                                  <td>{{$m->nombresMot.' '.$m->apellidosMot}}</td>
-                                 <td>{{$m->direccionMot}}</td>
-                                 <td>{{$m->telefonoMot}}</td>
+                                 <td>{{$m->tipoMot}}</td>
                                  <?php
                                   $date = new DateTime($m->fechaContrato);
                                 ?>
@@ -99,13 +98,12 @@
                                   $date = new DateTime($m->fechaDespido);
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-
                                 @else
                                 <td>En Proceso</td>
-
                                 @endif
-                                 <td><a href="#" class="btn btn-info btn-sm" data-id="{{ $m->id }}" data-toggle="modal" data-target="#Edit{{ $m->id }}">Modificar</a></td>
-                                 <td><button type="submit"  class="btn btn-primary btn-sm fa fa-picture-o" data-toggle="modal" data-target="#EditFoto{{$m->id}}"></button> </td>
+                                <td><button type="submit"  class="btn btn-primary btn-sm fa fa-eye" data-toggle="modal" data-target="#ModalMot{{$m->id}}"></button> </td>
+                                <td><button type="submit"  class="btn btn-primary btn-sm fa fa-picture-o" data-toggle="modal" data-target="#EditFoto{{$m->id}}"></button> </td>
+                                <td><a href="#" class="btn btn-info btn-sm" data-id="{{ $m->id }}" data-toggle="modal" data-target="#Edit{{ $m->id }}">Modificar</a></td>
 
                                   @if($m->estadoMot==true)
                                       <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$m->id}}">A c t i v o</button></td>

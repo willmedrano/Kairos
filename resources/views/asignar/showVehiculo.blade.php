@@ -39,8 +39,21 @@
                                 <img src="/Kairos/public/imagenesVehiculos/{{$vehiculo->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                              </div>
                              </div>
+                             <span class=""><i class="bigicon " >Placa: {{$vehiculo->nPlaca}}</i></span>
                              <br><br>
                              <input type="hidden" name="idVehiculo" value="{{ $vehiculo->id }}">
+                             <label class="control-label col-md-3">* Área </label>
+                             <div class="col-md-4">
+                               <select name="unidad" id="unidad" class="validate[required] form-control">
+                                 <option value="0">Selecione una opción...</option>
+                                 <option value="1">Unidad de Mantenimiento</option>
+                                 <option value="2">Unidad de Transporte</option>
+                                 <option value="3">Mtto de alumbrado público</option>
+                                 <option value="4">Gerencia</option>
+                                 <option value="5">Unidad de Medio Ambiente</option>
+                               </select>
+                             </div>
+                             <br><br>
                             <label class="control-label col-md-3">* Motorista </label>
                             <div class="col-md-4">
                               <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
@@ -55,10 +68,9 @@
                                             $bandera=false;
                                           ?>
                                         @endif
-                                     @endforeach 
-                              
+                                     @endforeach
                                     @if($bandera)
-                                      <option value="{{$m->id}}">{{$m->nombresMot}}</option>
+                                      <option value="{{$m->id}}">{{$m->nombresMot." ".$m->apellidosMot}}</option>
                                     @endif
                                 @endforeach
                               </select>
@@ -66,16 +78,18 @@
                             <br><br>
                             <label class="control-label col-md-3">* Fecha de asignación </label>
                             <div class="col-md-4">
-                              
                               <input id="fechaInicio" name="fechaInicio" type="date" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
-                            
                             </div>
-
+                            <br><br>
+                            <label class="control-label col-md-3">* Observación </label>
+                            <div class="col-md-4">
+                                {!!Form::textarea('observacionAsiV',null,['class'=>'form-control', 'placeholder'=>'Observaciones...', 'rows'=>'3', 'cols'=>'4','required'])!!}
+                            </div>
                       </div>
                       </fieldset>
                       <br><br>
                       <div align="center">
-                       {!! Form::submit(' Registrar',['class'=>'btn btn-primary glyphicon glyphicon-floppy-disk'  ]) !!}
+                       {!! Form::submit(' Asignar',['class'=>'btn btn-primary glyphicon glyphicon-floppy-disk'  ]) !!}
                        {!! Form::reset('Limpiar',['class'=>'btn btn-info' ]) !!}
 
                       </div>
@@ -87,15 +101,15 @@
             </section>
           </article>
 @stop
-<?php 
+<?php
 $time=time();
-    
+
     function dameFecha($fecha,$dia){
         list($year,$mon,$day)=explode('-',$fecha);
-        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
+        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));
     }
-   $total=0; 
+   $total=0;
 
 
-  
+
 ?>

@@ -59,6 +59,7 @@
                                <tr>
                                  <th ><div align="center">N°</div></th>
                                  <th ><div align="center">TIPO</div></th>
+                                 <th ><div align="center">PARA</div></th>
                                  <th ><div align="center">ACCIÓN</div></th>>
                                </tr>
                              </thead>
@@ -69,6 +70,7 @@
                                  <tr>
                                    <td align="center">{{$cont++}}</td>
                                    <td align="center">{{$t->TipoVM}}</td>
+                                   <td align="center">{{$t->TipoVM2}}</td>
                                    <td align="center">  <a href="#"   class="btn btn-info btn-sm" data-id="{{ $t->id }}" data-toggle="modal" data-target="#Edit{{ $t->id }}">Modificar</a></td>
 
                                  </tr>

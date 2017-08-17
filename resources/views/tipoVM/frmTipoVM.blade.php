@@ -35,9 +35,17 @@
                         <br>
                         <div id="collapseOne" class="body">
                           <div class="form-group">
-                            <label class="control-label col-md-3">* Tipo Vehiculo/Maquinaria </label>
+                            <label class="control-label col-md-3">* Nombre del Tipo  </label>
                             <div class="col-lg-3">
                               {!!Form::text('TipoVM',null,['id'=>'TipoVM','class'=>'form-control', 'placeholder'=>'Ingrese Marca...','required'])!!}
+                            </div>
+                            <label class="control-label col-md-1">* Tipo </label>
+                            <div class="col-md-4">
+                              <select name="TipoVM2" id="" class="validate[required] form-control">
+                                <option value="">Selecione una opción...</option>
+                                <option value="Vehiculo">Vehiculo</option>
+                                <option value="Maquinaria">Maquinaria</option>
+                              </select>
                             </div>
                           </div>
                           <br><br>

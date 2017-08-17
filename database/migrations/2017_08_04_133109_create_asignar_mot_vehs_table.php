@@ -21,6 +21,8 @@ class CreateAsignarMotVehsTable extends Migration
             $table->foreign('idVehiculo')->references('id')->on('vehiculos');
             $table->date('fechaInicio');
             $table->date('fechaFin');
+            $table->Integer('unidad');
+            $table->string('observacionAsiV');
             $table->boolean('estadoAsignacion')->default(true);
             $table->timestamps();
         });

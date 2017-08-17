@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
   protected $table="marcas";
-protected $fillable = ['nomMarca'];
+protected $fillable = ['nomMarca','tipoMar'];
 }

@@ -4,6 +4,7 @@ namespace Kairos\Http\Controllers;
 use Session;
 use Redirect;
 use Input;
+use DB;
 use Response;
 use Kairos\Maquinaria;
 use Kairos\TipoVmq;
@@ -20,10 +21,12 @@ class MaquinariaController extends Controller
      */
     public function index()
     {
-      $maquinaria=\Kairos\Maquinaria::All();
-      $marca=\Kairos\Marca::All();
-      $tipo=\Kairos\TipoVmq::All();
-      return View('maquinaria.index',compact('maquinaria','marca','tipo'));
+      $maquinaria=DB::select('SELECT m.id,m.color,m.anio,m.nEquipo,m.nInventario,m.horaM,m.semaforo,
+      m.nombre_img,m.ObservacionMaq,m.estadoMaq, t.tipoVM,mo.nomModelo,ma.nomMarca
+      from maquinarias m, tipo_vmqs t,modelos mo, marcas ma
+      where m.idTipo=t.id and m.idModelo=mo.id and mo.idMarca=ma.id');
+
+      return View('maquinaria.index',compact('maquinaria'));
 
     }
 
@@ -34,9 +37,9 @@ class MaquinariaController extends Controller
      */
     public function create()
     {
-      $tipo=TipoVmq::All();
+      $tipo=TipoVmq::where('tipoVM2','Maquinaria')->get();
       $modelo=Modelo::All();
-      $marca=Marca::All();
+      $marca=Marca::where('tipoMar','Maquinaria')->get();
       return view('maquinaria.frmMaquinaria',compact('tipo','modelo','marca'));
 
     }
@@ -67,6 +70,7 @@ class MaquinariaController extends Controller
         'nInventario'=>$request['nInventario'],
         'horaM'=>$request['horaM'],
         'nombre_img'=>$file->getClientOriginalName(),
+        'observacionMaq'=>$request['observacionMaq'],
       ]);
       return redirect('/maquinaria')->with('create','• Maquinaria ingresada correctamente');
     }
@@ -136,6 +140,7 @@ class MaquinariaController extends Controller
           $m->anio=$request['anio'];
           $m->nEquipo=$request['nEquipo'];
           $m->nInventario=$request['nInventario'];
+          $m->observacionMaq=$request['observacionMaq'];
           Session::flash('update','• Maquinaria modificada correctamente');
 
       }

@@ -21,6 +21,8 @@ class CreateAsignarMotMaqsTable extends Migration
             $table->foreign('idMaquinaria')->references('id')->on('maquinarias');
             $table->date('fechaInicio');
             $table->date('fechaFin');
+            $table->Integer('unidad');
+            $table->string('observacionAsiM');
             $table->boolean('estadoAsignacionMaq')->default(true);
             $table->timestamps();
         });

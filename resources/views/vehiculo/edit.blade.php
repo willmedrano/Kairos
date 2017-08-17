@@ -13,31 +13,42 @@
                             <input type="hidden" name="hi2" value="1">
                             <br>
                             <div class="form-group">
-                              <label class="control-label col-md-2">* Color </label>
-                              <div class="col-md-4">
+                              <label class="control-label col-md-6">* Color </label>
+                              <label class="control-label col-md-6">* Año </label>
+                            </div>
+                              <div class="col-md-6">
                                 {!!Form::text('color',$v->color,['id'=>'color','class'=>'form-control', 'placeholder'=>'color del vehiculo...','required'])!!}
                             </div>
-                              <label class="control-label col-md-2">* Año </label>
-                              <div class="col-md-4">
+                            <div class="form-group">
+                              <div class="col-md-6">
                                 {!!Form::text('anio',$v->anio,['id'=>'anio','class'=>'form-control', 'placeholder'=>'','required'])!!}
                               </div>
                             </div>
                             <br><br><br>
                             <div class="form-group">
-                              <label class="control-label col-md-2">* Nº Placa </label>
-                              <div class="col-md-4">
+                              <label class="control-label col-md-6">* Nº Placa </label>
+                              <label class="control-label col-md-6">* Nº Inventario </label>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-md-6">
                                 {!!Form::text('nPlaca',$v->nPlaca,['id'=>'nPlaca','class'=>'form-control', 'placeholder'=>'','required'])!!}
                               </div>
-                              <label class="control-label col-md-2">* Nº Inventario </label>
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 {!!Form::text('nInventario',$v->nInventario,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
                               </div>
                             </div>
-                            <br><br>
+                            <br><br><br>
                             <div class="form-group">
                               <label class="control-label col-md-6">* Kilometraje Mantenimiento</label>
-                              <div class="col-md-4">
+                              <label class="control-label col-md-6">* Observación</label>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-md-6">
                                 {!!Form::text('kilometrajeM',$v->kilometrajeM,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+
+                            </div>
+                            <div class="col-md-6">
+                                {!!Form::textarea('observacionVeh',$v->ObservacionVeh,['class'=>'form-control', 'placeholder'=>'Observaciones...', 'rows'=>'3', 'cols'=>'5','required'])!!}
                             </div>
                             </div>
                         </fieldset>

@@ -4,7 +4,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <span class="col-md-2  text-center" style="color: white;" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></span>
-          <h4 class="modal-title" id="gridModalLabel3">Informaciòn</h4>
+          <h4 class="modal-title" id="gridModalLabel3">Información</h4>
       </div>
       <div class="modal-body" >
         <div class="container-fluid bd-example-row">
@@ -15,11 +15,15 @@
                <tbody id="" class="">
                  <tr>
                    <td >Tipo:</td>
-                   <td align="center">{{$v->tipo($v->idTipo)}}</td>
+                   <td align="center">{{$v->tipoVM}}</td>
+                 </tr>
+                 <tr>
+                   <td > Marca:</td>
+                   <td align="center">{{$v->nomMarca}}</td>
                  </tr>
                  <tr>
                    <td > Modelo:</td>
-                   <td align="center">{{$v->modelo($v->idModelo)}}</td>
+                   <td align="center">{{$v->nomModelo}}</td>
                  </tr>
                  <tr>
                    <td > Color:</td>
@@ -44,6 +48,10 @@
                  <tr>
                    <td > Kilometraje de mantenimiento:</td>
                    <td align="center">{{$v->kilometrajeM}} km</td>
+                 </tr>
+                 <tr>
+                   <td > Observación:</td>
+                   <td align="center">{{$v->ObservacionVeh}} </td>
                  </tr>
                </tbody>
              </table>

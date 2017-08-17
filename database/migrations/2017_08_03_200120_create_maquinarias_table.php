@@ -27,6 +27,7 @@ class CreateMaquinariasTable extends Migration
             $table->integer('horaAux')->default(0);;
             $table->integer('semaforo')->default(1);
             $table->string('nombre_img');
+            $table->string('observacionMaq');
             $table->integer('estadoMaq')->default(1);
             $table->timestamps();
         });

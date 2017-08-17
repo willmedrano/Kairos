@@ -72,29 +72,36 @@
                           </div>
                             <label class="control-label col-md-2">* Año </label>
                             <div class="col-md-4">
-                              {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::number('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Ej: 2017','required'])!!}
                             </div>
                           </div>
                           <br><br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* Nº Equipo </label>
                             <div class="col-md-4">
-                              {!!Form::text('nEquipo',null,['id'=>'nEquipo','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::text('nEquipo',null,['id'=>'nEquipo','class'=>'form-control', 'placeholder'=>'Ej: Equipo 1','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Nº Inventario </label>
                             <div class="col-md-4">
-                              {!!Form::text('nInventario',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::text('nInventario',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: AMI-AF-0000-0000-000','required'])!!}
                             </div>
                           </div>
                           <br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* Nº Hora M </label>
                             <div class="col-md-4">
-                              {!!Form::text('horaM',null,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::number('horaM',null,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'Ej: 5','required'])!!}
                             </div>
                             <div class="col-md-4">
                             {!!Form::label('limagen','* Imagen:')!!}
-                            {!!Form::file('nombre_img',['value'=>'Elija'])!!}
+                            {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}
+                            </div>
+                          </div>
+                          <br><br>
+                          <div class="form-group">
+                            <label class="control-label col-md-2">* Observación </label>
+                            <div class="col-md-4">
+        		                    {!!Form::textarea('observacionMaq',null,['class'=>'form-control', 'placeholder'=>'Observaciones...', 'rows'=>'3', 'cols'=>'5','required'])!!}
                             </div>
                           </div>
                         </div>

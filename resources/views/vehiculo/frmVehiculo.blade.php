@@ -72,36 +72,40 @@
                           </div>
                             <label class="control-label col-md-2">* Año </label>
                             <div class="col-md-4">
-                              {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Ej: 2017','required'])!!}
                             </div>
                           </div>
                           <br><br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* Nº Placa </label>
                             <div class="col-md-4">
-                              {!!Form::text('nPlaca',null,['id'=>'nPlaca','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::text('nPlaca',null,['id'=>'nPlaca','class'=>'form-control', 'placeholder'=>'Ej: P-0000','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Nº Inventario </label>
                             <div class="col-md-4">
-                              {!!Form::text('nInventario',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::text('nInventario',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: AMI-AF-0000-0000-000','required'])!!}
                             </div>
                           </div>
                           <br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* Kilometraje </label>
                             <div class="col-md-4">
-                              {!!Form::text('kilometraje',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::number('kilometraje',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: 5000','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Kilometraje Mantenimiento</label>
                             <div class="col-md-4">
-                              {!!Form::text('kilometrajeM',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                              {!!Form::number('kilometrajeM',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: 3000','required'])!!}
                           </div>
                           </div>
                           <br><br>
                           <div class="form-group">
+                            <label class="control-label col-md-2">* Observación </label>
                             <div class="col-md-4">
+        		                    {!!Form::textarea('observacionVeh',null,['class'=>'form-control', 'placeholder'=>'Observaciones...', 'rows'=>'3', 'cols'=>'5','required'])!!}
+                            </div>
+                            <div class="col-md-2">
                             {!!Form::label('limagen','* Imagen:')!!}
-                            {!!Form::file('nombre_img',['value'=>'Elija'])!!}
+                            {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}
                             </div>
                           </div>
                         </div>

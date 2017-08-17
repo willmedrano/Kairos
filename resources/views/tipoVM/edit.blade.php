@@ -18,6 +18,19 @@
                                   {!!Form::text('TipoVM',$t->TipoVM,['id'=>'TipoVM','class'=>'form-control', 'placeholder'=>'Ingrese Código de usuario...','required'])!!}
                                 </div>
                             </div>
+                            <br><br>
+                            <label class="control-label col-md-3"> Tipo </label>
+                            <div class="col-md-6">
+                              <select name="TipoVM2" id="" class="validate[required] form-control">
+                                @if($t->TipoVM2=="Vehiculo")
+                                <option selected value="Vehiculo">Vehiculo</option>
+                                <option value="Maquinaria">Maquinaria</option>
+                              @else
+                                <option selected value="Maquinaria">Maquinaria</option>
+                                <option  value="Vehiculo">Vehiculo</option>
+                              @endif
+                              </select>
+                            </div>
 
                         </fieldset>
                         <div class="modal-footer">

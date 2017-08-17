@@ -31,7 +31,7 @@
                       <div class="card-block table-responsive">
                         {!! Form::open(['route'=>'modelo.store','method'=>'POST']) !!}
                         <fieldset>
-                          <a href="/Kairos/public/marca" class="btn btn-success btn-sm"" ">Atràs</a>
+                          <a href="/Kairos/public/marca" class="btn btn-success btn-sm"" ">Atrás</a>
                           <br>
                         <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
                         <br>

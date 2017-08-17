@@ -17,16 +17,16 @@ use Illuminate\Http\Request;
 
 class AsignarMotVehController extends Controller
 {
-    //
+    //  ver los vehiculos disponible para asignar
     public function index()
       {
-        // $vehiculo=DB::select('SELECT * FROM vehiculos where estadoVeh=1 ');
-        $vehiculo=\Kairos\Vehiculo::where('estadoVeh',1)->get();
-        $marca=\Kairos\Marca::All();
-        $tipo=\Kairos\TipoVmq::All();
+        $vehiculo=DB::select('SELECT v.id,v.nombre_img,v.estadoVeh,v.semaforo,v.nPlaca,mo.nomModelo
+        from vehiculos v,modelos mo
+        where v.idModelo=mo.id and v.estadoVeh=1 ');
+
         $asignados=\Kairos\AsignarMotVeh::Asigna();
 
-        return View('asignar.indexVehiculo',compact('vehiculo','marca','tipo','asignados'));
+        return View('asignar.indexVehiculo',compact('vehiculo','asignados'));
       }
 
       /**
@@ -34,6 +34,8 @@ class AsignarMotVehController extends Controller
        *
        * @return \Illuminate\Http\Response
        */
+
+       //  ver toda los vehiculos que han sido asignados
       public function create()
       {
         $asignado=\Kairos\AsignarMotVeh::All();
@@ -46,6 +48,8 @@ class AsignarMotVehController extends Controller
        * @param  \Illuminate\Http\Request  $request
        * @return \Illuminate\Http\Response
        */
+
+       //  se registra la asignacion
       public function store(Request $request)
       {
         AsignarMotVeh::create([
@@ -53,7 +57,12 @@ class AsignarMotVehController extends Controller
           'idVehiculo'=> $request['idVehiculo'],
           'fechaInicio'=>$request['fechaInicio'],
           'fechaFin'=>$request['fechaInicio'],
+          'unidad'=>$request['unidad'],
+          'observacionAsiV'=>$request['observacionAsiV'],
         ]);
+        $v= Vehiculo::find($request['idVehiculo']);
+        $v->semaforo =3;
+        $v->save();
         return redirect('/asignarMotVeh');
       }
 
@@ -63,10 +72,12 @@ class AsignarMotVehController extends Controller
        * @param  int  $id
        * @return \Illuminate\Http\Response
        */
+
+       // metodo que lleva a la vista para asignar vehiculo
       public function show($id)
       {
         $vehiculo =Vehiculo::find($id);
-        $motorista=Motorista::where('estadoMot',1)->get();
+        $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Motorista')->get();
         $asignados=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();
         return view('asignar.showVehiculo',compact('vehiculo','motorista','asignados'));
       }
@@ -89,18 +100,24 @@ class AsignarMotVehController extends Controller
        * @param  int  $id
        * @return \Illuminate\Http\Response
        */
+
+       // se finaliza la asignacion
       public function update(Request $request, $id)
       {
           $cc = AsignarMotVeh::find($id);
+          $idV=$cc->idVehiculo; //obtener id del vehiculo asignado
+          $v= Vehiculo::find($idV); //buscar en la tabla vehiculos
+
           $aux=$request['bandera'];
           if ($aux=='1') {
               date_default_timezone_set("America/El_Salvador");
-              $date = Carbon::now();
+              $date = Carbon::now();//captura la fecha actual
               $cc->fechaFin=$date;
-              $cc->estadoAsignacion=false;
-
+              $cc->estadoAsignacion=false; //se vuelve a habilitar el vehiculo
+              $v->semaforo=1; //semaforo pasa a disponible
           }
           $cc->save();
+          $v->save(); //se guarda los cambios en la tabla vehiculos
           Session::flash('mensaje','¡Registro Actualizado!');
           return redirect::to('/asignarMotVeh/create')->with('message','update');
       }

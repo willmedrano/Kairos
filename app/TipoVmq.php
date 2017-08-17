@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class TipoVmq extends Model
 {
   protected $table="tipo_vmqs";
-  protected $fillable = ['TipoVM'];
+  protected $fillable = ['TipoVM','TipoVM2'];
 }

@@ -39,6 +39,14 @@
                             <div class="col-lg-3">
                               {!!Form::text('nomMarca',null,['id'=>'nomMarca','class'=>'form-control', 'placeholder'=>'Ingrese Marca...','required'])!!}
                             </div>
+                            <label class="control-label col-md-1">* Tipo </label>
+                            <div class="col-md-4">
+                              <select name="tipoMar" id="" class="validate[required] form-control">
+                                <option value="0">Selecione una opción...</option>
+                                <option value="Vehiculo">Vehiculo</option>
+                                <option value="Maquinaria">Maquinaria</option>
+                              </select>
+                            </div>
                           </div>
                           <br><br>
                         </div><!-- /.row -->

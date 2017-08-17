@@ -46,7 +46,7 @@
                             <thead align="center">
                               <tr>
                                <th >VEHICULO </th>
-                               <th >ASIGNADO A </th>
+                               <th >MOTORISTA </th>
                                <th >TIPO</th>
                                <th >MODELO</th>
                                <th >PLACA</th>

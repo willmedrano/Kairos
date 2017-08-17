@@ -4,7 +4,7 @@
 @if($message=='update')
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong> Sea Actualizado con exito el registro</strong>
+<strong> Sea Actualizado con éxito el registro</strong>
 </div>
 @endif
 @section('content')
@@ -34,7 +34,7 @@
 </div>
 @endif
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE ASIGNACION VEHICULOS</i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE ASIGNACIÓN VEHICULOS</i></span>
        <p class="title-description"> Consulta de vehiculos no asignados</p>
    </div>
    <section class="section">
@@ -46,7 +46,7 @@
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
-                        
+
                         <br>
                         <div class="card-title-block table-responsive">
                           <div class="card-title-block">
@@ -68,14 +68,14 @@
                               $bandera=false;
                               ?>
                                @endif
-                              @endforeach 
-                              
+                              @endforeach
+
                               @if($bandera)
                              <div class="col-xl-4">
                                  <div class="card card-primary" align="center">
                                      <div class="card-header" >
                                          <div class="header-block" align="center">
-                                           <p class="title"> {{$v->modelo($v->idModelo)}} </p>
+                                           <p class="title"> {{"Placa: ".$v->nPlaca." ".$v->nomModelo}} </p>
                                          </div>
                                      </div>
                                      <div class="card-block">
@@ -86,17 +86,7 @@
                                          {!!Form::open(['route'=>['asignarMotVeh.show',$v->id],'method'=>'GET'])!!}
                                             <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
                                          {!!Form::close()!!}
-                                            @endif
-                                       @if($v->semaforo==1)
-                                           <img src="/Kairos/public/img/verde.png" class="" alt="User Image" width="25px" height="25px">
-                                       @endif
-                                       @if($v->semaforo==2)
-                                           <img src="/Kairos/public/img/amarillo.jpg" class="" alt="User Image" width="25px" height="25px">
-                                       @endif
-                                       @if($v->semaforo==3)
-                                           <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px">
-                                       @endif
-
+                                      @endif
                                       </div>
                                  </div>
                              </div>

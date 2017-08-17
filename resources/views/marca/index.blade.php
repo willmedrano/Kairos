@@ -59,6 +59,7 @@
                                <tr>
                                  <th ><div align="center">N°</div></th>
                                  <th ><div align="center">MARCA</div></th>
+                                 <th ><div align="center">PARA</div></th>
                                  <th ><div align="center">ACCIÓN</div></th>
                                  <th ><div align="center">AGREGAR</div></th>
                                  <th><div align="center">REGISTROS</div></th>
@@ -71,6 +72,7 @@
                                  <tr>
                                    <td align="center">{{$cont++}}</td>
                                    <td align="center">{{$m->nomMarca}}</td>
+                                   <td align="center">{{$m->tipoMar}}</td>
                                    <td align="center">  <a href="#"   class="btn btn-info btn-sm" data-id="{{ $m->id }}" data-toggle="modal" data-target="#Edit{{ $m->id }}">Modificar</a></td>
                                    <td align="center">
                                       {!!Form::open(['route'=>['marca.show',$m->id],'method'=>'GET'])!!}

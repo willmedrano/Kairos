@@ -27,6 +27,7 @@ class CreateVehiculosTable extends Migration
             $table->double('kilometrajeAux')->default(0.0);
             $table->double('kilometrajeM');
             $table->string('nombre_img');
+            $table->string('ObservacionVeh');
             $table->integer('semaforo')->default(1);
             $table->integer('estadoVeh')->default(1);
             $table->timestamps();

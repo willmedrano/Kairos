@@ -63,6 +63,8 @@ class MotoristaController extends Controller
         'fechaContrato'=>$request['fechaContrato'],
         'fechaDespido'=>$request['fechaContrato'],
         'nombre_img'=>$file->getClientOriginalName(),
+        'tipoMot'=>$request['tipoMot'],
+        'observacionMot'=>$request['observacionMot'],
       ]);
       return redirect('/motorista')->with('create','• Sea creado con éxito el registro');
     }
@@ -75,7 +77,7 @@ class MotoristaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -140,6 +142,8 @@ else{
        $motorista->licencia=$request['licencia'];
        $motorista->fechaNacimiento=$request['fechaNacimiento'];
        $motorista->fechaContrato=$request['fechaContrato'];
+       $motorista->tipoMot=$request['tipoMot'];
+       $motorista->observacionMot=$request['observacionMot'];
        Session::flash('update','• Motorista editado correctamente');
 
 }

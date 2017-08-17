@@ -59,15 +59,14 @@
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
-                        <a href="/Kairos/public/marca" class="btn btn-success btn-sm"" ">Atràs</a>
-                        <br>
-                        <div class="card-title-block table-responsive">
-                          <div class="card-title-block">
-                            <div class="form-group" align="right">
-
-                            </div>
-                          </div>
+                        <div class="form-group" align="right">
+                          <p>
+                            <img src="/Kairos/public/img/verde.png" class="" alt="User Image" width="25px" height="25px"> Disponible
+                            <img src="/Kairos/public/img/amarillo.jpg" class="" alt="User Image" width="30px" height="30px"> En Taller
+                            <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px"> Asignado
+                          </p>
                         </div>
+                        <br>
                         <section class="example">
                           <div class="row">
                             @foreach ($vehiculo as $v)
@@ -80,7 +79,7 @@
                                  <div class="card card-primary" align="center">
                                      <div class="card-header" >
                                          <div class="header-block" align="center">
-                                           <p class="title"> {{$v->modelo($v->idModelo)}} </p>
+                                           <p class="title"> {{$v->nomModelo}} </p>
                                          </div>
                                      </div>
                                      <div class="card-block">

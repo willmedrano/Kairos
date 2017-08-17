@@ -27,6 +27,8 @@ class CreateMotoristasTable extends Migration
             $table->date('fechaDespido');
             $table->string('nombre_img');
             $table->boolean('estadoMot')->default(true);
+            $table->string('tipoMot');
+            $table->string('observacionMot');
             $table->timestamps();
         });
     }

@@ -15,11 +15,15 @@
                <tbody id="" class="">
                  <tr>
                    <td >Tipo:</td>
-                   <td align="center">{{$m->tipo($m->idTipo)}}</td>
+                   <td align="center">{{$m->tipoVM}}</td>
+                 </tr>
+                 <tr>
+                   <td > Marca:</td>
+                   <td align="center">{{$m->nomMarca}}</td>
                  </tr>
                  <tr>
                    <td > Modelo:</td>
-                   <td align="center">{{$m->modelo($m->idModelo)}}</td>
+                   <td align="center">{{$m->nomModelo}}</td>
                  </tr>
                  <tr>
                    <td > Color:</td>
@@ -36,6 +40,10 @@
                  <tr>
                    <td > # Inventario:</td>
                    <td align="center">{{$m->nInventario}}</td>
+                 </tr>
+                 <tr>
+                   <td > Observación:</td>
+                   <td align="center">{{$m->ObservacionMaq}}</td>
                  </tr>
                </tbody>
              </table>

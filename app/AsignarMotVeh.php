@@ -7,7 +7,7 @@ use DB;
 class AsignarMotVeh extends Model
 {
   protected $table="asignar_mot_vehs";
-  protected $fillable = ['idMotorista', 'idVehiculo','fechaInicio','fechaFin'];
+  protected $fillable = ['idMotorista', 'idVehiculo','fechaInicio','fechaFin','unidad','observacionAsiV'];
 
   public static function Asigna(){
    		 return DB::table('asignar_mot_vehs')

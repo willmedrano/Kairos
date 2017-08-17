@@ -4,6 +4,7 @@ namespace Kairos\Http\Controllers;
 use Session;
 use Redirect;
 use Input;
+use DB;
 use Response;
 use Kairos\Vehiculo;
 use Kairos\TipoVmq;
@@ -21,10 +22,13 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-      $vehiculo=\Kairos\Vehiculo::All();
-      $marca=\Kairos\Marca::All();
-      $tipo=\Kairos\TipoVmq::All();
-      return View('vehiculo.index',compact('vehiculo','marca','tipo'));
+
+      $vehiculo=DB::select('SELECT v.id,v.color,v.anio,v.nPlaca,v.nInventario,v.kilometraje,v.kilometrajeM,
+      v.nombre_img,v.ObservacionVeh,v.estadoVeh,v.semaforo, t.tipoVM,mo.nomModelo,ma.nomMarca
+      from vehiculos v, tipo_vmqs t,modelos mo, marcas ma
+      where v.idTipo=t.id and v.idModelo=mo.id and mo.idMarca=ma.id');
+
+      return View('vehiculo.index',compact('vehiculo'));
     }
 
     /**
@@ -34,9 +38,9 @@ class VehiculoController extends Controller
      */
     public function create()
     {
-        $tipo=TipoVmq::All();
+        $tipo=TipoVmq::where('tipoVM2','Vehiculo')->get();
         $modelo=Modelo::All();
-        $marca=Marca::All();
+        $marca=Marca::where('tipoMar','Vehiculo')->get();
         return view('vehiculo.frmVehiculo',compact('tipo','modelo','marca'));
     }
 
@@ -67,6 +71,7 @@ class VehiculoController extends Controller
         'kilometraje'=>$request['kilometraje'],
         'kilometrajeM'=>$request['kilometrajeM'],
         'nombre_img'=>$file->getClientOriginalName(),
+        'observacionVeh'=>$request['observacionVeh'],
       ]);
       return redirect('/vehiculo')->with('message','create');
     }

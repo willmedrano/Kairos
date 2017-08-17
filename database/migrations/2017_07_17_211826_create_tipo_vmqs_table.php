@@ -16,6 +16,7 @@ class CreateTipoVmqsTable extends Migration
         Schema::create('tipo_vmqs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('TipoVM');
+            $table->string('TipoVM2');
             $table->timestamps();
         });
     }

@@ -199,9 +199,20 @@
                                         </li>
                                         <li>
                                             <a href="/Kairos/public/asignarMotVeh/create">
-                                               Ver asignaciones 
+                                               Ver asignaciones Vehiculo
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/Kairos/public/asignarMotMaq">
+                                                Asignar Motorista-Maquinaria
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Kairos/public/asignarMotMaq/create">
+                                               Ver asignaciones Maquinaria
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </li><!-- Aqui finaliza el menu de Escuelas i -->
                                 <li><!-- Aqui inicia el menu de los Escuelas i con sus respectivas opciones -->

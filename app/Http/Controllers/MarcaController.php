@@ -3,6 +3,7 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\MarcaRequest;
 use Kairos\Marca;
 use Kairos\Modelo;
 use Redirect;
@@ -37,7 +38,7 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MarcaRequest $request)
     {
       Marca::create([
       'nomMarca'=>$request['nomMarca'],

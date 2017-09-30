@@ -4,11 +4,11 @@
             <div class="modal-header ">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <span class="col-md-2  text-center" style="color: white;" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></span>
-                <h4 class="modal-title" id="gridModalLabel">Modificar Motorista/Operario</h4>
+                <h4 class="modal-title" id="gridModalLabel">Modificar Mecánico</h4>
             </div>
             <div class="modal-body ">
                 <div class="container-fluid bd-example-row">
-                    {!! Form::model($motorista,['route'=>['motorista.update',$m->id],'method'=>'PUT','enctype'=>'multipart/form-data']) !!}
+                    {!! Form::model($mecanico,['route'=>['mecanicoI.update',$m->id],'method'=>'PUT']) !!}
                         <fieldset>
                           <input type="hidden" name="hi2" value="1">
                           <br>
@@ -18,16 +18,16 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('nombresMot',$m->nombresMot,['id'=>'nombresMot','class'=>'form-control ', 'placeholder'=>'Ingrese los nombres...','required'])!!}
+                                {!!Form::text('nombresMec',$m->nombresMec,['id'=>'nombresMec','class'=>'form-control ', 'placeholder'=>'Ingrese los nombres...','required'])!!}
                               </div>
                               <div class="col-md-6">
-                                {!!Form::text('apellidosMot',$m->apellidosMot,['id'=>'apellidosMot','class'=>'form-control', 'placeholder'=>'Ingrese los apellidos...','required'])!!}
+                                {!!Form::text('apellidosMec',$m->apellidosMec,['id'=>'apellidosMec','class'=>'form-control', 'placeholder'=>'Ingrese los apellidos...','required'])!!}
                               </div>
                               </div>
                             <br><br><br>
                             <div class="form-group">
                               <label class="control-label col-md-6">Sexo </label>
-                              <label class="control-label col-md-6">Tipo </label>
+                              <label class="control-label col-md-6">Teléfono </label>
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
@@ -41,38 +41,18 @@
                                       <option selected value="Femenino" >Femenino</option>
                                   @endif
                                 </select>
-                              </div>
-                                <div class="col-md-6">
-                                  <select name="tipoMot" id="" class="validate[required] form-control">
-                                    @if($m->tipoMot=="Operario")
-                                    <option selected value="Operario">Operario</option>
-                                    <option value="Motorista">Motorista</option>
-                                  @endif
-                                  @if($m->tipoMot=="Motorista")
-                                    <option selected value="Motorista">Motorista</option>
-                                    <option value="Operario">Operario</option>
-                                    @endif
-                                  </select>
-                                </div>
+                              </div>                                  
+                                  <div class="col-md-6">
+                                    {!!Form::text('telefonoMot',$m->telefonoMec,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                  </div>
                             </div>
                             <br><br><br>
                             <div class="form-group">
-                              <label class="control-label col-md-6">Teléfono </label>
-                              <label class="control-label col-md-6">DUI </label>
+                              <label class="control-label col-md-12">DUI </label>
                             </div>
                             <div class="form-group">
-                              <div class="col-md-6">
-                                {!!Form::text('telefonoMot',$m->telefonoMot,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'','required'])!!}
-                              </div>
                               <div class="col-md-6">
                                 {!!Form::text('DUI',$m->DUI,['onKeyPress'=>'return validarDUI(event)','id'=>'DUI','class'=>'form-control', 'placeholder'=>'Documento Unico de Identidad...','required'])!!}
-                              </div>
-                            </div>
-                            <br><br><br>
-                            <div class="form-group">
-                              <label class="control-label col-md-12">Licencia </label>
-                              <div class="col-md-6">
-                                {!!Form::text('licencia',$m->licencia,['onKeyPress'=>'return validarLicencia(event)','id'=>'licencia','class'=>'form-control', 'placeholder'=>'numero de licencia de conducir...','required'])!!}
                               </div>
                             </div>
                             <br><br><br>
@@ -95,10 +75,10 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-          		                    {!!Form::textarea('direccionMot',$m->direccionMot,['class'=>'form-control', 'placeholder'=>'Domicilio del Empleado...', 'rows'=>'2', 'cols'=>'5','required'])!!}
+          		                    {!!Form::textarea('direccionMec',$m->direccionMec,['class'=>'form-control', 'placeholder'=>'Domicilio del Empleado...', 'rows'=>'2', 'cols'=>'5','required'])!!}
                               </div>
                               <div class="col-md-6">
-          		                    {!!Form::textarea('observacionMot',$m->observacionMot,['class'=>'form-control', 'placeholder'=>'Observaciones...', 'rows'=>'3', 'cols'=>'4','required'])!!}
+          		                    {!!Form::textarea('observacionMec',$m->observacionMec,['class'=>'form-control', 'placeholder'=>'Observaciones...', 'rows'=>'3', 'cols'=>'4','required'])!!}
                               </div>
                             </div>
                         </fieldset>

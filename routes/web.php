@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('/auth/login');
 });
+Route::match(['get','post'],'/logout','HomeController@logout');
+// Route::match(['get','post'],'/login.store','HomeController@login');
 
 Route::resource('coloniaCanton', 'ColoniaCantonController');
 Route::resource('barrioCaserio', 'BarrioCaserioController');
@@ -33,6 +35,13 @@ Route::resource('asignarMotVeh','AsignarMotVehController');
 Route::resource('asignarMotMaq','AsignarMotMaqController');
 Route::resource('salidaEntrada','SaEnVehiculoController');
 Route::match(['get','post'],'/vehiculo2/create/{idMarca}','VehiculoController@modelo2');
-Auth::routes();
+Route::resource('tallerE','TallerExternoController');
+Route::resource('mecanicoI','MecanicoInternoController');
+Route::resource('articulos','ArticuloController');
+Route::resource('mantenimientoPre','MantenimientoPreController');
+Route::match(['get','post'],'mantenimientoPre/edit/{id}','MantenimientoPreController@create');
+Route::resource('mantenimientoPreMaq','MantenimientoPreMaqController');
+Route::match(['get','post'],'mantenimientoPreMaq/edit/{id}','MantenimientoPreMaqController@create');
 
+Auth::routes();
 Route::get('/home', 'HomeController@index');

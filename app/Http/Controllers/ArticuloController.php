@@ -3,13 +3,11 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Kairos\Http\Requests\ModeloRequest;
-use Kairos\Modelo;
-use Kairos\Marca;
+use Kairos\Articulo;
 use Redirect;
 use Session;
 
-class ModeloController extends Controller
+class ArticuloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +16,8 @@ class ModeloController extends Controller
      */
     public function index()
     {
-
+      $articulos=\Kairos\Articulo::All();
+      return view('articulos.index',compact('articulos'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ModeloController extends Controller
      */
     public function create()
     {
-        //
+        return view('articulos.frmArticulo');
     }
 
     /**
@@ -37,14 +36,14 @@ class ModeloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ModeloRequest $request)
+    public function store(Request $request)
     {
-      Modelo::create([
-      'nomModelo'=>$request['nomModelo'],
-      'idMarca'=>$request['id'],
+      Articulo::create([
+      'articulo'=>$request['articulo'],
+      'cantidad'=>$request['cantidad'],
+      'descripcion'=>$request['descripcion'],
     ]);
-    return redirect('/marca')->with('create','• Modelo ingresado correctamente');
-
+    return redirect('/articulos')->with('create','• Articulo ingresado correctamente');
     }
 
     /**
@@ -78,16 +77,13 @@ class ModeloController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $modelo= Modelo::find($id);
-      $modelo->nomModelo=$request['nomModelo'];
-      Session::flash('update','• Registro Actualizado');
-      $modelo->save();
-
-      $aux = Modelo::where('id','=', $id)->first(); //obtener datos del modelo modificado
-      $marca =Marca::find($aux->idMarca);//obtener marca del modelo modificado
-      $modelo=Modelo::where('idMarca',$aux->idMarca)->get();//obtener todos los modelos de una marca
-
-      return view('modelo.index',compact('modelo','marca'));
+      $a= Articulo::find($id);
+      $a->articulo=$request['articulo'];
+      $a->cantidad=$request['cantidad'];
+      $a->descripcion=$request['descripcion'];
+      Session::flash('update','• Articulo editado correctamente');
+      $a->save();
+      return Redirect::to('/articulos');
     }
 
     /**

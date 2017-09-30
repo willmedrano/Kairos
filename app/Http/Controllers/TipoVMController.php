@@ -3,6 +3,7 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\TipoVMRequest;
 use Kairos\TipoVmq;
 use Redirect;
 use Session;
@@ -36,7 +37,7 @@ class TipoVMController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoVMRequest $request)
     {
       TipoVmq::create([
       'TipoVM'=>$request['TipoVM'],

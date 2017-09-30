@@ -3,13 +3,11 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Kairos\Http\Requests\ModeloRequest;
-use Kairos\Modelo;
-use Kairos\Marca;
+use Kairos\TallerE;
 use Redirect;
 use Session;
 
-class ModeloController extends Controller
+class TallerExternoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +16,8 @@ class ModeloController extends Controller
      */
     public function index()
     {
-
+      $taller=\Kairos\TallerE::All();
+      return view('tallerExterno.index',compact('taller'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ModeloController extends Controller
      */
     public function create()
     {
-        //
+        return view('tallerExterno.frmTallerExterno ');
     }
 
     /**
@@ -37,14 +36,15 @@ class ModeloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ModeloRequest $request)
+    public function store(Request $request)
     {
-      Modelo::create([
-      'nomModelo'=>$request['nomModelo'],
-      'idMarca'=>$request['id'],
+      TallerE::create([
+      'nomTallerE'=>$request['nomTallerE'],
+      'responsable'=>$request['responsable'],
+      'direccionTE'=>$request['direccionTE'],
+      'telefonoTE'=>$request['telefonoTE'],
     ]);
-    return redirect('/marca')->with('create','• Modelo ingresado correctamente');
-
+    return redirect('/tallerE')->with('create','• Taller ingresado correctamente');
     }
 
     /**
@@ -78,16 +78,26 @@ class ModeloController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $modelo= Modelo::find($id);
-      $modelo->nomModelo=$request['nomModelo'];
-      Session::flash('update','• Registro Actualizado');
-      $modelo->save();
+      $aux=$request['hi2'];
+      $t= TallerE::find($id);
+      if($aux=='1')
+        {
+          $t->nomTallerE=$request['nomTallerE'];
+          $t->responsable=$request['responsable'];
+          $t->direccionTE=$request['direccionTE'];
+          $t->telefonoTE=$request['telefonoTE'];
+          Session::flash('update','• Sea actualizado con éxito el registro');
 
-      $aux = Modelo::where('id','=', $id)->first(); //obtener datos del modelo modificado
-      $marca =Marca::find($aux->idMarca);//obtener marca del modelo modificado
-      $modelo=Modelo::where('idMarca',$aux->idMarca)->get();//obtener todos los modelos de una marca
-
-      return view('modelo.index',compact('modelo','marca'));
+        }
+        else if ($aux=='2') {
+          $t->estadoTE=true;
+          Session::flash('mensaje','• Taller Activado correctamente');
+        }else{
+          $t->estadoTE =false;
+          Session::flash('mensaje','• Taller Desactivado correctamente');
+      }
+        $t->save();
+        return Redirect::to('/tallerE');
     }
 
     /**

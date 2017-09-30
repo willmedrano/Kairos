@@ -8,10 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>KAIROS</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="/Kairos/public/css/app.css" rel="stylesheet">
+    <link href="/Kairos/public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -19,35 +20,59 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Login Kairos</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="css/vendor.css">
+        <!-- Theme initialization -->
+        <script>
+            var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
+            {};
+            var themeName = themeSettings.themeName || '';
+            if (themeName)
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="css/app-' + themeName + '.css">');
+            }
+            else
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="css/app.css">');
+            }
+        </script>
+    </head>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="navbar-header">
+                <header>
+                  <div align="right" class="col-xs-4">
+                      <img src="/Kairos/public/img/ues.png" class="" alt="User Image" width="150px" height="150px">
+                    </div>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <h1 class="auth-title">
+                      <div class="logo">
+                      	<span class="l l1"></span>
+                      	<span class="l l2"></span>
+                      	<span class="l l3"></span>
+                      	<span class="l l4"></span>
+                      	<span class="l l5"></span>
+                      </div>KAIROS
+                    </h1>
+                    <h3>Alcaldia Municipal de Ilobasco</h3>
+                  </header>
+                {{-- <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    {{-- <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
@@ -73,15 +98,14 @@
                                 </ul>
                             </li>
                         @endif
-                    </ul>
-                </div>
+                    </ul> --}}
+                {{-- </div> --}}
             </div>
         </nav>
-
         @yield('content')
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="/Kairos/public/js/app.js"></script>
 </body>
 </html>

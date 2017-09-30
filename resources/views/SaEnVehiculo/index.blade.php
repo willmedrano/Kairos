@@ -66,12 +66,19 @@
                             <thead align="center">
                               <tr align="center">                    
                                <th >N°</th>
-                               <th >LUGAR</th>
-                               <th >ACTIVIDAD</th>
-                               <th >DESCRIPCIÓN</th>
-                               <th >FECHA INICIO</th>
-                               <th >FECHA FINAL</th>
-                               <th >IMAGEN</th>
+                               <th >CONDUCTOR</th>
+                               <th >FECHA</th>
+                               <th ># PLACA</th>
+                               <th>ACTIVIDAD</th>
+                               <th>DESTINO</th>
+                               <th >HORA SALIDA</th>
+                               <th >KM SALIDA</th>
+                               <th >HORA ENTRADA</th>
+                               <th >KM ENTRADA</th>
+                               <th>OBSERVACIONES SALIDA</th>
+                               <th>OBSERVACIONES ENTRADA</th>
+
+                               <th>COMBUSTIBLE</th>
                                <th colspan="2"> <div align="center">ACCIÓN</div></th>
                                
                               </tr>
@@ -79,30 +86,52 @@
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
                               @include('saEnVehiculo.imagen')
+                             @include('saEnVehiculo.terminar')  
+                             @include('saEnVehiculo.vale')
+                               
                              
                               <tr>   
                                 <td>{{$c->id}}</td>
-                                <td>{{$c->idVale}}</td>
                                 <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
                                 
-                                <td>{{$c->observacionS}}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
+                                <td>{{ $c->nPlaca }}</td>
+                                <td>{{ $c->act }}</td>
+                                <td>{{ $c->nombre }}</td>
+
+                                <td>{{ $c->horaSalida }}</td>
+                                <td>{{ $c->kilometrajeS }}</td>
+                                <td>{{$c->horaEntrada}}</td>
+                                <td>{{$c->kilometrajeE}}</td>
                                 
                                 
+                                <td>{{$c->observacionS}}</td>
+                                <td>{{$c->observacionE}}</td>
+
+                                 @if($c->estadoVale==false)
+                                    
+                                    <td>
+                                          <button type="submit"  class="btn btn-info btn-sm" data-toggle="modal" data-target="#gridSystemModal8{{$c->idVale}}">Vale</button>
+                                    </td>
+                                @endif
+
+                                @if($c->estadoVale==true)
+                                      
+                                      <td>{{$c->galones}} Galones</td>
                                 
-                                <td>En Proceso</td>
-                                 
+                                @endif
                                 
                                 
-                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>
+                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">Vehículo</button> </td>
+                                
                                 
                                 @if($c->estado==false)
                                     
                                     <td>
-                                          <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$c->id}}">Terminar</button>
+                                          <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$c->id}}">Entrada</button>
                                     </td>
                                 @endif
 

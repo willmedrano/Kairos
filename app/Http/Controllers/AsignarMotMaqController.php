@@ -62,9 +62,7 @@ class AsignarMotMaqController extends Controller
         'unidad'=>$request['unidad'],
         'observacionAsiM'=>$request['observacionAsiM'],
       ]);
-      $m= Maquinaria::find($request['idMaquinaria']);
-      $m->semaforo =3;
-      $m->save();
+      
       return redirect('/asignarMotMaq');
     }
 

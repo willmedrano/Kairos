@@ -14,8 +14,8 @@
 </style>
 <article class="content forms-page">
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" > BARRIO/CANTÓN</i></span>
-       <p class="title-description"> Registro de BARRIO/CANTÓN </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > ENTRADAS Y SALIDAS</i></span>
+       <p class="title-description"> Registro de  salidas </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -23,7 +23,7 @@
             <div class=\ >
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h1 class="panel-title">Formulario de BARRIO/CANTÓN</h1>
+                  <h1 class="panel-title">Formulario de salidas de Vehiculo</h1>
                 </div>
                 <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
@@ -112,7 +112,7 @@
   </article>
 @stop
  @section('scripts')
-      {!!Html::script('js/hola.js')!!}
+      
     @endsection
     <?php 
 $time=time();

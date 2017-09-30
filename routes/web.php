@@ -42,6 +42,8 @@ Route::resource('mantenimientoPre','MantenimientoPreController');
 Route::match(['get','post'],'mantenimientoPre/edit/{id}','MantenimientoPreController@create');
 Route::resource('mantenimientoPreMaq','MantenimientoPreMaqController');
 Route::match(['get','post'],'mantenimientoPreMaq/edit/{id}','MantenimientoPreMaqController@create');
-
+Route::match(['get','post'],'/llenado/{buscar}','ValesCombustibleController@llenado');
+Route::resource('detalleActividad','DetalleActividadController');
+Route::resource('vale','ValesCombustibleController');
 Auth::routes();
 Route::get('/home', 'HomeController@index');

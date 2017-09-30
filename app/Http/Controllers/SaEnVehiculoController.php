@@ -73,7 +73,7 @@ class SaEnVehiculoController extends Controller
             'tanqueS'=>1,
             'horaSalida'=>$request['horaS'],
             'observacionS'=>$request['observacionesS'],
-            'observacionE'=>$request['observacionesS'],
+            'observacionE'=>"",
             
             
         
@@ -122,34 +122,27 @@ class SaEnVehiculoController extends Controller
     {
         //
         
-        $cc = Actividad::find($id);
+        $cc = SaEnVehiculo::find($id);
         $aux=$request['bandera'];
-        if($aux=='2')
-        {
-            $file = Input::file('nombre_img');
-            //Creamos una instancia de la libreria instalada
-            $image = \Image::make(\Input::file('nombre_img'));
-            //Ruta donde queremos guardar las imagenes
-            $path = public_path().'/imagenesActividades/';
-            // Guardar Original
-            $image->save($path.$file->getClientOriginalName());
-            $cc->act=$request['act'];
-            $cc->desc=$request['desc'];
-            $cc->fechaInicial=$request['fechaInicial'];
-            $cc->fechaFinal=$request['fechaInicial'];
-            $cc->nombre_img=$file->getClientOriginalName(); 
-        }
+        
+        $var=AsignarMotVeh::find($cc->idAsignacion);
+        $v=Vehiculo::find($var->idVehiculo);
+        
+        $v->semaforo=1;
+        $v->save();
         if ($aux=='1') {
-            date_default_timezone_set("America/El_Salvador");
-            $date = Carbon::now();
-            $cc->fechaFinal=$date;
+            
+            $cc->horaEntrada=$request['horaS'];
+            $cc->kilometrajeE=$request['kilometrajeS'];
+            $cc->observacionE=$request['observacionE'];
             $cc->estado=true;
             
         }
+       
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect::to('/actividad')->with('message','update');
+        return redirect::to('/salidaEntrada')->with('message','update');
        
     }
      

@@ -71,8 +71,8 @@
                                <th >DESCRIPCIÓN</th>
                                <th >FECHA INICIO</th>
                                <th >FECHA FINAL</th>
-                               <th >IMAGEN</th>
-                               <th colspan="2"> <div align="center">ACCIÓN</div></th>
+                               
+                               <th colspan="4"> <div align="center">ACCIÓN</div></th>
                                
                               </tr>
                             </thead>
@@ -81,6 +81,7 @@
                               @include('Actividad.imagen')
                               @include('Actividad.terminar')
                               @include('Actividad.edit')
+                              
                               <tr>   
                                 <td>{{$c->id}}</td>
                                 <td>{{$c->nombre}}</td>
@@ -108,6 +109,12 @@
                                 </td>
                                 <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>
                                 
+                                <td>
+                                {!!Form::open(['route'=>['actividad.show',$c->id],'method'=>'GET'])!!}
+                                          <input type="submit" name="" value="Progreso"   class="btn btn-primary btn-sm active " >
+                                                        {!!Form::close()!!}
+                                                        </td>
+
                                 @if($c->estado==false)
                                     
                                     <td>
@@ -119,7 +126,8 @@
                                       
                                       <td>Completada</td>
                                 
-                                @endif                                    
+                                @endif 
+                                                                  
                               </tr>
                               @endforeach
                             </tbody>

@@ -19,7 +19,7 @@
      border:1;
 
 }
-
+{!!Html::style('css/app-red.css')!!}
 
 </style>
 <article class="content forms-page">

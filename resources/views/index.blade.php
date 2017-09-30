@@ -13,6 +13,9 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     {!!Html::style('css/vendor.css')!!}
     {!!Html::style('css/app-seagreen.css')!!}
+    {!!Html::style('css/lightbox.css')!!}
+
+
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -454,6 +457,8 @@
                 </div>
             {!!Html::script('js/vendor.js')!!}
             {!!Html::script('js/app.js')!!}
+              {!!Html::script('js/lightbox.js')!!}
+        {!!Html::script('js/hola.js')!!}
             @section('scripts')
           <!-- Theme initialization -->
           <script>

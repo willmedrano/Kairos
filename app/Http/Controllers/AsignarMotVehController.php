@@ -60,9 +60,7 @@ class AsignarMotVehController extends Controller
           'unidad'=>$request['unidad'],
           'observacionAsiV'=>$request['observacionAsiV'],
         ]);
-        $v= Vehiculo::find($request['idVehiculo']);
-        $v->semaforo =3;
-        $v->save();
+        
         return redirect('/asignarMotVeh');
       }
 

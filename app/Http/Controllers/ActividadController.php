@@ -10,6 +10,7 @@ use Input;
 use Kairos\BarrioCanton;
 use Kairos\ColoniaCaserio;
 use Kairos\Actividad;
+use Kairos\DetalleActividad;
 use Carbon\Carbon;
 class ActividadController extends Controller
 {
@@ -82,6 +83,10 @@ class ActividadController extends Controller
     public function show($id)
     {
         //
+        $tipo =Actividad::find($id);
+        $detalles=DetalleActividad::where('idActividad',$id)->get();
+        return view('Actividad.detalle',compact('id','detalles'));
+       
        
        
     }

@@ -9,5 +9,5 @@ class ValesCombustible extends Model
     //
     
     protected $table="vales_combustibles";
-  protected $fillable = ['nVale', 'tipo','galones','precioU'];
+  protected $fillable = ['nVale', 'tipo','galones','PrecioU'];
 }

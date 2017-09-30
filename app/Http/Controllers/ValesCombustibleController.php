@@ -7,8 +7,8 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\BarrioCanton;
-use Kairos\ColoniaCaserio;
-use Kairos\Actividad;
+use Kairos\SaEnVehiculo;
+use Kairos\ValesCombustible;
 use Carbon\Carbon;
 
 class ValesCombustibleController extends Controller
@@ -16,11 +16,8 @@ class ValesCombustibleController extends Controller
     //
      public function index()
     {
-        //
-        $cc=Actividad::ActCol();
-      return view('actividad.index',compact('cc'));
        
-        
+         return View('Vales.ejemplo');
     }
 
     /**
@@ -31,8 +28,7 @@ class ValesCombustibleController extends Controller
     public function create()
     {
         //
-        $cc=BarrioCanton::All();
-       return view('Actividad.create',compact('cc'));
+      
 
     }
 
@@ -46,24 +42,6 @@ class ValesCombustibleController extends Controller
     {
         //
 
-        $file = Input::file('nombre_img');
-       //Creamos una instancia de la libreria instalada
-       $image = \Image::make(\Input::file('nombre_img'));
-       //Ruta donde queremos guardar las imagenes
-       $path = public_path().'/imagenesActividades/';
-       // Guardar Original
-       $image->save($path.$file->getClientOriginalName());
-        Actividad::create([
-            'act'=>$request['nombre'],
-            'idCC'=>$request['idCC'],
-            'desc'=>$request['desc'],
-            'fechaInicial'=>$request['fechaInicial'],
-            'fechaFinal'=>$request['fechaInicial'],
-            'nombre_img'=>$file->getClientOriginalName(),
-        
-        ]);
-        return redirect('/actividad')->with('message','create');
-       
     }
 
     /**
@@ -101,35 +79,25 @@ class ValesCombustibleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $saen=SaEnVehiculo::where('idVale',$id)->get();
+        foreach ($saen as $key) {
+
+            # code...
+            $ids=$key->idVale;
+        }
+
+        $cc = ValesCombustible::find($ids);
         
-        $cc = Actividad::find($id);
-        $aux=$request['bandera'];
-        if($aux=='2')
-        {
-            $file = Input::file('nombre_img');
-            //Creamos una instancia de la libreria instalada
-            $image = \Image::make(\Input::file('nombre_img'));
-            //Ruta donde queremos guardar las imagenes
-            $path = public_path().'/imagenesActividades/';
-            // Guardar Original
-            $image->save($path.$file->getClientOriginalName());
-            $cc->act=$request['act'];
-            $cc->desc=$request['desc'];
-            $cc->fechaInicial=$request['fechaInicial'];
-            $cc->fechaFinal=$request['fechaInicial'];
-            $cc->nombre_img=$file->getClientOriginalName(); 
-        }
-        if ($aux=='1') {
-            date_default_timezone_set("America/El_Salvador");
-            $date = Carbon::now();
-            $cc->fechaFinal=$date;
-            $cc->estado=true;
-            
-        }
-        $cc->save();
+       
+            $cc->nVale=$request['nVale'];
+            $cc->tipo=$request['tipo'];
+            $cc->galones=$request['galones'];
+            $cc->PrecioU=$request['PrecioU'];
+            $cc->estadoVale=true;    
+            $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect::to('/actividad')->with('message','update');
+        return redirect::to('/salidaEntrada')->with('message','update');
        
     }
      
@@ -144,4 +112,11 @@ class ValesCombustibleController extends Controller
     {
         //
     }
+
+    public function llenado($buscar){
+    $empleado=Motorista::where('nombresMot',$buscar)->get();
+    
+    
+    return response()->json($empleado->toArray());
+  }
 }

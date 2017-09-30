@@ -12,7 +12,7 @@
                         <fieldset>
                             <input type="hidden" name="hi2" value="4">
                             <label class="control-label col-md-6">Foto Actual </label>
-                            <img src="/Kairos/public/imagenesMotoristas/{{$m->nombre_img }}" class="" alt="User Image" width="525px" height="250px">
+                            <img src="/Kairos/public/imagenesMotoristas/{{$m->nombre_img }}" class="" alt="User Image" >
                             <br><br><br>
                             <div class="form-group">
                               <div class="col-md-6">

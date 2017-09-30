@@ -82,9 +82,10 @@
                                            <p class="title"> {{$v->nomModelo}} </p>
                                          </div>
                                      </div>
-                                     <div class="card-block">
-                                       <img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
-                                    </div>
+                                         <div class="card-block"><a href="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" data-lightbox="galeria" data-title="{{$v->nPlaca}}" ><img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" alt="{{$v->nPlaca }}" width="250px" height="150px"></a>
+                                         </div>
+
+                                       
                                      <div class="card-footer">
                                        <td><button type="submit"  class="btn btn-primary btn-sm fa fa-eye" data-toggle="modal" data-target="#ModalVehiculo{{$v->id}}"></button> </td>
                                        <td><button type="submit"  class="btn btn-primary btn-sm fa fa-edit" data-toggle="modal" data-target="#Edit{{$v->id}}"></button> </td>

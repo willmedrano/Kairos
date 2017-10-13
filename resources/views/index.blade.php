@@ -294,11 +294,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="/cuotas/">
-                                    Asignar ubicación
-                                </a>
-                              </li>
-                              <li>
                                 <a href="/Kairos/public/actividad">
                                     Ver  Actividades
                                 </a>

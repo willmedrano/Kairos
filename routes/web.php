@@ -11,8 +11,20 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('/auth/login');
+	$users=DB::select('select * from users');
+        $cuenta=0;
+        foreach ($users as $us) {
+          $cuenta=$cuenta+1;
+        }
+        if($cuenta==0){
+            return view('/auth/register');
+
+        }else{
+            return view('/auth/login');
+        }
+    
 });
 Route::match(['get','post'],'/logout','HomeController@logout');
 // Route::match(['get','post'],'/login.store','HomeController@login');

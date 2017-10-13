@@ -8,29 +8,21 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\BarrioCanton;
-use Kairos\AsignarMotVeh;
+use Kairos\AsignarMotMaq;
 use Kairos\Actividad;
-use Kairos\SaEnVehiculo;
-use Kairos\Vehiculo;
+use Kairos\SaEnMaquinaria;
+use Kairos\Maquinaria;
 use Kairos\ValesCombustible;
 
 use Carbon\Carbon;
-class SaEnVehiculoController extends Controller
+class SaEnMaquinariaController extends Controller
 {
     //
-    //
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
- 
-   
-    public function index()
+      public function index()
     {
         //
-        $cc=SaEnVehiculo::disponibles();
-      return view('SaEnVehiculo.index',compact('cc'));
+        $cc=SaEnMaquinaria::disponibles();
+      return view('SaEnMaquinaria.index',compact('cc'));
        
         
     }
@@ -42,9 +34,9 @@ class SaEnVehiculoController extends Controller
      */
     public function create()
     {
-      $asignado=\Kairos\AsignarMotVeh::disponibles();
+      $asignado=\Kairos\AsignarMotMaq::disponibles();
       $actividad= Actividad::Act();
-       return view('SaEnVehiculo.frmSaEnVehiculo',compact('asignado','actividad'));
+       return view('SaEnMaquinaria.frmSaEnVehiculo',compact('asignado','actividad'));
 
     }
 
@@ -64,13 +56,14 @@ class SaEnVehiculoController extends Controller
         foreach ($gAux as $valor2) {
             $ids=$valor2->id;
         }
-        SaEnVehiculo::create([
+        SaEnMaquinaria::create([
             'idAsignacion'=>$request['selectMarca'],
             'idVale'=>$ids,
             'idActividad'=>$request['idActividad'],
             'fecha'=>$request['fecha'],
-            'kilometrajeS'=>$request['kilometrajeS'],
+            'horasM'=>0,
             'tanqueS'=>1,
+            'tipoSalida'=>$request['tipoSalida'],
             'horaSalida'=>$request['horaS'],
             'observacionS'=>$request['observacionesS'],
             'observacionE'=>"",
@@ -78,11 +71,11 @@ class SaEnVehiculoController extends Controller
             
         
         ]);
-        $var=AsignarMotVeh::find($request['selectMarca']);
-        $v=Vehiculo::find($var->idVehiculo);
+        $var=AsignarMotMaq::find($request['selectMarca']);
+        $v=Maquinaria::find($var->idMaquinaria);
         $v->semaforo=3;
         $v->save();
-        return redirect('/salidaEntrada')->with('message','create');
+        return redirect('/salidaEntrada2')->with('message','create');
        
     }
 
@@ -122,18 +115,19 @@ class SaEnVehiculoController extends Controller
     {
         //
         
-        $cc = SaEnVehiculo::find($id);
+        $cc = SaEnMaquinaria::find($id);
         $aux=$request['bandera'];
         
-        $var=AsignarMotVeh::find($cc->idAsignacion);
-        $v=Vehiculo::find($var->idVehiculo);
+        $var=AsignarMotMaq::find($cc->idAsignacion);
+        $v=Maquinaria::find($var->idMaquinaria);
         
         $v->semaforo=1;
+        $v->horaAux=$v->horaAux+$request['kilometrajeS'];
         $v->save();
         if ($aux=='1') {
             
             $cc->horaEntrada=$request['horaS'];
-            $cc->kilometrajeE=$request['kilometrajeS'];
+            $cc->horasM=$request['kilometrajeS'];
             $cc->observacionE=$request['observacionesE'];
             $cc->estado=true;
             
@@ -142,7 +136,7 @@ class SaEnVehiculoController extends Controller
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect::to('/salidaEntrada')->with('message','update');
+        return redirect::to('/salidaEntrada2')->with('message','update');
        
     }
      
@@ -158,8 +152,8 @@ class SaEnVehiculoController extends Controller
         //
     }
    public function modelo($marca){
-     $var=AsignarMotVeh::find($marca);
-        $modeloArray=Vehiculo::where('id', '=', $var->idVehiculo)->get();
+     $var=AsignarMotMaq::find($marca);
+        $modeloArray=Maquinaria::where('id', '=', $var->idMaquinaria)->get();
         return Response::json($modeloArray);
     }
 }

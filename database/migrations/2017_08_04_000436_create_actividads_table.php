@@ -22,6 +22,7 @@ class CreateActividadsTable extends Migration
             $table->string('desc');
             $table->date('fechaFinal');
             $table->date('fechaInicial'); 
+             $table->string('tipoActividad')->default('prueba');
             $table->boolean('estado')->default(false);
             $table->timestamps();
         });

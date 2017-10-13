@@ -19,6 +19,7 @@ class CreateValesCombustiblesTable extends Migration
             $table->string('tipo')->default("Diesel");
             $table->Double('galones')->default(0.0);
             $table->Double('PrecioU')->default(0.0);
+            $table->Double('total')->default(0.0);
             $table->boolean('estadoVale')->default(false);
             $table->timestamps();
         });

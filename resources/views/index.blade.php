@@ -312,25 +312,18 @@
                               <i class="fa arrow"></i>
                             </a>
                            <ul>
+                              
                               <li>
-                                  <a href="/prove/create">
-                                  </a>
-                              </li>
-                              <li>
-                                <a href="/prove/">
-                                    Asignar vale a Vehículo
+                                <a href="/Kairos/public/vale">
+                                    Vales por vehículo
                                 </a>
                               </li>
                               <li>
-                                <a href="/prove/">
-                                    Asignar vale a Maquinaria
+                                <a href="/Kairos/public/vale/create">
+                                    Vales por Maquinaria 
                                 </a>
                               </li>
-                              <li>
-                                <a href="/prove/">
-                                    Ver Vales
-                                </a>
-                              </li>
+                              
                             </ul>
                           </li><!-- Aqui finaliza el menu de vales i -->
                           <li><!-- Aqui inicia el menu de entradas y salidasi con sus respectivas opciones -->
@@ -340,21 +333,68 @@
                               <i class="fa arrow"></i>
                             </a>
                             <ul>
-                              <li>
-                                <a href="/Kairos/public/salidaEntrada/create">
-                                    Registrar salida
+                                <li>
+                                <a href="">
+                                  <i class="fa fa-th-large"></i>
+                                    Vehículo
+                                  <i class="fa arrow"></i>
                                 </a>
-                              </li>
-                              <li>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/salidaEntrada/create">
+                                    Salida de vehiculo
+                                  </a>
+                                  </li>
+                                  <li>
                                 <a href="/Kairos/public/salidaEntrada">
-                                    registrar salida
+                                    Entrada de Vehículo
                                 </a>
                               </li>
-                              <li>
-                                <a href="/aux5">
-                                    Asignar Actividad
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                  <i class="fa fa-th-large"></i>
+                                    Maquinaria
+                                  <i class="fa arrow"></i>
+                                </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/salidaEntrada2/create">
+                                    Salida de Maquinaria
+                                  </a>
+                                  </li>
+                                  <li>
+                                <a href="/Kairos/public/salidaEntrada2">
+                                    Entrada de Maquinaria
                                 </a>
                               </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                  <i class="fa fa-th-large"></i>
+                                    Camión
+                                  <i class="fa arrow"></i>
+                                </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/salidaEntrada3/create">
+                                    Salida de Camión
+                                  </a>
+                                  </li>
+                                  <li>
+                                <a href="/Kairos/public/salidaEntrada3">
+                                    Entrada de Camión
+                                </a>
+                              </li>
+
+                                </ul>
+                            </li>
+                              
+                              
                             </ul>
                           </li><!-- Aqui finaliza el menu de entradas y salidas -->
                           <li><!-- Aqui inicia el menu de los Reportes i con sus respectivas opciones -->
@@ -498,7 +538,9 @@
             {!!Html::script('js/app.js')!!}
               {!!Html::script('js/lightbox.js')!!}
         {!!Html::script('js/hola.js')!!}
+        {!!Html::script('js/maquinaria.js')!!}
             @section('scripts')
+
           <!-- Theme initialization -->
           <script>
             var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :

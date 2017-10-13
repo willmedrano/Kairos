@@ -17,8 +17,12 @@ class CreateBarrioCantonsTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('tipo');
+            $table->boolean('estadoB')->default(true);
             $table->timestamps();
         });
+
+        DB::table('barrio_cantons')->insert(array('nombre'=>'Salida fuera del municipio', 'tipo'=>'fuera', 'estadoB'));
+    }
     }
 
     /**

@@ -17,6 +17,18 @@ class AsignarMotMaq extends Model
             ->orderBy('asignar_mot_maqs.id')
             ->get();
    }
+    public static function disponibles(){
+       return DB::table('asignar_mot_maqs')
+       ->join('maquinarias', 'asignar_mot_maqs.idMaquinaria', '=', 'maquinarias.id')
+       ->join('motoristas', 'asignar_mot_maqs.idMotorista', '=', 'motoristas.id')
+
+            ->where('asignar_mot_maqs.estadoAsignacionMaq','=',true)
+            ->where('maquinarias.semaforo','=',1)
+            ->select('maquinarias.*','motoristas.*', 'asignar_mot_maqs.*')
+            ->orderBy('asignar_mot_maqs.id')
+            ->get();
+   }
+
    public static function asignados($id){
      $a = AsignarMotVeh::where('idVehiculo',$id);
      return $a->estadoAsignacion;

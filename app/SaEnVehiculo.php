@@ -8,7 +8,7 @@ class SaEnVehiculo extends Model
 {
     //
      protected $table="sa_en_vehiculos";
-  protected $fillable = ['idAsignacion','idVale','idActividad','fecha','kilometrajeS','tanqueS','horaSalida','observacionS','observacionE' ];
+  protected $fillable = ['idAsignacion','idVale','idActividad','fecha','kilometrajeS','tanqueS','horaSalida','observacionS','observacionE','tipo','lugarCarga' ];
 
   public static function disponibles(){
        return DB::table('sa_en_vehiculos')

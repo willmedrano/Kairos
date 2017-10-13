@@ -38,8 +38,8 @@
 
 
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE ENTRADAS Y SALIDAS</i></span>
-       <p class="title-description"> Consulta de ENTRADAS Y SALIDAS DE VEHICULO </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE SALIDA DE MAQUINARIA</i></span>
+       <p class="title-description"> Consulta de salidas </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -68,13 +68,14 @@
                                <th >N°</th>
                                <th >CONDUCTOR</th>
                                <th >FECHA</th>
-                               <th ># PLACA</th>
+                               <th ># DE INVENTARIO</th>
                                <th>ACTIVIDAD</th>
                                <th>DESTINO</th>
                                <th >HORA SALIDA</th>
-                               <th >KM SALIDA</th>
-                               <th >HORA ENTRADA</th>
-                               <th >KM ENTRADA</th>
+                                <th >HORA DE ENTRADA</th>
+                               <th >HORAS DE TRABAJO</th>
+                               
+                              
                                <th>OBSERVACIONES SALIDA</th>
                                <th>OBSERVACIONES ENTRADA</th>
 
@@ -85,9 +86,9 @@
                             </thead>
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
-                              @include('saEnVehiculo.imagen')
-                             @include('saEnVehiculo.terminar')  
-                             @include('saEnVehiculo.vale')
+                              @include('saEnMaquinaria.imagen')
+                             @include('saEnMaquinaria.terminar')  
+                             @include('saEnMaquinaria.vale')
                                
                              
                               <tr>   
@@ -98,14 +99,14 @@
                                   $date = new DateTime($c->fecha); 
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                <td>{{ $c->nPlaca }}</td>
+                                <td>{{ $c->nInventario }}</td>
                                 <td>{{ $c->act }}</td>
                                 <td>{{ $c->nombre }}</td>
 
                                 <td>{{ $c->horaSalida }}</td>
-                                <td>{{ $c->kilometrajeS }}</td>
+                                
                                 <td>{{$c->horaEntrada}}</td>
-                                <td>{{$c->kilometrajeE}}</td>
+                              <td>{{ $c->horasM }}</td>
                                 
                                 
                                 <td>{{$c->observacionS}}</td>

@@ -38,109 +38,111 @@
 
 
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE ENTRADAS Y SALIDAS</i></span>
-       <p class="title-description"> Consulta de ENTRADAS Y SALIDAS DE VEHICULO </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE PARA VEHÍCULOS MUNICIPALES</i></span>
+       <p class="title-description"> Para el vehiculo  </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
-          <div>
+          <div class="form-group" align="left">
             <div class=\ >
               <div class="panel panel-primary">
                 <fieldset>
                   
                   <div class="row table-responsive"> <!--Begin Datatables-->
+
                     <div class="card table-responsive">
+
                       <div class="card-block table-responsive">
                         <div class="card-title-block table-responsive">
+
                           <div class="card-title-block">
+                              <div>
+                                <div class="col-xl-4">
+                                 <div class="card card-primary" align="center">
+                                     <div class="card-header" >
+                                         <div class="header-block" align="center">
+                                           <p class="title"> {{"Placa: ".$v->nPlaca." ".$v->nomModelo}} </p>
+                                         </div>
+                                     </div>
+                                     <div class="card-block">
+                                       <img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
+                                    </div>
+                                     <div class="card-footer">
+                                      
+                                     
+                                      </div>
+                                 </div>
+                             </div>
+                              </div>
+                            <br><br><br><br><br><br><br><br><br>
                             <div class="form-group" align="right">
-                              <span class="col-md-1 col-md-offset-7 text-center"><i class="fa fa-search bigicon icon_nav"></i>Buscar</span>
-                              <div class="col-xs-4">
+                              <span class="col-md-1 col-md-offset-3 text-center"><i class="fa fa-search bigicon icon_nav"></i>Buscar</span>
+                              <div class="col-xs-4  ">
                                 <input id="filtrar" name="name" type="text" class="form-control">
                               </div>
                             </div> 
                           </div> 
                         </div>
+
                         <section class="example">
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead align="center">
                               <tr align="center">                    
                                <th >N°</th>
-                               <th >CONDUCTOR</th>
-                               <th >FECHA</th>
-                               <th ># PLACA</th>
+                               <th >NOMBRE DE QUIEN RECIBE</th>
+                               <th ># VALE</th>
+                               <th >CANTIDAD DE GALONES</th>
+                               <th>VALOR EN $</th>
                                <th>ACTIVIDAD</th>
-                               <th>DESTINO</th>
-                               <th >HORA SALIDA</th>
-                               <th >KM SALIDA</th>
-                               <th >HORA ENTRADA</th>
-                               <th >KM ENTRADA</th>
-                               <th>OBSERVACIONES SALIDA</th>
-                               <th>OBSERVACIONES ENTRADA</th>
-
-                               <th>COMBUSTIBLE</th>
-                               <th colspan="2"> <div align="center">ACCIÓN</div></th>
+                               <th>LUGAR DE LA MISIÓN</th>
+                               
+                               <th >FECHA</th> 
+                               
                                
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
-                              @include('saEnVehiculo.imagen')
-                             @include('saEnVehiculo.terminar')  
-                             @include('saEnVehiculo.vale')
+                              
+                           
                                
-                             
+                             @if($c->estadoVale==true)
                               <tr>   
                                 <td>{{$c->id}}</td>
                                 <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
-                                
+                                <td>{{ $c->nVale }}</td>
+                                <td>{{$c->galones}}</td>
+                                <td>{{ $c->PrecioU }}</td>
+                                <td>{{ $c->act }}</td>
+                                <td>{{ $c->nombre }}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                <td>{{ $c->nPlaca }}</td>
-                                <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
-
-                                <td>{{ $c->horaSalida }}</td>
-                                <td>{{ $c->kilometrajeS }}</td>
-                                <td>{{$c->horaEntrada}}</td>
-                                <td>{{$c->kilometrajeE}}</td>
                                 
                                 
-                                <td>{{$c->observacionS}}</td>
-                                <td>{{$c->observacionE}}</td>
+                                
 
-                                 @if($c->estadoVale==false)
-                                    
-                                    <td>
-                                          <button type="submit"  class="btn btn-info btn-sm" data-toggle="modal" data-target="#gridSystemModal8{{$c->idVale}}">Vale</button>
-                                    </td>
-                                @endif
+                                
 
-                                @if($c->estadoVale==true)
+                                 
+
+                                
+                                     
                                       
-                                      <td>{{$c->galones}} Galones</td>
-                                
-                                @endif
                                 
                                 
-                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">Vehículo</button> </td>
                                 
                                 
-                                @if($c->estado==false)
-                                    
-                                    <td>
-                                          <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$c->id}}">Entrada</button>
-                                    </td>
-                                @endif
-
-                                @if($c->estado==true)
+                                
+                                
+                                
+                               
                                       
-                                      <td>Completada</td>
-                                
-                                @endif                                    
+                                      
+                                                                    
                               </tr>
+                               @endif
                               @endforeach
                             </tbody>
                           </table>

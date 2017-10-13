@@ -8,7 +8,7 @@ class Actividad extends Model
 {
     //
     protected $table="actividads";
-  protected $fillable = ['act','idCC','nombre_img','desc','fechaFinal','fechaInicial','estado' ];
+  protected $fillable = ['act','idCC','nombre_img','desc','fechaFinal','fechaInicial','tipoActividad','estado' ];
 
   public static function ActCol(){
    		 return DB::table('actividads')

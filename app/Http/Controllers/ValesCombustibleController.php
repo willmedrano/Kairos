@@ -8,16 +8,32 @@ use DB;
 use Input;
 use Kairos\BarrioCanton;
 use Kairos\SaEnVehiculo;
+use Kairos\SaEnMaquinaria;
 use Kairos\ValesCombustible;
 use Carbon\Carbon;
-
+use Kairos\Vehiculo;
+use Kairos\Maquinaria;
 class ValesCombustibleController extends Controller
 {
     //
      public function index()
     {
+         $vehiculo=DB::select('SELECT v.id,v.nombre_img,v.estadoVeh,v.semaforo,v.nPlaca,mo.nomModelo
+        from vehiculos v,modelos mo
+        where v.idModelo=mo.id');
+
+        
        
-         return View('Vales.ejemplo');
+         
+         return View('Vales.vehiculo',compact('vehiculo'));
+
+         $vehiculo=DB::select('SELECT v.id,v.nombre_img,v.estadoVeh,v.semaforo,v.nPlaca,mo.nomModelo
+        from vehiculos v,modelos mo
+        where v.idModelo=mo.id');
+
+        
+
+        return View('asignar.indexVehiculo',compact('vehiculo'));
     }
 
     /**
@@ -27,8 +43,11 @@ class ValesCombustibleController extends Controller
      */
     public function create()
     {
-        //
+       $maquinaria=DB::select('SELECT m.id,m.nombre_img,m.estadoMaq,m.semaforo,m.nInventario,m.nEquipo,mo.nomModelo
+      from maquinarias m,modelos mo
+      where m.idModelo=mo.id');
       
+      return View('Vales.maquinaria',compact('maquinaria'));
 
     }
 
@@ -53,6 +72,14 @@ class ValesCombustibleController extends Controller
     public function show($id)
     {
         //
+       /*  $vehiculo =Vehiculo::find($id);
+        $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Motorista')->get();
+        $asignados=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();*/
+        $v =Vehiculo::find($id);
+        $cc=ValesCombustible::disponibles($id);
+        
+
+      return view('Vales.valeVehiculos',compact('cc','v'));
        
        
     }
@@ -66,7 +93,11 @@ class ValesCombustibleController extends Controller
      */
     public function edit($id)
     {
-      
+      $v =Maquinaria::find($id);
+      $cc=ValesCombustible::disponiblesM($id);
+        
+
+      return view('Vales.valeMaquinaria',compact('cc','v'));
     }
 
     /**
@@ -79,7 +110,14 @@ class ValesCombustibleController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $saen=SaEnVehiculo::where('idVale',$id)->get();
+        $bandera=$request['bandera'];
+        if($bandera==1)
+        {
+            $saen=SaEnVehiculo::where('idVale',$id)->get();
+        }
+        else{
+            $saen=SaEnMaquinaria::where('idVale',$id)->get();
+        }
         foreach ($saen as $key) {
 
             # code...
@@ -97,7 +135,14 @@ class ValesCombustibleController extends Controller
             $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect::to('/salidaEntrada')->with('message','update');
+        if($bandera==1)
+        {
+           return redirect::to('/salidaEntrada')->with('message','update');
+        }
+        else{
+            return redirect::to('/salidaEntrada2')->with('message','update');
+        }
+        
        
     }
      

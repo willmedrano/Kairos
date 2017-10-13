@@ -14,23 +14,14 @@ use Kairos\SaEnVehiculo;
 use Kairos\Vehiculo;
 use Kairos\ValesCombustible;
 
-use Carbon\Carbon;
-class SaEnVehiculoController extends Controller
+class SaEnCamionController extends Controller
 {
     //
-    //
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
- 
-   
-    public function index()
+     public function index()
     {
         //
         $cc=SaEnVehiculo::disponibles();
-      return view('SaEnVehiculo.index',compact('cc'));
+      return view('SaEnCamion.index',compact('cc'));
        
         
     }
@@ -44,7 +35,7 @@ class SaEnVehiculoController extends Controller
     {
       $asignado=\Kairos\AsignarMotVeh::disponibles();
       $actividad= Actividad::Act();
-       return view('SaEnVehiculo.frmSaEnVehiculo',compact('asignado','actividad'));
+       return view('SaEnCamion.frmSaEnVehiculo',compact('asignado','actividad'));
 
     }
 
@@ -64,7 +55,7 @@ class SaEnVehiculoController extends Controller
         foreach ($gAux as $valor2) {
             $ids=$valor2->id;
         }
-        SaEnVehiculo::create([
+        SaEnCamion::create([
             'idAsignacion'=>$request['selectMarca'],
             'idVale'=>$ids,
             'idActividad'=>$request['idActividad'],
@@ -82,7 +73,7 @@ class SaEnVehiculoController extends Controller
         $v=Vehiculo::find($var->idVehiculo);
         $v->semaforo=3;
         $v->save();
-        return redirect('/salidaEntrada')->with('message','create');
+        return redirect('/salidaEntrada3')->with('message','create');
        
     }
 
@@ -122,7 +113,7 @@ class SaEnVehiculoController extends Controller
     {
         //
         
-        $cc = SaEnVehiculo::find($id);
+        $cc = SaEnCamion::find($id);
         $aux=$request['bandera'];
         
         $var=AsignarMotVeh::find($cc->idAsignacion);
@@ -142,7 +133,7 @@ class SaEnVehiculoController extends Controller
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect::to('/salidaEntrada')->with('message','update');
+        return redirect::to('/salidaEntrada3')->with('message','update');
        
     }
      

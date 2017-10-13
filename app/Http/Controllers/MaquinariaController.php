@@ -7,6 +7,8 @@ use Input;
 use DB;
 use Response;
 use Kairos\Maquinaria;
+use Kairos\AsignarMotMaq;
+
 use Kairos\TipoVmq;
 use Kairos\Modelo;
 use Kairos\Marca;
@@ -161,6 +163,11 @@ class MaquinariaController extends Controller
     }
     public function modelo($marca){
         $modeloArray=Modelo::where('idMarca', '=', $marca)->get();
+        return Response::json($modeloArray);
+    }
+    public function modelo2($marca){
+     $var=AsignarMotMaq::find($marca);
+        $modeloArray=Maquinaria::where('id', '=', $var->idMaquinaria)->get();
         return Response::json($modeloArray);
     }
 }

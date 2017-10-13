@@ -17,8 +17,8 @@
 </style>
   <article class="content forms-page">
     <div class="title-block">
-      <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO PREVENTIVO</i></span>
-         <p class="title-description"> Finalizar mantenimiento preventivo</p>
+      <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO CORRECTIVO</i></span>
+         <p class="title-description"> Finalizar mantenimiento correctivo</p>
      </div>
      <section class="section">
          <div class="row sameheight-container">
@@ -31,18 +31,19 @@
                       <div class="card table-responsive">
                         <div class="card-block table-responsive">
                           <section class="example">
-                            <div class="col-md-6 ">
+                            <div class="col-md-12 ">
                               <table class="table table-bordered table-hover" style="width:100%" >
                                 <thead>
                                    <tr>
                                      <th ><div align="center">Orden de trabajo</div></th>
                                      <th ><div align="center">Fecha de inicio</div></th>
-                                     <th ><div align="center">Mecanico</div></th>
+                                     <th ><div align="center">Taller</div></th>
+                                     <th ><div align="center">Motorista Responsable</div></th>
                                    </tr>
                                  </thead>
                                  <tbody >
                                    @foreach($mant as $mt)
-                                     {!! Form::model($mant,['route'=>['mantenimientoPre.update',$mt->id],'method'=>'PUT']) !!}
+                                     {!! Form::model($mant,['route'=>['mantenimientoCorMaq.update',$mt->id],'method'=>'PUT']) !!}
                                      {!!Form::hidden('idMtt',$mt->id,['id'=>'idMtt','class'=>'form-control','required'])!!}
                                    <tr>
                                      <td align="center">{{$mt->numTrabajo}}</td>
@@ -50,63 +51,57 @@
                                       $date = new DateTime($mt->fechaInicioMtt);
                                     ?>
                                      <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
-                                     <td align="center">{{$mt->mecanicoNom($mt->idMecanico)}}</td>
+                                     <td align="center">{{$mt->tallerNom($mt->idTaller)}}</td>
+                                     <td align="center">{{$mt->MotoristaNom($mt->idMotorista)}}</td>
                                    </tr>
                                  @endforeach
                                  </tbody>
                                </table>
                             </div>
-                            <div class="col-xl-6">
-                              <label>Observaciones iniciales</label>
-                            </div>
-                            <div class="col-md-5">
-                              @foreach($mant as $mt)
-                                {!!Form::textarea('observacionInicioMtt',$mt->observacionInicioMtt,['class'=>'form-control','rows'=>'3', 'cols'=>'5','required','readonly'])!!}
-                                @endforeach
-                            </div>
-                            <br><br><br><br><br><br>
                             <div class="row">
-                              @foreach ($vehiculo as $v)
+                              @foreach ($maquinaria as $m)
                                <div class="col-xl-6">
+                                 <br><br><br>
                                    <div class="card card-primary" align="center">
                                        <div class="card-header" >
                                            <div class="header-block" align="center">
-                                             <p class="title">N. Placa: {{$v->nPlaca}}  </p>
-                                             {!!Form::hidden('idVehiculo',$v->id,['id'=>'idVehiculo','class'=>'form-control','required'])!!}
-
+                                             <p class="title">N. Equipo: {{$m->nEquipo}}  </p>
+                                             {!!Form::hidden('idMaquinaria',$m->id,['id'=>'idMaquinaria','class'=>'form-control','required'])!!}
                                            </div>
                                        </div>
-                                       <div class="card-block">
-                                         <img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
+                                       <div class="card-block ">
+                                         <img src="/Kairos/public/imagenesMaquinaria/{{$m->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                                       </div>
-                                       <div class="card-footer">
-                                         <p class="mtt">Kilometraje de Mantenimiento {{$v->kilometrajeM}} km</p>
-                                         <p class="title">Kilometraje Actual {{$v->kilometrajeAux}} km</p>
-                                        </div>
                                    </div>
                                </div>
                              @endforeach
-                             <br><br>
                              <div class="col-xl-6">
-                               <label>* Descripción del trabajo ralizado</label>
+                               <label>Fallas Reportadas</label>
                              </div>
                              <div class="col-md-5">
-                                 {!!Form::textarea('observacionFinalMtt',null,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'5','required'])!!}
+                               @foreach($mant as $mt)
+                                 {!!Form::textarea('fallasMaq',$mt->fallasMaq,['class'=>'form-control','rows'=>'3', 'cols'=>'5','required','readonly'])!!}
+                                 @endforeach
+                             </div>
+                             <br><br>
+                             <div class="col-xl-6">
+                               <label>* Reparación Realizada</label>
+                             </div>
+                             <div class="col-md-5">
+                                 {!!Form::textarea('diagnosticoMec',null,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'5','required'])!!}
                              </div>
                              <div class="col-md-6">
                                <br><br>
                              </div>
+                             <div class="col-md-6">
+                             </div>
                              <div class="col-md-3">
                                <label >* Fecha de finalización </label>
-                             </div>
-                             <div class="col-md-3">
-                               <label >* Gasto total $ </label>
-                             </div>
-                             <div class="col-md-3">
                                <input id="fechaFinMtt" name="fechaFinMtt" type="date" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
                              </div>
                              <div class="col-md-3">
-                             {!!Form::number('gastoMP',null,['id'=>'gastoMP','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
+                               <label >* Gasto total $ </label>
+                             {!!Form::number('gastoMC',null,['id'=>'gastoMC','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
                             </div>
                             </div>
                           </section>

@@ -17,15 +17,15 @@
 </style>
   <article class="content forms-page">
     <div class="title-block">
-      <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO PREVENTIVO</i></span>
-         <p class="title-description"> Registrar vehiculo a mantenimiento preventivo</p>
+      <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO CORRECTIVO</i></span>
+         <p class="title-description"> Registrar vehiculo a mantenimiento correctivo</p>
      </div>
      <section class="section">
          <div class="row sameheight-container">
             <div>
               <div class="" >
                 <div class="panel panel-primary">
-                  {!! Form::open(['route'=>'mantenimientoPre.store','method'=>'POST']) !!}
+                  {!! Form::open(['route'=>'mantenimientoCorVeh.store','method'=>'POST']) !!}
                   <fieldset>
                     <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
                     <div class="row table-responsive"> <!--Begin Datatables-->
@@ -61,30 +61,36 @@
                                        <div class="card-block">
                                          <img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                                       </div>
-                                       <div class="card-footer">
-                                         <p class="mtt">Kilometraje de Mantenimiento cada {{$v->kilometrajeM}} km</p>
-                                         <p class="title">Kilometraje Actual {{$v->kilometrajeAux}} km</p>
-                                        </div>
                                    </div>
                                </div>
                              @endforeach
-
                              <div class="col-xl-2">
-                               <label>* Mecánico</label>
+                               <label>* Responsable</label>
                              </div>
                              <div class="col-xl-5">
-                               <select name="idMecanico" id="idMecanico" class="validate[required] form-control">
-                                 @foreach($mecanico as $m)
-                                     <option value="{{$m->id}}">{{$m->nombresMec." ".$m->apellidosMec}}</option>
+                               <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
+                                 @foreach($motorista as $m)
+                                     <option value="{{$m->id}}">{{$m->nombresMot. " ".$m->apellidosMot }}</option>
+                                 @endforeach
+                               </select>
+                              </div>
+                              <br><br><br>
+                             <div class="col-xl-2">
+                               <label>* Taller</label>
+                             </div>
+                             <div class="col-xl-5">
+                               <select name="idTaller" id="idTaller" class="validate[required] form-control">
+                                 @foreach($taller as $t)
+                                     <option value="{{$t->id}}">{{$t->nomTallerE}}</option>
                                  @endforeach
                                </select>
                               </div>
                               <br><br><br>
                               <div class="col-xl-2">
-                                <label>* Observaciones</label>
+                                <label>* Fallas Reportadas</label>
                               </div>
                               <div class="col-md-5">
-          		                    {!!Form::textarea('observacionInicioMtt',null,['class'=>'form-control', 'placeholder'=>'lista de observaciones o fallas', 'rows'=>'6', 'cols'=>'5','required'])!!}
+          		                    {!!Form::textarea('fallasVeh',null,['class'=>'form-control', 'placeholder'=>'lista de fallas reportadas', 'rows'=>'6', 'cols'=>'5','required'])!!}
                               </div>
                             </div>
                           </section>
@@ -95,7 +101,7 @@
                  </fieldset>
                  <div align="right">
                  {!! Form::submit(' Registrar',['class'=>'btn btn-primary glyphicon glyphicon-floppy-disk'  ]) !!}
-                 {!! Form::reset('Cancelar',['class'=>'btn btn-info' ]) !!}
+                 {!! Form::reset('Cancelar',['class'=>'btn btn-danger' ]) !!}
                  </div>
                  {{-- {!!link_to_action("MotoristaController@index", $title = "Salir", $parameters = 1, $attributes = ["class"=>"btn btn-danger"])!!} --}}
                {!! Form::close() !!}

@@ -1,4 +1,3 @@
-
 <div id="ModalMtt{{$m->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,14 +9,14 @@
       <div class="modal-body" >
         <div class="container-fluid bd-example-row">
           <div class="pull-left image">
-             <img src="/Kairos/public/imagenesVehiculos/{{$m->imgVehiculo($m->idVehiculo)}}" class="" alt="User Image" width="525px" height="250px">
+             <img src="/Kairos/public/imagenesMaquinaria/{{$m->imgMaquinaria($m->idMaquinaria)}}" class="" alt="User Image" width="525px" height="250px">
              <br>
-             <div class="col-xs-6"><b> Observaciones iniciales:</b></div>
-             <div class="col-xs-6">{!!Form::textarea('observacionFinalMtt',$m->observacionInicioMtt,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'4', 'cols'=>'5','required','readonly'])!!}</div>
+             <div class="col-xs-6"><b> Fallas Reportadas:</b></div>
+             <div class="col-xs-6">{!!Form::textarea('observacionFinalMtt',$m->fallasMaq,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'4', 'cols'=>'5','required','readonly'])!!}</div>
              <div class="col-xs-6"><b>Observaciones finales:</b></div>
-             <div class="col-xs-6">{!!Form::textarea('observacionFinalMtt',$m->observacionFinalMtt,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'4', 'cols'=>'5','required','readonly'])!!}</div>
+             <div class="col-xs-6">{!!Form::textarea('observacionFinalMtt',$m->diagnosticoMec,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'4', 'cols'=>'5','required','readonly'])!!}</div>
              <div class="col-xs-6"><b>Gasto total $:</b> </div>
-             <div class="col-xs-6">{{$m->gastoMP}}</div>
+             <div class="col-xs-6">{{$m->gastoMC}}</div>
            </div>
         </div>
       </div>

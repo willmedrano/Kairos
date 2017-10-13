@@ -60,8 +60,9 @@
                       <div class="form-group" align="right">
                         <p>
                           <img src="/Kairos/public/img/verde.png" class="" alt="User Image" width="25px" height="25px"> Disponible
-                          <img src="/Kairos/public/img/amarillo.jpg" class="" alt="User Image" width="30px" height="30px"> En Taller
-                          <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px"> Asignado
+                          <img src="/Kairos/public/img/amarillo.jpg" class="" alt="User Image" width="30px" height="30px"> Mttn Preventivo
+                          <img src="/Kairos/public/img/azul.png" class="" alt="User Image" width="30px" height="30px"> Mttn Correctivo
+                          <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px"> En Misión
                         </p>
                       </div>
                       <br>
@@ -102,7 +103,9 @@
                                        @if($m->semaforo==3)
                                            <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px">
                                        @endif
-
+                                       @if($m->semaforo==4)
+                                           <img src="/Kairos/public/img/azul.png" class="" alt="User Image" width="25px" height="25px">
+                                       @endif
                                       </div>
                                  </div>
                              </div>

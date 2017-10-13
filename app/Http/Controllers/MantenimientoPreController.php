@@ -24,7 +24,7 @@ class MantenimientoPreController extends Controller
       $vehiculo=DB::select('SELECT v.id,v.nPlaca,v.kilometrajeM,
       v.nombre_img,v.estadoVeh,v.semaforo,v.kilometrajeAux
       from vehiculos v
-      where v.kilometrajeAux>=v.kilometrajeM and v.estadoVeh=1 ');
+      where v.estadoVeh=1 ');
 
       return View('mantenimientoPreventivo.index',compact('vehiculo'));
     }
@@ -36,7 +36,7 @@ class MantenimientoPreController extends Controller
      */
     public function create()
     {
-      $matt=MantenimientoPreventivo::All();                
+      $matt=MantenimientoPreventivo::where('estadoMtt',0)->get();
       return View('mantenimientoPreventivo.mpRealizados',compact('matt'));
     }
 
@@ -72,10 +72,6 @@ class MantenimientoPreController extends Controller
     public function show($id) //finalizar el mantenimento del vehiculo
     {
       $vehiculo =Vehiculo::where('id',$id)->get();
-
-      // $mant=DB::select('SELECT * from mantenimiento_preventivos
-      // where idVehiculo=$id and v.estadoVeh=1 ');
-
       $mant =MantenimientoPreventivo::where('idVehiculo',$id)->where('estadoMtt',1)->get();
       return View('mantenimientoPreventivo.finalizarPreventivo',compact('vehiculo','mant'));
     }
@@ -111,6 +107,7 @@ class MantenimientoPreController extends Controller
 
         $v= Vehiculo::find($request['idVehiculo']);
         $v->semaforo =1; //el estado del vehiculo cambia a disponible
+        $v->kilometrajeAux =0;
         $v->save();
 
         return redirect('/mantenimientoPre');

@@ -24,7 +24,7 @@ class MantenimientoPreMaqController extends Controller
       $maquinaria=DB::select('SELECT m.id,m.nEquipo,m.horaM,
       m.nombre_img,m.estadoMaq,m.semaforo,m.horaAux
       from maquinarias m
-      where m.horaAux>=m.horaM and m.estadoMaq=1 ');
+      where  m.estadoMaq=1 ');
 
       return View('mantenimientoPreventivo.indexMaq',compact('maquinaria'));
     }
@@ -36,7 +36,7 @@ class MantenimientoPreMaqController extends Controller
      */
     public function create()
     {
-      $matt=MantenimientoPreMaq::All();
+      $matt=MantenimientoPreMaq::where('estadoMtt',0)->get(); 
       return View('mantenimientoPreventivo.mpRealizadosMaq',compact('matt'));
     }
 
@@ -109,6 +109,7 @@ class MantenimientoPreMaqController extends Controller
 
       $mq= Maquinaria::find($request['idMaquinaria']);
       $mq->semaforo =1; //el estado del vehiculo cambia a disponible
+      $v->horaAux=0;
       $mq->save();
 
       return redirect('/mantenimientoPreMaq');

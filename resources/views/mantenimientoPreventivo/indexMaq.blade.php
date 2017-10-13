@@ -32,6 +32,7 @@
                           <section class="example">
                             <div class="row">
                               @foreach ($maquinaria as $m)
+                                @if($m->semaforo!=3)
                                <div class="col-xl-4">
                                    <div class="card card-primary" align="center">
                                      <div class="card-header" >
@@ -45,16 +46,19 @@
                                      <div class="card-footer">
 
                                        @if($m->semaforo==1)
-                                         <p class="mtt">Horas de Mantenimiento {{$m->horaM}} Horas</p>
+                                         <p class="mtt">Horas de Mantenimiento cada {{$m->horaM}} Horas</p>
                                          <p class="title">Horas trabajadas {{$m->horaAux}} km</p>
                                          <td>{!!link_to_route('mantenimientoPreMaq.edit',$title='Realizar Mttn', $parametro=$m->id,$atributo=['class'=>'btn btn-danger btn-sm fa fa-edit'])!!}</td>
                                        @elseif($m->semaforo==2)
                                          <p class="title">Actualmente en mantenimiento</p>
                                          <td>{!!link_to_route('mantenimientoPreMaq.show',$title='Finalizar Mttn', $parametro=$m->id,$atributo=['class'=>'btn btn-primary btn-sm fa fa-edit'])!!}</td>
+                                       @elseif($m->semaforo==4)
+                                           <p class="title">Actualmente en mantenimiento Correctivo</p>
                                       @endif
                                     </div>
                                  </div>
                                </div>
+                               @endif
                              @endforeach
                            </div>
                           </section>

@@ -62,7 +62,7 @@
                                          <img src="/Kairos/public/imagenesMaquinaria/{{$m->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                                       </div>
                                        <div class="card-footer">
-                                         <p class="mtt">Horas de Mantenimiento {{$m->horaM}} km</p>
+                                         <p class="mtt">Horas de Mantenimiento cada {{$m->horaM}} km</p>
                                          <p class="title">Hora trabajadas Actualmente {{$m->horaAux}} Horas</p>
                                         </div>
                                    </div>

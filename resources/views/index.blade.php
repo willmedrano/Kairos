@@ -25,6 +25,7 @@
 
     </head>
     <body>
+
       <div class="main-wrapper">
         <div class="app" id="app">
           <header class="header">
@@ -197,24 +198,62 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="/Kairos/public/mantenimientoPre">
-                                    Mttn Preventivo Vehiculo
+                                <a href="">
+                                  <i class="fa fa-th-large"></i>
+                                    Preventivos
+                                  <i class="fa arrow"></i>
                                 </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoPre">
+                                        Mttn Vehiculo
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoPreMaq">
+                                        Mttn Maquinaria
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoPre/create">
+                                        Mttn Realizados a Vehiculo
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoPreMaq/create">
+                                        Mttn  Realizados a Maquinaria
+                                    </a>
+                                  </li>
+                                </ul>
                               </li>
                               <li>
-                                <a href="/Kairos/public/mantenimientoPreMaq">
-                                    Mttn Preventivo Maquinaria
+                                <a href="">
+                                  <i class="fa fa-th-large"></i>
+                                    Correctivos
+                                  <i class="fa arrow"></i>
                                 </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/mantenimientoPre/create">
-                                    Mttn Preventivos Realizados a Vehiculo
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/mantenimientoPreMaq/create">
-                                    Mttn Preventivos Realizados a Maquinaria
-                                </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoCorVeh">
+                                        Mttn Vehiculo
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoCorMaq">
+                                        Mttn Maquinaria
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoCorVeh/create">
+                                        Mttn Realizados a Vehiculo
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/mantenimientoCorMaq/create">
+                                        Mttn  Realizados a Maquinaria
+                                    </a>
+                                  </li>
+                                </ul>
                               </li>
                             </ul>
                           </li><!-- Aqui finaliza el menu de mantenimientos i -->

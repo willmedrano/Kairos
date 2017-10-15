@@ -62,9 +62,11 @@
                         <div class="form-group" align="right">
                           <p>
                             <img src="/Kairos/public/img/verde.png" class="" alt="User Image" width="25px" height="25px"> Disponible
+                            <img src="/Kairos/public/img/azul.png" class="" alt="User Image" width="30px" height="30px"> En Misión
                             <img src="/Kairos/public/img/amarillo.jpg" class="" alt="User Image" width="30px" height="30px"> Mttn Preventivo
-                            <img src="/Kairos/public/img/azul.png" class="" alt="User Image" width="30px" height="30px"> Mttn Correctivo
-                            <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px"> En Misión
+                            
+                            <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px"> 
+                            Mttn Correctivo
                           </p>
                         </div>
                         <br>
@@ -80,7 +82,7 @@
                                  <div class="card card-primary" align="center">
                                      <div class="card-header" >
                                          <div class="header-block" align="center">
-                                           <p class="title"> {{$v->nomModelo}} </p>
+                                           <p class="title"> # Placa: {{$v->nPlaca}} </p>
                                          </div>
                                      </div>
                                          <div class="card-block"><a href="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" data-lightbox="galeria" data-title="{{$v->nPlaca}}" ><img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" alt="{{$v->nPlaca }}" width="250px" height="150px"></a>
@@ -103,10 +105,10 @@
                                        @if($v->semaforo==2)
                                            <img src="/Kairos/public/img/amarillo.jpg" class="" alt="User Image" width="25px" height="25px">
                                        @endif
-                                       @if($v->semaforo==3)
+                                       @if($v->semaforo==4)
                                            <img src="/Kairos/public/img/rojo.png" class="" alt="User Image" width="25px" height="25px">
                                        @endif
-                                       @if($v->semaforo==4)
+                                       @if($v->semaforo==3)
                                            <img src="/Kairos/public/img/azul.png" class="" alt="User Image" width="25px" height="25px">
                                        @endif
 

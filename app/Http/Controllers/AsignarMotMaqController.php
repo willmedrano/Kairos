@@ -114,7 +114,7 @@ class AsignarMotMaqController extends Controller
           $date = Carbon::now();//captura la fecha actual
           $cc->fechaFin=$date;
           $cc->estadoAsignacionMaq=false; //se vuelve a habilitar el vehiculo
-          $m->semaforo=1; //semaforo pasa a disponible
+          //$m->semaforo=1; //semaforo pasa a disponible
       }
       $cc->save();
       $m->save(); //se guarda los cambios en la tabla maquinarias

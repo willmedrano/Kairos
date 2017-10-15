@@ -112,7 +112,7 @@ class AsignarMotVehController extends Controller
               $date = Carbon::now();//captura la fecha actual
               $cc->fechaFin=$date;
               $cc->estadoAsignacion=false; //se vuelve a habilitar el vehiculo
-             // $v->semaforo=1; //semaforo pasa a disponible
+              $v->semaforo=1; //semaforo pasa a disponible
           }
           $cc->save();
           $v->save(); //se guarda los cambios en la tabla vehiculos

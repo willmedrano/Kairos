@@ -15,7 +15,7 @@
 <article class="content forms-page">
   @include('alertas.request')
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" > Marca</i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > Nueva Marca</i></span>
        <p class="title-description"> Registro de marcas para vehiculo y maquinaria </p>
    </div>
    <section class="section">
@@ -42,7 +42,7 @@
                             <label class="control-label col-md-1">* Tipo </label>
                             <div class="col-md-4">
                               <select name="tipoMar" id="" class="validate[required] form-control">
-                          
+                                <option value="0">Selecione una opción...</option>
                                 <option value="Vehiculo">Vehiculo</option>
                                 <option value="Maquinaria">Maquinaria</option>
                               </select>

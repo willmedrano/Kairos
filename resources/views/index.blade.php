@@ -543,8 +543,6 @@
               {!!Html::script('js/lightbox.js')!!}
         {!!Html::script('js/hola.js')!!}
         {!!Html::script('js/maquinaria.js')!!}
-        {!!Html::script('js/buscaresc.js')!!}
-        {!!Html::script('js/busModelo.js')!!}
             @section('scripts')
 
           <!-- Theme initialization -->

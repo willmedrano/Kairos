@@ -15,7 +15,7 @@
 <article class="content forms-page">
   @include('alertas.request')
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >  Tipo </i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > Nuevo Tipo </i></span>
        <p class="title-description"> Registro Tipo Vehiculo/Maquinaria </p>
    </div>
    <section class="section">
@@ -37,12 +37,12 @@
                           <div class="form-group">
                             <label class="control-label col-md-3">* Nombre del Tipo  </label>
                             <div class="col-lg-3">
-                              {!!Form::text('TipoVM',null,['id'=>'TipoVM','class'=>'form-control', 'placeholder'=>'Ingrese Tipo...','required'])!!}
+                              {!!Form::text('TipoVM',null,['id'=>'TipoVM','class'=>'form-control', 'placeholder'=>'Ingrese Marca...','required'])!!}
                             </div>
                             <label class="control-label col-md-1">* Tipo </label>
                             <div class="col-md-4">
                               <select name="TipoVM2" id="" class="validate[required] form-control">
-                                
+                                <option value="">Selecione una opción...</option>
                                 <option value="Vehiculo">Vehiculo</option>
                                 <option value="Maquinaria">Maquinaria</option>
                               </select>

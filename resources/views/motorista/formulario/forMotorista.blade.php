@@ -53,7 +53,7 @@
                             <label class="control-label col-md-2">* Sexo </label>
                             <div class="col-md-4">
                               <select name="sexo" id="sport" class="validate[required] form-control">
-                                
+                                <option value="0">Selecione una opción...</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                               </select>
@@ -97,7 +97,7 @@
                             <label class="control-label col-md-2">* Tipo </label>
                             <div class="col-md-4">
                               <select name="tipoMot" id="" class="validate[required] form-control">
-                                
+                                <option value="0">Selecione una opción...</option>
                                 <option value="Operario">Operario</option>
                                 <option value="Motorista">Motorista</option>
                               </select>

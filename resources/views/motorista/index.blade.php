@@ -129,5 +129,6 @@
      </article>
 @stop
 @section('scripts')
-    
+    <!--{!!Html::script('js/scriptpersanalizado.js')!!}-->
+    {!!Html::script('js/buscaresc.js')!!}
   @endsection

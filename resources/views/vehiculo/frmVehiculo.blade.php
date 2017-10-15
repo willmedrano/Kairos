@@ -70,7 +70,7 @@
                             <div class="col-md-4">
                               {!!Form::text('color',null,['id'=>'color','class'=>'form-control', 'placeholder'=>'color del vehiculo...','required'])!!}
                           </div>
-                            <label class="control-label col-md-2">* Año del vehiculo</label>
+                            <label class="control-label col-md-2">* Año </label>
                             <div class="col-md-4">
                               {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Ej: 2017','required'])!!}
                             </div>

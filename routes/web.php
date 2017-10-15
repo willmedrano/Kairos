@@ -67,3 +67,5 @@ Route::resource('mantenimientoCorMaq','MantenimientoCorMaqController');
 Route::match(['get','post'],'busqEquipo','MantenimientoCorMaqController@busqEquipo');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
+//reportes
+  Route::match(['get','post'],'reporteMotorista','MotoristaController@reporte');

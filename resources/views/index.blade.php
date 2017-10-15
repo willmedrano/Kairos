@@ -318,7 +318,16 @@
                                     Vales por Maquinaria 
                                 </a>
                               </li>
-                              
+                              <li>
+                                <a href="/Kairos/public/vales">
+                                    Vales agricolas asignados
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/Kairos/public/vales/create">
+                                    Todos los vales asignados
+                                </a>
+                              </li>
                             </ul>
                           </li><!-- Aqui finaliza el menu de vales i -->
                           <li><!-- Aqui inicia el menu de entradas y salidasi con sus respectivas opciones -->
@@ -420,8 +429,8 @@
                             </a>
                             <ul>
                               <li>
-                                <a href="/aux5/create">
-                                    Todos lo reportes
+                                <a href="/Kairos/public/reporteMotorista" target="_blank">
+                                    Motorista-Operario
                                 </a>
                               </li>
                             </ul>

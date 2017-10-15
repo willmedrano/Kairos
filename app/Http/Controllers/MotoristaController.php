@@ -31,7 +31,7 @@ class MotoristaController extends Controller
      */
     public function create()
     {
-        return view('motorista.create');
+        return view('motorista.formulario.forMotorista');
     }
 
     /**

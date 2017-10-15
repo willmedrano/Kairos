@@ -31,7 +31,7 @@
   @endif
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE TIPO  V/M</i></span>
-       <p class="title-description">  Vehiculo y Maquinaria </p>
+       <p class="title-description">  Consulta de tipos de Vehiculo y Maquinaria </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -60,7 +60,7 @@
                                  <th ><div align="center">N°</div></th>
                                  <th ><div align="center">TIPO</div></th>
                                  <th ><div align="center">PARA</div></th>
-                                 <th ><div align="center">ACCIÓN</div></th>>
+                                 <th ><div align="center">ACCIÓN</div></th>
                                </tr>
                              </thead>
                              <tbody id="hola" class="buscar">

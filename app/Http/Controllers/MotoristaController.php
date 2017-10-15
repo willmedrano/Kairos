@@ -19,7 +19,7 @@ class MotoristaController extends Controller
      */
     public function index()
     {
-      $motorista=\Kairos\Motorista::All();
+      $motorista=Motorista::All();
       return view('motorista.index',compact('motorista'));
 
     }
@@ -77,7 +77,7 @@ class MotoristaController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -161,5 +161,16 @@ else{
     public function destroy($id)
     {
         //
+    }
+    public function reporte()
+    {
+      $motoristas=Motorista::All();
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="motorista.reporte";
+      $view =  \View::make($vistaurl, compact('motoristas', 'date','date1'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('reporte');
     }
 }

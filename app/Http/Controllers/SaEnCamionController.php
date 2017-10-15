@@ -11,6 +11,7 @@ use Kairos\BarrioCanton;
 use Kairos\AsignarMotVeh;
 use Kairos\Actividad;
 use Kairos\SaEnVehiculo;
+use Kairos\SaEnCamion;
 use Kairos\Vehiculo;
 use Kairos\ValesCombustible;
 
@@ -20,8 +21,10 @@ class SaEnCamionController extends Controller
      public function index()
     {
         //
-        $cc=SaEnVehiculo::disponibles();
-      return view('SaEnCamion.index',compact('cc'));
+        $cc=SaEnCamion::disponibles();
+        $c2=SaEnCamion::All();
+        
+      return view('SaEnCamion.index',compact('cc','c2'));
        
         
     }
@@ -34,8 +37,9 @@ class SaEnCamionController extends Controller
     public function create()
     {
       $asignado=\Kairos\AsignarMotVeh::disponibles();
-      $actividad= Actividad::Act();
-       return view('SaEnCamion.frmSaEnVehiculo',compact('asignado','actividad'));
+      $actividad= Actividad::Act2();
+       $cc=BarrioCanton::All();
+       return view('SaEnCamion.frmSaEnVehiculo',compact('asignado','actividad','cc'));
 
     }
 
@@ -62,6 +66,9 @@ class SaEnCamionController extends Controller
             'fecha'=>$request['fecha'],
             'kilometrajeS'=>$request['kilometrajeS'],
             'tanqueS'=>1,
+            'tipo'=>1,  //recordatorio quitar esto de la tabla la proxima vez
+            'nViajes'=>0,  //recordatorio quitar esto de la tabla la proxima vez
+            'idCC'=>$request['idCC'], 
             'horaSalida'=>$request['horaS'],
             'observacionS'=>$request['observacionesS'],
             'observacionE'=>"",
@@ -126,7 +133,10 @@ class SaEnCamionController extends Controller
             $cc->horaEntrada=$request['horaS'];
             $cc->kilometrajeE=$request['kilometrajeS'];
             $cc->observacionE=$request['observacionesE'];
-            $cc->estado=true;
+            $cc->horaExtra=$request['horaExtra'];
+            $cc->nViajes=$request['nViajes'];
+            
+            $cc->estadoC=true;
             
         }
        

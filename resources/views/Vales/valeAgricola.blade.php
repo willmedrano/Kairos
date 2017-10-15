@@ -38,8 +38,8 @@
 
 
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE PARA VEHÍCULOS MUNICIPALES</i></span>
-       <p class="title-description"> Para el vehiculo  </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE PARA ACTIVIDADES AGRICOLAS</i></span>
+       <p class="title-description"> Vales de combustible  </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -56,27 +56,10 @@
                         <div class="card-title-block table-responsive">
 
                           <div class="card-title-block">
-                              <div>
-                                <div class="col-xl-4">
-                                 <div class="card card-primary" align="center">
-                                     <div class="card-header" >
-                                         <div class="header-block" align="center">
-                                           <p class="title"> {{"Placa: ".$v->nPlaca." ".$v->nomModelo}} </p>
-                                         </div>
-                                     </div>
-                                     <div class="card-block">
-                                       <img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
-                                    </div>
-                                     <div class="card-footer">
-                                      
-                                     
-                                      </div>
-                                 </div>
-                             </div>
-                              </div>
-                            <br><br><br><br><br><br><br><br><br>
+                              
+                            
                             <div class="form-group" align="right">
-                              <span class="col-md-1 col-md-offset-3 text-center"><i class="fa fa-search bigicon icon_nav"></i>Buscar</span>
+                              <span class="col-md-1 col-md-offset-7 text-center"><i class="fa fa-search bigicon icon_nav"></i>Buscar</span>
                               <div class="col-xs-4  ">
                                 <input id="filtrar" name="name" type="text" class="form-control">
                               </div>
@@ -119,12 +102,31 @@
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
-                                <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                                                    
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>                                 
                               </tr>
                               <?php $cont++;?>
                                @endif
-
+                              @endforeach
+                              @foreach ($cc1 as $c)
+                              
+                           
+                               
+                             @if($c->estadoVale==true)
+                              <tr>   
+                                <td><?php echo $cont;?></td>
+                                <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
+                                <td>{{ $c->nVale }}</td>
+                                <td>{{$c->galones}}</td>
+                                <td>{{ $c->PrecioU }}</td>
+                                <td>{{ $c->act }}</td>
+                                <td>{{ $c->nombre }}</td>
+                                <?php 
+                                  $date = new DateTime($c->fecha); 
+                                ?>
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>                                 
+                              </tr>
+                              <?php $cont++;?>
+                               @endif
                               @endforeach
                               @foreach ($cc2 as $c)
                               
@@ -142,12 +144,11 @@
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
-                                <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                                                    
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>                                 
                               </tr>
                               <?php $cont++;?>
                                @endif
-                               @endforeach
+                              @endforeach
                             </tbody>
                           </table>
                         </section>

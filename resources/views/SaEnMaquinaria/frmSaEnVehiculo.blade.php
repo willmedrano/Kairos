@@ -44,7 +44,10 @@
                       <select name="selectMarca" id="selectMarca2" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
                         @foreach($asignado as $a)
+                        
+
                         <option value="{{$a->id}}">{{$a->nombresMot}} {{ $a->apellidosMot }}</option>
+                        
                         @endforeach
                       </select>
                     </div>
@@ -60,7 +63,9 @@
                       <select name="idActividad" id="idActividad" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
                         @foreach($actividad as $act)
+                        @if($act->estado==0)
                         <option value="{{$act->id}}">{{$act->act }} - {{$act->nombre  }}</option>
+                        @endif
                         @endforeach
                       </select>
                     </div>
@@ -77,18 +82,7 @@
                       {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de salida...','required'])!!}
                     </div>
                       <br><br><br>
-                    <label class="control-label col-md-2">* Tipo: </label>
-                    <div class="col-lg-3">
-                      <select name="tipoSalida" id="idActividad" class="validate[required] form-control">
-                        <option value="0">Selecione un tipo de Actividad...</option>
-                        
-                        <option value="1">Terraceria</option>
-                        <option value="2">Agricola</option>
-                        
-                       
-                      </select>
-                    </div>
-                    <br><br>
+                    
                     <label class="control-label col-md-2">*Observaciones </label>
 
                     <div class="col-lg-4">

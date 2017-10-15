@@ -71,6 +71,8 @@ class SaEnVehiculoController extends Controller
             'fecha'=>$request['fecha'],
             'kilometrajeS'=>$request['kilometrajeS'],
             'tanqueS'=>1,
+            'tipo'=>1,  //recordatorio quitar esto de la tabla la proxima vez
+            'lugarCarga'=>1, //recordatorio quitar esto de la tabla la proxima vez
             'horaSalida'=>$request['horaS'],
             'observacionS'=>$request['observacionesS'],
             'observacionE'=>"",

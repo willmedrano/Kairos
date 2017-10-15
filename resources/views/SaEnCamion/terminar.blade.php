@@ -18,7 +18,7 @@
 
         <div class="container-fluid bd-example-row">
 
-          {!!Form::model($c,['method'=>'PATCH','route'=>['salidaEntrada.update',$c->id]])!!}
+          {!!Form::model($c,['method'=>'PATCH','route'=>['salidaEntrada3.update',$c->id]])!!}
           
             ¿El Vehiculo ya Regreso?
             <br>
@@ -35,6 +35,19 @@
 
                     <div class="col-lg-3">
                       {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
+                    </div>
+                    <br><br> <br>
+                    <label class="control-label col-md-4">*Numero de viajes </label>
+
+                    <div class="col-lg-3">
+                      {!!Form::text('nViajes',null,['id'=>'nViajes','class'=>'form-control', 'placeholder'=>'Ingrese el numero de viajes','required'])!!}
+                    </div>
+                    <br><br><br>
+
+                    <label class="control-label col-md-4">*Horas Extra </label>
+
+                    <div class="col-lg-3">
+                      {!!Form::text('horaExtra',null,['id'=>'horaExtra','class'=>'form-control', 'placeholder'=>'Ingrese las horas Extra ','required'])!!}
                     </div>
                     <br><br><br>
                     <label class="control-label col-md-4">*Observaciones </label>

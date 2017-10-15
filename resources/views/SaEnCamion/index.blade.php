@@ -39,7 +39,7 @@
 
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE ENTRADAS Y SALIDAS</i></span>
-       <p class="title-description"> Consulta de ENTRADAS Y SALIDAS DE VEHICULO </p>
+       <p class="title-description"> Consulta de ENTRADAS Y SALIDAS DE CAMIONES </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -71,6 +71,8 @@
                                <th ># PLACA</th>
                                <th>ACTIVIDAD</th>
                                <th>DESTINO</th>
+                               <th>CARGA O DESCARGA</th>
+                               <th># VIAJES</th>
                                <th >HORA SALIDA</th>
                                <th >KM SALIDA</th>
                                <th >HORA ENTRADA</th>
@@ -84,10 +86,11 @@
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
+                              <?php $cont=0;?>
                               @foreach ($cc as $c)
-                              @include('saEnVehiculo.imagen')
-                             @include('saEnVehiculo.terminar')  
-                             @include('saEnVehiculo.vale')
+                              @include('saEnCamion.imagen')
+                             @include('saEnCamion.terminar')  
+                             @include('saEnCamion.vale')
                                
                              
                               <tr>   
@@ -102,6 +105,8 @@
                                 <td>{{ $c->act }}</td>
                                 <td>{{ $c->nombre }}</td>
 
+                                <td>{{ $c2[$cont]->barrio($c->idCC) }}</td>
+                                <td>{{ $c->nViajes }}</td>
                                 <td>{{ $c->horaSalida }}</td>
                                 <td>{{ $c->kilometrajeS }}</td>
                                 <td>{{$c->horaEntrada}}</td>
@@ -110,7 +115,7 @@
                                 
                                 <td>{{$c->observacionS}}</td>
                                 <td>{{$c->observacionE}}</td>
-
+                                   <?php $cont++;?>
                                  @if($c->estadoVale==false)
                                     
                                     <td>
@@ -128,14 +133,14 @@
                                 <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">Vehículo</button> </td>
                                 
                                 
-                                @if($c->estado==false)
+                                @if($c->estadoC==false)
                                     
                                     <td>
                                           <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$c->id}}">Entrada</button>
                                     </td>
                                 @endif
 
-                                @if($c->estado==true)
+                                @if($c->estadoC==true)
                                       
                                       <td>Completada</td>
                                 

@@ -67,6 +67,7 @@ class ActividadController extends Controller
             'desc'=>$request['desc'],
             'fechaInicial'=>$request['fechaInicial'],
             'fechaFinal'=>$request['fechaInicial'],
+            'tipoActividad'=>$request['tipoActividad'],
             'nombre_img'=>$file->getClientOriginalName(),
         
         ]);
@@ -129,6 +130,8 @@ class ActividadController extends Controller
             $cc->desc=$request['desc'];
             $cc->fechaInicial=$request['fechaInicial'];
             $cc->fechaFinal=$request['fechaInicial'];
+            $cc->tipoActividad=$request['tipoActividad'];
+            
             $cc->nombre_img=$file->getClientOriginalName(); 
         }
         if ($aux=='1') {

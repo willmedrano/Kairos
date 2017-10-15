@@ -30,7 +30,7 @@ class CreateSaEnMaquinariasTable extends Migration
             $table->string('horaEntrada')->default(0);
             $table->string('observacionS');
             $table->string('observacionE');
-            $table->string('tipoSalida');
+            $table->string('tipoSalida');//quitar
             $table->string('horaExtra')->default(0);
             $table->boolean('estado')->default(false);
 

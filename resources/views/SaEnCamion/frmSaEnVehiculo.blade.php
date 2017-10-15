@@ -28,7 +28,7 @@
                 <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
-                {!! Form::open(['route'=>'salidaEntrada.store','method'=>'POST']) !!}
+                {!! Form::open(['route'=>'salidaEntrada3.store','method'=>'POST']) !!}
                 <fieldset>
                 <input type="hidden" name="hi2" value="1">
                 <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
@@ -82,7 +82,21 @@
                     <div class="col-lg-3">
                       {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
                     </div>
-                    <br><br>
+                    
+                    <div class="form-group">
+                            <label class="control-label col-md-1">*Carga o Descarga </label>
+                            <div class="col-xs-4">
+                                <select class=" form-control" name="idCC">
+                            
+                             @foreach($cc as $c)
+                                @if($c->estadoB ==1)
+                                <option  value="{{ $c->id }}" >{{ $c->nombre }}</option>
+                                @endif
+                            @endforeach
+                           
+                        </select>
+                            </div><br>                        </div>
+                    <br><br><br>
                     <label class="control-label col-md-2">*Observaciones </label>
 
                     <div class="col-lg-4">

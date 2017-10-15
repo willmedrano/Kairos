@@ -37,6 +37,13 @@
                       {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese las horas Maquina','required'])!!}
                     </div>
                     <br><br><br>
+
+                    <label class="control-label col-md-4">*Horas Extra </label>
+
+                    <div class="col-lg-3">
+                      {!!Form::text('horaExtra',null,['id'=>'horaExtra','class'=>'form-control', 'placeholder'=>'Ingrese las horas Extra ','required'])!!}
+                    </div>
+                    <br><br><br>
                     <label class="control-label col-md-4">*Observaciones </label>
 
                     <div class="col-lg-8">

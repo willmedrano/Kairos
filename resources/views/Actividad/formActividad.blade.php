@@ -58,10 +58,22 @@
                            
                         </select>
                             </div><br>                        </div><br>
-                        <label class="control-label col-md-2">*Descripción </label>
+                        <label class="control-label col-md-2">*Tipo de Actividad </label>
 
                     <div class="col-lg-3">
-                      {!!Form::text('desc',null,['id'=>'desc','class'=>'form-control', 'placeholder'=>'Ingrese el descripcion...','required'])!!}
+
+                      <select name="tipoActividad" id="idActividad" class="validate[required] form-control">
+                        <option value="0">Selecione un tipo de Actividad...</option>
+                        
+                        <option value="1">Actividad Terraceria</option>
+                        <option value="2">Actividad Agricola</option>
+                        <option value="3">Misión fuera del municipio</option>
+                      
+                        
+
+                        
+                       
+                      </select>
                     </div>
 
                     <label class="control-label col-md-2">* Fecha de Inicio</label>
@@ -71,8 +83,16 @@
                             </div>
                             
                         <br><br><br>
+                         <label class="control-label col-md-2">*Descripción </label>
+
+                    <div class="col-lg-3">
+                      {!!Form::textArea('desc',null,['id'=>'desc','class'=>'form-control', 'rows'=>'4','cols'=>'50',  'placeholder'=>'Ingrese las Descripción...','required'])!!}
+                    </div>
+
+                    <div class="col-md-4">
                     {!!Form::label('limagen','Imagen:')!!}
                     {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}
+                    </div>
 
                   </div>
                 </div>

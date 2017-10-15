@@ -35,7 +35,7 @@ class SaEnMaquinariaController extends Controller
     public function create()
     {
       $asignado=\Kairos\AsignarMotMaq::disponibles();
-      $actividad= Actividad::Act();
+      $actividad= Actividad::Act2();
        return view('SaEnMaquinaria.frmSaEnVehiculo',compact('asignado','actividad'));
 
     }
@@ -63,7 +63,7 @@ class SaEnMaquinariaController extends Controller
             'fecha'=>$request['fecha'],
             'horasM'=>0,
             'tanqueS'=>1,
-            'tipoSalida'=>$request['tipoSalida'],
+            'tipoSalida'=>1,// esto se debe quitar
             'horaSalida'=>$request['horaS'],
             'observacionS'=>$request['observacionesS'],
             'observacionE'=>"",
@@ -129,6 +129,7 @@ class SaEnMaquinariaController extends Controller
             $cc->horaEntrada=$request['horaS'];
             $cc->horasM=$request['kilometrajeS'];
             $cc->observacionE=$request['observacionesE'];
+            $cc->horaExtra=$request['horaExtra'];
             $cc->estado=true;
             
         }

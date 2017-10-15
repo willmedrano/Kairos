@@ -22,7 +22,7 @@
           
             
               <input type="hidden" name="hi" value="{{ $c->estadoVale }}">
-              <input type="hidden" name="bandera" value="1">
+              <input type="hidden" name="bandera" value="3">
               <br>
               <div class="form-group">
               <label class="control-label col-md-4">*Número de Vale</label>

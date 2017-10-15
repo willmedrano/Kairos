@@ -30,6 +30,35 @@
                             </div> 
                             <br>
                             <div class="form-group">
+                                <span class="col-md-2  text-center"><label >Tipo: </label></span>
+                                <div class="col-md-6">
+                                    <select name="tipoActividad" id="tipoActividad" class="validate[required] form-control">
+                                        @if($c->tipoActividad=="1")
+                                            
+                                             <option selected value="1">Actividad Terraceria</option>
+                                        <option value="2">Actividad Agricola</option>
+                                         <option value="3">Misión fuera del municipio</option>
+                      
+
+                                           
+                                        @endif
+                                        @if($c->tipoActividad=="2")
+                                              <option  value="1">Actividad Terraceria</option>
+                                        <option selected value="2">Actividad Agricola</option>
+                                         <option value="3">Misión fuera del municipio</option>
+                                            
+                                        @endif
+                                        @if($c->tipoActividad=="3")
+                                              <option  value="1">Actividad Terraceria</option>
+                                        <option value="2">Actividad Agricola</option>
+                                         <option  selected value="3">Misión fuera del municipio</option>
+                                            
+                                        @endif
+                                    </select>
+                                </div>
+                            </div> 
+                            <br>
+                            <div class="form-group">
                                 <span class="col-md-2  text-center" ><label >F/Inicio: </label></span>
                                 <div class="col-md-6">
                                 <input id="fechaInicial" name="fechaInicial" type="date" class="form-control" value="{{$c->fechaInicial  }}" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >

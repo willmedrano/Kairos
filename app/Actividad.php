@@ -25,4 +25,15 @@ class Actividad extends Model
             ->orderBy('actividads.id')
             ->get();
    } 
+   public static function Act2(){
+       return DB::table('actividads')
+            ->join('barrio_cantons', 'actividads.idCC', '=', 'barrio_cantons.id')
+            //->where()
+            ->where('actividads.tipoActividad','!=',3 )
+              
+              
+            ->select('actividads.*',  'barrio_cantons.nombre')
+            ->orderBy('actividads.id')
+            ->get();
+   } 
 }

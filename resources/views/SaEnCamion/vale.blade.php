@@ -59,6 +59,12 @@
                     <div class="col-lg-6">
                       {!!Form::text('PrecioU',null,['id'=>'PrecioU','class'=>'validate[required] form-control', 'placeholder'=>'Ingrese la cantidad de galones...','required'])!!}
                     </div>
+                    <br><br><br>
+                    <label class="control-label col-md-4">*Total </label>
+
+                    <div class="col-lg-6">
+                      {!!Form::text('total',null,['id'=>'total','class'=>'validate[required] form-control', 'placeholder'=>'Ingrese el total...','required'])!!}
+                    </div>
                     </div>
                     <br><br><br><br>
               <div class="modal-footer">

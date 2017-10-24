@@ -38,8 +38,8 @@
 
 
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE PARA VEHÍCULOS MUNICIPALES</i></span>
-       <p class="title-description"> Para el vehiculo  </p>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE PARA MAQUINARIA</i></span>
+       <p class="title-description"> Para la Maquinaria  </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -93,6 +93,7 @@
                                <th ># VALE</th>
                                <th >CANTIDAD DE GALONES</th>
                                <th>VALOR EN $</th>
+                               <th>TOTAL EN $</th>
                                <th>ACTIVIDAD</th>
                                <th>LUGAR DE LA MISIÓN</th>
                                
@@ -113,6 +114,8 @@
                                 <td>{{ $c->nVale }}</td>
                                 <td>{{$c->galones}}</td>
                                 <td>{{ $c->PrecioU }}</td>
+                                <td>{{ $c->total }}</td>
+            
                                 <td>{{ $c->act }}</td>
                                 <td>{{ $c->nombre }}</td>
                                 <?php 

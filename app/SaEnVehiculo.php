@@ -21,7 +21,7 @@ class SaEnVehiculo extends Model
           
             
             ->select('vales_combustibles.*','motoristas.*','actividads.*','barrio_cantons.nombre','vehiculos.*','sa_en_vehiculos.*')
-            ->orderBy('asignar_mot_vehs.id')
+            ->orderBy('sa_en_vehiculos.id','desc')
             ->get();
    }
 }

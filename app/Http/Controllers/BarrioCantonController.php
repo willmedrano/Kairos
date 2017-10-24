@@ -15,7 +15,7 @@ class BarrioCantonController extends Controller
       public function index()
     {
         //
-        $cc=BarrioCanton::paginate(3);
+        $cc=BarrioCanton::All();
         
       return view('BarrioCanton.index',compact('cc'));
        

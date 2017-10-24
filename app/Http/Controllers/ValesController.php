@@ -25,9 +25,11 @@ class ValesController extends Controller
         $cc=ValesCombustible::disponiblesVA(2);
         $cc1=ValesCombustible::disponiblesMA(2);
         $cc2=ValesCombustible::disponiblesCA(2);
+        $cc3=ValesCombustible::All();
+        
 
 
-      return view('Vales.valeAgricola',compact('cc','cc1','cc2'));
+      return view('Vales.valeAgricola',compact('cc','cc1','cc2','cc3'));
     }
 
     /**
@@ -40,9 +42,9 @@ class ValesController extends Controller
         $cc=SaEnVehiculo::disponibles();
         $cc1=SaEnMaquinaria::disponibles();
         $cc2=SaEnCamion::disponibles();
+         $cc3=ValesCombustible::All();
 
-
-      return view('Vales.ValeTodos',compact('cc','cc1','cc2'));
+      return view('Vales.ValeTodos',compact('cc','cc1','cc2','cc3'));
 
     }
 
@@ -90,6 +92,7 @@ class ValesController extends Controller
     {
       $v =Maquinaria::find($id);
       $cc=ValesCombustible::disponiblesM($id);
+      
         
 
       return view('Vales.valeMaquinaria',compact('cc','v'));

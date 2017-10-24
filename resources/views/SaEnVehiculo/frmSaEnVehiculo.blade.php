@@ -13,6 +13,7 @@
   }
 </style>
 <article class="content forms-page">
+
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" > ENTRADAS Y SALIDAS</i></span>
        <p class="title-description"> Registro de  salidas </p>

@@ -21,7 +21,7 @@ class SaEnMaquinaria extends Model
           
             
             ->select('vales_combustibles.*','motoristas.*','actividads.*','barrio_cantons.nombre','maquinarias.*','sa_en_maquinarias.*')
-            ->orderBy('sa_en_maquinarias.id')
+            ->orderBy('sa_en_maquinarias.id','desc')
             ->get();
    }
 }

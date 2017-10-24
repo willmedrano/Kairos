@@ -22,6 +22,7 @@
 
 </style>
 <article class="content forms-page">
+  @include('alertas.request')
 @if($message=='update')
 <div class="alert alert-info alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -70,8 +71,8 @@
                                <th >FECHA</th>
                                <th ># PLACA</th>
                                <th>ACTIVIDAD</th>
-                               <th>DESTINO</th>
-                               <th>CARGA O DESCARGA</th>
+                               <th>CARGA</th>
+                               <th>DESCARGA</th>
                                <th># VIAJES</th>
                                <th >HORA SALIDA</th>
                                <th >KM SALIDA</th>
@@ -103,9 +104,15 @@
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
                                 <td>{{ $c->nPlaca }}</td>
                                 <td>{{ $c->act }}</td>
+                                @if($c->tanqueS==1)
+                                
                                 <td>{{ $c->nombre }}</td>
-
                                 <td>{{ $c2[$cont]->barrio($c->idCC) }}</td>
+                                @else
+                                <td>{{ $c2[$cont]->barrio($c->idCC) }}</td>
+                                <td>{{ $c->nombre }}</td>
+                                @endif
+                                
                                 <td>{{ $c->nViajes }}</td>
                                 <td>{{ $c->horaSalida }}</td>
                                 <td>{{ $c->kilometrajeS }}</td>

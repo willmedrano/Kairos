@@ -38,7 +38,7 @@
 
 
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE PARA ACTIVIDADES AGRICOLAS</i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE </i></span>
        <p class="title-description"> Vales de combustible  </p>
    </div>
    <section class="section">
@@ -76,6 +76,7 @@
                                <th ># VALE</th>
                                <th >CANTIDAD DE GALONES</th>
                                <th>VALOR EN $</th>
+                               <th>TOTAL EN $</th>
                                <th>ACTIVIDAD</th>
                                <th>LUGAR DE LA MISIÓN</th>
                                
@@ -86,29 +87,34 @@
                             </thead>
                             <tbody id="hola" class="buscar">
                               <?php $cont=1;?>
-                              @foreach ($cc as $c)
-                              
+                              @foreach ($cc3 as $c3)
+
+                                @foreach ($cc as $c)
                            
-                               
-                             @if($c->estadoVale==true)
-                              <tr>   
-                                <td><?php echo $cont;?></td>
-                                <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
-                                <td>{{ $c->nVale }}</td>
-                                <td>{{$c->galones}}</td>
-                                <td>{{ $c->PrecioU }}</td>
-                                <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
-                                <?php 
-                                  $date = new DateTime($c->fecha); 
-                                ?>
-                                <td><?php  echo $date->format('d/m/Y'); ?></td>                                 
-                              </tr>
-                                 <?php $cont++;?>
-                               @endif
+                               @if($c3->id==$c->id)
+                                @if($c->estadoVale==true)
+                                  <tr>   
+                                    <td><?php echo $cont;?></td>
+                                    <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
+                                    <td>{{ $c->nVale }}</td>
+                                    <td>{{$c->galones}}</td>
+                                    <td>{{ $c->PrecioU }}</td>
+                                    <td>{{ $c->total }}</td>
+
+                                    <td>{{ $c->act }}</td>
+                                    <td>{{ $c->nombre }}</td>
+                                    <?php 
+                                      $date = new DateTime($c->fecha); 
+                                      ?>
+                                      <td><?php  echo $date->format('d/m/Y'); ?></td>                                 
+                                  </tr>
+                                    <?php $cont++;?>
+                                @endif
+                                @endif
                               @endforeach
                               @foreach ($cc1 as $c)
-                              
+                              @if($c3->id==$c->id)
+                               
                            
                                
                              @if($c->estadoVale==true)
@@ -118,6 +124,7 @@
                                 <td>{{ $c->nVale }}</td>
                                 <td>{{$c->galones}}</td>
                                 <td>{{ $c->PrecioU }}</td>
+                                <td>{{ $c->total }}</td>
                                 <td>{{ $c->act }}</td>
                                 <td>{{ $c->nombre }}</td>
                                 <?php 
@@ -127,10 +134,12 @@
                               </tr>
                                <?php $cont++;?>
                                @endif
+                                @endif
                               @endforeach
                               @foreach ($cc2 as $c)
                               
-                           
+                           @if($c3->id==$c->id)
+                               
                                
                              @if($c->estadoVale==true)
                               <tr>   
@@ -139,6 +148,7 @@
                                 <td>{{ $c->nVale }}</td>
                                 <td>{{$c->galones}}</td>
                                 <td>{{ $c->PrecioU }}</td>
+                                <td>{{ $c->total }}</td>
                                 <td>{{ $c->act }}</td>
                                 <td>{{ $c->nombre }}</td>
                                 <?php 
@@ -148,6 +158,8 @@
                               </tr>
                                <?php $cont++;?>
                                @endif
+                                @endif
+                              @endforeach
                               @endforeach
                             </tbody>
                           </table>

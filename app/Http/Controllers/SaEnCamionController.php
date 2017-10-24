@@ -13,6 +13,7 @@ use Kairos\Actividad;
 use Kairos\SaEnVehiculo;
 use Kairos\SaEnCamion;
 use Kairos\Vehiculo;
+
 use Kairos\ValesCombustible;
 
 class SaEnCamionController extends Controller
@@ -37,7 +38,7 @@ class SaEnCamionController extends Controller
     public function create()
     {
       $asignado=\Kairos\AsignarMotVeh::disponibles();
-      $actividad= Actividad::Act2();
+      $actividad= Actividad::Act();
        $cc=BarrioCanton::All();
        return view('SaEnCamion.frmSaEnVehiculo',compact('asignado','actividad','cc'));
 
@@ -65,7 +66,7 @@ class SaEnCamionController extends Controller
             'idActividad'=>$request['idActividad'],
             'fecha'=>$request['fecha'],
             'kilometrajeS'=>$request['kilometrajeS'],
-            'tanqueS'=>1,
+            'tanqueS'=>$request['idAccion'],
             'tipo'=>1,  //recordatorio quitar esto de la tabla la proxima vez
             'nViajes'=>0,  //recordatorio quitar esto de la tabla la proxima vez
             'idCC'=>$request['idCC'], 

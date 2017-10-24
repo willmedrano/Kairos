@@ -76,7 +76,9 @@
                             <tbody id="hola" class="buscar">
                               @foreach ($cc as $c)
                               @include('barrioCanton.edit')
-                              <tr>   
+                              <tr>  
+                                @if($c->estadoB==1)
+
                                 <td>{{$c->id}}</td>
                                 <td>{{$c->nombre}}</td>
                                 <td>{{$c->tipo}}</td>
@@ -103,14 +105,14 @@
                                 {!!link_to_route('barrioCanton.edit',$title='', $parametro=$c->id,$atributo=['class'=>'fa fa-eye bigicon'])!!}</td>
                                 </td>
                                 
-                                      
+                                   @endif   
                               </tr>
                               @endforeach
                             </tbody>
                           </table>
                         </section>
                          <div class="row">
-                {{ $cc->links() }}
+                
             </div>
                       </div>
                     </div>

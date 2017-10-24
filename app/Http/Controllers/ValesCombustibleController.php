@@ -14,6 +14,7 @@ use Kairos\ValesCombustible;
 use Carbon\Carbon;
 use Kairos\Vehiculo;
 use Kairos\Maquinaria;
+use Kairos\Http\Requests\ValeRequest;
 class ValesCombustibleController extends Controller
 {
     //
@@ -28,13 +29,7 @@ class ValesCombustibleController extends Controller
          
          return View('Vales.vehiculo',compact('vehiculo'));
 
-         $vehiculo=DB::select('SELECT v.id,v.nombre_img,v.estadoVeh,v.semaforo,v.nPlaca,mo.nomModelo
-        from vehiculos v,modelos mo
-        where v.idModelo=mo.id');
-
-        
-
-        return View('asignar.indexVehiculo',compact('vehiculo'));
+         
     }
 
     /**
@@ -79,9 +74,9 @@ class ValesCombustibleController extends Controller
         $v =Vehiculo::find($id);
         $cc=ValesCombustible::disponibles($id);
         $cc2=ValesCombustible::disponiblesC($id);
-        
+        $cc3=ValesCombustible::ALl();
 
-      return view('Vales.valeVehiculos',compact('cc','cc2','v'));
+      return view('Vales.valeVehiculos',compact('cc','cc2','v','cc3'));
        
        
     }
@@ -97,9 +92,9 @@ class ValesCombustibleController extends Controller
     {
       $v =Maquinaria::find($id);
       $cc=ValesCombustible::disponiblesM($id);
-     
+        $cc2=ValesCombustible::ALl();
 
-      return view('Vales.valeMaquinaria',compact('cc','v'));
+      return view('Vales.valeMaquinaria',compact('cc','v','cc2'));
     }
 
     /**
@@ -109,7 +104,7 @@ class ValesCombustibleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValeRequest $request, $id)
     {
         //
         $bandera=$request['bandera'];
@@ -137,6 +132,7 @@ class ValesCombustibleController extends Controller
             $cc->tipo=$request['tipo'];
             $cc->galones=$request['galones'];
             $cc->PrecioU=$request['PrecioU'];
+            $cc->total=$request['total'];
             $cc->estadoVale=true;    
             $cc->save();
 

@@ -40,7 +40,7 @@ class ValesCombustible extends Model
           
             
             ->select('vales_combustibles.*','motoristas.*','actividads.*','barrio_cantons.nombre','maquinarias.*','sa_en_maquinarias.*')
-            ->orderBy('asignar_mot_maqs.id')
+            ->orderBy('sa_en_maquinarias.idVale')
             ->get();
    }
     public static function disponiblesC($id){

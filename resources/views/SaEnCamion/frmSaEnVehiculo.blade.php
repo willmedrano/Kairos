@@ -35,7 +35,7 @@
                 <div id="collapseOne" class="body">
                   <div class="form-group">
 
-                  <div  class=" col-md-2" id="idModelo">
+                  <div  class=" col-md-3" id="idModelo" style="height: 220px;">
                       
                   
                     </div>
@@ -50,12 +50,13 @@
                     </div>
                     
                   
-                    
+                    <br><br>
                   
 
                     
+
                     
-                    <label class="control-label col-md-1">* Actividad: </label>
+                    <label class="control-label col-md-2">* Actividad: </label>
                     <div class="col-lg-3">
                       <select name="idActividad" id="idActividad" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
@@ -64,28 +65,37 @@
                         @endforeach
                       </select>
                     </div>
+                    <label class="control-label col-md-1">*Acción </label>
+                    <div class="col-lg-2">
+                      <select name="idAccion" id="idAccion" class="validate[required] form-control">
+                        
+                        <option value="1">Cargar</option>
+                        <option value="2">Descargar</option>
+                        
+                      </select>
+                    </div>
 
-                    <br><br>
+                    <br><br><br>
                     <label class="control-label col-md-2">* Fecha</label>
                             <div class="col-md-3">
                               
                               <input id="fecha" name="fecha" type="date" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
                             </div>
-                    <label class="control-label col-md-1">*Hora de    Salida </label>
+                    <label class="control-label col-md-1">*Hora de Salida </label>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                       {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de salida...','required'])!!}
                     </div>
-                      <br><br><br>
+                      <br><br><br><br>
                     <label class="control-label col-md-2">*Kilometraje de Salida </label>
 
                     <div class="col-lg-3">
                       {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
                     </div>
                     
-                    <div class="form-group">
-                            <label class="control-label col-md-1">*Carga o Descarga </label>
-                            <div class="col-xs-4">
+                    
+                            <label class="control-label col-md-1" id="labe">*Descarga </label>
+                            <div class="col-xs-3">
                                 <select class=" form-control" name="idCC">
                             
                              @foreach($cc as $c)
@@ -95,7 +105,7 @@
                             @endforeach
                            
                         </select>
-                            </div><br>                        </div>
+                            </div><br>                        
                     <br><br><br>
                     <label class="control-label col-md-2">*Observaciones </label>
 

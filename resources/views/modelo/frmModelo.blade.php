@@ -15,7 +15,7 @@
 <article class="content forms-page">
   @include('alertas.request')
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" > Nuevo Modelo</i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > Modelo</i></span>
        <p class="title-description"> Registro de modelos para vehiculo y maquinaria </p>
    </div>
    <section class="section">

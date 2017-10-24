@@ -9,8 +9,12 @@ use Input;
 use DB;
 use Response;
 use Kairos\Vehiculo;
+use Kairos\Maquinaria;
 use Kairos\MecanicoInterno;
 use Kairos\MantenimientoPreventivo;
+use Kairos\MantenimientoPreMaq;
+use Kairos\Http\Requests\MttnPreventivoRequest;
+
 
 class MantenimientoPreController extends Controller
 {
@@ -46,7 +50,7 @@ class MantenimientoPreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MttnPreventivoRequest $request)
     {
       MantenimientoPreventivo::create([
       'idMecanico'=>$request['idMecanico'],
@@ -124,4 +128,104 @@ class MantenimientoPreController extends Controller
     {
         //
     }
+    public function filtroMP()
+    {
+      return view('reportes.FiltroMttnPreventivo');
+    }
+    public function reporte(Request $request)
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $matt=MantenimientoPreventivo::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMtt',0)->get();
+
+      $mattM=MantenimientoPreMaq::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMtt',0)->get();
+
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="reportes.reporteMttnP";
+      $view =  \View::make($vistaurl, compact('matt','mattM','date','date1','fch1','fch2'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('Mttn Preventivos '.$date.'.pdf');
+    }
+
+    public function reporteMPxVM(Request $request)
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      $opcion=$request->vm;
+
+      $vehiculo=Vehiculo::where('nPlaca',$opcion)->get();
+
+      if($vehiculo->last()!=null){
+        
+          $matt=MantenimientoPreventivo::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMtt',0)->where('idVehiculo',$vehiculo->last()->id)->get();
+
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteMttnPxVM";
+          $opc=1;
+          $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          return $pdf->stream('Mttn Preventivos por Vehiculo '.$date.'.pdf');
+      }else{
+          $maquinaria=Maquinaria::where('nEquipo',$opcion)->get();      
+
+          $matt=MantenimientoPreMaq::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMtt',0)->where('idMaquinaria',$maquinaria->last()->id)->get();
+
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteMttnPxVM";
+          $opc=2;
+          $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          return $pdf->stream('Mttn Preventivos por Maquinaria '.$date.'.pdf');
+      }
+
+    }
+
+    public function reporteMttnPDetalle(Request $request)
+    {
+
+        $opcion=$request->vm;
+        $orden=$request->orden;
+
+      
+          $vehiculo=Vehiculo::where('nPlaca',$opcion)->get();
+
+          if($vehiculo->last()!=null){
+            
+              $matt=MantenimientoPreventivo::where('estadoMtt',0)->where('idVehiculo',$vehiculo->last()->id)->where('numTrabajo',$orden)->get();
+
+              $date = date('d-m-Y');
+              $date1 = date('g:i:s a');
+              $vistaurl="reportes.reporteMttnPDetalle";
+              $opc=1;
+              $view =  \View::make($vistaurl, compact('matt','date','date1','opc'))->render();
+              $pdf = \App::make('dompdf.wrapper');
+              $pdf->loadHTML($view);
+              return $pdf->stream('MPD por Vehiculo '.$date.'.pdf');
+          }else{
+          $maquinaria=Maquinaria::where('nEquipo',$opcion)->get();      
+
+          $matt=MantenimientoPreMaq::where('estadoMtt',0)->where('idMaquinaria',$maquinaria->last()->id)->where('numTrabajo',$orden)->get();
+
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteMttnPDetalle";
+          $opc=2;
+          $view =  \View::make($vistaurl, compact('matt','date','date1','opc'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          return $pdf->stream('MPD por Maquinaria '.$date.'<div class="p"></div>df');
+      }
+
+         
+    }
+    
 }

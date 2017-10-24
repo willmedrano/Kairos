@@ -41,7 +41,7 @@
   @endif
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE MODELOS</i></span>
-       <p class="title-description"> Consulta de Modelo </p>
+       <p class="title-description"> Consulta de Modelos </p>
    </div>
    <section class="section">
        <div class="row sameheight-container">
@@ -52,7 +52,7 @@
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
-                        <a href="/Kairos/public/marca" class="btn btn-success btn-sm"" ">Atràs</a>
+                        <a href="/Kairos/public/marca" class="btn btn-success btn-sm"" ">Atrás</a>
                         <br>
                       <label class="control-label bigicon">{{ $marca->nomMarca }} </label>
                         <div class="card-title-block table-responsive">

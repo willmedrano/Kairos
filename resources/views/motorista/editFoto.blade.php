@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <span class="col-md-2  text-center" style="color: white;" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></span>
-                <h4 class="modal-title" id="gridModalLabel">Modificar Foto del Motorista</h4>
+                <h4 class="modal-title" id="gridModalLabel">Modificar Foto </h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid bd-example-row">
@@ -12,7 +12,9 @@
                         <fieldset>
                             <input type="hidden" name="hi2" value="4">
                             <label class="control-label col-md-6">Foto Actual </label>
-                            <img src="/Kairos/public/imagenesMotoristas/{{$m->nombre_img }}" class="" alt="User Image" >
+                            <center>
+                                <img src="/Kairos/public/imagenesMotoristas/{{$m->nombre_img }}" class="" alt="User Image" width="325px" height="250px">
+                             </center>
                             <br><br><br>
                             <div class="form-group">
                               <div class="col-md-6">

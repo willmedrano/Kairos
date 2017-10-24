@@ -7,6 +7,7 @@ use Kairos\Http\Requests\UsuarioRequest;
 use Kairos\User;
 use Redirect;
 use Session;
+use Auth;
 
 class UsuarioController extends Controller
 {
@@ -17,8 +18,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-       $user=\Kairos\User::All();
-      //  $user=\Kairos\User::paginate(2);
+       $user=\Kairos\User::where('id',Auth::user()->id)->get();
       return view('usuario.index',compact('user'));
     }
 

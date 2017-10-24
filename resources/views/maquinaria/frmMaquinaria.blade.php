@@ -72,18 +72,18 @@
                           </div>
                             <label class="control-label col-md-2">* Año </label>
                             <div class="col-md-4">
-                              {!!Form::number('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Ej: 2017','required'])!!}
+                              {!!Form::number('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
                             </div>
                           </div>
                           <br><br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* Nº Equipo </label>
                             <div class="col-md-4">
-                              {!!Form::text('nEquipo',null,['id'=>'nEquipo','class'=>'form-control', 'placeholder'=>'Ej: Equipo 1','required'])!!}
+                              {!!Form::text('nEquipo',null,['onKeyPress'=>'return validarInventario(event)','id'=>'eq','class'=>'form-control', 'placeholder'=>'Ej: Equipo 1','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Nº Inventario </label>
                             <div class="col-md-4">
-                              {!!Form::text('nInventario',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: AMI-AF-0000-0000-000','required'])!!}
+                              {!!Form::text('nInventario',null,['onKeyPress'=>'return validarInventario(event)','id'=>'n','class'=>'form-control', 'placeholder'=>'Ej: AMI-AF-0000-0000-000','required'])!!}
                             </div>
                           </div>
                           <br><br>
@@ -121,4 +121,5 @@
   @stop
   @section('scripts')
       {!!Html::script('js/busModelo.js')!!}
+      {!!Html::script('js/validacionesVM.js')!!}
     @endsection

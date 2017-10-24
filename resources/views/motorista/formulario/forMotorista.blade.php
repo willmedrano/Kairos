@@ -53,7 +53,6 @@
                             <label class="control-label col-md-2">* Sexo </label>
                             <div class="col-md-4">
                               <select name="sexo" id="sport" class="validate[required] form-control">
-                                <option value="0">Selecione una opción...</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                               </select>
@@ -77,15 +76,15 @@
                               {!!Form::text('licencia',null,['onKeyPress'=>'return validarLicencia(event)','id'=>'licencia','class'=>'form-control', 'placeholder'=>'numero de licencia de conducir...','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* F/Nacimiento</label>
-                            <div class="col-md-4">
-                              {!!Form::date('fechaNacimiento',null,['id'=>'fechaNacimiento','class'=>'form-control', 'max'=>'','placeholder'=>'Fecha de nacimiento...','required'])!!}
+                            <div class="col-md-4">                              
+                              <input id="fechaNacimiento" name="fechaNacimiento" type="date" required="true"class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
                             </div>
                           </div>
                           <br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* F/Contrato</label>
-                            <div class="col-md-4">
-                              {!!Form::date('fechaContrato',null,['id'=>'fechaContrato','class'=>'form-control', 'max'=>'','placeholder'=>'Fecha de contrato...','required'])!!}
+                            <div class="col-md-4">                              
+                              <input id="fechaContrato" name="fechaContrato" type="date" required="true"class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
                             </div>
                             <div class="col-md-4">
                             {!!Form::label('limagen','* Imagen:')!!}
@@ -97,7 +96,6 @@
                             <label class="control-label col-md-2">* Tipo </label>
                             <div class="col-md-4">
                               <select name="tipoMot" id="" class="validate[required] form-control">
-                                <option value="0">Selecione una opción...</option>
                                 <option value="Operario">Operario</option>
                                 <option value="Motorista">Motorista</option>
                               </select>
@@ -125,3 +123,12 @@
   @section('scripts')
     {!!Html::script('js/validaciones.js')!!}
     @endsection
+<?php 
+$time=time();
+    
+    function dameFecha($fecha,$dia){
+        list($year,$mon,$day)=explode('-',$fecha);
+        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
+    }
+   $total=0;   
+?>

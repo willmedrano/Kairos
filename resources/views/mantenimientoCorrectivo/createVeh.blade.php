@@ -32,15 +32,15 @@
                       <div class="card table-responsive">
                         <div class="card-block table-responsive">
                           <section class="example">
-                            <div class="col-md-4 " >
+                            <div class="col-md-2 " >
                             </div>
-                            <div class="col-md-2" >
+                            <div class="col-md-3" >
                               <label >* Orden de trabajo </label>
                             </div>
                             <div class="col-md-2">
                               {!!Form::text('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                               <label >* Fecha</label>
                             </div>
                             <div class="col-md-3">
@@ -54,8 +54,7 @@
                                        <div class="card-header" >
                                            <div class="header-block" align="center">
                                              <p class="title">N. Placa:  {{$v->nPlaca}} </p>
-                                             {!!Form::hidden('idVehiculo',$v->id,['id'=>'idVehiculo','class'=>'form-control','required'])!!}
-
+                                             {!!Form::hidden('idVehiculo',$v->id,['id'=>'idVehiculo','class'=>'form-control','required'])!!}                                     
                                            </div>
                                        </div>
                                        <div class="card-block">
@@ -65,14 +64,20 @@
                                </div>
                              @endforeach
                              <div class="col-xl-2">
-                               <label>* Responsable</label>
+                               <label>* Reporta</label>
                              </div>
                              <div class="col-xl-5">
+                              @if($mot!=null)    
+                              <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
+                                     <option value="{{$mo}}">{{$mot }}</option>
+                               </select>
+                              @else
                                <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
                                  @foreach($motorista as $m)
                                      <option value="{{$m->id}}">{{$m->nombresMot. " ".$m->apellidosMot }}</option>
                                  @endforeach
                                </select>
+                               @endif
                               </div>
                               <br><br><br>
                              <div class="col-xl-2">
@@ -80,12 +85,22 @@
                              </div>
                              <div class="col-xl-5">
                                <select name="idTaller" id="idTaller" class="validate[required] form-control">
+                                <option value="0">Selecione una opción...</option>
                                  @foreach($taller as $t)
                                      <option value="{{$t->id}}">{{$t->nomTallerE}}</option>
                                  @endforeach
                                </select>
                               </div>
-                              <br><br><br>
+                              <br><br>
+                              <div class="col-xl-2">
+                               <label> Mecanico</label>
+                              </div>
+                              <div class="col-xl-5">
+                                <select name="mecanico" id="mecanico" class="validate[required] form-control">
+                                  
+                                  </select>
+                              </div>
+                                <br><br>
                               <div class="col-xl-2">
                                 <label>* Fallas Reportadas</label>
                               </div>
@@ -120,7 +135,7 @@
           return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));
       }
      $total=0;
-
-
-
   ?>
+   @section('scripts')
+      {!!Html::script('js/mecanico.js')!!}
+    @endsection

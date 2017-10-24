@@ -27,6 +27,8 @@ class CreateMecanicoInternosTable extends Migration
             $table->string('nombre_img');
             $table->boolean('estadoMec')->default(true);
             $table->string('observacionMec');
+            $table->Integer('idTaller')->unsigned();
+            $table->foreign('idTaller')->references('id')->on('taller_es');
             $table->timestamps();
         });
     }

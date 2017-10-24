@@ -4,8 +4,10 @@ namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kairos\TallerE;
+use Kairos\MecanicoInterno;
 use Redirect;
 use Session;
+use Kairos\Http\Requests\TallerRequest;
 
 class TallerExternoController extends Controller
 {
@@ -36,13 +38,33 @@ class TallerExternoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TallerRequest $request)
     {
       TallerE::create([
       'nomTallerE'=>$request['nomTallerE'],
       'responsable'=>$request['responsable'],
       'direccionTE'=>$request['direccionTE'],
       'telefonoTE'=>$request['telefonoTE'],
+    ]);
+      $idT=TallerE::All();
+      // foreach ($idT as $T) {
+      //   $i=$T->id;
+      // }
+
+      $id=$idT->last()->id;
+      MecanicoInterno::create([
+        'nombresMec'=>$request['responsable'],
+        'apellidosMec'=>' hola',
+        'direccionMec'=>$request['direccionTE'],
+        'sexo'=>'M',
+        'telefonoMec'=>$request['telefonoTE'],
+        'DUI'=>'0000000 ',
+        'fechaNacimiento'=>'2017-10-24 ',
+        'fechaContrato'=>'2017-10-24 ',
+        'fechaDespido'=>'2017-10-24 ',
+        'nombre_img'=>'hola ',
+        'observacionMec'=>'nada ',
+        'idTaller'=>$id,
     ]);
     return redirect('/tallerE')->with('create','• Taller ingresado correctamente');
     }

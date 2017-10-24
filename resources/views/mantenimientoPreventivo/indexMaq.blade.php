@@ -37,7 +37,7 @@
                                    <div class="card card-primary" align="center">
                                      <div class="card-header" >
                                          <div class="header-block" align="center">
-                                           <p class="title">N. Equipo:  {{$m->nEquipo}} </p>
+                                           <p class="title"> {{$m->nEquipo}} </p>
                                          </div>
                                      </div>
                                      <div class="card-block">
@@ -47,7 +47,7 @@
 
                                        @if($m->semaforo==1)
                                          <p class="mtt">Horas de Mantenimiento cada {{$m->horaM}} Horas</p>
-                                         <p class="title">Horas trabajadas {{$m->horaAux}} km</p>
+                                         <p class="title">Horas trabajadas {{$m->horaAux}} </p>
                                          <td>{!!link_to_route('mantenimientoPreMaq.edit',$title='Realizar Mttn', $parametro=$m->id,$atributo=['class'=>'btn btn-danger btn-sm fa fa-edit'])!!}</td>
                                        @elseif($m->semaforo==2)
                                          <p class="title">Actualmente en mantenimiento</p>

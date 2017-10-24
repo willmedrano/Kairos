@@ -16,6 +16,7 @@
   }
 </style>
   <article class="content forms-page">
+    @include('alertas.request')
     <div class="title-block">
       <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO PREVENTIVO</i></span>
          <p class="title-description"> Registrar vehiculo a mantenimiento preventivo</p>
@@ -32,15 +33,14 @@
                       <div class="card table-responsive">
                         <div class="card-block table-responsive">
                           <section class="example">
-                            <div class="col-md-4 " >
-                            </div>
-                            <div class="col-md-2" >
+                            <div class="col-md-2 "></div>
+                            <div class="col-md-3" >
                               <label >* Orden de trabajo </label>
                             </div>
                             <div class="col-md-2">
-                              {!!Form::text('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
+                              {!!Form::number('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                               <label >* Fecha</label>
                             </div>
                             <div class="col-md-3">
@@ -80,11 +80,11 @@
                                </select>
                               </div>
                               <br><br><br>
-                              <div class="col-xl-2">
+                              <div class="col-xl-5">
                                 <label>* Observaciones</label>
                               </div>
-                              <div class="col-md-5">
-          		                    {!!Form::textarea('observacionInicioMtt',null,['class'=>'form-control', 'placeholder'=>'lista de observaciones o fallas', 'rows'=>'6', 'cols'=>'5','required'])!!}
+                              <div class="col-md-7">
+          		                    {!!Form::textarea('observacionInicioMtt',null,['class'=>'form-control', 'placeholder'=>'lista de observaciones o fallas', 'rows'=>'8', 'cols'=>'5','required'])!!}
                               </div>
                             </div>
                           </section>

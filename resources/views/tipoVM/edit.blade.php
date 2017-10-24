@@ -15,7 +15,7 @@
                             <div class="form-group">
                                 <span class="col-md-3  text-center" ><label >Tipo V/M: </label></span>
                                 <div class="col-md-6">
-                                  {!!Form::text('TipoVM',$t->TipoVM,['id'=>'TipoVM','class'=>'form-control', 'placeholder'=>'Ingrese Código de usuario...','required'])!!}
+                                  {!!Form::text('TipoVM',$t->TipoVM,['id'=>'TipoVM','class'=>'form-control', 'placeholder'=>'Ingrese el tipo ...','required'])!!}
                                 </div>
                             </div>
                             <br><br>

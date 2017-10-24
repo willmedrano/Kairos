@@ -15,7 +15,7 @@
 <article class="content forms-page">
   @include('alertas.request')
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" > Nuevo Taller</i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > Taller</i></span>
        <p class="title-description"> Registro de taller externo </p>
    </div>
    <section class="section">
@@ -36,22 +36,22 @@
                         <div id="collapseOne" class="body">
                           <div class="form-group">
                             <label class="control-label col-md-2">* Nombre </label>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                               {!!Form::text('nomTallerE',null,['id'=>'nomTallerE','class'=>'form-control', 'placeholder'=>'Ingrese nombre del taller...','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Responsable </label>
-                            <div class="col-lg-3">
-                              {!!Form::text('responsable',null,['id'=>'responsable','class'=>'form-control', 'placeholder'=>'Ingrese responsable del taller...','required'])!!}
+                            <div class="col-lg-4">
+                              {!!Form::text('responsable',null,['id'=>'responsable','class'=>'form-control', 'placeholder'=>'Nombre del responsable del taller...','required'])!!}
                             </div>
                           </div>
                           <br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* Dirección </label>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
         		                    {!!Form::textarea('direccionTE',null,['class'=>'form-control', 'placeholder'=>'Direeción del taller...', 'rows'=>'2', 'cols'=>'5','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Teléfono </label>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                               {!!Form::text('telefonoTE',null,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'Numero de teléfono taller...','required'])!!}
                             </div>
                           </div>

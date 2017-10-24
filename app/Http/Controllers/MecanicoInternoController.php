@@ -18,7 +18,7 @@ class MecanicoInternoController extends Controller
      */
     public function index()
     {
-      $mecanico=\Kairos\MecanicoInterno::All();
+      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1);
       return view('mecanicoI.index',compact('mecanico'));
     }
 
@@ -61,6 +61,7 @@ class MecanicoInternoController extends Controller
         'fechaDespido'=>$request['fechaContrato'],
         'nombre_img'=>$file->getClientOriginalName(),
         'observacionMec'=>$request['observacionMec'],
+        'idTaller'=>1,
       ]);
       return redirect('/mecanicoI')->with('create','• Sea creado con éxito el registro');
     }

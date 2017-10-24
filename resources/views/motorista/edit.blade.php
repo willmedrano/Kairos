@@ -62,7 +62,7 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('telefonoMot',$m->telefonoMot,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('telefonoMot',$m->telefonoMot,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'Numero celular...','required'])!!}
                               </div>
                               <div class="col-md-6">
                                 {!!Form::text('DUI',$m->DUI,['onKeyPress'=>'return validarDUI(event)','id'=>'DUI','class'=>'form-control', 'placeholder'=>'Documento Unico de Identidad...','required'])!!}

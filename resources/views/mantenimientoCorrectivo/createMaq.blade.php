@@ -16,6 +16,7 @@
   }
 </style>
   <article class="content forms-page">
+    @include('alertas.request')
     <div class="title-block">
       <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO CORRECTIVO</i></span>
          <p class="title-description"> Registrar maquinaria a mantenimiento correctivo</p>
@@ -32,15 +33,15 @@
                       <div class="card table-responsive">
                         <div class="card-block table-responsive">
                           <section class="example">
-                            <div class="col-md-4 " >
+                            <div class="col-md-2 " >
                             </div>
-                            <div class="col-md-2" >
+                            <div class="col-md-3" >
                               <label >* Orden de trabajo </label>
                             </div>
                             <div class="col-md-2">
                               {!!Form::text('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                               <label >* Fecha</label>
                             </div>
                             <div class="col-md-3">
@@ -65,32 +66,49 @@
                                </div>
                              @endforeach
                              <div class="col-xl-2">
-                               <label>* Responsable</label>
+                               <label>* Reporta</label>
                              </div>
                              <div class="col-xl-5">
+                              @if($mot!=null)    
+                              <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
+                                     <option value="{{$mo}}">{{$mot }}</option>
+                               </select>
+                              @else
                                <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
                                  @foreach($motorista as $m)
                                      <option value="{{$m->id}}">{{$m->nombresMot. " ".$m->apellidosMot }}</option>
                                  @endforeach
                                </select>
+                               @endif
                               </div>
-                              <br><br><br>
+                              <br><br>
                              <div class="col-xl-2">
                                <label>* Taller</label>
                              </div>
                              <div class="col-xl-5">
                                <select name="idTaller" id="idTaller" class="validate[required] form-control">
+                                <option value="0">Selecione una opción...</option>
                                  @foreach($taller as $t)
                                      <option value="{{$t->id}}">{{$t->nomTallerE}}</option>
                                  @endforeach
                                </select>
                               </div>
-                              <br><br><br>
+                              <br><br>
                               <div class="col-xl-2">
+                               <label> Mecanico</label>
+                              </div>
+                              <div class="col-xl-5">
+                                <select name="mecanico" id="mecanico" class="validate[required] form-control">
+                                  
+                                  </select>
+                              </div>
+                                <br><br>
+                              <div class="col-xl-3">
                                 <label>* Fallas Reportadas</label>
                               </div>
-                              <div class="col-md-5">
-          		                    {!!Form::textarea('fallasMaq',null,['class'=>'form-control', 'placeholder'=>'lista de fallas reportadas', 'rows'=>'6', 'cols'=>'5','required'])!!}
+                              <br><br>
+                              <div class="col-md-7">
+          		                    {!!Form::textarea('fallasMaq',null,['class'=>'form-control', 'placeholder'=>'lista de fallas reportadas', 'rows'=>'8', 'cols'=>'5','required'])!!}
                               </div>
                             </div>
                           </section>
@@ -120,7 +138,7 @@
           return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));
       }
      $total=0;
-
-
-
   ?>
+ @section('scripts')
+      {!!Html::script('js/mecanico.js')!!}
+    @endsection

@@ -65,7 +65,15 @@ Route::resource('mantenimientoCorVeh','MantenimientoCorVehController');
 Route::match(['get','post'],'busqPlaca','MantenimientoCorVehController@busqVehiculo');
 Route::resource('mantenimientoCorMaq','MantenimientoCorMaqController');
 Route::match(['get','post'],'busqEquipo','MantenimientoCorMaqController@busqEquipo');
+Route::match(['get','post'],'busqEquipo/{idTaller}','MantenimientoCorMaqController@mecanico');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
 //reportes
   Route::match(['get','post'],'reporteMotorista','MotoristaController@reporte');
+  Route::match(['get','post'],'reporteVM','VehiculoController@reporte');
+  Route::match(['get','post'],'filtroVMA','AsignarMotVehController@filtroVMA');
+  Route::match(['get','post'],'reporteVMA','AsignarMotVehController@reporte');
+  Route::match(['get','post'],'reporteMP','MantenimientoPreController@reporte');
+  Route::match(['get','post'],'filtroMP','MantenimientoPreController@filtroMP');
+  Route::match(['get','post'],'reporteMPxVM','MantenimientoPreController@reporteMPxVM');
+  Route::match(['get','post'],'reporteMttnPDetalle','MantenimientoPreController@reporteMttnPDetalle');

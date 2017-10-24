@@ -86,7 +86,7 @@
                         <li><!-- Aqui inicia el menu de los motorista i con sus respectivas opciones -->
                           <a href="">
                               <i class="fa fa-user"></i>
-                                  Motoristas y Operadores
+                                  Motorista y Operador
                               <i class="fa arrow"></i>
                           </a>
                             <ul>
@@ -105,50 +105,85 @@
                           <li><!-- Aqui inicia el menu de vehiculo y maquinaria i con sus respectivas opciones -->
                             <a href="">
                               <i class="fa fa-th-large"></i>
-                                Vehiculos y Maquinarias
+                                Vehiculo y Maquinaria
                               <i class="fa arrow"></i>
                             </a>
-                            <ul>
+                            <ul>                              
                               <li>
-                                <a href="/Kairos/public/marca/create">
-                                    Registrar Marca
+                                <a href="">
+                                    <i class="fa fa-th-list"></i>
+                                    Marcas
+                                  <i class="fa arrow"></i>
                                 </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/marca/create">
+                                        Registar Marca
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/marca">
+                                        Ver Marcas y Modelos
+                                    </a>
+                                  </li>
+                                 </ul>
                               </li>
                               <li>
-                                <a href="/Kairos/public/marca">
-                                    Ver Marcas
+                                <a href="">
+                                    <i class="fa fa-th-list"></i>
+                                    Tipo V / M
+                                  <i class="fa arrow"></i>
                                 </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/tipoVM/create">
+                                        Registar Tipo 
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/tipoVM">
+                                        Ver Tipos
+                                    </a>
+                                  </li>
+                                 </ul>
                               </li>
                               <li>
-                                <a href="/Kairos/public/tipoVM/create">
-                                    Registrar Tipo
+                                <a href="">
+                                    <i class="fa fa-th-large"></i>
+                                    Vehiculos
+                                  <i class="fa arrow"></i>
                                 </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/vehiculo/create">
+                                        Registrar Vehiculo 
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/vehiculo">
+                                      Ver Vehiculos
+                                    </a>
+                                  </li>
+                                 </ul>                              
                               </li>
                               <li>
-                                <a href="/Kairos/public/tipoVM">
-                                    Ver Tipos
+                                <a href="">
+                                    <i class="fa fa-th-large"></i>
+                                    Maquinaria
+                                  <i class="fa arrow"></i>
                                 </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/vehiculo/create">
-                                    Registrar Vehiculo
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/vehiculo">
-                                    Ver Vehiculos
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/maquinaria/create">
-                                    Registrar Maquinaria
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/maquinaria">
-                                    Ver Maquinaria
-                                </a>
-                              </li>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/maquinaria/create">
+                                        Registrar Maquinaria
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/maquinaria">
+                                      Ver Maquinaria
+                                    </a>
+                                  </li>
+                                 </ul>                                   
                             </ul>
                           </li><!-- Aqui finaliza el menu de vehiculo y maquinaria i -->
                           <li><!-- Aqui inicia el menu de asignaciones i con sus respectivas opciones -->
@@ -159,25 +194,43 @@
                             </a>
                             <ul>
                               <li>
-                                <a href="/Kairos/public/asignarMotVeh">
-                                    Asignar Motorista-Vehiculo
+                                <a href="">
+                                    <i class="fa fa-th-large"></i>
+                                    Vehiculo
+                                  <i class="fa arrow"></i>
                                 </a>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/asignarMotVeh">
+                                        Asignar Motorista
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/asignarMotVeh/create">
+                                       Ver asignaciones V
+                                    </a>
+                                  </li>
+                                 </ul> 
                               </li>
                               <li>
-                                <a href="/Kairos/public/asignarMotVeh/create">
-                                   Ver asignaciones Vehiculo
+                                <a href="">
+                                    <i class="fa fa-th-large"></i>
+                                    Maquinaria
+                                  <i class="fa arrow"></i>
                                 </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/asignarMotMaq">
-                                    Asignar Motorista-Maquinaria
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/Kairos/public/asignarMotMaq/create">
-                                   Ver asignaciones Maquinaria
-                                </a>
-                              </li>
+                                <ul>
+                                  <li>
+                                    <a href="/Kairos/public/asignarMotMaq">
+                                        Asignar Operario
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/Kairos/public/asignarMotMaq/create">
+                                       Ver asignaciones M
+                                    </a>
+                                  </li>
+                                 </ul> 
+                              </li>                              
                             </ul>
                           </li><!-- Aqui finaliza el menu de Asignaciones i -->
                           <li><!-- Aqui inicia el menu de mantenimientos i con sus respectivas opciones -->
@@ -188,15 +241,15 @@
                             </a>
                             <ul>
                               <li>
-                                <a href="/Kairos/public/mecanicoI">
-                                    Ver Mecánicos Internos
-                                </a>
-                              </li>
-                              <li>
                                 <a href="/Kairos/public/tallerE">
                                     Ver Talleres Externos
                                 </a>
                               </li>
+                              <li>
+                                <a href="/Kairos/public/mecanicoI">
+                                    Ver Mecánicos Internos
+                                </a>
+                              </li>                              
                               <li>
                                 <a href="">
                                   <i class="fa fa-th-large"></i>
@@ -433,6 +486,22 @@
                                     Motorista-Operario
                                 </a>
                               </li>
+                              <li>
+                                <a href="/Kairos/public/reporteVM" target="_blank">
+                                    Inventario Vehiculo-Maquinaria
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/Kairos/public/filtroVMA">
+                                    Vehiculo-Maquinaria asignada
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/Kairos/public/filtroMP" >
+                                    Mttn Preventivo
+                                </a>
+                              </li>
+                              
                             </ul>
                           </li>
                         </ul>
@@ -529,6 +598,18 @@
                     </footer>
                 </aside>
                 <div>
+                    {{-- <br><br><br>
+                    <div class="col-md-12">
+                      <div align="left" class="col-md-2">
+                          <img src="/Kairos/public/img/alcaldia.png" class="" alt="User Image" width="150px" height="150px">
+                        </div>
+                        <div class="title-block" class="col-md-0">
+                          <img align="right" src="/Kairos/public/img/sv.png" class="" alt="User Image" width="150px" height="150px">
+                          <span class=""><center><h2> Unidad de Transporte y Mantenimiento</h2></center></span>
+                             <p class="title-description"><center><h3> Alcaldia Municipal de Ilobasco </h3></center></p>                         
+                         </div>
+                      </div> --}}
+                     
                     @yield('content')
                 </div>
                 <div class="ref" id="ref">

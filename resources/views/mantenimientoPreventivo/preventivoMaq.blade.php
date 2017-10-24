@@ -32,15 +32,15 @@
                       <div class="card table-responsive">
                         <div class="card-block table-responsive">
                           <section class="example">
-                            <div class="col-md-4 " >
+                            <div class="col-md-2 " >
                             </div>
-                            <div class="col-md-2" >
+                            <div class="col-md-3" >
                               <label >* Orden de trabajo </label>
                             </div>
                             <div class="col-md-2">
-                              {!!Form::text('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
+                              {!!Form::number('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                               <label >* Fecha</label>
                             </div>
                             <div class="col-md-3">
@@ -53,7 +53,7 @@
                                    <div class="card card-primary" align="center">
                                        <div class="card-header" >
                                            <div class="header-block" align="center">
-                                             <p class="title">N. Placa:  {{$m->nEquipo}} </p>
+                                             <p class="title">{{$m->nEquipo}} </p>
                                              {!!Form::hidden('idMaquinaria',$m->id,['id'=>'idMaquiaria','class'=>'form-control','required'])!!}
 
                                            </div>
@@ -62,7 +62,7 @@
                                          <img src="/Kairos/public/imagenesMaquinaria/{{$m->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                                       </div>
                                        <div class="card-footer">
-                                         <p class="mtt">Horas de Mantenimiento cada {{$m->horaM}} km</p>
+                                         <p class="mtt">Horas de Mantenimiento cada {{$m->horaM}} </p>
                                          <p class="title">Hora trabajadas Actualmente {{$m->horaAux}} Horas</p>
                                         </div>
                                    </div>
@@ -83,8 +83,8 @@
                               <div class="col-xl-2">
                                 <label>* Observaciones</label>
                               </div>
-                              <div class="col-md-5">
-          		                    {!!Form::textarea('observacionInicioMtt',null,['class'=>'form-control', 'placeholder'=>'lista de observaciones o fallas', 'rows'=>'6', 'cols'=>'5','required'])!!}
+                              <div class="col-md-7">
+          		                    {!!Form::textarea('observacionInicioMtt',null,['class'=>'form-control', 'placeholder'=>'lista de observaciones o fallas', 'rows'=>'9', 'cols'=>'5','required'])!!}
                               </div>
                             </div>
                           </section>

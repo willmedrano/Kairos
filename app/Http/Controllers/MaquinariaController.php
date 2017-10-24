@@ -8,11 +8,11 @@ use DB;
 use Response;
 use Kairos\Maquinaria;
 use Kairos\AsignarMotMaq;
-
 use Kairos\TipoVmq;
 use Kairos\Modelo;
 use Kairos\Marca;
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\MaquinariaRequest;
 
 class MaquinariaController extends Controller
 {
@@ -52,7 +52,7 @@ class MaquinariaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MaquinariaRequest $request)
     {
       //obtenemos el campo file definido en el formulario
       $file = Input::file('nombre_img');
@@ -119,8 +119,13 @@ class MaquinariaController extends Controller
         }
         else if($aux=='3')
         {
+          if ($m->semaforo==3) {
+            Session::flash('mensaje','• Maquinaria no puede ser dada de baja ya que se encuentra en misión');
+          }else{
             $m->estadoMaq =false;
             Session::flash('mensaje','• Maquinaria dada de baja correctamente');
+          }
+            
 
         }
         else if($aux=='4')

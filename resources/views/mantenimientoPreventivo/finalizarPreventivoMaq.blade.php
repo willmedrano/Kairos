@@ -59,9 +59,9 @@
                             <div class="col-xl-6">
                               <label>Observaciones iniciales</label>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                               @foreach($mant as $mt)
-                                {!!Form::textarea('observacionInicioMtt',$mt->observacionInicioMtt,['class'=>'form-control','rows'=>'3', 'cols'=>'5','required','readonly'])!!}
+                                {!!Form::textarea('observacionInicioMtt',$mt->observacionInicioMtt,['class'=>'form-control','rows'=>'7', 'cols'=>'5','required','readonly'])!!}
                                 @endforeach
                             </div>
                             <br><br><br><br>
@@ -71,7 +71,7 @@
                                    <div class="card card-primary" align="center">
                                        <div class="card-header" >
                                            <div class="header-block" align="center">
-                                             <p class="title">N. Placa: {{$m->nEquipo}}  </p>
+                                             <p class="title"> {{$m->nEquipo}}  </p>
                                              {!!Form::hidden('idMaquinaria',$m->id,['id'=>'idMaquinaria','class'=>'form-control','required'])!!}
 
                                            </div>
@@ -80,7 +80,7 @@
                                          <img src="/Kairos/public/imagenesMaquinaria/{{$m->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                                       </div>
                                        <div class="card-footer">
-                                         <p class="mtt">Horas de Mantenimiento {{$m->horaM}} km</p>
+                                         <p class="mtt">Horas de Mantenimiento cada {{$m->horaM}} </p>
                                          <p class="title">Horas trabajadas Actualmente {{$m->horaAux}} Horas</p>
                                         </div>
                                    </div>
@@ -90,8 +90,8 @@
                              <div class="col-xl-6">
                                <label>* Descripción del trabajo ralizado</label>
                              </div>
-                             <div class="col-md-5">
-                                 {!!Form::textarea('observacionFinalMtt',null,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'5','required'])!!}
+                             <div class="col-md-6">
+                                 {!!Form::textarea('observacionFinalMtt',null,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'7', 'cols'=>'5','required'])!!}
                              </div>
                              <div class="col-md-6">
                                <br><br>

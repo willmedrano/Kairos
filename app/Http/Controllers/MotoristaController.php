@@ -9,6 +9,8 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\Motorista;
+use Kairos\AsignarMotVeh;
+use Kairos\AsignarMotMaq;
 use Carbon\Carbon;
 class MotoristaController extends Controller
 {
@@ -106,47 +108,81 @@ class MotoristaController extends Controller
       $aux=$request['hi2'];
       $motorista= Motorista::find($id);
 
-      if($aux=='2')
+      if($aux=='2') //activar motorista/ operario
         {
             $motorista->fechaDespido=$motorista->fechaContrato;
             $motorista->estadoMot =true;
             Session::flash('mensaje','• Motorista Activado correctamente');
         }
-        else if($aux=='3')
+        else if($aux=='3') //desactivar motorista/ operario
         {
-            date_default_timezone_set("America/El_Salvador");
-            $date = Carbon::now();
-            $motorista->fechaDespido=$date;
-            $motorista->estadoMot =false;
-            Session::flash('mensaje','• Motorista Desactivado correctamente');
+            $idM=$motorista->id;//obtener id del motorista a desactivar
+            $tipo=$motorista->tipoMot;//obtener id del motorista a desactivar
+
+            if($tipo=='Motorista')
+            {
+              $asignacion=AsignarMotVeh::where('idMotorista',$idM)->where('estadoAsignacion',1)->get();
+              //si la consulta encontro una asignacion activa obtendra resultado distinto de null
+            
+              if($asignacion->last()!=null)
+              {//si entra a esta condicion significa que hay asignacion activa
+                Session::flash('mensaje','• Este Motorista no puede ser desactivado, debido a que posee una asignación');
+                return Redirect::to('/motorista');
+              }else{            
+                date_default_timezone_set("America/El_Salvador");
+                $date = Carbon::now();
+                $motorista->fechaDespido=$date;
+                $motorista->estadoMot =false;
+                Session::flash('mensaje','• Motorista Desactivado correctamente');
+              }
+            }
+           else if($tipo=='Operario')
+            {
+              $asignacion=AsignarMotMaq::where('idMotorista',$idM)->where('estadoAsignacionMaq',1)->get();
+              //si la consulta encontro una asignacion activa obtendra resultado distinto de null
+            
+              if($asignacion->last()!=null)
+              {//si entra a esta condicion significa que hay asignacion activa
+                Session::flash('mensaje','• Este Operario no puede ser desactivado, debido a que posee una asignación');
+                return Redirect::to('/motorista');
+              }else{            
+                date_default_timezone_set("America/El_Salvador");
+                $date = Carbon::now();
+                $motorista->fechaDespido=$date;
+                $motorista->estadoMot =false;
+                Session::flash('mensaje','• Motorista Desactivado correctamente');
+              }
+            }
+              
         }
-        else if($aux=='4'){
-          $file = Input::file('nombre_img');
-       //Creamos una instancia de la libreria instalada
-       $image = \Image::make(\Input::file('nombre_img'));
-       //Ruta donde queremos guardar las imagenes
-       $path = public_path().'/imagenesMotoristas/';
-       // Guardar Original
-       $image->save($path.$file->getClientOriginalName());
-            $motorista->nombre_img=$file->getClientOriginalName();
+        else if($aux=='4') //actualizar fotografia
+        {
+             $file = Input::file('nombre_img');
+             //Creamos una instancia de la libreria instalada
+             $image = \Image::make(\Input::file('nombre_img'));
+             //Ruta donde queremos guardar las imagenes
+             $path = public_path().'/imagenesMotoristas/';
+             // Guardar Original
+             $image->save($path.$file->getClientOriginalName());
+             $motorista->nombre_img=$file->getClientOriginalName();
         }
 
-else{
+        else{ //actualizar datos
 
-       $motorista->nombresMot=$request['nombresMot'];
-       $motorista->apellidosMot=$request['apellidosMot'];
-       $motorista->direccionMot=$request['direccionMot'];
-       $motorista->sexo=$request['sexo'];
-       $motorista->telefonoMot=$request['telefonoMot'];
-       $motorista->DUI=$request['DUI'];
-       $motorista->licencia=$request['licencia'];
-       $motorista->fechaNacimiento=$request['fechaNacimiento'];
-       $motorista->fechaContrato=$request['fechaContrato'];
-       $motorista->tipoMot=$request['tipoMot'];
-       $motorista->observacionMot=$request['observacionMot'];
-       Session::flash('update','• Motorista editado correctamente');
+               $motorista->nombresMot=$request['nombresMot'];
+               $motorista->apellidosMot=$request['apellidosMot'];
+               $motorista->direccionMot=$request['direccionMot'];
+               $motorista->sexo=$request['sexo'];
+               $motorista->telefonoMot=$request['telefonoMot'];
+               $motorista->DUI=$request['DUI'];
+               $motorista->licencia=$request['licencia'];
+               $motorista->fechaNacimiento=$request['fechaNacimiento'];
+               $motorista->fechaContrato=$request['fechaContrato'];
+               $motorista->tipoMot=$request['tipoMot'];
+               $motorista->observacionMot=$request['observacionMot'];
+               Session::flash('update','• Motorista editado correctamente');
 
-}
+        }
       $motorista->save();
       return Redirect::to('/motorista');
 
@@ -171,6 +207,6 @@ else{
       $view =  \View::make($vistaurl, compact('motoristas', 'date','date1'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('reporte');
+      return $pdf->stream('Reporte Motorista-Operario '.$date.'.pdf');
     }
 }

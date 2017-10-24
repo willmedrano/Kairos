@@ -60,7 +60,7 @@
                                  <th ><div align="center">N°</div></th>
                                  <th ><div align="center">TIPO</div></th>
                                  <th ><div align="center">PARA</div></th>
-                                 <th ><div align="center">ACCIÓN</div></th>>
+                                 <th ><div align="center">ACCIÓN</div></th>
                                </tr>
                              </thead>
                              <tbody id="hola" class="buscar">

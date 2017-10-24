@@ -10,8 +10,10 @@ use DB;
 use Response;
 use Kairos\Maquinaria;
 use Kairos\TallerE;
+use Kairos\MecanicoInterno;
 use Kairos\Motorista;
 use Kairos\MantenimientoCorrectivoMaq;
+use Kairos\AsignarMotMaq;
 
 class MantenimientoCorMaqController extends Controller
 {
@@ -34,10 +36,33 @@ class MantenimientoCorMaqController extends Controller
     {
         $numE=$request->equipo;
         $maquinaria =Maquinaria::where('nEquipo',$numE)->get();
-
-        $taller=TallerE::where('estadoTE',1)->get();
-        $motorista=Motorista::where('estadoMot',1)->get();
-        return View('mantenimientoCorrectivo.createMaq',compact('maquinaria','taller','motorista'));
+        if ($maquinaria->last()!=null)
+         {
+            $a=$maquinaria->last();//obtener ultimo registro
+            $asignado=AsignarMotMaq::where('idMaquinaria',$a->id)->where('estadoAsignacionMaq',1)->get();
+             //si la maquinaria se encuntra asignada con estado activo
+            if ($asignado->last()!=null) {
+              $b=$asignado->last();        
+              $mo=$b->idMotorista;
+              $mot=AsignarMotMaq::motorista($mo);//obtener nombre del motorista
+            }else{
+              $mot="";
+              $mo=0;
+            }  
+            $MC=MantenimientoCorrectivoMaq::where('idMaquinaria',$a->id)->where('estadoMttC',1)->get();
+            //si la maquinaria ya se encuentra en mttc redirecciona al index
+            if ($MC->last()!=null) {
+              return $this->index();          
+            }else{//si la maquinaria no se encuentra en mttc nos permitira llevar a cabo el registro
+              $taller=TallerE::where('estadoTE',1)->get();
+              $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Operario')->get();
+              return View('mantenimientoCorrectivo.createMaq',compact('maquinaria','taller','motorista','mot','mo'));
+            } 
+          }
+          else{
+            return $this->index(); 
+        }
+      
     }
 
     /**
@@ -131,5 +156,9 @@ class MantenimientoCorMaqController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function mecanico($taller){
+        $modeloArray=MecanicoInterno::where('idTaller', '=', $taller)->get();
+        return Response::json($modeloArray);
     }
 }

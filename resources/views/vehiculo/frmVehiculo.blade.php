@@ -72,7 +72,7 @@
                           </div>
                             <label class="control-label col-md-2">* Año </label>
                             <div class="col-md-4">
-                              {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Ej: 2017','required'])!!}
+                              {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
                             </div>
                           </div>
                           <br><br><br>
@@ -83,18 +83,18 @@
                             </div>
                             <label class="control-label col-md-2">* Nº Inventario </label>
                             <div class="col-md-4">
-                              {!!Form::text('nInventario',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: AMI-AF-0000-0000-000','required'])!!}
+                              {!!Form::text('nInventario',null,['onKeyPress'=>'return validarInventario(event)','id'=>'n','class'=>'form-control', 'placeholder'=>'Ej: AMI-AF-0000-0000-000','required'])!!}
                             </div>
                           </div>
                           <br><br>
                           <div class="form-group">
                             <label class="control-label col-md-2">* Kilometraje </label>
                             <div class="col-md-4">
-                              {!!Form::number('kilometraje',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: 5000','required'])!!}
+                              {!!Form::number('kilometraje',null,['id'=>'kilometraje','class'=>'form-control', 'placeholder'=>'Ej: 5000','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Kilometraje Mantenimiento</label>
                             <div class="col-md-4">
-                              {!!Form::number('kilometrajeM',null,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: 3000','required'])!!}
+                              {!!Form::number('kilometrajeM',null,['id'=>'kilometrajeM','class'=>'form-control', 'placeholder'=>'Ej: 3000','required'])!!}
                           </div>
                           </div>
                           <br><br>
@@ -125,4 +125,5 @@
   @stop
   @section('scripts')
       {!!Html::script('js/busModelo.js')!!}
+      {!!Html::script('js/validacionesVM.js')!!}
     @endsection

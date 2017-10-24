@@ -15,7 +15,7 @@
                             <div class="form-group">
                                 <span class="col-md-2  text-center" ><label >Marca: </label></span>
                                 <div class="col-md-6">
-                                  {!!Form::text('nomMarca',$m->nomMarca,['id'=>'name','class'=>'form-control', 'placeholder'=>'Ingrese Código de usuario...','required'])!!}
+                                  {!!Form::text('nomMarca',$m->nomMarca,['id'=>'name','class'=>'form-control', 'placeholder'=>'Ingrese Marca...','required'])!!}
                                 </div>
                             </div>
                             <br><br>

@@ -10,7 +10,9 @@
       <div class="modal-body" >
         <div class="container-fluid bd-example-row">
           <div class="pull-left image">
-             <img src="/Kairos/public/imagenesMotoristas/{{$m->nombre_img }}" class="" alt="User Image" width="525px" height="250px">
+            <center>
+               <img src="/Kairos/public/imagenesMotoristas/{{$m->nombre_img }}" class="" alt="User Image" width="325px" height="250px">
+             </center>
              <br>
              <div class="col-xs-6"><b> Nombres:</b></div>
              <div class="col-xs-6">{{$m->nombresMot}}</div>
@@ -26,11 +28,15 @@
              <div class="col-xs-6">{{$m->DUI}}</div>
              <div class="col-xs-6"><b>Licencia:</b></div>
              <div class="col-xs-6">{{$m->licencia}}</div>
+             <?php
+                $date = new DateTime($m->fechaContrato);
+                $date1 = new DateTime($m->fechaNacimiento);
+              ?>
              <div class="col-xs-6"><b>fecha de Nacimiento:</b> </div>
-             <div class="col-xs-6">{{$m->fechaNacimiento}}</div>
+             <div class="col-xs-6"><?php  echo $date1->format('d/m/Y'); ?></div>
              <div class="col-xs-6"><b>  fecha de Contrato:</b></div>
-             <div class="col-xs-6">{{$m->fechaContrato}}</div>
-             <div class="col-xs-6"><b>Tipo de motorista:</b></div>
+             <div class="col-xs-6"><?php  echo $date->format('d/m/Y'); ?></div>
+             <div class="col-xs-6"><b>Tipo:</b></div>
              <div class="col-xs-6">{{$m->tipoMot}}</div>
              <div class="col-xs-6"><b> Observación:</b></div>
              <div class="col-xs-6">{{$m->observacionMot}}</div>

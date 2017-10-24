@@ -15,7 +15,7 @@
 <article class="content forms-page">
   @include('alertas.request')
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" > Nueva Asignación</i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > Asignar Maquinaria</i></span>
        <p class="title-description"> Registro de nueva asignación de maquinaria </p>
    </div>
    <section class="section">
@@ -31,6 +31,8 @@
                     <div class="card-block table-responsive">
                       {!! Form::open(['route'=>'asignarMotMaq.store','method'=>'POST']) !!}
                       <fieldset>
+                        <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
+                          <br><br>
                         <div class="form-group">
                           <div class="col-md-4">
                             <a href="/Kairos/public/asignarMotMaq" class="btn btn-success btn-sm"" ">Atrás</a>
@@ -45,7 +47,6 @@
                            <label class="control-label col-md-3">* Área </label>
                            <div class="col-md-4">
                              <select name="unidad" id="unidad" class="validate[required] form-control">
-                               <option value="0">Selecione una opción...</option>
                                <option value="1">Unidad de Mantenimiento</option>
                                <option value="2">Unidad de Transporte</option>
                                <option value="3">Mtto de alumbrado público</option>
@@ -57,7 +58,6 @@
                           <label class="control-label col-md-3">* Motorista </label>
                           <div class="col-md-4">
                             <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
-                              <option value="0">Selecione una opción...</option>
                               @foreach($motorista as $m)
                                 <?php
                                   $bandera=true;

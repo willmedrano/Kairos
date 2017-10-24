@@ -7,11 +7,14 @@ use Input;
 use DB;
 use Response;
 use Kairos\Vehiculo;
+use Kairos\Maquinaria;
 use Kairos\TipoVmq;
 use Kairos\Modelo;
 use Kairos\Marca;
 use Kairos\AsignarMotVeh;
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\VehiculoRequest;
+
 
 class VehiculoController extends Controller
 {
@@ -50,7 +53,7 @@ class VehiculoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VehiculoRequest $request)
     {
       //obtenemos el campo file definido en el formulario
       $file = Input::file('nombre_img');
@@ -118,8 +121,12 @@ class VehiculoController extends Controller
         }
         else if($aux=='3')
         {
+          if ($v->semaforo==3) {
+            Session::flash('mensaje','• Vehiculo no puede ser dado de baja ya que se encuentra en misión');
+          }else{
             $v->estadoVeh =false;
             Session::flash('mensaje','• Vehiculo dado de baja correctamente');
+          }
 
         }
         else if($aux=='4')
@@ -168,6 +175,25 @@ class VehiculoController extends Controller
      $var=AsignarMotVeh::find($marca);
         $modeloArray=Vehiculo::where('id', '=', $var->idVehiculo)->get();
         return Response::json($modeloArray);
+    }
+    public function reporte()
+    {
+      $vehiculo=DB::select('SELECT v.id,v.color,v.anio,v.nPlaca,v.nInventario,
+       t.tipoVM,mo.nomModelo,ma.nomMarca
+      from vehiculos v, tipo_vmqs t,modelos mo, marcas ma
+      where v.idTipo=t.id and v.idModelo=mo.id and mo.idMarca=ma.id');
+
+      $maquinaria=DB::select('SELECT m.id,m.color,m.anio,m.nEquipo,m.nInventario,t.tipoVM,mo.nomModelo,ma.nomMarca
+      from maquinarias m, tipo_vmqs t,modelos mo, marcas ma
+      where m.idTipo=t.id and m.idModelo=mo.id and mo.idMarca=ma.id');
+
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="vehiculo.reporte";
+      $view =  \View::make($vistaurl, compact('vehiculo','maquinaria','date','date1'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('Inventario Vehiculo-Maquinaria '.$date.'.pdf');
     }
        
 }

@@ -15,7 +15,7 @@
 <article class="content forms-page">
   @include('alertas.request')
   <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" > Nuevo Usuario</i></span>
+    <span class=""><i class="fa fa-archive bigicon icon_nav" > Usuario</i></span>
        <p class="title-description"> Registro de Usuario </p>
    </div>
    <section class="section">
@@ -37,7 +37,7 @@
                           <div class="form-group">
                             <label class="control-label col-md-2">* usuario </label>
                             <div class="col-lg-3">
-                              {!!Form::text('name',null,['id'=>'name','class'=>'form-control', 'placeholder'=>'Ingrese Código de usuario...','required'])!!}
+                              {!!Form::text('name',null,['id'=>'name','class'=>'form-control', 'placeholder'=>'Ingrese nombre de usuario...','required'])!!}
                             </div>
                             <label class="control-label col-md-2">* Correo </label>
                             <div class="col-md-4">

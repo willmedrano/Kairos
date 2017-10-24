@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('anio',$v->anio,['id'=>'anio','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('anio',$v->anio,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
                               </div>
                             </div>
                             <br><br><br>
@@ -31,10 +31,10 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('nPlaca',$v->nPlaca,['id'=>'nPlaca','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('nPlaca',$v->nPlaca,['id'=>'nPlaca','class'=>'form-control', 'placeholder'=>'Ej: P-0000','required'])!!}
                               </div>
                               <div class="col-md-6">
-                                {!!Form::text('nInventario',$v->nInventario,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('nInventario',$v->nInventario,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'AMI-AF-0000-0000-000','required'])!!}
                               </div>
                             </div>
                             <br><br><br>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('kilometrajeM',$v->kilometrajeM,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('kilometrajeM',$v->kilometrajeM,['id'=>'kilometrajeM','class'=>'form-control', 'placeholder'=>'Ej: 3000','required'])!!}
 
                             </div>
                             <div class="col-md-6">

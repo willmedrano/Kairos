@@ -15,10 +15,9 @@
                             <div class="form-group">
                                 <span class="col-md-2  text-center" ><label >Modelo: </label></span>
                                 <div class="col-md-6">
-                                  {!!Form::text('nomModelo',$m->nomModelo,['id'=>'nomModelo','class'=>'form-control', 'placeholder'=>'Ingrese Código de usuario...','required'])!!}
+                                  {!!Form::text('nomModelo',$m->nomModelo,['id'=>'nomModelo','class'=>'form-control', 'placeholder'=>'Ingrese Modelo...','required'])!!}
                                 </div>
                             </div>
-
                         </fieldset>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

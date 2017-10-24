@@ -15,8 +15,8 @@ class CreateMantenimientoCorrectivoMaqsTable extends Migration
     {
         Schema::create('mantenimiento_correctivo_maqs', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('idTaller')->unsigned();
-            $table->foreign('idTaller')->references('id')->on('taller_es');
+            $table->Integer('idMecanico')->unsigned();
+            $table->foreign('idMecanico')->references('id')->on('mecanico_internos');
             $table->Integer('idMaquinaria')->unsigned();
             $table->foreign('idMaquinaria')->references('id')->on('maquinarias');
             $table->Integer('idMotorista')->unsigned();

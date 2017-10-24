@@ -11,6 +11,7 @@ use Response;
 use Kairos\Maquinaria;
 use Kairos\MecanicoInterno;
 use Kairos\MantenimientoPreMaq;
+use Kairos\Http\Requests\MttnPreventivoRequest;
 
 class MantenimientoPreMaqController extends Controller
 {
@@ -46,7 +47,7 @@ class MantenimientoPreMaqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MttnPreventivoRequest $request)
     {
       MantenimientoPreMaq::create([
       'idMecanico'=>$request['idMecanico'],
@@ -108,8 +109,8 @@ class MantenimientoPreMaqController extends Controller
       $m->save();
 
       $mq= Maquinaria::find($request['idMaquinaria']);
-      $mq->semaforo =1; //el estado del vehiculo cambia a disponible
-      $v->horaAux=0;
+      $mq->semaforo =1; //el estado de la maquinaria cambia a disponible
+      $mq->horaAux=0;
       $mq->save();
 
       return redirect('/mantenimientoPreMaq');

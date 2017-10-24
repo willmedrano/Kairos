@@ -63,8 +63,8 @@
                                ?>
                                <tr>
                                  <td>
-                                   <div class="pull-left image">
-                 						         <img src="/Kairos/public/imagenesMaquinaria/{{$a->imgMaquinaria($a->idMaquinaria) }}" class="img-circle" alt="User Image" width="50px" height="50px">
+                                   <div class="pull-left image" >                 						        
+                                     <a href="/Kairos/public/imagenesMaquinaria/{{$a->imgMaquinaria($a->idMaquinaria) }}" data-lightbox="galeria" data-title="{{$a->imgMaquinaria($a->idMaquinaria)}}" ><img src="/Kairos/public/imagenesMaquinaria/{{$a->imgMaquinaria($a->idMaquinaria) }}" alt="{{$a->imgMaquinaria($a->idMaquinaria) }}" width="40px" height="40px" class="img-circle"></a>
                  					         </div>
                                  </td>
                                    <td>{{$a->motorista($a->idMotorista)}}</td>

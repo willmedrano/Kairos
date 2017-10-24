@@ -21,7 +21,7 @@
                                 {!!Form::text('color',$m->color,['id'=>'color','class'=>'form-control', 'placeholder'=>'color del vehiculo...','required'])!!}
                             </div>
                               <div class="col-md-6">
-                                {!!Form::text('anio',$m->anio,['id'=>'anio','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('anio',$m->anio,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
                               </div>
                             </div>
                             <br><br><br>
@@ -31,10 +31,10 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('nEquipo',$m->nEquipo,['id'=>'nEquipo','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('nEquipo',$m->nEquipo,['id'=>'nEquipo','class'=>'form-control', 'placeholder'=>'Ej: Equipo 1','required'])!!}
                               </div>
                               <div class="col-md-6">
-                                {!!Form::text('nInventario',$m->nInventario,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('nInventario',$m->nInventario,['id'=>'nInventario','class'=>'form-control', 'placeholder'=>'Ej: AMI-AF-0000-0000-000','required'])!!}
                               </div>
                             </div>
                             <br><br><br>
@@ -44,10 +44,10 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('horaM',$m->horaM,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'','required'])!!}
+                                {!!Form::text('horaM',$m->horaM,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'Ej: 5','required'])!!}
                               </div>
                               <div class="col-md-6">
-                                {!!Form::textarea('observacionMaq',$m->ObservacionMaq,['id'=>'observacionMaq','class'=>'form-control', 'placeholder'=>'','required','rows'=>'3', 'cols'=>'5'])!!}
+                                {!!Form::textarea('observacionMaq',$m->ObservacionMaq,['id'=>'observacionMaq','class'=>'form-control', 'placeholder'=>'Observaciones...','required','rows'=>'3', 'cols'=>'5'])!!}
                               </div>
                             </div>
                         </fieldset>

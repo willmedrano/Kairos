@@ -12,6 +12,7 @@ use Kairos\Vehiculo;
 use Kairos\TallerE;
 use Kairos\Motorista;
 use Kairos\MantenimientoCorrectivoVeh;
+use Kairos\AsignarMotVeh;
 
 class MantenimientoCorVehController extends Controller
 {
@@ -37,7 +38,7 @@ class MantenimientoCorVehController extends Controller
      */
     public function create()
     {
-      $matt=mantenimientoCorrectivoVeh::where('estadoMttC',0)->get();
+      $matt=MantenimientoCorrectivoVeh::where('estadoMttC',0)->get();
       return View('mantenimientoCorrectivo.mcRealizados',compact('matt'));
     }
 
@@ -45,10 +46,33 @@ class MantenimientoCorVehController extends Controller
     {
         $numP=$request->placa;
         $vehiculo =Vehiculo::where('nPlaca',$numP)->get();
-
-        $taller=TallerE::where('estadoTE',1)->get();
-        $motorista=Motorista::where('estadoMot',1)->get();
-        return View('mantenimientoCorrectivo.createVeh',compact('vehiculo','taller','motorista'));
+        if ($vehiculo->last()!=null)
+         {
+          $a=$vehiculo->last();//obtener ultimo registro
+          $asignado=AsignarMotVeh::where('idVehiculo',$a->id)->where('estadoAsignacion',1)->get();
+           //si el vehiculo se encuntra asignado con estado activo
+          if ($asignado->last()!=null) {
+            $b=$asignado->last();        
+            $mo=$b->idMotorista;
+            $mot=AsignarMotVeh::motorista($mo);//obtener nombre del motorista
+          }else{
+            $mot="";
+            $mo=0;
+          }  
+          $MC=MantenimientoCorrectivoVeh::where('idVehiculo',$a->id)->where('estadoMttC',1)->get();
+          //si el vehiculo ya se encuentra en mttc redirecciona al index
+          if ($MC->last()!=null) {
+            return $this->index();          
+          }else{//si el vehiculo no se encuentra en mttc nos permitira llevar a cabo el registro
+            $taller=TallerE::where('estadoTE',1)->get();
+            $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Motorista')->get();
+            return View('mantenimientoCorrectivo.createVeh',compact('vehiculo','taller','motorista','mot','mo'));
+          } 
+        }else
+        {
+          return $this->index(); 
+        }
+               
     }
 
     /**

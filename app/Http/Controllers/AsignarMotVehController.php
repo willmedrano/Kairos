@@ -11,6 +11,7 @@ use Kairos\Marca;
 use Kairos\TipoVmq;
 use Kairos\Motorista;
 use Kairos\AsignarMotVeh;
+use Kairos\AsignarMotMaq;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
@@ -130,4 +131,23 @@ class AsignarMotVehController extends Controller
       {
           //
       }
+      public function filtroVMA()
+    {
+      return view('reportes.FiltroVMA');
+    }
+      public function reporte(Request $request)
+     {
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+        $asignado=\Kairos\AsignarMotVeh::whereDate('fechaInicio', '>=' , $fch1)->whereDate('fechaFin', '<=', $fch2)->get();
+        $asignadoM=\Kairos\AsignarMotMaq::whereDate('fechaInicio', '>=' , $fch1)->whereDate('fechaFin', '<=', $fch2)->get();
+        $date = date('d-m-Y');
+        $date1 = date('g:i:s a');
+        $vistaurl="reportes.reporteVMA";
+        $view =  \View::make($vistaurl, compact('asignado','asignadoM','date','date1','fch1','fch2'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('Vehiculo-Maquinaria Asignada '.$date.'.pdf');
+    }
 }

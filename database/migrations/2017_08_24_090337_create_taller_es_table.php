@@ -22,6 +22,9 @@ class CreateTallerEsTable extends Migration
             $table->boolean('estadoTE')->default(true);
             $table->timestamps();
         });
+
+        DB::table('taller_es')->insert(array('nomTallerE'=>'Taller Municipal', 'responsable'=>'Oscar Martinez', 'direccionTE'=>'final 8va avenida sur','telefonoTE'=>'2384-4682','estadoTE'=>'1', 'created_at' => ' 2017-10-24' ,
+            'updated_at' => ' 2015-10-24 '));
     }
 
     /**

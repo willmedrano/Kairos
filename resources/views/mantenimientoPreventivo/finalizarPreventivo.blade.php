@@ -59,9 +59,9 @@
                             <div class="col-xl-6">
                               <label>Observaciones iniciales</label>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                               @foreach($mant as $mt)
-                                {!!Form::textarea('observacionInicioMtt',$mt->observacionInicioMtt,['class'=>'form-control','rows'=>'3', 'cols'=>'5','required','readonly'])!!}
+                                {!!Form::textarea('observacionInicioMtt',$mt->observacionInicioMtt,['class'=>'form-control','rows'=>'6', 'cols'=>'6','required','readonly'])!!}
                                 @endforeach
                             </div>
                             <br><br><br><br><br><br>
@@ -90,7 +90,7 @@
                              <div class="col-xl-6">
                                <label>* Descripción del trabajo ralizado</label>
                              </div>
-                             <div class="col-md-5">
+                             <div class="col-md-6">
                                  {!!Form::textarea('observacionFinalMtt',null,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'5','required'])!!}
                              </div>
                              <div class="col-md-6">

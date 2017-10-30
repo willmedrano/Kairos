@@ -3,6 +3,7 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\MttnCorrectivoRequest;
 use Session;
 use Redirect;
 use Input;
@@ -12,7 +13,10 @@ use Kairos\Vehiculo;
 use Kairos\TallerE;
 use Kairos\Motorista;
 use Kairos\MantenimientoCorrectivoVeh;
+use Kairos\MantenimientoCorrectivoMaq;
 use Kairos\AsignarMotVeh;
+use Kairos\Orden;
+use Kairos\Bitacora;
 
 class MantenimientoCorVehController extends Controller
 {
@@ -50,7 +54,7 @@ class MantenimientoCorVehController extends Controller
          {
           $a=$vehiculo->last();//obtener ultimo registro
           $asignado=AsignarMotVeh::where('idVehiculo',$a->id)->where('estadoAsignacion',1)->get();
-           //si el vehiculo se encuntra asignado con estado activo
+           //si el vehiculo se encuentra asignado con estado activo
           if ($asignado->last()!=null) {
             $b=$asignado->last();        
             $mo=$b->idMotorista;
@@ -81,10 +85,19 @@ class MantenimientoCorVehController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MttnCorrectivoRequest $request)
     {
+
+      Orden::create([
+      'nOrden'=>$request['nOrden'],
+    ]);
+
+      $idO=Orden::All();
+      $id=$idO->last()->id;
+
       MantenimientoCorrectivoVeh::create([
-      'idTaller'=>$request['idTaller'],
+      'idOrden'=>$id,
+      'idMecanico'=>$request['mecanico'],
       'idVehiculo'=>$request['idVehiculo'],
       'idMotorista'=>$request['idMotorista'],
       'numTrabajo'=>$request['numTrabajo'],
@@ -96,6 +109,7 @@ class MantenimientoCorVehController extends Controller
     $v= Vehiculo::find($request['idVehiculo']);
     $v->semaforo =4; //el estado del vehiculo cambia a mantt Correctivo
     $v->save();
+    Bitacora::bitacora("Registro de nuevo Mttn Correctivo al Vehiculo': ".$v->nPlaca);
     return redirect('/mantenimientoCorVeh')->with('create','• Mantenimiento correctivo ingresado correctamente');
     }
 
@@ -142,7 +156,7 @@ class MantenimientoCorVehController extends Controller
       $v= Vehiculo::find($request['idVehiculo']);
       $v->semaforo =1; //el estado del vehiculo cambia a disponible
       $v->save();
-
+      Bitacora::bitacora("Finalizó el Mttn Correctivo del Vehiculo: ".$v->nPlaca);
       return redirect('/mantenimientoCorVeh');
     }
 
@@ -155,5 +169,107 @@ class MantenimientoCorVehController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function filtroMC()
+    {
+      return view('reportes.FiltroMttnCorrectivo');
+    }
+
+    public function reporte(Request $request)//reporte Mttn Correctivo general
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $matt=MantenimientoCorrectivoVeh::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMttC',0)->get();
+
+      $mattM=MantenimientoCorrectivoMaq::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMttC',0)->get();
+
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="reportes.reporteMttnC";
+      $view =  \View::make($vistaurl, compact('matt','mattM','date','date1','fch1','fch2'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->setPaper('A4', 'landscape');
+      return $pdf->stream('Mttn Correctivos '.$date.'.pdf');
+    }
+
+    public function reporteMCxVM(Request $request)//reporte Mttn C x VM
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      $opcion=$request->vm;
+
+      $vehiculo=Vehiculo::where('nPlaca',$opcion)->get();
+
+      if($vehiculo->last()!=null){
+        
+          $matt=MantenimientoCorrectivoVeh::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMttC',0)->where('idVehiculo',$vehiculo->last()->id)->get();
+
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteMttnCxVM";
+          $opc=1;
+          $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          $pdf->setPaper('A4', 'landscape');
+          return $pdf->stream('Mttn Correctivo por Vehiculo '.$date.'.pdf');
+      }else{
+          $maquinaria=Maquinaria::where('nEquipo',$opcion)->get();      
+
+          $matt=MantenimientoCorrectivoMaq::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMttC',0)->where('idMaquinaria',$maquinaria->last()->id)->get();
+
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteMttnCxVM";
+          $opc=2;
+          $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          $pdf->setPaper('A4', 'landscape');
+          return $pdf->stream('Mttn Correctivo por Maquinaria '.$date.'.pdf');
+      }
+
+    }
+    public function reporteMttnCDetalle(Request $request)
+    {
+
+        $opcion=$request->vm;
+        $orden=$request->orden;
+
+      
+          $vehiculo=Vehiculo::where('nPlaca',$opcion)->get();
+
+          if($vehiculo->last()!=null){
+            
+              $matt=MantenimientoCorrectivoVeh::where('estadoMttC',0)->where('idVehiculo',$vehiculo->last()->id)->where('idOrden',$orden)->get();
+
+              $date = date('d-m-Y');
+              $date1 = date('g:i:s a');
+              $vistaurl="reportes.reporteMttnCDetalle";
+              $opc=1;
+              $view =  \View::make($vistaurl, compact('matt','date','date1','opc'))->render();
+              $pdf = \App::make('dompdf.wrapper');
+              $pdf->loadHTML($view);
+              return $pdf->stream('MCD por Vehiculo '.$date.'.pdf');
+          }else{
+          $maquinaria=Maquinaria::where('nEquipo',$opcion)->get();      
+
+          $matt=MantenimientoPreMaq::where('estadoMttC',0)->where('idMaquinaria',$maquinaria->last()->id)->where('idOrden',$orden)->get();
+
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteMttnCDetalle";
+          $opc=2;
+          $view =  \View::make($vistaurl, compact('matt','date','date1','opc'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          return $pdf->stream('MCD por Maquinaria '.$date.'.pdf');
+      }
+
+         
     }
 }

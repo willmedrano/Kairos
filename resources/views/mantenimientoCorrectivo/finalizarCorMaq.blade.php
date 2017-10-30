@@ -37,7 +37,7 @@
                                    <tr>
                                      <th ><div align="center">Orden de trabajo</div></th>
                                      <th ><div align="center">Fecha de inicio</div></th>
-                                     <th ><div align="center">Taller</div></th>
+                                     <th ><div align="center">Mecanico</div></th>
                                      <th ><div align="center">Motorista Responsable</div></th>
                                    </tr>
                                  </thead>
@@ -46,12 +46,12 @@
                                      {!! Form::model($mant,['route'=>['mantenimientoCorMaq.update',$mt->id],'method'=>'PUT']) !!}
                                      {!!Form::hidden('idMtt',$mt->id,['id'=>'idMtt','class'=>'form-control','required'])!!}
                                    <tr>
-                                     <td align="center">{{$mt->numTrabajo}}</td>
+                                     <td align="center">{{$mt->idOrden}}</td>
                                      <?php
                                       $date = new DateTime($mt->fechaInicioMtt);
                                     ?>
                                      <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
-                                     <td align="center">{{$mt->tallerNom($mt->idTaller)}}</td>
+                                     <td align="center">{{$mt->tallerNom($mt->idMecanico)}}</td>
                                      <td align="center">{{$mt->MotoristaNom($mt->idMotorista)}}</td>
                                    </tr>
                                  @endforeach
@@ -78,17 +78,17 @@
                              <div class="col-xl-6">
                                <label>Fallas Reportadas</label>
                              </div>
-                             <div class="col-md-5">
+                             <div class="col-md-6">
                                @foreach($mant as $mt)
-                                 {!!Form::textarea('fallasMaq',$mt->fallasMaq,['class'=>'form-control','rows'=>'3', 'cols'=>'5','required','readonly'])!!}
+                                 {!!Form::textarea('fallasMaq',$mt->fallasMaq,['class'=>'form-control','rows'=>'7', 'cols'=>'5','required','readonly'])!!}
                                  @endforeach
                              </div>
                              <br><br>
                              <div class="col-xl-6">
                                <label>* Reparación Realizada</label>
                              </div>
-                             <div class="col-md-5">
-                                 {!!Form::textarea('diagnosticoMec',null,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'5','required'])!!}
+                             <div class="col-md-6">
+                                 {!!Form::textarea('diagnosticoMec',null,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'7','required'])!!}
                              </div>
                              <div class="col-md-6">
                                <br><br>

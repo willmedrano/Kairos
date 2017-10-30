@@ -11,6 +11,7 @@ use Kairos\AsignarMotMaq;
 use Kairos\TipoVmq;
 use Kairos\Modelo;
 use Kairos\Marca;
+use Kairos\Bitacora;
 use Illuminate\Http\Request;
 use Kairos\Http\Requests\MaquinariaRequest;
 
@@ -74,6 +75,7 @@ class MaquinariaController extends Controller
         'nombre_img'=>$file->getClientOriginalName(),
         'observacionMaq'=>$request['observacionMaq'],
       ]);
+      Bitacora::bitacora("Registro de nueva Maquinaria: ".$request['nEquipo']);
       return redirect('/maquinaria')->with('create','• Maquinaria ingresada correctamente');
     }
 
@@ -114,6 +116,7 @@ class MaquinariaController extends Controller
       if($aux=='2')
         {
             $m->estadoMaq =true;
+            Bitacora::bitacora("Activo el: ".$m->nEquipo);
             Session::flash('mensaje','• Maquinaria Activada correctamente');
 
         }
@@ -123,6 +126,7 @@ class MaquinariaController extends Controller
             Session::flash('mensaje','• Maquinaria no puede ser dada de baja ya que se encuentra en misión');
           }else{
             $m->estadoMaq =false;
+            Bitacora::bitacora("Desactivo el: ".$m->nEquipo);
             Session::flash('mensaje','• Maquinaria dada de baja correctamente');
           }
             
@@ -140,6 +144,7 @@ class MaquinariaController extends Controller
            $image->save($path.$file->getClientOriginalName());
 
            $m->nombre_img=$file->getClientOriginalName();
+           Bitacora::bitacora("Actualizo foto del: ".$m->nEquipo);
 
         }
         else{
@@ -148,6 +153,7 @@ class MaquinariaController extends Controller
           $m->nEquipo=$request['nEquipo'];
           $m->nInventario=$request['nInventario'];
           $m->observacionMaq=$request['observacionMaq'];
+          Bitacora::bitacora("Actualización  de datos del: ".$m->nEquipo);
           Session::flash('update','• Maquinaria modificada correctamente');
 
       }

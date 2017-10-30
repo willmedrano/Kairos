@@ -74,9 +74,9 @@ table tr:nth-child(2n-1) td {
       <?php $fecha1=explode('-', $fch1);
       $fecha2=explode('-', $fch2);?>
 
-              <div style="position: absolute;left: 270px; top: 210px; z-index: 1;"><h3>Mantenimientos Preventivos Realizados a Vehiculos y Maquinaria </h3>                  
+              <div style="position: absolute;left: 270px; top: 210px; z-index: 1;"><h3>Mantenimientos Correctivos Realizados a Vehiculos y Maquinaria </h3>                  
             </div>
-            <div  style="position: absolute;left: 395px; top: 230px; z-index: 1;">
+            <div  style="position: absolute;left: 400px; top: 230px; z-index: 1;">
               <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0] ?> </h4>
             </div>
          
@@ -106,7 +106,7 @@ table tr:nth-child(2n-1) td {
                   ?>
                    <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
                    <td align="center"><?php  echo $date2->format('d/m/Y'); ?></td>
-                   <td align="center">{{$m->gastoMP}}</td>
+                   <td align="center">{{$m->gastoMC}}</td>
                  </tr>
                @endforeach
                @foreach ($mattM as $m)
@@ -121,7 +121,7 @@ table tr:nth-child(2n-1) td {
                   ?>
                    <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
                    <td align="center"><?php  echo $date2->format('d/m/Y'); ?></td>
-                   <td align="center">{{$m->gastoMPM}}</td>
+                   <td align="center">{{$m->gastoMC}}</td>
                  </tr>
                @endforeach
       	</tbody>

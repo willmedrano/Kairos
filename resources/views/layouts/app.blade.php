@@ -14,6 +14,7 @@
     <link href="/Kairos/public/css/app.css" rel="stylesheet">
     <link href="/Kairos/public/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -45,7 +46,7 @@
         </script>
     </head>
 </head>
-<body>
+<body bgcolor="red">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -68,6 +69,12 @@
             </div>
         </nav>
         @yield('content')
+        <footer class="sidebar-footer" >
+                    <center>
+                      <img  src="/Kairos/public/img/ues.png" class="" alt="User Image" width="50px" height="50px"><b>
+                     Todos los derechos reservados &copy UES-FMP
+                     </b></center>
+                    </footer>
     </div>
 
     <!-- Scripts -->

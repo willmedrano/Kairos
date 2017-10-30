@@ -8,5 +8,6 @@ function validarInventario(e){
 jQuery(function($){
   $("#n").mask("AMI-AF-9999-9999-999");
   $("#eq").mask("Equipo-99");
+  $("#anio").mask("9999");
  
 });

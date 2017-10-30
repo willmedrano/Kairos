@@ -13,7 +13,9 @@ use Kairos\Maquinaria;
 use Kairos\MecanicoInterno;
 use Kairos\MantenimientoPreventivo;
 use Kairos\MantenimientoPreMaq;
+use Kairos\Bitacora;
 use Kairos\Http\Requests\MttnPreventivoRequest;
+use Kairos\Orden;
 
 
 class MantenimientoPreController extends Controller
@@ -52,10 +54,17 @@ class MantenimientoPreController extends Controller
      */
     public function store(MttnPreventivoRequest $request)
     {
+      Orden::create([
+      'nOrden'=>$request['nOrden'],
+    ]);
+
+      $idO=Orden::All();
+      $id=$idO->last()->id;
+
       MantenimientoPreventivo::create([
+      'idOrden'=>$id,
       'idMecanico'=>$request['idMecanico'],
       'idVehiculo'=>$request['idVehiculo'],
-      'numTrabajo'=>$request['numTrabajo'],
       'fechaInicioMtt'=>$request['fechaInicioMtt'],
       'fechaFinMtt'=>$request['fechaInicioMtt'],
       'observacionInicioMtt'=>$request['observacionInicioMtt'],
@@ -64,6 +73,7 @@ class MantenimientoPreController extends Controller
     $v= Vehiculo::find($request['idVehiculo']);
     $v->semaforo =2; //el estado del vehiculo cambia a mantt
     $v->save();
+    Bitacora::bitacora("Registro de nuevo Mttn Preventico al Vehiculo': ".$v->nPlaca);
     return redirect('/mantenimientoPre')->with('create','• Mantenimiento preventivo ingresado correctamente');
     }
 
@@ -113,7 +123,7 @@ class MantenimientoPreController extends Controller
         $v->semaforo =1; //el estado del vehiculo cambia a disponible
         $v->kilometrajeAux =0;
         $v->save();
-
+        Bitacora::bitacora("Finalizó el Mttn Preventivo del Vehiculo: ".$v->nPlaca);
         return redirect('/mantenimientoPre');
 
     }
@@ -132,7 +142,7 @@ class MantenimientoPreController extends Controller
     {
       return view('reportes.FiltroMttnPreventivo');
     }
-    public function reporte(Request $request)
+    public function reporte(Request $request) //General
     {
 
       $fch1=$request->fechaInicial;
@@ -148,10 +158,11 @@ class MantenimientoPreController extends Controller
       $view =  \View::make($vistaurl, compact('matt','mattM','date','date1','fch1','fch2'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
+      $pdf->setPaper('A4', 'landscape');
       return $pdf->stream('Mttn Preventivos '.$date.'.pdf');
     }
 
-    public function reporteMPxVM(Request $request)
+    public function reporteMPxVM(Request $request) //por V/M todos
     {
 
       $fch1=$request->fechaInicial;
@@ -171,6 +182,7 @@ class MantenimientoPreController extends Controller
           $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
           $pdf = \App::make('dompdf.wrapper');
           $pdf->loadHTML($view);
+          $pdf->setPaper('A4', 'landscape');
           return $pdf->stream('Mttn Preventivos por Vehiculo '.$date.'.pdf');
       }else{
           $maquinaria=Maquinaria::where('nEquipo',$opcion)->get();      
@@ -184,12 +196,13 @@ class MantenimientoPreController extends Controller
           $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
           $pdf = \App::make('dompdf.wrapper');
           $pdf->loadHTML($view);
+          $pdf->setPaper('A4', 'landscape');
           return $pdf->stream('Mttn Preventivos por Maquinaria '.$date.'.pdf');
       }
 
     }
 
-    public function reporteMttnPDetalle(Request $request)
+    public function reporteMttnPDetalle(Request $request)//por orden
     {
 
         $opcion=$request->vm;
@@ -200,7 +213,7 @@ class MantenimientoPreController extends Controller
 
           if($vehiculo->last()!=null){
             
-              $matt=MantenimientoPreventivo::where('estadoMtt',0)->where('idVehiculo',$vehiculo->last()->id)->where('numTrabajo',$orden)->get();
+              $matt=MantenimientoPreventivo::where('estadoMtt',0)->where('idVehiculo',$vehiculo->last()->id)->where('idOrden',$orden)->get();
 
               $date = date('d-m-Y');
               $date1 = date('g:i:s a');
@@ -213,7 +226,7 @@ class MantenimientoPreController extends Controller
           }else{
           $maquinaria=Maquinaria::where('nEquipo',$opcion)->get();      
 
-          $matt=MantenimientoPreMaq::where('estadoMtt',0)->where('idMaquinaria',$maquinaria->last()->id)->where('numTrabajo',$orden)->get();
+          $matt=MantenimientoPreMaq::where('estadoMtt',0)->where('idMaquinaria',$maquinaria->last()->id)->where('idOrden',$orden)->get();
 
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');
@@ -222,7 +235,7 @@ class MantenimientoPreController extends Controller
           $view =  \View::make($vistaurl, compact('matt','date','date1','opc'))->render();
           $pdf = \App::make('dompdf.wrapper');
           $pdf->loadHTML($view);
-          return $pdf->stream('MPD por Maquinaria '.$date.'<div class="p"></div>df');
+          return $pdf->stream('MPD por Maquinaria '.$date.'.pdf');
       }
 
          

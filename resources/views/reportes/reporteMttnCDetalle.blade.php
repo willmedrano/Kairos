@@ -82,9 +82,9 @@ table tr:nth-child(2n-1) td {
         <div style="position: absolute;left: 400px; top: 180px; z-index: 1;"><h4>Gasto Total $  
         @foreach ($matt as $m)
         @if($opc==1)
-          {{$m->gastoMP}}
+          {{$m->gastoMC}}
           @else
-          {{$m->gastoMPM}}
+          {{$m->gastoMC}}
           @endif
           @endforeach
           </h4> </div>
@@ -94,24 +94,25 @@ table tr:nth-child(2n-1) td {
       </div><!-- /.box-header -->
 
       <div class="box-body">
-      <table class="table-wrapper" border="0" width="100%" >
+      <table class="table-wrapper" border="0" width="100px" >
            <thead>
             <tr>               
-               <th  ><div align="left">Observaciones o Falla/s reportadas</div></th> 
+               <th colspan="5" ><div align="left">Observaciones o Falla/s reportadas</div></th> 
             </tr>
           </thead>
                @foreach ($matt as $m)
-                 <tr >
-                   <td  colspan="5" height="250px"><div align="left">{{$m->observacionInicioMtt}}</div></td>                   
+                 <tr>
+                   <td colspan="5" height="250px"><div align="left">{{$m->fallasVeh}}</div></td>                   
                  </tr>
                <tr>               
-                <th  ><div align="left">Diagnostico de mecanico / Reparación realizada</div></th> 
+                <th colspan="5" ><div align="left">Diagnostico de mecanico / Reparación realizada</div></th> 
               </tr>
                  <tr >
-                   <td colspan="5" height="250px"><div align="left">{{$m->observacionFinalMtt}}</div></td>                   
+                   <td colspan="5" height="250px"><div align="left">{{$m->diagnosticoMec}}</div></td>                   
                  </tr>
                <tr >
-                   <th  ><div align="left">Mecanico que recibe: {{$m->mecanicoNom($m->idMecanico)}}</div></th>                   
+                   <th colspan="5" ><div align="left"> {{$m->tallerNom($m->idMecanico).', Mecanico que recibe: '.$m->mecanicoNom($m->idMecanico)}}</div></th>      
+
                  </tr>
                  @endforeach
         </tbody>

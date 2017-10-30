@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class MantenimientoCorrectivoMaq extends Model
 {
     protected $table="mantenimiento_correctivo_maqs";
-  protected $fillable = ['idTaller','idMaquinaria','idMotorista','numTrabajo',
+  protected $fillable = ['idOrden','idMecanico','idMaquinaria','idMotorista',
   'fechaInicioMtt','fechaFinMtt','fallasMaq','diagnosticoMec'];
 
+  public static function mecanicoNom($id){
+    $m=MecanicoInterno::find($id);
+    return $m->nombresMec.' '.$m->apellidosMec;
+  }
   public static function tallerNom($id){
-    $m=TallerE::find($id);
-    return $m->nomTallerE;
+    $m=MecanicoInterno::find($id);
+    $t=TallerE::find($m->idTaller);
+    return $t->nomTallerE;
   }
   public static function MotoristaNom($id){
     $m=Motorista::find($id);

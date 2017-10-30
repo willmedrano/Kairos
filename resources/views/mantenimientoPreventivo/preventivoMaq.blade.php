@@ -16,6 +16,7 @@
   }
 </style>
   <article class="content forms-page">
+    @include('alertas.request')
     <div class="title-block">
       <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO PREVENTIVO</i></span>
          <p class="title-description"> Registrar maquinaria a mantenimiento preventivo</p>
@@ -38,7 +39,7 @@
                               <label >* Orden de trabajo </label>
                             </div>
                             <div class="col-md-2">
-                              {!!Form::number('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
+                              {!!Form::number('nOrden',null,['id'=>'nOrden','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
                             </div>
                             <div class="col-md-2">
                               <label >* Fecha</label>

@@ -59,7 +59,8 @@
                                <tr>
                                  <th ><div align="center">N°</div></th>
                                  <th ><div align="center">N° ORDEN</div></th>
-                                 <th ><div align="center">Taller</div></th>
+                                 <th ><div align="center">MECANICO</div></th>
+                                 <th ><div align="center">TALLER</div></th>
                                  <th ><div align="center">MAQUINARIA</div></th>
                                  <th ><div align="center">INICIO</div></th>
                                  <th ><div align="center">FINALIZADO</div></th>
@@ -72,8 +73,9 @@
                                  @include('mantenimientoCorrectivo.mcRealizadoMaqDetalle')
                                  <tr>
                                    <td align="center">{{$cont++}}</td>
-                                   <td align="center">{{$m->numTrabajo}}</td>
-                                   <td align="center">{{$m->tallerNom($m->idTaller)}}</td>
+                                   <td align="center">{{$m->idOrden}}</td>
+                                   <td align="center">{{$m->mecanicoNom($m->idMecanico)}}</td>
+                                   <td align="center">{{$m->tallerNom($m->idMecanico)}}</td>
                                    <td align="center">{{$m->equipo($m->idMaquinaria)}}</td>
                                    <?php
                                     $date = new DateTime($m->fechaInicioMtt);

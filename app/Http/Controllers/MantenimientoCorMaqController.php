@@ -3,6 +3,7 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\MttnCorrectivoRequest;
 use Session;
 use Redirect;
 use Input;
@@ -14,6 +15,9 @@ use Kairos\MecanicoInterno;
 use Kairos\Motorista;
 use Kairos\MantenimientoCorrectivoMaq;
 use Kairos\AsignarMotMaq;
+use Kairos\Orden;
+use Kairos\Bitacora;
+
 
 class MantenimientoCorMaqController extends Controller
 {
@@ -82,10 +86,18 @@ class MantenimientoCorMaqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MttnCorrectivoRequest $request)
     {
+      Orden::create([
+      'nOrden'=>$request['nOrden'],
+    ]);
+
+      $idO=Orden::All();
+      $id=$idO->last()->id;
+
         MantenimientoCorrectivoMaq::create([
-      'idTaller'=>$request['idTaller'],
+      'idOrden'=>$id,
+      'idMecanico'=>$request['mecanico'],
       'idMaquinaria'=>$request['idMaquinaria'],
       'idMotorista'=>$request['idMotorista'],
       'numTrabajo'=>$request['numTrabajo'],
@@ -97,6 +109,7 @@ class MantenimientoCorMaqController extends Controller
     $m= Maquinaria::find($request['idMaquinaria']);
     $m->semaforo =4; //el estado del vehiculo cambia a mantt Correctivo
     $m->save();
+    Bitacora::bitacora("Registro de nuevo Mttn Correctivo al ': ".$m->nEquipo);
     return redirect('/mantenimientoCorMaq')->with('create','• Mantenimiento correctivo ingresado correctamente');
     }
 
@@ -143,7 +156,7 @@ class MantenimientoCorMaqController extends Controller
       $v= Maquinaria::find($request['idMaquinaria']);
       $v->semaforo =1; //el estado del vehiculo cambia a disponible
       $v->save();
-
+      Bitacora::bitacora("Finalizó el Mttn Correctivo del : ".$m->nEquipo);
       return redirect('/mantenimientoCorMaq');
     }
 

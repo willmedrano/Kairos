@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Kairos\Http\Requests\ModeloRequest;
 use Kairos\Modelo;
 use Kairos\Marca;
+use Kairos\Bitacora;
 use Redirect;
 use Session;
 
@@ -43,6 +44,7 @@ class ModeloController extends Controller
       'nomModelo'=>$request['nomModelo'],
       'idMarca'=>$request['id'],
     ]);
+      Bitacora::bitacora("Registro de nuevo Modelo: ".$request['nomModelo']);
     return redirect('/marca')->with('create','• Modelo ingresado correctamente');
 
     }
@@ -79,9 +81,11 @@ class ModeloController extends Controller
     public function update(Request $request, $id)
     {
       $modelo= Modelo::find($id);
+      $mo=$modelo->nomModelo;
       $modelo->nomModelo=$request['nomModelo'];
       Session::flash('update','• Registro Actualizado');
       $modelo->save();
+      Bitacora::bitacora("Modificación de Modelo: ".$mo);
 
       $aux = Modelo::where('id','=', $id)->first(); //obtener datos del modelo modificado
       $marca =Marca::find($aux->idMarca);//obtener marca del modelo modificado

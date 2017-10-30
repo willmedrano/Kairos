@@ -12,6 +12,7 @@ use Kairos\TipoVmq;
 use Kairos\Modelo;
 use Kairos\Marca;
 use Kairos\AsignarMotVeh;
+use Kairos\Bitacora;
 use Illuminate\Http\Request;
 use Kairos\Http\Requests\VehiculoRequest;
 
@@ -76,6 +77,7 @@ class VehiculoController extends Controller
         'nombre_img'=>$file->getClientOriginalName(),
         'observacionVeh'=>$request['observacionVeh'],
       ]);
+      Bitacora::bitacora("Registro de nuevo Vehiculo: ".$request['nPlaca']);
       return redirect('/vehiculo')->with('message','create');
     }
 
@@ -116,6 +118,7 @@ class VehiculoController extends Controller
       if($aux=='2')
         {
             $v->estadoVeh =true;
+            Bitacora::bitacora("Activo el Vehiculo: ".$v->nPlaca);
             Session::flash('mensaje','• Vehiculo Activado correctamente');
 
         }
@@ -125,6 +128,7 @@ class VehiculoController extends Controller
             Session::flash('mensaje','• Vehiculo no puede ser dado de baja ya que se encuentra en misión');
           }else{
             $v->estadoVeh =false;
+            Bitacora::bitacora("Desactivo el Vehiculo: ".$v->nPlaca);
             Session::flash('mensaje','• Vehiculo dado de baja correctamente');
           }
 
@@ -141,6 +145,7 @@ class VehiculoController extends Controller
            $image->save($path.$file->getClientOriginalName());
 
            $v->nombre_img=$file->getClientOriginalName();
+           Bitacora::bitacora("Actualizo foto del Vehiculo: ".$v->nPlaca);
 
         }
         else{
@@ -149,6 +154,7 @@ class VehiculoController extends Controller
           $v->nPlaca=$request['nPlaca'];
           $v->nInventario=$request['nInventario'];
           $v->kilometrajeM=$request['kilometrajeM'];
+          Bitacora::bitacora("Actualización  de datos del Vehiculo: ".$v->nPlaca);
           Session::flash('update','• Sea actualizado con éxito el registro');
 
       }
@@ -193,6 +199,7 @@ class VehiculoController extends Controller
       $view =  \View::make($vistaurl, compact('vehiculo','maquinaria','date','date1'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
+      $pdf->setPaper('A4', 'landscape');
       return $pdf->stream('Inventario Vehiculo-Maquinaria '.$date.'.pdf');
     }
        

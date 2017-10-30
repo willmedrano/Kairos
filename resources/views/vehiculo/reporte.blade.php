@@ -58,14 +58,15 @@ table tr:nth-child(2n-1) td {
   <div class="col-md-12">
     <div class="box-body">
       <div class="box-header with-border">
-        <div style="position: absolute;left: 250px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
-        <div style="position: absolute;left: 80px; top: 70px; z-index: 1;"><h3>Listado General de Vehiculos, Maquinaria y Equipo de Terraceria Municipales</h3></div>
-        <div style="position: absolute;left: 240px; top: 90px; z-index: 1;"><h3>Unidad de Transporte y Mantenimiento</h3></div>
+        <div style="position: absolute;left: 350px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
+        <div style="position: absolute;left: 210px; top: 70px; z-index: 1;"><h3>Listado General de Vehiculos, Maquinaria y Equipo de Terraceria Municipales</h3></div>
+        <div style="position: absolute;left: 345px; top: 90px; z-index: 1;"><h3>Unidad de Transporte y Mantenimiento</h3></div>
         <HR style="position: absolute;left: 23px; top: 163px; z-index: 1; color:blue;" width=90%>
-        <div style="position: absolute;left: 550px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
-        <div style="position: absolute;left: 550px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
+        <div style="position: absolute;left: 850px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
+        <div style="position: absolute;left: 840px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
         
-        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+        <h3 align="right" style="position: absolute; left:20px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+        <h3 align="right" style="position: absolute; left:850px; top:30px; z-index: 1;"><img class="al" width="120px" height="100px" src="img/UTM.png" ></h3>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div><!-- /.box-header -->
       <div class="box-body">

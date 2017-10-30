@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MantenimientoPreventivo extends Model
 {
   protected $table="mantenimiento_preventivos";
-  protected $fillable = ['idMecanico','idVehiculo','numTrabajo',
+  protected $fillable = ['idOrden','idMecanico','idVehiculo',
   'fechaInicioMtt','fechaFinMtt','observacionInicioMtt','observacionFinalMtt'];
 
   public static function mecanicoNom($id){

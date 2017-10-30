@@ -5,6 +5,7 @@ namespace Kairos\Http\Controllers;
 use Illuminate\Http\Request;
 use Kairos\Http\Requests\TipoVMRequest;
 use Kairos\TipoVmq;
+use Kairos\Bitacora;
 use Redirect;
 use Session;
 
@@ -43,6 +44,7 @@ class TipoVMController extends Controller
       'TipoVM'=>$request['TipoVM'],
       'TipoVM2'=>$request['TipoVM2'],
       ]);
+      Bitacora::bitacora("Registro de nuevo Tipo: ".$request['TipoVM']);
       return redirect('/tipoVM')->with('create','• Registro ingresado correctamente');
     }
 
@@ -78,10 +80,12 @@ class TipoVMController extends Controller
     public function update(Request $request, $id)
     {
       $tipo= TipoVmq::find($id);
+      $ta=$tipo->TipoVM;
       $tipo->TipoVM=$request['TipoVM'];
       $tipo->TipoVM2=$request['TipoVM2'];
       Session::flash('update','• Tipo V/M editado correctamente');
       $tipo->save();
+      Bitacora::bitacora("Modificación del Tipo: ".$ta);
       return Redirect::to('/tipoVM');
     }
 

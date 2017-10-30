@@ -9,6 +9,7 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\Motorista;
+use Kairos\Bitacora;
 use Kairos\AsignarMotVeh;
 use Kairos\AsignarMotMaq;
 use Carbon\Carbon;
@@ -68,6 +69,7 @@ class MotoristaController extends Controller
         'tipoMot'=>$request['tipoMot'],
         'observacionMot'=>$request['observacionMot'],
       ]);
+      Bitacora::bitacora("Registro de nuevo Motorista-Operario: ".$request['nombresMot']." ".$request['apellidosMot']);
       return redirect('/motorista')->with('create','• Sea creado con éxito el registro');
     }
 
@@ -112,6 +114,7 @@ class MotoristaController extends Controller
         {
             $motorista->fechaDespido=$motorista->fechaContrato;
             $motorista->estadoMot =true;
+            Bitacora::bitacora("Activo al Motorista: ".$motorista->nombresMot." ".$motorista->apellidosMot);
             Session::flash('mensaje','• Motorista Activado correctamente');
         }
         else if($aux=='3') //desactivar motorista/ operario
@@ -133,6 +136,7 @@ class MotoristaController extends Controller
                 $date = Carbon::now();
                 $motorista->fechaDespido=$date;
                 $motorista->estadoMot =false;
+                Bitacora::bitacora("Desactivo al Motorista: ".$motorista->nombresMot." ".$motorista->apellidosMot);
                 Session::flash('mensaje','• Motorista Desactivado correctamente');
               }
             }
@@ -150,6 +154,7 @@ class MotoristaController extends Controller
                 $date = Carbon::now();
                 $motorista->fechaDespido=$date;
                 $motorista->estadoMot =false;
+                Bitacora::bitacora("Desactivo al Operario: ".$motorista->nombresMot." ".$motorista->apellidosMot);
                 Session::flash('mensaje','• Motorista Desactivado correctamente');
               }
             }
@@ -165,6 +170,7 @@ class MotoristaController extends Controller
              // Guardar Original
              $image->save($path.$file->getClientOriginalName());
              $motorista->nombre_img=$file->getClientOriginalName();
+             Bitacora::bitacora("Actualización de foto de: ".$motorista->nombresMot." ".$motorista->apellidosMot);
         }
 
         else{ //actualizar datos
@@ -181,6 +187,8 @@ class MotoristaController extends Controller
                $motorista->tipoMot=$request['tipoMot'];
                $motorista->observacionMot=$request['observacionMot'];
                Session::flash('update','• Motorista editado correctamente');
+
+               Bitacora::bitacora("Actualización de datos de: ".$motorista->nombresMot." ".$motorista->apellidosMot);
 
         }
       $motorista->save();

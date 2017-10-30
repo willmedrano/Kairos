@@ -4,6 +4,7 @@ namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kairos\MecanicoInterno;
+use Kairos\Bitacora;
 use Session;
 use Redirect;
 use Input;
@@ -18,7 +19,7 @@ class MecanicoInternoController extends Controller
      */
     public function index()
     {
-      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1);
+      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1)->get();
       return view('mecanicoI.index',compact('mecanico'));
     }
 
@@ -63,6 +64,7 @@ class MecanicoInternoController extends Controller
         'observacionMec'=>$request['observacionMec'],
         'idTaller'=>1,
       ]);
+      Bitacora::bitacora("Registro de nuevo Mecanico: ".$request['nombresMec']." ".$request['apellidosMec']);
       return redirect('/mecanicoI')->with('create','• Sea creado con éxito el registro');
     }
 
@@ -104,6 +106,7 @@ class MecanicoInternoController extends Controller
         {
             $m->fechaDespido=$m->fechaContrato;
             $m->estadoMec =true;
+            Bitacora::bitacora("Activo al Mecanico: ".$m->nombresMec." ".$m->apellidosMec);
             Session::flash('mensaje','• Mecánico Activado correctamente');
         }
         else if($aux=='3')
@@ -112,6 +115,7 @@ class MecanicoInternoController extends Controller
             $date = Carbon::now();
             $m->fechaDespido=$date;
             $m->estadoMec =false;
+            Bitacora::bitacora("Desactivo al Mecanico: ".$m->nombresMec." ".$m->apellidosMec);
             Session::flash('mensaje','• Mecánico Desactivado correctamente');
         }
         else if($aux=='4'){
@@ -123,6 +127,7 @@ class MecanicoInternoController extends Controller
            // Guardar Original
            $image->save($path.$file->getClientOriginalName());
            $m->nombre_img=$file->getClientOriginalName();
+           Bitacora::bitacora("Actualizo la foto del Mecanico: ".$m->nombresMec." ".$m->apellidosMec);
         }
 
 else{
@@ -136,6 +141,7 @@ else{
        $m->fechaNacimiento=$request['fechaNacimiento'];
        $m->fechaContrato=$request['fechaContrato'];
        $m->observacionMec=$request['observacionMec'];
+       Bitacora::bitacora("Actualizo datos al Mecanico: ".$m->nombresMec." ".$m->apellidosMec);
        Session::flash('update','• Mecánico editado correctamente');
 
 }

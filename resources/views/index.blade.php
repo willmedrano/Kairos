@@ -501,116 +501,27 @@
                                     Mttn Preventivo
                                 </a>
                               </li>
+                              <li>
+                                <a href="/Kairos/public/filtroMC" >
+                                    Mttn Correctivo
+                                </a>
+                              </li>
                               
                             </ul>
                           </li>
                         </ul>
                       </nav>
                     </div>
-                    <footer class="sidebar-footer">
-                      <ul class="nav metismenu" id="customize-menu">
-                        <li>
-                          <ul>
-                            <li class="customize">
-                              <div class="customize-item">
-                                <div class="row customize-header">
-                                  <div class="col-xs-4" align="center">
-                                      <label class="title">Estatico</label>
-                                  </div>
-                                  <div class="col-xs-4" align="center">
-                                      <label class="title">Normal</label>
-                                  </div>
-                                </div>
-                                <div class="row hidden-md-down">
-                                  <div class="col-xs-4">
-                                      <label class="title">Scroll:</label>
-                                  </div>
-                                  <div class="col-xs-4">
-                                    <label>
-                                      <input class="radio" type="radio" name="sidebarPosition" value="sidebar-fixed">
-                                      <span></span>
-                                    </label>
-                                  </div>
-                                  <div class="col-xs-4">
-                                    <label>
-                                      <input class="radio" type="radio" name="sidebarPosition" value="">
-                                      <span></span>
-                                    </label>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-xs-4">
-                                    <label class="title">
-                                        Cabeza:
-                                    </label>
-                                  </div>
-                                  <div class="col-xs-4">
-                                    <label>
-                                      <input class="radio" type="radio" name="headerPosition" value="header-fixed">
-                                      <span></span>
-                                    </label>
-                                  </div>
-                                  <div class="col-xs-4">
-                                    <label>
-                                      <input class="radio" type="radio" name="headerPosition" value="">
-                                      <span></span>
-                                    </label>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-xs-4">
-                                    <label class="title">
-                                        Pie:
-                                    </label>
-                                  </div>
-                                  <div class="col-xs-4">
-                                    <label>
-                                      <input class="radio" type="radio" name="footerPosition" value="footer-fixed">
-                                      <span></span>
-                                    </label>
-                                  </div>
-                                  <div class="col-xs-4">
-                                    <label>
-                                      <input class="radio" type="radio" name="footerPosition" value="">
-                                      <span></span>
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="customize-item">
-                                <ul class="customize-colors">
-                                  <li> <span class="color-item color-red" data-theme="red"></span> </li>
-                                  <li> <span class="color-item color-orange" data-theme="orange"></span> </li>
-                                  <li> <span class="color-item color-green" data-theme="green"></span> </li>
-                                  <li> <span class="color-item color-seagreen" data-theme="seagreen"></span> </li>
-                                  <li> <span class="color-item color-blue active" data-theme=""></span> </li>
-                                  <li> <span class="color-item color-purple" data-theme="purple"></span> </li>
-                                </ul>
-                              </div>
-                            </li>
-                          </ul>
-                          <a href="">
-                               <i class="fa fa-cog"></i>
-                                  Personalizar
-                          </a>
-                        </li>
-                      </ul>
-                    </footer>
+                    
                 </aside>
-                <div>
-                    {{-- <br><br><br>
-                    <div class="col-md-12">
-                      <div align="left" class="col-md-2">
-                          <img src="/Kairos/public/img/alcaldia.png" class="" alt="User Image" width="150px" height="150px">
-                        </div>
-                        <div class="title-block" class="col-md-0">
-                          <img align="right" src="/Kairos/public/img/sv.png" class="" alt="User Image" width="150px" height="150px">
-                          <span class=""><center><h2> Unidad de Transporte y Mantenimiento</h2></center></span>
-                             <p class="title-description"><center><h3> Alcaldia Municipal de Ilobasco </h3></center></p>                         
-                         </div>
-                      </div> --}}
-                     
+                <div>                                        
                     @yield('content')
+                    <footer class="sidebar-footer"  >
+                    <center>
+                      <img  src="/Kairos/public/img/ues.png" class="" alt="User Image" width="50px" height="50px"><b>
+                     Todos los derechos reservados &copy UES-FMP
+                     </b></center>
+                    </footer>
                 </div>
                 <div class="ref" id="ref">
                   <div class="color-primary"></div>
@@ -626,20 +537,6 @@
         {!!Html::script('js/maquinaria.js')!!}
             @section('scripts')
 
-          <!-- Theme initialization -->
-          <script>
-            var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
-            {};
-            var themeName = themeSettings.themeName || '';
-            if (themeName)
-              {
-                document.write('<link rel="stylesheet" id="theme-style" href="css/app-' + themeName + '.css">');
-              }
-            else
-              {
-                document.write('<link rel="stylesheet" id="theme-style" href="css/app.css">');
-              }
-          </script>
           @show
     </body>
 </html>

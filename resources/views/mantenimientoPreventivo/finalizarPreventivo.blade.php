@@ -45,7 +45,7 @@
                                      {!! Form::model($mant,['route'=>['mantenimientoPre.update',$mt->id],'method'=>'PUT']) !!}
                                      {!!Form::hidden('idMtt',$mt->id,['id'=>'idMtt','class'=>'form-control','required'])!!}
                                    <tr>
-                                     <td align="center">{{$mt->numTrabajo}}</td>
+                                     <td align="center">{{$mt->idOrden}}</td>
                                      <?php
                                       $date = new DateTime($mt->fechaInicioMtt);
                                     ?>

@@ -12,11 +12,11 @@
              <img src="/Kairos/public/imagenesMaquinaria/{{$m->imgMaquinaria($m->idMaquinaria)}}" class="" alt="User Image" width="525px" height="250px">
              <br>
              <div class="col-xs-6"><b> Fallas Reportadas:</b></div>
-             <div class="col-xs-6">{!!Form::textarea('observacionFinalMtt',$m->fallasMaq,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'4', 'cols'=>'5','required','readonly'])!!}</div>
+             <div class="col-xs-12">{!!Form::textarea('observacionFinalMtt',$m->fallasMaq,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'5','required','readonly'])!!}</div>
              <div class="col-xs-6"><b>Observaciones finales:</b></div>
-             <div class="col-xs-6">{!!Form::textarea('observacionFinalMtt',$m->diagnosticoMec,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'4', 'cols'=>'5','required','readonly'])!!}</div>
-             <div class="col-xs-6"><b>Gasto total $:</b> </div>
-             <div class="col-xs-6">{{$m->gastoMC}}</div>
+             <div class="col-xs-12">{!!Form::textarea('observacionFinalMtt',$m->diagnosticoMec,['class'=>'form-control', 'placeholder'=>'lista del trabajo realizado', 'rows'=>'6', 'cols'=>'5','required','readonly'])!!}</div>
+             <div class="col-xs-3"><b>Gasto total $:</b> </div>
+             <div class="col-xs-3">{{$m->gastoMC}}</div>
            </div>
         </div>
       </div>

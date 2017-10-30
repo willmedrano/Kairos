@@ -15,11 +15,12 @@ class CreateMantenimientoPreMaqsTable extends Migration
     {
         Schema::create('mantenimiento_pre_maqs', function (Blueprint $table) {
             $table->increments('id');
+            $table->Integer('idOrden')->unsigned();
+            $table->foreign('idOrden')->references('id')->on('ordens');
             $table->Integer('idMecanico')->unsigned();
             $table->foreign('idMecanico')->references('id')->on('mecanico_internos');
             $table->Integer('idMaquinaria')->unsigned();
             $table->foreign('idMaquinaria')->references('id')->on('maquinarias');
-            $table->string('numTrabajo');
             $table->date('fechaInicioMtt');
             $table->date('fechaFinMtt');
             $table->string('observacionInicioMtt');

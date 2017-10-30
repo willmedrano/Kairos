@@ -5,6 +5,7 @@ namespace Kairos\Http\Controllers;
 use Illuminate\Http\Request;
 use Kairos\TallerE;
 use Kairos\MecanicoInterno;
+use Kairos\Bitacora;
 use Redirect;
 use Session;
 use Kairos\Http\Requests\TallerRequest;
@@ -46,15 +47,14 @@ class TallerExternoController extends Controller
       'direccionTE'=>$request['direccionTE'],
       'telefonoTE'=>$request['telefonoTE'],
     ]);
-      $idT=TallerE::All();
-      // foreach ($idT as $T) {
-      //   $i=$T->id;
-      // }
+      Bitacora::bitacora("Registro de nuevo Taller: ".$request['nomTallerE']);
 
+      $idT=TallerE::All();
       $id=$idT->last()->id;
+      
       MecanicoInterno::create([
         'nombresMec'=>$request['responsable'],
-        'apellidosMec'=>' hola',
+        'apellidosMec'=>' ',
         'direccionMec'=>$request['direccionTE'],
         'sexo'=>'M',
         'telefonoMec'=>$request['telefonoTE'],
@@ -102,20 +102,24 @@ class TallerExternoController extends Controller
     {
       $aux=$request['hi2'];
       $t= TallerE::find($id);
+      $ta=$t->nomTallerE;
       if($aux=='1')
         {
           $t->nomTallerE=$request['nomTallerE'];
           $t->responsable=$request['responsable'];
           $t->direccionTE=$request['direccionTE'];
           $t->telefonoTE=$request['telefonoTE'];
+          Bitacora::bitacora("Datos actualizado de : ".$ta);
           Session::flash('update','• Sea actualizado con éxito el registro');
 
         }
         else if ($aux=='2') {
           $t->estadoTE=true;
+          Bitacora::bitacora("Activo al: ".$ta);
           Session::flash('mensaje','• Taller Activado correctamente');
         }else{
           $t->estadoTE =false;
+          Bitacora::bitacora("Desactivo al: ".$ta);
           Session::flash('mensaje','• Taller Desactivado correctamente');
       }
         $t->save();

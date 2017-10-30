@@ -12,6 +12,7 @@ use Kairos\Marca;
 use Kairos\TipoVmq;
 use Kairos\Motorista;
 use Kairos\AsignarMotMaq;
+use Kairos\Bitacora;
 use Carbon\Carbon;
 
 class AsignarMotMaqController extends Controller
@@ -62,7 +63,9 @@ class AsignarMotMaqController extends Controller
         'unidad'=>$request['unidad'],
         'observacionAsiM'=>$request['observacionAsiM'],
       ]);
-      
+      $m= Maquinaria::find($request['idMaquinaria']);
+      $mo= Motorista::find($request['idMotorista']);
+      Bitacora::bitacora("Nueva Asignación del : ".$m->nEquipo." al Operario ".$mo->nombresMot." ".$mo->apellidosMot);
       return redirect('/asignarMotMaq');
     }
 
@@ -114,7 +117,9 @@ class AsignarMotMaqController extends Controller
           $date = Carbon::now();//captura la fecha actual
           $cc->fechaFin=$date;
           $cc->estadoAsignacionMaq=false; //se vuelve a habilitar el vehiculo
-          //$m->semaforo=1; //semaforo pasa a disponible
+
+          $mo= Motorista::find($cc->idMotorista);
+          Bitacora::bitacora("Asignación finalizada del : ".$m->nEquipo." al Operario ".$mo->nombresMot." ".$mo->apellidosMot);
       }
       $cc->save();
       $m->save(); //se guarda los cambios en la tabla maquinarias

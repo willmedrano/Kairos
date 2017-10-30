@@ -16,6 +16,7 @@
   }
 </style>
   <article class="content forms-page">
+    @include('alertas.request')
     <div class="title-block">
       <span class=""><i class="fa fa-archive bigicon icon_nav" > MANTENIMIENTO CORRECTIVO</i></span>
          <p class="title-description"> Registrar vehiculo a mantenimiento correctivo</p>
@@ -38,7 +39,7 @@
                               <label >* Orden de trabajo </label>
                             </div>
                             <div class="col-md-2">
-                              {!!Form::text('numTrabajo',null,['id'=>'numTrabajo','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
+                              {!!Form::number('nOrden',null,['id'=>'nOrden','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
                             </div>
                             <div class="col-md-2">
                               <label >* Fecha</label>
@@ -101,11 +102,11 @@
                                   </select>
                               </div>
                                 <br><br>
-                              <div class="col-xl-2">
+                              <div class="col-xl-3">
                                 <label>* Fallas Reportadas</label>
                               </div>
-                              <div class="col-md-5">
-          		                    {!!Form::textarea('fallasVeh',null,['class'=>'form-control', 'placeholder'=>'lista de fallas reportadas', 'rows'=>'6', 'cols'=>'5','required'])!!}
+                              <div class="col-md-7">
+          		                    {!!Form::textarea('fallasVeh',null,['class'=>'form-control', 'placeholder'=>'lista de fallas reportadas', 'rows'=>'8', 'cols'=>'5','required'])!!}
                               </div>
                             </div>
                           </section>

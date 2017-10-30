@@ -12,6 +12,7 @@ use Kairos\TipoVmq;
 use Kairos\Motorista;
 use Kairos\AsignarMotVeh;
 use Kairos\AsignarMotMaq;
+use Kairos\Bitacora;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
@@ -61,6 +62,9 @@ class AsignarMotVehController extends Controller
           'unidad'=>$request['unidad'],
           'observacionAsiV'=>$request['observacionAsiV'],
         ]);
+        $v= Vehiculo::find($request['idVehiculo']);
+        $mo= Motorista::find($request['idMotorista']);
+        Bitacora::bitacora("Nueva Asignación del Vehiculo : ".$v->nPlaca." al Motorista ".$mo->nombresMot." ".$mo->apellidosMot);
         
         return redirect('/asignarMotVeh');
       }
@@ -113,7 +117,9 @@ class AsignarMotVehController extends Controller
               $date = Carbon::now();//captura la fecha actual
               $cc->fechaFin=$date;
               $cc->estadoAsignacion=false; //se vuelve a habilitar el vehiculo
-             // $v->semaforo=1; //semaforo pasa a disponible
+
+              $mo= Motorista::find($cc->idMotorista);
+              Bitacora::bitacora("Asignación finalizada del Vehiculo : ".$v->nPlaca." al Motorista ".$mo->nombresMot." ".$mo->apellidosMot);
           }
           $cc->save();
           $v->save(); //se guarda los cambios en la tabla vehiculos
@@ -148,6 +154,7 @@ class AsignarMotVehController extends Controller
         $view =  \View::make($vistaurl, compact('asignado','asignadoM','date','date1','fch1','fch2'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
+        $pdf->setPaper('A4', 'landscape');
         return $pdf->stream('Vehiculo-Maquinaria Asignada '.$date.'.pdf');
     }
 }

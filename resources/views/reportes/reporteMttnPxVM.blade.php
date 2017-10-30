@@ -58,13 +58,14 @@ table tr:nth-child(2n-1) td {
   <div class="col-md-12">
     <div class="box-body">
       <div class="box-header with-border">
-        <div style="position: absolute;left: 210px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
-        <div style="position: absolute;left: 210px; top: 80px; z-index: 1;"><h3>Unidad de Transporte y Mantenimiento</h3></div>
+        <div style="position: absolute;left: 350px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
+        <div style="position: absolute;left: 345px; top: 80px; z-index: 1;"><h3>Unidad de Transporte y Mantenimiento</h3></div>
         <HR style="position: absolute;left: 23px; top: 163px; z-index: 1; color:blue;" width=90%>
-        <div style="position: absolute;left: 550px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
-        <div style="position: absolute;left: 550px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
+        <div style="position: absolute;left: 850px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
+        <div style="position: absolute;left: 840px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
         
-        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+        <h3 align="right" style="position: absolute; left:20px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+        <h3 align="right" style="position: absolute; left:850px; top:30px; z-index: 1;"><img class="al" width="120px" height="100px" src="img/UTM.png" ></h3>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div><!-- /.box-header -->
       <div class="box-body">
@@ -72,9 +73,9 @@ table tr:nth-child(2n-1) td {
       <?php $fecha1=explode('-', $fch1);
       $fecha2=explode('-', $fch2);?>
 
-              <div style="position: absolute;left: 200px; top: 210px; z-index: 1;"><h3>Mantenimientos Preventivos Realizados  </h3>                  
+              <div style="position: absolute;left: 345px; top: 210px; z-index: 1;"><h3>Mantenimientos Preventivos Realizados  </h3>                  
             </div>
-            <div  style="position: absolute;left: 260px; top: 230px; z-index: 1;">
+            <div  style="position: absolute;left: 390px; top: 230px; z-index: 1;">
               <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0] ?> </h4>
             </div>
          
@@ -99,7 +100,7 @@ table tr:nth-child(2n-1) td {
                @foreach ($matt as $m)
                  <tr>
                    <td align="center">{{$cont++}}</td>
-                   <td align="center">{{$m->numTrabajo}}</td>
+                   <td align="center">{{$m->idOrden}}</td>
                    <td align="center">{{$m->mecanicoNom($m->idMecanico)}}</td>
                    @if($opc==1)
                     <td align="center">{{$m->placa($m->idVehiculo)}}</td>

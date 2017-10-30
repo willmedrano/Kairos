@@ -3,6 +3,7 @@
 namespace Kairos\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kairos\Http\Requests\MttnPreventivoRequest;
 use Session;
 use Redirect;
 use Input;
@@ -11,7 +12,8 @@ use Response;
 use Kairos\Maquinaria;
 use Kairos\MecanicoInterno;
 use Kairos\MantenimientoPreMaq;
-use Kairos\Http\Requests\MttnPreventivoRequest;
+use Kairos\Bitacora;
+use Kairos\Orden;
 
 class MantenimientoPreMaqController extends Controller
 {
@@ -49,7 +51,15 @@ class MantenimientoPreMaqController extends Controller
      */
     public function store(MttnPreventivoRequest $request)
     {
+      Orden::create([
+      'nOrden'=>$request['nOrden'],
+    ]);
+
+      $idO=Orden::All();
+      $id=$idO->last()->id;
+
       MantenimientoPreMaq::create([
+      'idOrden'=>$id,
       'idMecanico'=>$request['idMecanico'],
       'idMaquinaria'=>$request['idMaquinaria'],
       'numTrabajo'=>$request['numTrabajo'],
@@ -61,6 +71,7 @@ class MantenimientoPreMaqController extends Controller
     $m= Maquinaria::find($request['idMaquinaria']);
     $m->semaforo =2; //el estado del vehiculo cambia a mantt
     $m->save();
+    Bitacora::bitacora("Registro de nuevo Mttn Preventico al ': ".$m->nEquipo);
     return redirect('/mantenimientoPreMaq')->with('create','• Mantenimiento preventivo ingresado correctamente');
     }
 
@@ -112,7 +123,7 @@ class MantenimientoPreMaqController extends Controller
       $mq->semaforo =1; //el estado de la maquinaria cambia a disponible
       $mq->horaAux=0;
       $mq->save();
-
+      Bitacora::bitacora("Finalizó el Mttn Preventivo del : ".$m->nEquipo);
       return redirect('/mantenimientoPreMaq');
     }
 

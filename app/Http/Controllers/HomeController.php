@@ -31,7 +31,7 @@ class HomeController extends Controller
       $estadoUsuario=User::where('email',$email)->get(); //obtengo el estado del usuario a ingresar
       $autorizado=$estadoUsuario->last()->estadoUsu;
       if($autorizado==1){ //si el estado del uuario es 1 es por que esta activo y puede ingresar al sistema
-        return view('index');
+        return view('caratula');
       }else{
           return redirect('/');
         }

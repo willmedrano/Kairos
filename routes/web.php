@@ -29,6 +29,10 @@ Route::get('/', function () {
 Route::match(['get','post'],'/logout','HomeController@logout');
 // Route::match(['get','post'],'/login.store','HomeController@login');
 
+ // Route::group(['middleware'=>'acceso'], function(){
+
+// });
+
 Route::resource('coloniaCanton', 'ColoniaCantonController');
 Route::resource('barrioCaserio', 'BarrioCaserioController');
 
@@ -68,12 +72,21 @@ Route::match(['get','post'],'busqEquipo','MantenimientoCorMaqController@busqEqui
 Route::match(['get','post'],'busqEquipo/{idTaller}','MantenimientoCorMaqController@mecanico');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
-//reportes
-  Route::match(['get','post'],'reporteMotorista','MotoristaController@reporte');
-  Route::match(['get','post'],'reporteVM','VehiculoController@reporte');
-  Route::match(['get','post'],'filtroVMA','AsignarMotVehController@filtroVMA');
-  Route::match(['get','post'],'reporteVMA','AsignarMotVehController@reporte');
-  Route::match(['get','post'],'reporteMP','MantenimientoPreController@reporte');
-  Route::match(['get','post'],'filtroMP','MantenimientoPreController@filtroMP');
-  Route::match(['get','post'],'reporteMPxVM','MantenimientoPreController@reporteMPxVM');
-  Route::match(['get','post'],'reporteMttnPDetalle','MantenimientoPreController@reporteMttnPDetalle');
+//--------------------------reportes
+//reporte motorista
+Route::match(['get','post'],'reporteMotorista','MotoristaController@reporte');
+//reporte inventario V/M
+Route::match(['get','post'],'reporteVM','VehiculoController@reporte');
+//reporte Asignaciones
+Route::match(['get','post'],'filtroVMA','AsignarMotVehController@filtroVMA');
+Route::match(['get','post'],'reporteVMA','AsignarMotVehController@reporte');
+//reprotes Mttn Preventivo
+Route::match(['get','post'],'reporteMP','MantenimientoPreController@reporte');
+Route::match(['get','post'],'filtroMP','MantenimientoPreController@filtroMP');
+Route::match(['get','post'],'reporteMPxVM','MantenimientoPreController@reporteMPxVM');
+Route::match(['get','post'],'reporteMttnPDetalle','MantenimientoPreController@reporteMttnPDetalle');
+//reportes Mttn Correctivo
+Route::match(['get','post'],'filtroMC','MantenimientoCorVehController@filtroMC');
+Route::match(['get','post'],'reporteMC','MantenimientoCorVehController@reporte');
+Route::match(['get','post'],'reporteMCxVM','MantenimientoCorVehController@reporteMCxVM');
+Route::match(['get','post'],'reporteMttnCDetalle','MantenimientoCorVehController@reporteMttnCDetalle');

@@ -15,11 +15,12 @@ class CreateMantenimientoPreventivosTable extends Migration
     {
         Schema::create('mantenimiento_preventivos', function (Blueprint $table) {
             $table->increments('id');
+            $table->Integer('idOrden')->unsigned();
+            $table->foreign('idOrden')->references('id')->on('ordens');
             $table->Integer('idMecanico')->unsigned();
             $table->foreign('idMecanico')->references('id')->on('mecanico_internos');
             $table->Integer('idVehiculo')->unsigned();
             $table->foreign('idVehiculo')->references('id')->on('vehiculos');
-            $table->string('numTrabajo');
             $table->date('fechaInicioMtt');
             $table->date('fechaFinMtt');
             $table->string('observacionInicioMtt');

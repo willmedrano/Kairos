@@ -63,6 +63,7 @@ class ColoniaCaserioController extends Controller
             'nombre_img'=>$file->getClientOriginalName(),
         
         ]);
+         \Kairos\Bitacora::bitacora("Se registro : ".$request['nombre']);
         return redirect('/coloniaCaserio')->with('message','create');
        
     }
@@ -119,7 +120,7 @@ class ColoniaCaserioController extends Controller
             $cc->nombre=$request['nombre'];
          }
         $cc->save();
-
+         \Kairos\Bitacora::bitacora("Se modifico : ".$request['nombre']);
         Session::flash('mensaje','¡Registro Actualizado!');
         return redirect::to('/coloniaCaserio')->with('message','update');
        

@@ -465,10 +465,10 @@
                                 <a href="/Kairos/public/usuario/create">
                                     Registar usuario
                                 </a>
-                                <a href="/Kairos/public//usuario">
+                                <a href="/Kairos/public/usuario">
                                     Ver Usuarios
                                 </a>
-                                <a href="/reporte3">
+                                <a href="/Kairos/public/bitacora">
                                     Bitácora de usuarios
                                 </a>
                               </li>
@@ -506,7 +506,26 @@
                                     Mttn Correctivo
                                 </a>
                               </li>
-                              
+                              <li>
+                                <a href="/Kairos/public/reporteBarrio" target="_blank">
+                                    Barrios y colonias 
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/Kairos/public/reporteCanton" target="_blank">
+                                    Cantón y caserios 
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/Kairos/public/reporteValeAll" target="_blank">
+                                    Todos los Vales de combustible 
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/Kairos/public/filtroSaEnVehiculo" >
+                                    Salidas y Entradas
+                                </a>
+                              </li>
                             </ul>
                           </li>
                         </ul>

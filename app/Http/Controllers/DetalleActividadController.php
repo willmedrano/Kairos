@@ -30,6 +30,7 @@ class DetalleActividadController extends Controller
             
         
         ]);
+         \Kairos\Bitacora::bitacora("Se registro un detalle a la actividad : ".$request['nombre']);
         return redirect('/actividad')->with('message','create');
        
     }

@@ -32,6 +32,9 @@
                 {!! Form::open(['route'=>'salidaEntrada.store','method'=>'POST']) !!}
                 <fieldset>
                 <input type="hidden" name="hi2" value="1">
+
+                <input type="hidden" name="nuevo" value="{{ $nuevo }}">
+
                 <h6 class="campoObligatorio">los campos con ( * ) son obligatorios</h6>
                 <div id="collapseOne" class="body">
                   <div class="form-group">
@@ -45,6 +48,8 @@
                       <select name="selectMarca" id="selectMarca" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
                         @foreach($asignado as $a)
+                        
+                        
                         <option value="{{$a->id}}">{{$a->nombresMot}} {{ $a->apellidosMot }}</option>
                         @endforeach
                       </select>
@@ -81,7 +86,7 @@
                     <label class="control-label col-md-2">*Kilometraje de Salida </label>
 
                     <div class="col-lg-3">
-                      {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
+                      {!!Form::number('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
                     </div>
                     <br><br>
                     <label class="control-label col-md-2">*Observaciones </label>

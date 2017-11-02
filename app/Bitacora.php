@@ -2,7 +2,7 @@
 
 namespace Kairos;
 use Auth;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Bitacora extends Model
@@ -17,4 +17,12 @@ class Bitacora extends Model
           'accion'=>$accion,
         ]);
       }
+       public static function barCan(){
+   		 return DB::table('bitacoras')
+            ->join('users', 'bitacoras.idUsuario', '=', 'users.id')
+            
+            ->select('bitacoras.*',  'users.name')
+            ->orderBy('bitacoras.id')
+            ->get();
+   } 
 }

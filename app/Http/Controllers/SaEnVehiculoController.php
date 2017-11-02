@@ -42,9 +42,15 @@ class SaEnVehiculoController extends Controller
      */
     public function create()
     {
+
       $asignado=\Kairos\AsignarMotVeh::disponibles();
       $actividad= Actividad::Act();
-       return view('SaEnVehiculo.frmSaEnVehiculo',compact('asignado','actividad'));
+       $cc=SaEnVehiculo::disponibles();
+       $c=SaEnVehiculo::All();
+
+       $nuevo=$c->last()->id;
+
+       return view('SaEnVehiculo.frmSaEnVehiculo',compact('asignado','actividad','nuevo'));
 
     }
 
@@ -57,7 +63,12 @@ class SaEnVehiculoController extends Controller
     public function store(Request $request)
     {
         //
-
+        
+        $cc=SaEnVehiculo::All();
+        $nuevo2=$cc->last()->id;
+        
+        if($request['nuevo']==$nuevo2)
+        {
         ValesCombustible::create([]);
         $ids;
         $gAux =ValesCombustible::All();
@@ -84,6 +95,7 @@ class SaEnVehiculoController extends Controller
         $v=Vehiculo::find($var->idVehiculo);
         $v->semaforo=3;
         $v->save();
+        }
         return redirect('/salidaEntrada')->with('message','create');
        
     }
@@ -163,5 +175,32 @@ class SaEnVehiculoController extends Controller
      $var=AsignarMotVeh::find($marca);
         $modeloArray=Vehiculo::where('id', '=', $var->idVehiculo)->get();
         return Response::json($modeloArray);
+    }
+    public function reporte(Request $request)//reporte Mttn Correctivo general
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $cc=SaEnVehiculo::disponiblesF($fch1,$fch2);
+
+
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="reportes.reporteEntradaV";
+      $view =  \View::make($vistaurl, compact('cc','date','date1','fch1','fch2'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->setPaper('A4', 'landscape');
+      return $pdf->stream('salida Entrada de vehiculo'.$date.'.pdf');
+    }
+    public function filtroSa()
+    {
+      return view('reportes.FiltroSalidas');
+    }
+    public function bitacora()
+    {
+        $cc=\Kairos\bitacora::barCan();
+      return view('bitacora.bitacora',compact('cc'));
     }
 }

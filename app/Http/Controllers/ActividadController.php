@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use Redirect;
 use DB;
+use Auth;
 use Input;
 use Kairos\BarrioCanton;
 use Kairos\ColoniaCaserio;
@@ -71,6 +72,7 @@ class ActividadController extends Controller
             'nombre_img'=>$file->getClientOriginalName(),
         
         ]);
+        \Kairos\Bitacora::bitacora("Se registro una actividad : ".$request['nombre']);
         return redirect('/actividad')->with('message','create');
        
     }
@@ -133,6 +135,7 @@ class ActividadController extends Controller
             $cc->tipoActividad=$request['tipoActividad'];
             
             $cc->nombre_img=$file->getClientOriginalName(); 
+           
         }
         if ($aux=='1') {
             date_default_timezone_set("America/El_Salvador");
@@ -140,9 +143,11 @@ class ActividadController extends Controller
             $cc->fechaFinal=$date;
             $cc->estado=true;
             
+            
         }
         $cc->save();
 
+        \Kairos\Bitacora::bitacora("Se modifico : ".$cc->act);
         Session::flash('mensaje','¡Registro Actualizado!');
         return redirect::to('/actividad')->with('message','update');
        

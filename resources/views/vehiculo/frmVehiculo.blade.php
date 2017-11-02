@@ -72,7 +72,7 @@
                           </div>
                             <label class="control-label col-md-2">* Año </label>
                             <div class="col-md-4">
-                              {!!Form::number('anio',null,['onKeyPress'=>'return validarInventario(event)','id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
+                              {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
                             </div>
                           </div>
                           <br><br><br>

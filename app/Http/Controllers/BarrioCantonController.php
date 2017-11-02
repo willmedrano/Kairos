@@ -48,6 +48,7 @@ class BarrioCantonController extends Controller
             'tipo'=>$request['tipo'],
         
         ]);
+         \Kairos\Bitacora::bitacora("Se registro : ".$request['nombre']);
         return redirect('/barrioCanton')->with('message','create');
        
     }
@@ -98,7 +99,7 @@ class BarrioCantonController extends Controller
         $cc->nombre = $request['nombre'];
         $cc->tipo = $request['tipo'];
         $cc->save();
-
+         \Kairos\Bitacora::bitacora("Se modifico : ".$request['nombre']);
         Session::flash('mensaje','¡Registro Actualizado!');
         return redirect::to('/barrioCanton')->with('message','update');
        
@@ -114,5 +115,32 @@ class BarrioCantonController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function reporte()
+    {
+
+        $tipo='Barrio';
+      $cc=BarrioCanton::barCan($tipo);
+      $barrio=BarrioCanton::All();
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="barrioCanton.reporte";
+      $view =  \View::make($vistaurl, compact('cc','barrio', 'date','date1','tipo'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('Reporte Barrio-colonia '.$date.'.pdf');
+    }
+     public function reporte2()
+    {
+        $tipo='Cantón';
+      $cc=BarrioCanton::barCan($tipo);
+      $barrio=BarrioCanton::All();
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="reportes.reporteBarrio";
+      $view =  \View::make($vistaurl, compact('cc','barrio', 'date','date1','tipo'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('Reporte Canton-Caserio '.$date.'.pdf');
     }
 }

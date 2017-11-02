@@ -81,6 +81,7 @@ class SaEnCamionController extends Controller
         $v=Vehiculo::find($var->idVehiculo);
         $v->semaforo=3;
         $v->save();
+        
         return redirect('/salidaEntrada3')->with('message','create');
        
     }
@@ -163,5 +164,24 @@ class SaEnCamionController extends Controller
      $var=AsignarMotVeh::find($marca);
         $modeloArray=Vehiculo::where('id', '=', $var->idVehiculo)->get();
         return Response::json($modeloArray);
+    }
+    
+    public function reporte(Request $request)//reporte Mttn Correctivo general
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $cc=SaEnCamion::disponiblesF($fch1,$fch2);
+      $c2=SaEnCamion::All();
+
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="reportes.reporteEntradaC";
+      $view =  \View::make($vistaurl, compact('cc','c2','date','date1','fch1','fch2'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->setPaper('A4', 'landscape');
+      return $pdf->stream('salida Entrada de Camiones'.$date.'.pdf');
     }
 }

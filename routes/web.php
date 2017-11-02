@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::group(['middleware' => 'guest'], function () {
 Route::get('/', function () {
 	$users=DB::select('select * from users');
         $cuenta=0;
@@ -25,7 +25,9 @@ Route::get('/', function () {
             return view('/auth/login');
         }
     
+ });
 });
+Route::group(['middleware' => 'auth'], function () {
 Route::match(['get','post'],'/logout','HomeController@logout');
 // Route::match(['get','post'],'/login.store','HomeController@login');
 
@@ -90,3 +92,16 @@ Route::match(['get','post'],'filtroMC','MantenimientoCorVehController@filtroMC')
 Route::match(['get','post'],'reporteMC','MantenimientoCorVehController@reporte');
 Route::match(['get','post'],'reporteMCxVM','MantenimientoCorVehController@reporteMCxVM');
 Route::match(['get','post'],'reporteMttnCDetalle','MantenimientoCorVehController@reporteMttnCDetalle');
+Route::match(['get','post'],'reporteBarrio','BarrioCantonController@reporte');
+Route::match(['get','post'],'reporteCanton','BarrioCantonController@reporte2');
+Route::match(['get','post'],'filtroVale','ValesCombustibleController@filtroVale');
+Route::match(['get','post'],'reporteValeAll','ValesCombustibleController@reporteAll');
+Route::match(['get','post'],'reporteVale','ValesCombustibleController@reporte');
+Route::match(['get','post'],'reporteEntradaV','SaEnVehiculoController@reporte');
+Route::match(['get','post'],'reporteEntradaM','SaEnMaquinariaController@reporte');
+Route::match(['get','post'],'reporteEntradaC','SaEnCamionController@reporte');
+Route::match(['get','post'],'filtroSaEnVehiculo','SaEnVehiculoController@filtroSa');
+Route::match(['get','post'],'bitacora','SaEnVehiculoController@bitacora');
+
+  });
+Auth::routes();

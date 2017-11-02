@@ -158,4 +158,22 @@ class SaEnMaquinariaController extends Controller
         $modeloArray=Maquinaria::where('id', '=', $var->idMaquinaria)->get();
         return Response::json($modeloArray);
     }
+    public function reporte(Request $request)//reporte Mttn Correctivo general
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $cc=SaEnMaquinaria::disponiblesF($fch1,$fch2);
+
+
+      $date = date('d-m-Y');
+      $date1 = date('g:i:s a');
+      $vistaurl="reportes.reporteEntradaM";
+      $view =  \View::make($vistaurl, compact('cc','date','date1','fch1','fch2'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->setPaper('A4', 'landscape');
+      return $pdf->stream('salida Entrada de vehiculo'.$date.'.pdf');
+    }
 }

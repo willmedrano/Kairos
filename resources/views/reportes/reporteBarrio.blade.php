@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Reporte Por Motoristas</title>
-	<style>
+  <meta charset="UTF-8">
+  <title>Barrio Canton</title>
+  <style>
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
@@ -36,12 +36,10 @@ th {
     background-color: #00bf;
     color: white;
 }
-
 .bar {
     background: #ffffcc
     
 }
-
 th, td {
     padding: 8px;
     text-align: left;
@@ -64,28 +62,26 @@ table tr:nth-child(2n-1) td {
     <div class="box-body">
       <div class="box-header with-border">
         <div style="position: absolute;left: 160px; top: 40px; z-index: 1;"><h1>Alcaldía Municipal de Ilobasco</h1></div>
-        <div style="position: absolute;left: 260px; top: 90px; z-index: 1;">CIUDAD CENTENARIA</div>
-        <div style="position: absolute;left: 350px; top: 120px; z-index: 1;"><h5>Despacho Alcalde Telefax 2362-6700</h5></div>
-        <div style="position: absolute;left: 385px; top: 133px; z-index: 1;"><h5>Gerencia Teléfono 2362-6708</h5></div>
-        <div style="position: absolute;left: 120px; top: 133px; z-index: 1;"><h5>Depto. Cabañas, El Salvador, C.A.</h5></div>
+        <div style="position: absolute;left: 200px; top: 90px; z-index: 1;">UNIDAD DE TRANSPORTE Y MANTENIMIENTO</div>
+        
         <HR style="position: absolute;left: 23px; top: 163px; z-index: 1; color:blue;" width=90%>
         <div style="position: absolute;left: 550px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
         <div style="position: absolute;left: 550px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
-        <h3 align="right" style="position: absolute;left:20; top:20px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/sv.png" ></h3>
-        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+        <h3 align="right" style="position: absolute;left:20; top:20px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/alcaldia.png" ></h3>
+        <h3 align="right" style="position: absolute; left:550px; top:30px; z-index: 1;"><img class="al" width="120px" height="100px" src="img/UTM.png" ></h3>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div><!-- /.box-header -->
       <div class="box-body">
-        <div style="position: absolute;left: 230px; top: 210px; z-index: 1;"><h3>LISTADO DE MOTORISTA/OPERARIO</h3></div>
+        <div style="position: absolute;left: 230px; top: 210px; z-index: 1;"><h3>Listado de {{ $tipo }} </h3></div>
         <table class="table-wrapper" >
-	         <thead>
+            <thead>
             <tr>
               <th >N°</th>
                       
                                <th >NOMBRE</th>
                                
             </tr>
-  	      </thead>
+          </thead>
           <tbody>
            
             @foreach($barrio as $b)
@@ -100,23 +96,23 @@ table tr:nth-child(2n-1) td {
                         <th class="bar"  style="color: black;">
                           
                         
-                            <b>{{ $b->nombre }}</b>
+                            <b>{{ $tipo }} {{ $b->nombre }}</b>
                         </th>
                         <tr></tr>
-		                    <?php $bandera=false;?>
+                        <?php $bandera=false;?>
                        @endif
                     <tr>
-		                <td><?php echo($cont);?></td>
+                    <td><?php echo($cont);?></td>
                     <td>{{$c->nombre}}</td>
                     <?php $cont++;?>  
-		                </tr>
+                    </tr>
                    @endif
             @endforeach
           @endforeach
-      	</tbody>
-    	</table>
-  	 </div><!-- /.box-body -->
-	  </div><!-- /.box -->
+        </tbody>
+      </table>
+     </div><!-- /.box-body -->
+    </div><!-- /.box -->
   </div>
 </body>
 </html>

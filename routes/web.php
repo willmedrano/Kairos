@@ -87,6 +87,7 @@ Route::match(['get','post'],'reporteMP','MantenimientoPreController@reporte');
 Route::match(['get','post'],'filtroMP','MantenimientoPreController@filtroMP');
 Route::match(['get','post'],'reporteMPxVM','MantenimientoPreController@reporteMPxVM');
 Route::match(['get','post'],'reporteMttnPDetalle','MantenimientoPreController@reporteMttnPDetalle');
+Route::match(['get','post'],'impOrden','MantenimientoPreController@impOrden');
 //reportes Mttn Correctivo
 Route::match(['get','post'],'filtroMC','MantenimientoCorVehController@filtroMC');
 Route::match(['get','post'],'reporteMC','MantenimientoCorVehController@reporte');
@@ -111,4 +112,5 @@ Route::match(['get','post'],'excelM','SaEnMaquinariaController@excel');
   
 Route::match(['get','post'],'excelC','SaEnCamionController@excel');
   });
+Route::match(['get','post'],'postGenerateBackup','HomeController@postGenerateBackup');
 Auth::routes();

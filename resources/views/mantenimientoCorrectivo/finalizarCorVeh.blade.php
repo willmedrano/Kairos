@@ -37,6 +37,7 @@
                                    <tr>
                                      <th ><div align="center">Orden de trabajo</div></th>
                                      <th ><div align="center">Fecha de inicio</div></th>
+                                     <th ><div align="center">Taller</div></th>
                                      <th ><div align="center">Mecanico</div></th>
                                      <th ><div align="center">Motorista Responsable</div></th>
                                    </tr>
@@ -52,6 +53,7 @@
                                     ?>
                                      <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
                                      <td align="center">{{$mt->tallerNom($mt->idMecanico)}}</td>
+                                     <td align="center">{{$mt->mecanicoNom($mt->idMecanico)}}</td>
                                      <td align="center">{{$mt->MotoristaNom($mt->idMotorista)}}</td>
                                    </tr>
                                  @endforeach

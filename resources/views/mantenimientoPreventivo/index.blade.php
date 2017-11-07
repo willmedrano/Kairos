@@ -51,6 +51,12 @@
                                        @elseif($v->semaforo==2)
                                          <p class="title">Actualmente en mantenimiento</p>
                                          <td>{!!link_to_route('mantenimientoPre.show',$title='Finalizar Mttn', $parametro=$v->id,$atributo=['class'=>'btn btn-primary btn-sm fa fa-edit'])!!}</td>
+
+                                         {!! Form::open(['url'=>['impOrden'],'method'=>'POST','target'=>'_blank']) !!}
+                                              <input type="hidden" name="idVM" value="{{ $v->id }}">
+                                              <input type="hidden" name="opc" value="1">
+                                         {!! Form::submit('Imprimir orden',['class'=>'btn btn-warning btn-sm fa fa-print']) !!}  </form>
+
                                        @elseif($v->semaforo==4)
                                            <p class="title">Actualmente en mantenimiento Correctivo</p>
                                       @endif

@@ -55,6 +55,9 @@
                         </div>
                         <section class="example">
                           <div class="row">
+                            <?php
+                                  $cont=0;
+                                  ?>
                             @foreach ($maquinaria as $m)
                               <?php
                               $bandera=true;
@@ -66,7 +69,11 @@
                               ?>
                                @endif
                               @endforeach
+                              
                               @if($bandera)
+                              <?php
+                                  $cont++;
+                                  ?>
                              <div class="col-xl-4">
                                <div class="card card-primary" align="center">
                                  <div class="card-header" >
@@ -80,14 +87,21 @@
                                    <div class="card-footer">
                                      @if($m->estadoMaq==true)
                                        {!!Form::open(['route'=>['asignarMotMaq.show',$m->id],'method'=>'GET'])!!}
-                                          <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
+                                          <input type="submit" name="" value=" Asignar Operario"   class="btn btn btn-primary btn-sm active " >
                                        {!!Form::close()!!}
                                       @endif
                                   </div>
                                </div>
                              </div>
                              @endif
+                             
                            @endforeach
+                           @if($cont==0)
+                              <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <strong> No hay Maquinaria disponible</strong>
+                              </div>
+                            @endif
                          </div>
                         </section>
                       </div>

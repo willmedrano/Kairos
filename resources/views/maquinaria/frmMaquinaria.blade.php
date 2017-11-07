@@ -68,11 +68,11 @@
                           <div class="form-group">
                             <label class="control-label col-md-2">* Color </label>
                             <div class="col-md-4">
-                              {!!Form::text('color',null,['id'=>'color','class'=>'form-control', 'placeholder'=>'color del vehiculo...','required'])!!}
+                              {!!Form::text('color',null,['id'=>'color','class'=>'form-control', 'placeholder'=>'color del equipo...','required'])!!}
                           </div>
                             <label class="control-label col-md-2">* Año </label>
                             <div class="col-md-4">
-                              {!!Form::number('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
+                              {!!Form::text('anio',null,['id'=>'anio','class'=>'form-control', 'placeholder'=>'Año de fabricación Ej: 2017','required'])!!}
                             </div>
                           </div>
                           <br><br><br>
@@ -88,9 +88,9 @@
                           </div>
                           <br><br>
                           <div class="form-group">
-                            <label class="control-label col-md-2">* Nº Hora M </label>
+                            <label class="control-label col-md-2">* Nº Hora Mttn </label>
                             <div class="col-md-4">
-                              {!!Form::number('horaM',null,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'Ej: 5','required'])!!}
+                              {!!Form::number('horaM',null,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'horas para cada mantenimiento','required'])!!}
                             </div>
                             <div class="col-md-4">
                             {!!Form::label('limagen','* Imagen:')!!}

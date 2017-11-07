@@ -64,34 +64,46 @@
                               ?>
                               @foreach ($asignados as $v2)
                                @if($v->id==$v2->idVehiculo)
-                               <?php
-                              $bandera=false;
-                              ?>
+                                   <?php
+                                  $bandera=false;
+                                  ?>
                                @endif
                               @endforeach
-
+                              <?php
+                                  $cont=0;
+                                  ?>
                               @if($bandera)
-                             <div class="col-xl-4">
-                                 <div class="card card-primary" align="center">
-                                     <div class="card-header" >
-                                         <div class="header-block" align="center">
-                                           <p class="title"> {{"Placa: ".$v->nPlaca." ".$v->nomModelo}} </p>
-                                         </div>
-                                     </div>
-                                     <div class="card-block">
-                                       <img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
-                                    </div>
-                                     <div class="card-footer">
-                                       @if($v->estadoVeh==true)
-                                         {!!Form::open(['route'=>['asignarMotVeh.show',$v->id],'method'=>'GET'])!!}
-                                            <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
-                                         {!!Form::close()!!}
-                                      @endif
+                              <?php
+                                  $cont++;
+                                  ?>
+                               <div class="col-xl-4">
+                                   <div class="card card-primary" align="center">
+                                       <div class="card-header" >
+                                           <div class="header-block" align="center">
+                                             <p class="title"> {{"Placa: ".$v->nPlaca." ".$v->nomModelo}} </p>
+                                           </div>
+                                       </div>
+                                       <div class="card-block">
+                                         <img src="/Kairos/public/imagenesVehiculos/{{$v->nombre_img }}" class="" alt="User Image" width="250px" height="150px">
                                       </div>
-                                 </div>
-                             </div>
+                                       <div class="card-footer">
+                                         @if($v->estadoVeh==true)
+                                           {!!Form::open(['route'=>['asignarMotVeh.show',$v->id],'method'=>'GET'])!!}
+                                              <input type="submit" name="" value=" Asignar Motorista"   class="btn btn btn-primary btn-sm active " >
+                                           {!!Form::close()!!}
+                                        @endif
+                                        </div>
+                                   </div>
+                               </div>
                              @endif
+                             
                            @endforeach
+                           @if($cont==0)
+                              <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <strong> No hay vehiculos disponibles</strong>
+                              </div>
+                            @endif
                          </div>
                         </section>
                       </div>

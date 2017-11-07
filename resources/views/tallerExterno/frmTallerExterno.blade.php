@@ -54,6 +54,12 @@
                             <div class="col-md-4">
                               {!!Form::text('telefonoTE',null,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'Numero de teléfono taller...','required'])!!}
                             </div>
+                            <br>  
+                            <br>
+                            <label class="control-label col-md-2">* Celular </label>
+                            <div class="col-md-4">
+                              {!!Form::text('celTE',null,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'Numero de celular del encargado taller...','required'])!!}
+                            </div>
                           </div>
                           <br><br>
                         </div><!-- /.row -->

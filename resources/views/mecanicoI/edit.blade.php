@@ -60,12 +60,12 @@
                               <label class="control-label col-md-6">F/Nacimiento</label>
                               <label class="control-label col-md-6">F/Contrato</label>
                             </div>
-                            <div class="form-group">
-                              <div class="col-md-6">
-                                {!!Form::date('fechaContrato',$m->fechaContrato,['id'=>'fechaContrato','class'=>'form-control', 'max'=>'','placeholder'=>'Fecha de contrato...','required'])!!}
-                              </div>
+                            <div class="form-group">                              
                               <div class="col-md-6">
                                 {!!Form::date('fechaNacimiento',$m->fechaNacimiento,['id'=>'fechaNacimiento','class'=>'form-control', 'max'=>'','placeholder'=>'Fecha de nacimiento...','required'])!!}
+                              </div>
+                              <div class="col-md-6">
+                                {!!Form::date('fechaContrato',$m->fechaContrato,['id'=>'fechaContrato','class'=>'form-control', 'max'=>'','placeholder'=>'Fecha de contrato...','required'])!!}
                               </div>
                             </div>
                             <br><br><br>

@@ -54,19 +54,40 @@ class AsignarMotVehController extends Controller
        //  se registra la asignacion
       public function store(Request $request)
       {
-        AsignarMotVeh::create([
-          'idMotorista'=>$request['idMotorista'],
-          'idVehiculo'=> $request['idVehiculo'],
-          'fechaInicio'=>$request['fechaInicio'],
-          'fechaFin'=>$request['fechaInicio'],
-          'unidad'=>$request['unidad'],
-          'observacionAsiV'=>$request['observacionAsiV'],
-        ]);
-        $v= Vehiculo::find($request['idVehiculo']);
-        $mo= Motorista::find($request['idMotorista']);
-        Bitacora::bitacora("Nueva Asignación del Vehiculo : ".$v->nPlaca." al Motorista ".$mo->nombresMot." ".$mo->apellidosMot);
-        
+        $a=AsignarMotVeh::All();
+        //condicion necesaria para el primer registro despues ya no se utiliza
+        if ($a->last()==null) {
+          AsignarMotVeh::create([
+            'idMotorista'=>$request['idMotorista'],
+            'idVehiculo'=> $request['idVehiculo'],
+            'fechaInicio'=>$request['fechaInicio'],
+            'fechaFin'=>$request['fechaInicio'],
+            'unidad'=>$request['unidad'],
+            'observacionAsiV'=>$request['observacionAsiV'],
+          ]);
+          $v= Vehiculo::find($request['idVehiculo']);
+          $mo= Motorista::find($request['idMotorista']);
+          Bitacora::bitacora("Nueva Asignación del Vehiculo : ".$v->nPlaca." al Motorista ".$mo->nombresMot." ".$mo->apellidosMot);
+          return redirect('/asignarMotVeh');
+        }
+        //verificar id para que no se duplique la informacion 
+        if($a->last()->id==$request['id'])
+        {      
+          AsignarMotVeh::create([
+            'idMotorista'=>$request['idMotorista'],
+            'idVehiculo'=> $request['idVehiculo'],
+            'fechaInicio'=>$request['fechaInicio'],
+            'fechaFin'=>$request['fechaInicio'],
+            'unidad'=>$request['unidad'],
+            'observacionAsiV'=>$request['observacionAsiV'],
+          ]);
+          $v= Vehiculo::find($request['idVehiculo']);
+          $mo= Motorista::find($request['idMotorista']);
+          Bitacora::bitacora("Nueva Asignación del Vehiculo : ".$v->nPlaca." al Motorista ".$mo->nombresMot." ".$mo->apellidosMot);
+
+        }
         return redirect('/asignarMotVeh');
+
       }
 
       /**
@@ -79,10 +100,18 @@ class AsignarMotVehController extends Controller
        // metodo que lleva a la vista para asignar vehiculo
       public function show($id)
       {
+        $a=AsignarMotVeh::All();
+        if($a->last()==null)
+        {
+          $idA=null;
+        }else{
+          $idA=$a->last()->id;
+        }
+        
         $vehiculo =Vehiculo::find($id);
         $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Motorista')->get();
         $asignados=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();
-        return view('asignar.showVehiculo',compact('vehiculo','motorista','asignados'));
+        return view('asignar.showVehiculo',compact('vehiculo','motorista','asignados','idA'));
       }
 
       /**

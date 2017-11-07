@@ -33,7 +33,7 @@ table th {
 }
 
 th {
-    background-color: #00bf;
+    background-color: #4f8ba0;
     color: white;
 }
 
@@ -58,14 +58,16 @@ table tr:nth-child(2n-1) td {
   <div class="col-md-12">
     <div class="box-body">
       <div class="box-header with-border">
-        <div style="position: absolute;left: 160px; top: 40px; z-index: 1;"><h1>Alcaldía Municipal de Ilobasco</h1></div>
-        <div style="position: absolute;left: 200px; top: 90px; z-index: 1;">UNIDAD DE TRANSPORTE Y MANTENIMIENTO</div>
-        
+        <div style="position: absolute;left: 220px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
+        <div style="position: absolute;left: 280px; top: 80px; z-index: 1;">CIUDAD CENTENARIA</div>
+        <div style="position: absolute;left: 350px; top: 120px; z-index: 1;"><h5>Despacho Alcalde Telefax 2362-6700</h5></div>
+        <div style="position: absolute;left: 385px; top: 133px; z-index: 1;"><h5>Gerencia Teléfono 2362-6708</h5></div>
+        <div style="position: absolute;left: 120px; top: 133px; z-index: 1;"><h5>Depto. Cabañas, El Salvador, C.A.</h5></div>
         <HR style="position: absolute;left: 23px; top: 163px; z-index: 1; color:blue;" width=90%>
         <div style="position: absolute;left: 550px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
         <div style="position: absolute;left: 550px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
-        <h3 align="right" style="position: absolute;left:20; top:20px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/alcaldia.png" ></h3>
-        <h3 align="right" style="position: absolute; left:550px; top:30px; z-index: 1;"><img class="al" width="120px" height="100px" src="img/UTM.png" ></h3>
+        <h3 align="right" style="position: absolute;left:20; top:20px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/sv.png" ></h3>
+        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div><!-- /.box-header -->
       <div class="box-body">

@@ -43,6 +43,7 @@
                              </div>
                              <span class=""><i class="bigicon " >Placa: {{$vehiculo->nPlaca}}</i></span>
                              <br><br>
+                             <input type="hidden" name="id"  value="{{ $idA }}">
                              <input type="hidden" name="idVehiculo" value="{{ $vehiculo->id }}">
                              <label class="control-label col-md-3">* Área </label>
                              <div class="col-md-4">

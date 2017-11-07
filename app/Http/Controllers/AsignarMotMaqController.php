@@ -55,18 +55,38 @@ class AsignarMotMaqController extends Controller
     //  se registra la asignacion
     public function store(Request $request)
     {
-      AsignarMotMaq::create([
-        'idMotorista'=>$request['idMotorista'],
-        'idMaquinaria'=> $request['idMaquinaria'],
-        'fechaInicio'=>$request['fechaInicio'],
-        'fechaFin'=>$request['fechaInicio'],
-        'unidad'=>$request['unidad'],
-        'observacionAsiM'=>$request['observacionAsiM'],
-      ]);
-      $m= Maquinaria::find($request['idMaquinaria']);
-      $mo= Motorista::find($request['idMotorista']);
-      Bitacora::bitacora("Nueva Asignación del : ".$m->nEquipo." al Operario ".$mo->nombresMot." ".$mo->apellidosMot);
-      return redirect('/asignarMotMaq');
+        $a=AsignarMotMaq::All();
+        //condicion necesaria para el primer registro despues ya no se utiliza
+        if ($a->last()==null) {
+          AsignarMotMaq::create([
+            'idMotorista'=>$request['idMotorista'],
+            'idMaquinaria'=> $request['idMaquinaria'],
+            'fechaInicio'=>$request['fechaInicio'],
+            'fechaFin'=>$request['fechaInicio'],
+            'unidad'=>$request['unidad'],
+            'observacionAsiM'=>$request['observacionAsiM'],
+          ]);
+          $m= Maquinaria::find($request['idMaquinaria']);
+          $mo= Motorista::find($request['idMotorista']);
+          Bitacora::bitacora("Nueva Asignación del : ".$m->nEquipo." al Operario ".$mo->nombresMot." ".$mo->apellidosMot);
+          return redirect('/asignarMotMaq');
+        }
+        //verificar id para que no se duplique la informacion 
+        if($a->last()->id==$request['id'])
+        { 
+          AsignarMotMaq::create([
+            'idMotorista'=>$request['idMotorista'],
+            'idMaquinaria'=> $request['idMaquinaria'],
+            'fechaInicio'=>$request['fechaInicio'],
+            'fechaFin'=>$request['fechaInicio'],
+            'unidad'=>$request['unidad'],
+            'observacionAsiM'=>$request['observacionAsiM'],
+          ]);
+          $m= Maquinaria::find($request['idMaquinaria']);
+          $mo= Motorista::find($request['idMotorista']);
+          Bitacora::bitacora("Nueva Asignación del : ".$m->nEquipo." al Operario ".$mo->nombresMot." ".$mo->apellidosMot);
+        }
+        return redirect('/asignarMotMaq');
     }
 
     /**
@@ -79,10 +99,18 @@ class AsignarMotMaqController extends Controller
     // metodo que lleva a la vista para asignar maquinaria
     public function show($id)
     {
+      $a=AsignarMotMaq::All();
+
+        if($a->last()==null)
+        {
+          $idA=null;
+        }else{
+          $idA=$a->last()->id;
+        }
       $maquinaria =Maquinaria::find($id);
       $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Operario')->get();
       $asignados=\Kairos\AsignarMotMaq::where('estadoAsignacionMaq',1)->get();
-      return view('asignar.showMaquinaria',compact('maquinaria','motorista','asignados'));
+      return view('asignar.showMaquinaria',compact('maquinaria','motorista','asignados','idA'));
     }
 
     /**

@@ -39,7 +39,7 @@
                               <label >* Orden de trabajo </label>
                             </div>
                             <div class="col-md-2">
-                              {!!Form::number('nOrden',null,['id'=>'nOrden','class'=>'form-control', 'placeholder'=>'Ej 001','required'])!!}
+                              {!!Form::number('nOrden',$idO,['id'=>'nOrden','class'=>'form-control','required','readonly'])!!}
                             </div>
                             <div class="col-md-2">
                               <label >* Fecha</label>

@@ -64,6 +64,7 @@
                                  <th ><div align="center">RESPONSABLE</div></th>
                                  <th ><div align="center">DIRECCIÓN</div></th>
                                  <th ><div align="center">TELÉFONO</div></th>
+                                 <th ><div align="center">CELULAR</div></th>
                                  <th colspan="2"><div align="center">ACCIÓN</div></th>
                                </tr>
                              </thead>
@@ -79,6 +80,7 @@
                                    <td align="center">{{$t->responsable}}</td>
                                    <td align="center">{{$t->direccionTE}}</td>
                                    <td align="center">{{$t->telefonoTE}}</td>
+                                   <td align="center">{{$t->celTE}}</td>
                                    <td align="center">  <a href="#"   class="btn btn-info btn-sm" data-id="{{ $t->id }}" data-toggle="modal" data-target="#Edit{{ $t->id }}">Modificar</a></td>
                                    @if($t->estadoTE==true)
                                        <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$t->id}}">A c t i v o</button></td>

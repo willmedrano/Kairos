@@ -94,7 +94,7 @@
                     <div  >
                       <div class="panel panel-primary">
                         <div class="panel-heading">
-                          <h4 class="panel-title">Informe por Vehiculo o Maquinaria y orden de trabajo</h4>
+                          <h4 class="panel-title">Por orden de trabajo</h4>
                         </div>
                         <div class="row table-responsive"> <!--Begin Datatables-->
                             <div class="card table-responsive">
@@ -104,18 +104,10 @@
                                   <div class="box-header">                            
                                   </div><!-- /.box-header -->
                                   <div class="box-body pad">
-                                     
-                                    <div class="col-md-3">      
-                                    {!!Form::label('lvm','Vehiculo-Equipo')!!}
-                                      <input id="vm" name="vm" type="text" required="true" class="form-control" >
-                                    </div>
                                     <div class="col-md-3">      
                                     {!!Form::label('lvm','Orden de trabajo')!!}
-                                      <input id="orden" name="orden" type="text" required="true" class="form-control" >
+                                      <input id="orden" name="orden" type="number" required="true" class="form-control" >
                                     </div>
-                                      <br>
-                                      <br>
-                                      <br>
                                       <br>
 
                                   {!! Form::submit('Generar Informe',['class'=>'btn btn-info']) !!}  </form>

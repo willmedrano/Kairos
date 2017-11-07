@@ -95,11 +95,17 @@ class MantenimientoPreMaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) //llevar equipo a taller
     {
+      $orden=Orden::All();
+      if ($orden->last()==null) {
+        $idO=1;
+      }else{
+        $idO=$orden->last()->id+1;
+      }
       $maquinaria =Maquinaria::where('id',$id)->get();
-      $mecanico=MecanicoInterno::where('estadoMec',1)->get();
-      return View('mantenimientoPreventivo.preventivoMaq',compact('maquinaria','mecanico'));
+      $mecanico=MecanicoInterno::where('estadoMec',1)->where('idTaller',1)->get();
+      return View('mantenimientoPreventivo.preventivoMaq',compact('maquinaria','mecanico','idO'));
 
     }
 

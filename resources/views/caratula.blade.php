@@ -1,5 +1,6 @@
 @extends ('index')
 @section('content')
+
 <br><br><br>
 <div class="col-md-12">
   <div align="left" class="col-md-2">

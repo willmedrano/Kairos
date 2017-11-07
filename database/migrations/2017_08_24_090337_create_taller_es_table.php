@@ -19,6 +19,7 @@ class CreateTallerEsTable extends Migration
             $table->string('responsable');
             $table->string('direccionTE');
             $table->string('telefonoTE');
+            $table->string('celTE');
             $table->boolean('estadoTE')->default(true);
             $table->timestamps();
         });

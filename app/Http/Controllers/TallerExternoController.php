@@ -46,6 +46,7 @@ class TallerExternoController extends Controller
       'responsable'=>$request['responsable'],
       'direccionTE'=>$request['direccionTE'],
       'telefonoTE'=>$request['telefonoTE'],
+      'celTE'=>$request['celTE'],
     ]);
       Bitacora::bitacora("Registro de nuevo Taller: ".$request['nomTallerE']);
 
@@ -109,6 +110,7 @@ class TallerExternoController extends Controller
           $t->responsable=$request['responsable'];
           $t->direccionTE=$request['direccionTE'];
           $t->telefonoTE=$request['telefonoTE'];
+          $t->celTE=$request['celTE'];
           Bitacora::bitacora("Datos actualizado de : ".$ta);
           Session::flash('update','• Sea actualizado con éxito el registro');
 

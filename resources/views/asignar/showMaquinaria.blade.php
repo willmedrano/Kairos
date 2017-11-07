@@ -43,19 +43,20 @@
                            </div>
                            <span class=""><i class="bigicon " >Equipo: {{$maquinaria->nEquipo}}</i></span>
                            <br><br>
+                           <input type="hidden" name="id" value="{{ $idA }}">
                            <input type="hidden" name="idMaquinaria" value="{{ $maquinaria->id }}">
                            <label class="control-label col-md-3">* Área </label>
                            <div class="col-md-4">
-                             <select name="unidad" id="unidad" class="validate[required] form-control">
-                               <option value="1">Unidad de Mantenimiento</option>
-                               <option value="2">Unidad de Transporte</option>
-                               <option value="3">Mtto de alumbrado público</option>
-                               <option value="4">Gerencia</option>
-                               <option value="5">Unidad de Medio Ambiente</option>
-                             </select>
-                           </div>
+                               <select name="unidad" id="unidad" class="validate[required] form-control">
+                                 <option value="1">Unidad de Mantenimiento</option>
+                                 <option value="2">Unidad de Transporte</option>
+                                 <option value="3">Mtto de alumbrado público</option>
+                                 <option value="4">Gerencia</option>
+                                 <option value="5">Unidad de Medio Ambiente</option>
+                               </select>
+                             </div>
                            <br><br>
-                          <label class="control-label col-md-3">* Motorista </label>
+                          <label class="control-label col-md-3">* Operario</label>
                           <div class="col-md-4">
                             <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
                               @foreach($motorista as $m)

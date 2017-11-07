@@ -51,7 +51,13 @@
                           <br>
                           <section class="example">
                             <div class="row">
+                              <?php
+                                  $cont=0;
+                                  ?>
                               @foreach ($maquinaria as $mq)
+                              <?php
+                                  $cont++;
+                                  ?>
                                 {{--semaforo = 3 en mision  --}}
                                 @if($mq->semaforo!=3)
                                <div class="col-xl-4">
@@ -69,12 +75,22 @@
                                        @if($mq->semaforo==4)
                                          <p class="title">Actualmente en mantenimiento</p>
                                          <td>{!!link_to_route('mantenimientoCorMaq.show',$title='Finalizar Mttn', $parametro=$mq->id,$atributo=['class'=>'btn btn-primary btn-sm fa fa-edit'])!!}</td>
+                                         {!! Form::open(['url'=>['impOrden'],'method'=>'POST','target'=>'_blank']) !!}
+                                              <input type="hidden" name="idVM" value="{{ $mq->id }}">
+                                              <input type="hidden" name="opc" value="4">
+                                         {!! Form::submit('Imprimir orden',['class'=>'btn btn-warning btn-sm fa fa-print']) !!}  </form>
                                       @endif
                                     </div>
                                  </div>
                                </div>
                                @endif
                              @endforeach
+                             @if($cont==0)
+                              <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <strong> No hay Mantenimientos Correctivos en proceso</strong>
+                              </div>
+                            @endif
                            </div>
                           </section>
                         </div>

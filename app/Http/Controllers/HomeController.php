@@ -42,4 +42,11 @@ class HomeController extends Controller
       Auth::logout();
       return Redirect::to('/home');
     }
+
+    public function postGenerateBackup()
+    {
+        exec('C:\Windows\System32\cmd.exe /C START C:\xampp\htdocs\Kairos\backup.bat');
+        return redirect('/home')->with('create','Backup  creado con éxito');
+
+    }
 }

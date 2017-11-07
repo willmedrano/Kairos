@@ -471,6 +471,9 @@
                                 <a href="/Kairos/public/bitacora">
                                     Bitácora de usuarios
                                 </a>
+                                <a href="/Kairos/public/postGenerateBackup">
+                                    Respaldar Base de datos
+                                </a>
                               </li>
                             </ul>
                           </li> <!-- Aqui finaliza el menu de seguridad i -->
@@ -533,8 +536,15 @@
                     </div>
                     
                 </aside>
-                <div>                                        
+                <div>                         
+
                     @yield('content')
+                    @if (Session::has('create'))
+  <div class="alert alert-success alert-dismissible" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true" >&times;</span></button>
+  {{Session::get('create')}}
+  </div>
+  @endif   
                     <footer class="sidebar-footer"  >
                     <center>
                       <img  src="/Kairos/public/img/ues.png" class="" alt="User Image" width="50px" height="50px"><b>

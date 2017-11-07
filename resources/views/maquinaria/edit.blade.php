@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
-                                {!!Form::text('horaM',$m->horaM,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'Ej: 5','required'])!!}
+                                {!!Form::text('horaM',$m->horaM,['id'=>'horaM','class'=>'form-control', 'placeholder'=>'horas para cada mantenimiento','required'])!!}
                               </div>
                               <div class="col-md-6">
                                 {!!Form::textarea('observacionMaq',$m->ObservacionMaq,['id'=>'observacionMaq','class'=>'form-control', 'placeholder'=>'Observaciones...','required','rows'=>'3', 'cols'=>'5'])!!}

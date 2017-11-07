@@ -72,7 +72,7 @@
                                  @include('mantenimientoPreventivo.mpRealizadosMaqDetalle')
                                  <tr>
                                    <td align="center">{{$cont++}}</td>
-                                   <td align="center">{{$m->numTrabajo}}</td>
+                                   <td align="center">{{$m->idOrden}}</td>
                                    <td align="center">{{$m->mecanicoNom($m->idMecanico)}}</td>
                                    <td align="center">{{$m->equipo($m->idMaquinaria)}}</td>
                                    <?php

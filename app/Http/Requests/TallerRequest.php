@@ -26,12 +26,14 @@ class TallerRequest extends FormRequest
         return [
             'nomTallerE'=>'unique:taller_es',
             'telefonoTE'=>'unique:taller_es',
+            'celTE'=>'unique:taller_es',
         ];
     }
     public function messages(){
       return [
         'nomTallerE.unique' => '¡Este taller ya se encuentra registrado!',
         'telefonoTE.unique' => '¡Verifique el numero de telefono ingresado al parecer ya ha sido registrado!',
+        'celTE.unique' => '¡Verifique el numero de celular ingresado al parecer ya ha sido registrado!',
 
          ];
     }

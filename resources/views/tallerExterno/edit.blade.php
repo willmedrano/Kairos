@@ -36,6 +36,10 @@
                               <div class="col-md-6">
                                 {!!Form::text('telefonoTE',$t->telefonoTE,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'Numero de teléfono taller...','required'])!!}
                               </div>
+                            <div class="col-md-6">
+                              <label class="control-label ">Celular </label>
+                                {!!Form::text('celTE',$t->celTE,['onKeyPress'=>'return validarTelefono(event)','id'=>'telefonoMot','class'=>'form-control', 'placeholder'=>'Numero de celular del encargado taller...','required'])!!}
+                              </div>
                             </div>
 
                         </fieldset>

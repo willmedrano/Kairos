@@ -88,7 +88,7 @@
                           </div>
                           <br><br>
                           <div class="form-group">
-                            <label class="control-label col-md-2">* Kilometraje </label>
+                            <label class="control-label col-md-2">* Kilometraje Actual</label>
                             <div class="col-md-4">
                               {!!Form::number('kilometraje',null,['id'=>'kilometraje','class'=>'form-control', 'placeholder'=>'Ej: 5000','required'])!!}
                             </div>

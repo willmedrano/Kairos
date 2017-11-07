@@ -14,6 +14,7 @@ use Kairos\TallerE;
 use Kairos\MecanicoInterno;
 use Kairos\Motorista;
 use Kairos\MantenimientoCorrectivoMaq;
+use Kairos\MantenimientoPreMaq;
 use Kairos\AsignarMotMaq;
 use Kairos\Orden;
 use Kairos\Bitacora;
@@ -36,7 +37,7 @@ class MantenimientoCorMaqController extends Controller
       return View('mantenimientoCorrectivo.indexMaq',compact('maquinaria'));
     }
 
-    public function busqEquipo(Request $request)
+    public function busqEquipo(Request $request) //llevar a cabo Mttn
     {
         $numE=$request->equipo;
         $maquinaria =Maquinaria::where('nEquipo',$numE)->get();
@@ -53,14 +54,25 @@ class MantenimientoCorMaqController extends Controller
               $mot="";
               $mo=0;
             }  
+            //primero se evalua que no este en mttn preventivo
+            $MP=MantenimientoPreMaq::where('idMaquinaria',$a->id)->where('estadoMtt',1)->get();
+            if ($MP->last()!=null) {
+              return $this->index();          
+            }
             $MC=MantenimientoCorrectivoMaq::where('idMaquinaria',$a->id)->where('estadoMttC',1)->get();
             //si la maquinaria ya se encuentra en mttc redirecciona al index
             if ($MC->last()!=null) {
               return $this->index();          
             }else{//si la maquinaria no se encuentra en mttc nos permitira llevar a cabo el registro
+              $orden=Orden::All();
+              if ($orden->last()==null) {
+                $idO=1;
+              }else{
+                $idO=$orden->last()->id+1;
+              }
               $taller=TallerE::where('estadoTE',1)->get();
               $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Operario')->get();
-              return View('mantenimientoCorrectivo.createMaq',compact('maquinaria','taller','motorista','mot','mo'));
+              return View('mantenimientoCorrectivo.createMaq',compact('maquinaria','taller','motorista','mot','mo','idO'));
             } 
           }
           else{

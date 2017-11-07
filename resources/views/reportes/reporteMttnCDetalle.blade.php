@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title> Vehiculo-Maquinaria </title>
+	<title> Mttn Correctivo Detalle </title>
 	<style>
 body {
     font-family: 'Source Sans Pro', sans-serif;
@@ -33,7 +33,7 @@ table th {
 }
 
 th {
-    background-color: #00bf;
+    background-color: #4f8ba0;
     color: white;
 }
 
@@ -50,7 +50,7 @@ th, td {
 /*tr:nth-child(even){background-color: #F0FDFF}
 */
 table tr:nth-child(2n-1) td {
-  background: #F5F5F5;
+
 }
 </style>
 </head>
@@ -58,67 +58,132 @@ table tr:nth-child(2n-1) td {
   <div class="col-md-12">
     <div class="box-body">
       <div class="box-header with-border">
-        <div style="position: absolute;left: 210px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
-        <div style="position: absolute;left: 50px; top: 80px; z-index: 1;"><h3>Unidad de Transporte, Recolección  de Desechos Solidos y Mantenimiento</h3></div>
+        <div style="position: absolute;left: 220px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
+        <div style="position: absolute;left: 280px; top: 80px; z-index: 1;">CIUDAD CENTENARIA</div>
+        <div style="position: absolute;left: 350px; top: 120px; z-index: 1;"><h5>Despacho Alcalde Telefax 2362-6700</h5></div>
+        <div style="position: absolute;left: 385px; top: 133px; z-index: 1;"><h5>Gerencia Teléfono 2362-6708</h5></div>
+        <div style="position: absolute;left: 120px; top: 133px; z-index: 1;"><h5>Depto. Cabañas, El Salvador, C.A.</h5></div>
         <HR style="position: absolute;left: 23px; top: 163px; z-index: 1; color:blue;" width=90%>
         <div style="position: absolute;left: 550px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
         <div style="position: absolute;left: 550px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
-        <div style="position: absolute;left: 50px; top: 180px; z-index: 1;"><h4>Orden de trabajo:  
-        @foreach ($matt as $m)
-          {{$m->idOrden}}
-          @endforeach
-          </h4> </div>
-        <div style="position: absolute;left: 240px; top: 180px; z-index: 1;"><h4>Nº Placa / Eq:  
-          @foreach ($matt as $m)
-          
-          @if($opc==1)
-            {{$m->placa($m->idVehiculo)}}
-           @else
-              {{$m->equipo($m->idMaquinaria)}}
-           @endif
-        @endforeach
+        <div style="position: absolute;left: 230px; top: 190px; z-index: 1;"><h2>Mantenimiento Correctivo </h2> </div>
+        <h3 align="right" style="position: absolute;left:20; top:20px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/sv.png" ></h3>
+        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
 
-        </h4> </div>
-        <div style="position: absolute;left: 400px; top: 180px; z-index: 1;"><h4>Gasto Total $  
-        @foreach ($matt as $m)
-        @if($opc==1)
-          {{$m->gastoMC}}
-          @else
-          {{$m->gastoMC}}
-          @endif
-          @endforeach
-          </h4> </div>
+        <table class="" style="position: absolute;left:0; top:230px; px; z-index: 1;" >
+          <thead>
+             <tr>
+               <th ><div align="center">Nº Orden</div></th>
+               @foreach ($matt as $m)  
+                 @if($opc==1)
+                 <th ><div align="center">Nº Placa</div></th>
+                 @else
+                   <th ><div align="center">Nº Equipo</div></th>                                         
+                 @endif
+               @endforeach
+               <th ><div align="center">Fecha de inicio</div></th>
+               <th ><div align="center">Taller</div></th>
+               <th ><div align="center">Mecanico</div></th>
+               <th ><div align="center">Gasto Total $</div></th>                                   
+               
+             </tr>
+           </thead>
+           <tbody >
+             <tr>
+              @foreach ($matt as $m)        
+               <td align="center">{{$m->idOrden}}</td>                                          
+                @if($opc==1)
+                <td align="center">{{$m->placa($m->idVehiculo)}}</td>
+                  
+                 @else
+                 <td align="center">{{$m->equipo($m->idMaquinaria)}}</td>                                         
+               @endif     
+                <?php
+                $date = new DateTime($m->fechaInicioMtt);
+              ?>
+               <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
+               <td align="center">{{$m->tallerNom($m->idMecanico)}}</td>
+               <td align="center">{{$m->mecanicoNom($m->idMecanico)}}</td>
+               <td align="center">{{$m->gastoMC}}</td>
+             @endforeach
+           </tr>
+         </tbody>
+       </table>
+        </div>
 
         <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div><!-- /.box-header -->
 
       <div class="box-body">
-      <table class="table-wrapper" border="0" width="100px" >
+      <table style="position: absolute;left:0; top:320px; px; z-index: 1;" border="1" >
            <thead>
             <tr>               
-               <th colspan="5" ><div align="left">Observaciones o Falla/s reportadas</div></th> 
+               <th colspan="2" ><div align="left">Observaciones o Falla/s reportadas</div></th> 
             </tr>
           </thead>
                @foreach ($matt as $m)
                  <tr>
-                   <td colspan="5" height="250px"><div align="left">{{$m->fallasVeh}}</div></td>                   
+                  @if($opc==1) 
+                    <td colspan="2" height="230px"><div align="left">
+                  <?php
+                 $datos=$m->fallasVeh;
+                 $data;                
+                 
+                 $data = explode("\n", $datos);
+                 // DD($data);
+                 ?>
+
+                 @foreach($data as $d)
+                 {{ $d }} <br>
+                 @endforeach</div></td> 
+                   @else
+                   <td colspan="2" height="230px"><div align="left">
+                  <?php
+                 $datos=$m->fallasMaq;
+                 $data;                
+                 
+                 $data = explode("\n", $datos);
+                 // DD($data);
+                 ?>
+
+                 @foreach($data as $d)
+                 {{ $d }} <br>
+                 @endforeach</div></td> 
+                   @endif
+                                    
                  </tr>
                <tr>               
-                <th colspan="5" ><div align="left">Diagnostico de mecanico / Reparación realizada</div></th> 
+                <th colspan="2" ><div align="left">Diagnostico de mecanico / Reparación realizada</div></th> 
               </tr>
                  <tr >
-                   <td colspan="5" height="250px"><div align="left">{{$m->diagnosticoMec}}</div></td>                   
-                 </tr>
-               <tr >
-                   <th colspan="5" ><div align="left"> {{$m->tallerNom($m->idMecanico).', Mecanico que recibe: '.$m->mecanicoNom($m->idMecanico)}}</div></th>      
+                   <td colspan="2" height="230px"><div align="left">
+                   <?php
+                 $datos=$m->diagnosticoMec;
+                 $data;                
+                 
+                 $data = explode("\n", $datos);
+                 // DD($data);
+                 ?>
 
+                 @foreach($data as $d)
+                 {{ $d }} <br>
+                 @endforeach</div></td>     
                  </tr>
+               
                  @endforeach
+    
+  	 <tr>
+                   <td>Nombre/ firma de quien reporta</td>
+                   <td></td>
+                 </tr>
+                 <tr><th colspan="2"></th></tr>                 
         </tbody>
       </table>
-    
-  	 </div><!-- /.box-body -->
+      <div style="position: absolute;left:0; top:950px; px; z-index: 1; ">F. Autorizo reparación</div>
+      <HR style="position: absolute;left: 130px; top: 953px; z-index: 1; color:black;" width=20%>
+    <div style="position: absolute;left:300; top:950px; px; z-index: 1; ">F. Mecanico</div>
+      <HR style="position: absolute;left: 490px; top: 953px; z-index: 1; color:black;" width=20%>
+     </div><!-- /.box-body -->
 	  </div><!-- /.box -->
   </div>
 </body>

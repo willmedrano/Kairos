@@ -59,7 +59,7 @@
                           <div class="row">
 
                             @foreach ($vehiculo as $v)
-                              
+                               
 
                               
                              <div class="col-xl-4">
@@ -77,7 +77,7 @@
                                          {!!Form::open(['route'=>['vale.show',$v->id],'method'=>'GET'])!!}
                                             <input type="submit" name="" value=" Vales de Combustible"   class="btn btn btn-primary btn-sm active " >
                                          {!!Form::close()!!}
-                                     
+                                         <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$v->id}}">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp Reporte &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                                       </div>
                                  </div>
                              </div>
@@ -96,8 +96,25 @@
        </div>
      </section>
    </article>
+         @foreach ($vehiculo as $v)
+                               
+@include('Vales.reporteXV')
+@endforeach
 @stop
 @section('scripts')
     <!--{!!Html::script('js/scriptpersanalizado.js')!!}-->
     {!!Html::script('js/buscaresc.js')!!}
   @endsection
+
+  <?php 
+$time=time();
+    
+    function dameFecha($fecha,$dia){
+        list($year,$mon,$day)=explode('-',$fecha);
+        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
+    }
+   $total=0; 
+
+
+  
+?>

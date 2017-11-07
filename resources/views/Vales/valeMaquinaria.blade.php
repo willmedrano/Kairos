@@ -121,29 +121,7 @@
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
-                                <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                
-                                
-                                
-
-                                
-
-                                 
-
-                                
-                                     
-                                      
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                               
-                                      
-                                      
-                                                                    
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>                                  
                               </tr>
                                @endif
                               @endforeach

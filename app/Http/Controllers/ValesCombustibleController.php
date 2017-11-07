@@ -135,6 +135,8 @@ class ValesCombustibleController extends Controller
             $cc->total=$request['total'];
             $cc->estadoVale=true;    
             $cc->save();
+            \Kairos\Bitacora::bitacora("Se Asigno el vale de combustible # ".$request['nVale']);
+        
 
         Session::flash('mensaje','¡Registro Actualizado!');
         if($bandera==1)
@@ -196,45 +198,71 @@ class ValesCombustibleController extends Controller
       return $pdf->stream('Vales vehiculo '.$date.'.pdf');
     }
 
-    public function reporteVxT(Request $request)//reporte Mttn C x VM
+    public function valeXV(Request $request)//reporte Mttn C x VM
     {
 
       $fch1=$request->fechaInicial;
       $fch2=$request->fechaFinal;
-      $opcion=$request->vm;
-
-      $vehiculo=Vehiculo::where('nPlaca',$opcion)->get();
-
-      if($vehiculo->last()!=null){
-        
-          $cc3=ValesCombustible::whereDate('created_at', '>=' , $fch1)->whereDate('created_at', '<=', $fch2)->where('idVehiculo',$vehiculo->last()->id)->get();
-
+      $opcion=$request->idV;
+      $v =Vehiculo::find($opcion);
+        $cc=ValesCombustible::disponiblesR($opcion,$fch1,$fch2);
+        $cc2=ValesCombustible::disponiblesCR($opcion,$fch1,$fch2);
+        $cc3=ValesCombustible::ALl();
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');
-          $vistaurl="reportes.reporteV";
+          $vistaurl="reportes.reporteValeXV";
           $opc=1;
-          $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
+          $view =  \View::make($vistaurl, compact('cc','cc2','v','cc3','date','date1','fch1','fch2'))->render();
           $pdf = \App::make('dompdf.wrapper');
           $pdf->loadHTML($view);
           $pdf->setPaper('A4', 'landscape');
           return $pdf->stream('Mttn Correctivo por Vehiculo '.$date.'.pdf');
-      }else{
-          $maquinaria=Maquinaria::where('nEquipo',$opcion)->get();      
+      
 
-          $matt=MantenimientoCorrectivoMaq::whereDate('fechaInicioMtt', '>=' , $fch1)->whereDate('fechaFinMtt', '<=', $fch2)->where('estadoMttC',0)->where('idMaquinaria',$maquinaria->last()->id)->get();
+    }
+    public function valeXM(Request $request)//reporte Mttn C x VM
+    {
 
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      $opcion=$request->idV;
+        $v =Maquinaria::find($opcion);
+      $cc=ValesCombustible::disponiblesMR($opcion,$fch1,$fch2);
+        $cc2=ValesCombustible::ALl();
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');
-          $vistaurl="reportes.reporteMttnCxVM";
-          $opc=2;
-          $view =  \View::make($vistaurl, compact('matt','date','date1','fch1','fch2','opc'))->render();
+          $vistaurl="reportes.reporteValeXM";
+          $opc=1;
+          $view =  \View::make($vistaurl, compact('cc','v','cc2','date','date1','fch1','fch2'))->render();
           $pdf = \App::make('dompdf.wrapper');
           $pdf->loadHTML($view);
           $pdf->setPaper('A4', 'landscape');
-          return $pdf->stream('Mttn Correctivo por Maquinaria '.$date.'.pdf');
-      }
-
+          return $pdf->stream('Vale por maquinaria '.$date.'.pdf');
     }
+    public function valeXA(Request $request)//reporte Mttn C x VM
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      
+      $cc=ValesCombustible::disponiblesVAR(2,$fch1,$fch2);
+        $cc1=ValesCombustible::disponiblesMAR(2,$fch1,$fch2);
+        $cc2=ValesCombustible::disponiblesCAR(2,$fch1,$fch2);
+        $cc3=ValesCombustible::All();
+        
+        
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteValeXA";
+          $opc=1;
+          $view =  \View::make($vistaurl, compact('cc','cc1','cc2','cc3','date','date1','fch1','fch2'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          $pdf->setPaper('A4', 'landscape');
+          return $pdf->stream('Vale por actividad agricola '.$date.'.pdf');
+    }
+    
+
     public function reporteAll(Request $request)//reporte Mttn Correctivo general
     {
 

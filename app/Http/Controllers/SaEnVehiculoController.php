@@ -13,7 +13,7 @@ use Kairos\Actividad;
 use Kairos\SaEnVehiculo;
 use Kairos\Vehiculo;
 use Kairos\ValesCombustible;
-
+use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 class SaEnVehiculoController extends Controller
 {
@@ -45,10 +45,14 @@ class SaEnVehiculoController extends Controller
 
       $asignado=\Kairos\AsignarMotVeh::disponibles();
       $actividad= Actividad::Act();
-       $cc=SaEnVehiculo::disponibles();
+       
        $c=SaEnVehiculo::All();
-
+    if (empty($c[0])) {
+        $nuevo=0;
+    }
+    else{
        $nuevo=$c->last()->id;
+       }
 
        return view('SaEnVehiculo.frmSaEnVehiculo',compact('asignado','actividad','nuevo'));
 
@@ -62,9 +66,41 @@ class SaEnVehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $cc=SaEnVehiculo::All();
+        if(empty($cc[0]))
+        {
+            ValesCombustible::create([]);
+        $ids;
+        $gAux =ValesCombustible::All();
+        foreach ($gAux as $valor2) {
+            $ids=$valor2->id;
+        }
+        SaEnVehiculo::create([
+            'idAsignacion'=>$request['selectMarca'],
+            'idVale'=>$ids,
+            'idActividad'=>$request['idActividad'],
+            'fecha'=>$request['fecha'],
+            'kilometrajeS'=>$request['kilometrajeS'],
+            'tanqueS'=>1,
+            'tipo'=>1,  //recordatorio quitar esto de la tabla la proxima vez
+            'lugarCarga'=>1, //recordatorio quitar esto de la tabla la proxima vez
+            'horaSalida'=>$request['horaS'],
+            'observacionS'=>$request['observacionesS'],
+            'observacionE'=>"",
+            
+            
         
-        $cc=SaEnVehiculo::All();
+        ]);
+        $var=AsignarMotVeh::find($request['selectMarca']);
+        $v=Vehiculo::find($var->idVehiculo);
+        $v->semaforo=3;
+        \Kairos\Bitacora::bitacora("Se registro la salida del vehiculo con placa : ".$v->nPlaca);
+        
+        $v->save();
+       return redirect('/salidaEntrada')->with('message','create');
+    }
+    else{
+
         $nuevo2=$cc->last()->id;
         
         if($request['nuevo']==$nuevo2)
@@ -94,11 +130,18 @@ class SaEnVehiculoController extends Controller
         $var=AsignarMotVeh::find($request['selectMarca']);
         $v=Vehiculo::find($var->idVehiculo);
         $v->semaforo=3;
+        \Kairos\Bitacora::bitacora("Se registro la salida del vehiculo con placa : ".$v->nPlaca);
+        
         $v->save();
         }
         return redirect('/salidaEntrada')->with('message','create');
-       
+        }
+
+    
+        
     }
+       
+    
 
     /**
      * Display the specified resource.
@@ -152,7 +195,8 @@ class SaEnVehiculoController extends Controller
             $cc->estado=true;
             
         }
-       
+       \Kairos\Bitacora::bitacora("Se registro la entrada del vehiculo con placa : ".$v->nPlaca);
+        
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
@@ -202,5 +246,22 @@ class SaEnVehiculoController extends Controller
     {
         $cc=\Kairos\bitacora::barCan();
       return view('bitacora.bitacora',compact('cc'));
+    }
+    public function Excel(Request $request)//reporte Mttn Correctivo general
+    {
+
+       $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $cc=SaEnVehiculo::disponiblesF($fch1,$fch2);
+      
+       
+    Excel::create("Salidas y entradas de vehiculo", function ($excel) use ($cc) {
+        $excel->setTitle("Title");
+        $excel->sheet("Hoja 1", function ($sheet) use ($cc) {
+            
+            $sheet->loadView('SaEnVehiculo.excel')->with('cc', $cc);;
+        });
+    })->download('xls');
     }
 }

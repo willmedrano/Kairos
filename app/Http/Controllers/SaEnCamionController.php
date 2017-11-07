@@ -13,7 +13,7 @@ use Kairos\Actividad;
 use Kairos\SaEnVehiculo;
 use Kairos\SaEnCamion;
 use Kairos\Vehiculo;
-
+use Maatwebsite\Excel\Facades\Excel;
 use Kairos\ValesCombustible;
 
 class SaEnCamionController extends Controller
@@ -23,7 +23,11 @@ class SaEnCamionController extends Controller
     {
         //
         $cc=SaEnCamion::disponibles();
-        $c2=SaEnCamion::All();
+        
+       foreach ($cc as $c) {
+        $c->idCC=SaEnCamion::barrio($c->idCC);
+           
+       }
         
       return view('SaEnCamion.index',compact('cc','c2'));
        
@@ -80,7 +84,8 @@ class SaEnCamionController extends Controller
         $var=AsignarMotVeh::find($request['selectMarca']);
         $v=Vehiculo::find($var->idVehiculo);
         $v->semaforo=3;
-        $v->save();
+          \Kairos\Bitacora::bitacora("Se registro la salida del camion con placa : ".$v->nPlaca);
+                $v->save();
         
         return redirect('/salidaEntrada3')->with('message','create');
        
@@ -141,7 +146,7 @@ class SaEnCamionController extends Controller
             $cc->estadoC=true;
             
         }
-       
+       \Kairos\Bitacora::bitacora("Se registro la entrada del camion con placa : ".$v->nPlaca);
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
@@ -184,4 +189,26 @@ class SaEnCamionController extends Controller
       $pdf->setPaper('A4', 'landscape');
       return $pdf->stream('salida Entrada de Camiones'.$date.'.pdf');
     }
+     public function Excel(Request $request)//reporte Mttn Correctivo general
+    {
+
+       $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $cc=SaEnCamion::disponiblesF($fch1,$fch2);      
+       
+      foreach ($cc as $c) {
+        $c->idCC=SaEnCamion::barrio($c->idCC);
+           
+       }
+
+    Excel::create("Salidas y entradas de Camiones", function ($excel) use ($cc) {
+        $excel->setTitle("Title");
+        $excel->sheet("Hoja 1", function ($sheet) use ($cc) {
+            
+            $sheet->loadView('SaEnCamion.excel')->with('cc', $cc);;
+        });
+    })->download('xls');
+    }
+
 }

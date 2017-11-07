@@ -25,7 +25,7 @@
               <input type="hidden" name="hi" value="{{ $c->estado }}">
               <input type="hidden" name="bandera" value="1">
               <br>
-              <label class="control-label col-md-4">*Hora de    Salida </label>
+              <label class="control-label col-md-4">*Hora de    Entrada </label>
 
                     <div class="col-lg-3">
                       {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de salida...','required'])!!}

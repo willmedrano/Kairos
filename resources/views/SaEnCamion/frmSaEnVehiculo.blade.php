@@ -23,7 +23,7 @@
             <div class=\ >
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h1 class="panel-title">Formulario de salidas de Vehiculo</h1>
+                  <h1 class="panel-title">Formulario de salidas de Camión</h1>
                 </div>
                 <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
@@ -90,7 +90,7 @@
                     <label class="control-label col-md-2">*Kilometraje de Salida </label>
 
                     <div class="col-lg-3">
-                      {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
+                      {!!Form::number('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
                     </div>
                     
                     

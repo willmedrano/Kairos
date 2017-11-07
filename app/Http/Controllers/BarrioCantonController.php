@@ -9,7 +9,7 @@ use DB;
 use Input;
 use Kairos\BarrioCanton;
 use Kairos\ColoniaCaserio;
-
+use Kairos\Http\Requests\BarrioCantonRequest;
 class BarrioCantonController extends Controller
 {
       public function index()
@@ -40,7 +40,7 @@ class BarrioCantonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BarrioCantonRequest $request)
     {
         //
         BarrioCanton::create([
@@ -124,7 +124,7 @@ class BarrioCantonController extends Controller
       $barrio=BarrioCanton::All();
       $date = date('d-m-Y');
       $date1 = date('g:i:s a');
-      $vistaurl="barrioCanton.reporte";
+      $vistaurl="reportes.reporteBarrio";
       $view =  \View::make($vistaurl, compact('cc','barrio', 'date','date1','tipo'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);

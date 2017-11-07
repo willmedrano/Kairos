@@ -95,6 +95,9 @@ Route::match(['get','post'],'reporteMttnCDetalle','MantenimientoCorVehController
 Route::match(['get','post'],'reporteBarrio','BarrioCantonController@reporte');
 Route::match(['get','post'],'reporteCanton','BarrioCantonController@reporte2');
 Route::match(['get','post'],'filtroVale','ValesCombustibleController@filtroVale');
+Route::match(['get','post'],'filtroValeV','ValesCombustibleController@valeXV');
+Route::match(['get','post'],'filtroValeM','ValesCombustibleController@valeXM');
+Route::match(['get','post'],'filtroValeA','ValesCombustibleController@valeXA');
 Route::match(['get','post'],'reporteValeAll','ValesCombustibleController@reporteAll');
 Route::match(['get','post'],'reporteVale','ValesCombustibleController@reporte');
 Route::match(['get','post'],'reporteEntradaV','SaEnVehiculoController@reporte');
@@ -102,6 +105,10 @@ Route::match(['get','post'],'reporteEntradaM','SaEnMaquinariaController@reporte'
 Route::match(['get','post'],'reporteEntradaC','SaEnCamionController@reporte');
 Route::match(['get','post'],'filtroSaEnVehiculo','SaEnVehiculoController@filtroSa');
 Route::match(['get','post'],'bitacora','SaEnVehiculoController@bitacora');
-
+Route::match(['get','post'],'excelV','SaEnVehiculoController@excel');
+  
+Route::match(['get','post'],'excelM','SaEnMaquinariaController@excel');
+  
+Route::match(['get','post'],'excelC','SaEnCamionController@excel');
   });
 Auth::routes();

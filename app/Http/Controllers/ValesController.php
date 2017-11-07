@@ -107,39 +107,7 @@ class ValesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $bandera=$request['bandera'];
-        if($bandera==1)
-        {
-            $saen=SaEnVehiculo::where('idVale',$id)->get();
-        }
-        else{
-            $saen=SaEnMaquinaria::where('idVale',$id)->get();
-        }
-        foreach ($saen as $key) {
-
-            # code...
-            $ids=$key->idVale;
-        }
-
-        $cc = ValesCombustible::find($ids);
-        
-       
-            $cc->nVale=$request['nVale'];
-            $cc->tipo=$request['tipo'];
-            $cc->galones=$request['galones'];
-            $cc->PrecioU=$request['PrecioU'];
-            $cc->estadoVale=true;    
-            $cc->save();
-
-        Session::flash('mensaje','¡Registro Actualizado!');
-        if($bandera==1)
-        {
-           return redirect::to('/salidaEntrada')->with('message','update');
-        }
-        else{
-            return redirect::to('/salidaEntrada2')->with('message','update');
-        }
+      
         
        
     }

@@ -39,10 +39,11 @@
                 <div id="collapseOne" class="body">
                   <div class="form-group">
 
-                  <div  class=" col-md-2" id="idModelo">
+                  <div  class=" col-md-3" id="idModelo" style="height: 220px;">
                       
                   
                     </div>
+                    <div class="form-group">
                   <label class="control-label col-md-2">* Motorista: </label>
                     <div class="col-lg-3">
                       <select name="selectMarca" id="selectMarca" class="validate[required] form-control">
@@ -53,6 +54,7 @@
                         <option value="{{$a->id}}">{{$a->nombresMot}} {{ $a->apellidosMot }}</option>
                         @endforeach
                       </select>
+                    </div>
                     </div>
                     
                   

@@ -23,7 +23,7 @@
             <div class=\ >
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h1 class="panel-title">Formulario de salidas de Vehiculo</h1>
+                  <h1 class="panel-title">Formulario de salidas de Maquinaria</h1>
                 </div>
                 <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
@@ -35,7 +35,7 @@
                 <div id="collapseOne" class="body">
                   <div class="form-group">
 
-                  <div  class=" col-md-2" id="idModelo">
+                  <div  class=" col-md-3" id="idModelo" style="height: 220px;">
                       
                   
                     </div>

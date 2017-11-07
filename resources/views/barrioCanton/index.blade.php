@@ -74,12 +74,15 @@
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
+                              <?php $cont=0; ?>
                               @foreach ($cc as $c)
+                              
                               @include('barrioCanton.edit')
                               <tr>  
                                 @if($c->estadoB==1)
-
-                                <td>{{$c->id}}</td>
+                                 <?php $cont++;?> 
+                                <td>
+                                  <?php echo $cont;?></td>
                                 <td>{{$c->nombre}}</td>
                                 <td>{{$c->tipo}}</td>
                                 <td align="center">

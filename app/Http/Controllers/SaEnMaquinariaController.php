@@ -12,7 +12,7 @@ use Kairos\AsignarMotMaq;
 use Kairos\Actividad;
 use Kairos\SaEnMaquinaria;
 use Kairos\Maquinaria;
-
+use Maatwebsite\Excel\Facades\Excel;
 use Kairos\ValesCombustible;
 
 use Carbon\Carbon;
@@ -75,6 +75,7 @@ class SaEnMaquinariaController extends Controller
         $var=AsignarMotMaq::find($request['selectMarca']);
         $v=Maquinaria::find($var->idMaquinaria);
         $v->semaforo=3;
+        \Kairos\Bitacora::bitacora("Se registro la salida de  maquinaria con el numero de equipo : ".$v->nEquipo);
         $v->save();
         return redirect('/salidaEntrada2')->with('message','create');
        
@@ -134,7 +135,7 @@ class SaEnMaquinariaController extends Controller
             $cc->estado=true;
             
         }
-       
+        \Kairos\Bitacora::bitacora("Se registro la entrada de maquinaria con el numero de equipo : ".$v->nEquipo);
         $cc->save();
 
         Session::flash('mensaje','¡Registro Actualizado!');
@@ -175,5 +176,21 @@ class SaEnMaquinariaController extends Controller
       $pdf->loadHTML($view);
       $pdf->setPaper('A4', 'landscape');
       return $pdf->stream('salida Entrada de vehiculo'.$date.'.pdf');
+    }
+    public function Excel(Request $request)//reporte Mttn Correctivo general
+    {
+
+       $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+
+      $cc=SaEnMaquinaria::disponiblesF($fch1,$fch2);      
+       
+    Excel::create("Salidas y entradas de Maquinaria", function ($excel) use ($cc) {
+        $excel->setTitle("Title");
+        $excel->sheet("Hoja 1", function ($sheet) use ($cc) {
+            
+            $sheet->loadView('SaEnMaquinaria.excel')->with('cc', $cc);;
+        });
+    })->download('xls');
     }
 }

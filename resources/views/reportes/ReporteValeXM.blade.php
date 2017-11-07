@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Reporte Por entrada de camion</title>
+  <title>Reporte Por Vales de combustible</title>
   <style>
 body {
     font-family: 'Source Sans Pro', sans-serif;
@@ -75,94 +75,65 @@ table tr:nth-child(2n-1) td {
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div><!-- /.box-header -->
       <div class="box-body">
-
+      
       <?php $fecha1=explode('-', $fch1);
       $fecha2=explode('-', $fch2);?>
 
-              <div style="position: absolute;left: 380px; top: 210px; z-index: 1;" ><h3>Salidas y Entradas de Camiones</h3>                  
+              <div style="position: absolute;left: 270px; top: 210px; z-index: 1;"><h3> VALES DE COMBUSTIBLE ASIGNADOS AL VEHICULO CON {{"PLACA: ".$v->nEquipo}} </h3>                  
             </div>
             <div  style="position: absolute;left: 400px; top: 230px; z-index: 1;">
               <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0] ?> </h4>
             </div>
+           
+
+              
+            
          
         <table class="table-wrapper" >
-           <thead>
-            <tr align="center">                    
+	         <thead align="center">
+                              <tr align="center">                    
                                <th >N°</th>
-                               <th >CONDUCTOR</th>
-                               <th >FECHA</th>
-                               <th ># PLACA</th>
+                               <th >NOMBRE DE QUIEN RECIBE</th>
+                               <th ># VALE</th>
+                               <th ># DE GALONES</th>
+                               <th>VALOR EN $</th>
+                               <th>TOTAL EN $</th>
                                <th>ACTIVIDAD</th>
-                               <th>CARGA</th>
-                               <th>DESCARGA</th>
-                               <th># VIAJES</th>
-                               <th >HORA/S</th>
+                               <th>LUGAR DE LA MISIÓN</th>
                                
-                               <th >HORA/E</th>
+                               <th >FECHA</th> 
                                
-                               
-
-                               <th>COMBUSTIBLE</th>
-                              
                                
                               </tr>
                             </thead>
                             <tbody id="hola" class="buscar">
-                              <?php $cont=0;?>
+                              @foreach ($cc as $c)
                               
-                               @foreach ($cc as $c)
-                             
+                           
+                               
+                             @if($c->estadoVale==true)
                               <tr>   
                                 <td>{{$c->id}}</td>
                                 <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
-                                
+                                <td>{{ $c->nVale }}</td>
+                                <td>{{$c->galones}}</td>
+                                <td>{{ $c->PrecioU }}</td>
+                                <td>{{ $c->total }}</td>
+            
+                                <td>{{ $c->act }}</td>
+                                <td>{{ $c->nombre }}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
-                                <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                <td>{{ $c->nPlaca }}</td>
-                                <td>{{ $c->act }}</td>
-                                @if($c->tanqueS==1)
-                                
-                                <td>{{ $c->nombre }}</td>
-                                <td>{{ $c2[$cont]->barrio($c->idCC) }}</td>
-                                @else
-                                <td>{{ $c2[$cont]->barrio($c->idCC) }}</td>
-                                <td>{{ $c->nombre }}</td>
-                                @endif
-                                
-                                <td>{{ $c->nViajes }}</td>
-                                <td>{{ $c->horaSalida }}</td>
-                                
-                                <td>{{$c->horaEntrada}}</td>
-                                
-                                
-                               
-                                   <?php $cont++;?>
-                                 @if($c->estadoVale==false)
-                                    
-                                    <td>
-                                         Sin Vale
-                                    </td>
-                                @endif
-
-                                @if($c->estadoVale==true)
-                                      
-                                      <td>{{$c->galones}} Galones</td>
-                                
-                                @endif
-                                
-                                
-                                
-                                
-                                
-                                                                   
+                                <td><?php  echo $date->format('d/m/Y'); ?></td>                                  
                               </tr>
+                               @endif
                               @endforeach
+                              
                             </tbody>
-      </table>
-     </div><!-- /.box-body -->
-    </div><!-- /.box -->
+    	</table>
+  	 </div><!-- /.box-body -->
+	  </div><!-- /.box -->
   </div>
 </body>
 </html>

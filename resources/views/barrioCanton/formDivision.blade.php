@@ -13,6 +13,7 @@
   }
 </style>
 <article class="content forms-page">
+  @include('alertas.request')
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" > BARRIO/CANTÓN</i></span>
        <p class="title-description"> Registro de BARRIO/CANTÓN </p>
@@ -37,7 +38,7 @@
                   <label class="control-label col-md-1">* Tipo </label>
                     <div class="col-lg-3">
                       <select name="tipo" id="sport" class="validate[required] form-control">
-                        <option value="0">Selecione una opción...</option>
+                      
                         <option value="Barrio" id="1">Barrio</option>
                         <option value="Cantón" id="2">Cantón</option>
                       </select>

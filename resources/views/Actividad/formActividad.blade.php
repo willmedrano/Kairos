@@ -63,8 +63,7 @@
                     <div class="col-lg-3">
 
                       <select name="tipoActividad" id="idActividad" class="validate[required] form-control">
-                        <option value="0">Selecione un tipo de Actividad...</option>
-                        
+                       
                         <option value="1">Actividad Terraceria</option>
                         <option value="2">Actividad Agricola</option>
                         <option value="3">Misión fuera del municipio</option>

@@ -63,6 +63,7 @@
                           </div> 
                         </div>
                         <section class="example">
+                          <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp Excel &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead align="center">
                               <tr align="center">                    
@@ -157,6 +158,7 @@
        </div>
      </section>
    </article>
+    @include('SaEnMaquinaria.filtroExcel')
 @stop
 @section('scripts')
     <!--{!!Html::script('js/scriptpersanalizado.js')!!}-->

@@ -1,85 +1,103 @@
-@extends ('index')
-<?php $message=Session::get('message');?>
-
-
-@section('content')
-<style>
-  .campoObligatorio {
-  color: red;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte Por Vales de combustible</title>
+  <style>
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    color: #777777;
   }
-  .bigicon {
-      font-size: 35px;
-      color: #337ab7;
-  }
-  legend{
-      color: #36A0FF;
-  }
-  thead{
-     background: #ffffcc;
-     border:1;
-
+table {
+    border-collapse: collapse;
+    width: 95%;
 }
 
+
+table th,
+table td {
+  text-align: center;
+}
+
+table th {
+  padding: 5px 20px;
+  color: white;
+  border-bottom: 1px solid #C1CED9;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+th {
+    background-color: #00bf;
+    color: white;
+}
+
+.bar {
+    background: #ffffcc
+    
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #FAFBFB;
+}
+  section .table-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+/*tr:nth-child(even){background-color: #F0FDFF}
+*/
+table tr:nth-child(2n-1) td {
+  background: #F5F5F5;
+}
 </style>
-<article class="content forms-page">
-@if($message=='update')
-<div class="alert alert-info alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong> •Sea actualizado con éxito el registro</strong>
-</div>
-@endif
-@if($message=='create')
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong> •Sea creado con éxito el registro</strong>
-</div>
-@endif
+</head>
+<body>
+  <div class="col-md-12">
+    <div class="box-body">
+      <div class="box-header with-border">
+        <div style="position: absolute;left: 160px; top: 40px; z-index: 1;"><h1>Alcaldía Municipal de Ilobasco</h1></div>
+        <div style="position: absolute;left: 260px; top: 90px; z-index: 1;">CIUDAD CENTENARIA</div>
+        <div style="position: absolute;left: 350px; top: 120px; z-index: 1;"><h5>Despacho Alcalde Telefax 2362-6700</h5></div>
+        <div style="position: absolute;left: 385px; top: 133px; z-index: 1;"><h5>Gerencia Teléfono 2362-6708</h5></div>
+        <div style="position: absolute;left: 120px; top: 133px; z-index: 1;"><h5>Depto. Cabañas, El Salvador, C.A.</h5></div>
+        <HR style="position: absolute;left: 23px; top: 163px; z-index: 1; color:blue;" width=90%>
+        <div style="position: absolute;left: 550px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
+        <div style="position: absolute;left: 550px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
+        <h3 align="right" style="position: absolute;left:20; top:20px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/sv.png" ></h3>
+        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+      
+      <?php $fecha1=explode('-', $fch1);
+      $fecha2=explode('-', $fch2);?>
 
+              <div style="position: absolute;left: 270px; top: 210px; z-index: 1;"><h3> VALES DE COMBUSTIBLE ASIGNADOS A ACTIVIDADES AGRICOLAS</h3>                  
+            </div>
+            <div  style="position: absolute;left: 400px; top: 230px; z-index: 1;">
+              <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0] ?> </h4>
+            </div>
+           
 
-
-  <div class="title-block">
-    <span class=""><i class="fa fa-archive bigicon icon_nav" >CONTROL SOBRE LA DISTRIBUCIÓN  DE COMBUSTIBLE PARA ACTIVIDADES AGRICOLAS</i></span>
-       <p class="title-description"> Vales de combustible  </p>
-   </div>
-
-   <section class="section">
-       <div class="row sameheight-container">
-          <div class="form-group" align="left">
-            <div class=\ >
-              <div class="panel panel-primary">
-                <fieldset>
-                  
-                  <div class="row table-responsive"> <!--Begin Datatables-->
-
-                    <div class="card table-responsive">
-
-                      <div class="card-block table-responsive">
-                        <div class="card-title-block table-responsive">
-
-                          <div class="card-title-block">
-                              
-                            
-                            <div class="form-group" align="right">
-                              <span class="col-md-1 col-md-offset-7 text-center"><i class="fa fa-search bigicon icon_nav"></i>Buscar</span>
-                              <div class="col-xs-4  ">
-                                <input id="filtrar" name="name" type="text" class="form-control">
-                              </div>
-                            </div> 
-                          </div> 
-                        </div>
-
-                        <section class="example">
-                          <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal2">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp Reporte &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-                          <table class="table table-bordered table-hover" style="width:100%" >
-                            <thead align="center">
+              
+            
+         
+        <table class="table-wrapper" >
+	         <thead align="center">
                               <tr align="center">                    
                                <th >N°</th>
                                <th >NOMBRE DE QUIEN RECIBE</th>
                                <th ># VALE</th>
-                               <th >CANTIDAD DE GALONES</th>
+                               <th ># DE GALONES</th>
                                <th>VALOR EN $</th>
                                <th>TOTAL EN $</th>
-
                                <th>ACTIVIDAD</th>
                                <th>LUGAR DE LA MISIÓN</th>
                                
@@ -163,34 +181,11 @@
                                @endif
                               @endforeach
                                @endforeach
+                              
                             </tbody>
-                          </table>
-                        </section>
-                      </div>
-                    </div>
-                  </div>
-               </fieldset>
-             </div>
-           </div><!-- /.col-lg-12 -->
-         </div><!-- /.row -->
-       </div>
-     </section>
-   </article>
-    @include('Vales.reporteXA')
-@stop
-@section('scripts')
-    <!--{!!Html::script('js/scriptpersanalizado.js')!!}-->
-    {!!Html::script('js/buscaresc.js')!!}
-  @endsection
-  <?php 
-$time=time();
-    
-    function dameFecha($fecha,$dia){
-        list($year,$mon,$day)=explode('-',$fecha);
-        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
-    }
-   $total=0; 
-
-
-  
-?>
+    	</table>
+  	 </div><!-- /.box-body -->
+	  </div><!-- /.box -->
+  </div>
+</body>
+</html>

@@ -45,7 +45,7 @@
                       {!!Form::text('nombre',null,['id'=>'nombre','class'=>'form-control', 'placeholder'=>'Ingrese el nombre...','required'])!!}
                     </div>
                     {!!Form::label('limagen','Imagen:')!!}
-                    {!!Form::file('nombre_img',['value'=>'Elija'])!!}
+                    {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}
 
                   </div>
                 </div>

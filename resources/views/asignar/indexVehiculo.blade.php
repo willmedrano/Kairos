@@ -57,7 +57,9 @@
                         </div>
                         <section class="example">
                           <div class="row">
-
+                              <?php
+                                  $cont=0;
+                                  ?>
                             @foreach ($vehiculo as $v)
                               <?php
                               $bandera=true;
@@ -69,9 +71,7 @@
                                   ?>
                                @endif
                               @endforeach
-                              <?php
-                                  $cont=0;
-                                  ?>
+                             
                               @if($bandera)
                               <?php
                                   $cont++;
@@ -95,8 +95,7 @@
                                         </div>
                                    </div>
                                </div>
-                             @endif
-                             
+                             @endif                             
                            @endforeach
                            @if($cont==0)
                               <div class="alert alert-success alert-dismissible" role="alert">

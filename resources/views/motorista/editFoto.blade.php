@@ -19,7 +19,7 @@
                             <div class="form-group">
                               <div class="col-md-6">
                               {!!Form::label('limagen','Seleccione una nueva foto:')!!}
-                              {!!Form::file('nombre_img',['value'=>'Elija'])!!}
+                              {!!Form::file('nombre_img',['value'=>'Elija','required'])!!}
                               </div>
                             </div>
                         </fieldset>

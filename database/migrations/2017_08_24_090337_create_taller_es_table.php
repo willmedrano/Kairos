@@ -24,7 +24,7 @@ class CreateTallerEsTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('taller_es')->insert(array('nomTallerE'=>'Taller Municipal', 'responsable'=>'Oscar Martinez', 'direccionTE'=>'final 8va avenida sur','telefonoTE'=>'2384-4682','estadoTE'=>'1', 'created_at' => ' 2017-10-24' ,
+        DB::table('taller_es')->insert(array('nomTallerE'=>'Taller Municipal', 'responsable'=>'Oscar Martinez', 'direccionTE'=>'final 8va avenida sur','telefonoTE'=>'2384-4682','celTE'=>'7748-0650','estadoTE'=>'1', 'created_at' => ' 2017-10-24' ,
             'updated_at' => ' 2015-10-24 '));
     }
 

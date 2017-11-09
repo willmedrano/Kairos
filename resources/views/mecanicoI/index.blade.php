@@ -82,8 +82,9 @@
                                @include('mecanicoI.show')
                                <tr>
                                  <td>
+
                                    <div class="pull-left image">
-                 						         <img src="/Kairos/public/imagenesMecanico/{{$m->nombre_img }}" class="img-circle" alt="User Image" width="40px" height="40px">
+                 						         <a href="/Kairos/public/imagenesMecanico/{{$m->nombre_img }}" data-lightbox="galeria" data-title="{{$m->nombresMec}}" ><img src="/Kairos/public/imagenesMecanico/{{$m->nombre_img }}" alt="{{$m->nombresMec }}" width="40px" height="40px" class="img-circle"></a>
                  					         </div>
                                  </td>
                                  <td>{{$m->nombresMec.' '.$m->apellidosMec}}</td>

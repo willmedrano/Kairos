@@ -134,6 +134,8 @@ class SaEnCamionController extends Controller
         $v=Vehiculo::find($var->idVehiculo);
         
         $v->semaforo=1;
+        $v->kilometraje=$request['kilometrajeS'];
+        $v->kilometrajeAux=$v->kilometrajeAux+($request['kilometrajeS']-$cc->kilometrajeS);
         $v->save();
         if ($aux=='1') {
             

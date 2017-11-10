@@ -28,7 +28,7 @@
               <label class="control-label col-md-4">*Hora de    entrada </label>
 
                     <div class="col-lg-3">
-                      {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de salida...','required'])!!}
+                      {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de entrada...','required'])!!}
                     </div>
                     <br><br> <br>
                     <label class="control-label col-md-4">*Horas trabajadas </label>

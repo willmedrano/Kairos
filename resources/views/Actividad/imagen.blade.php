@@ -9,7 +9,10 @@
       <div class="modal-body">
         <div class="container-fluid bd-example-row">
           <div class="pull-left image">
-                                     <img src="/Kairos/public/imagenesActividades/{{$c->nombre_img }}" class="" alt="User Image" width="500px" height="500px">
+
+             <div class="card-block"><a href="/Kairos/public/imagenesActividades/{{$c->nombre_img }}  " data-lightbox="galeria" data-title="" ><img src="/Kairos/public/imagenesActividades/{{$c->nombre_img }}" class="" alt="User Image" width="500px" height="500px"></a></div>
+
+                                     
                                    </div>
         </div>
       </div>

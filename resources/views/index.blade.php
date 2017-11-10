@@ -525,6 +525,13 @@
                                 </a>
                               </li>
                               <li>
+                                <a href="/Kairos/public/filtroVale" target="_blank">
+                                     Vales de combustible por fecha
+                                </a>
+                              </li>
+
+                              
+                              <li>
                                 <a href="/Kairos/public/filtroSaEnVehiculo" >
                                     Salidas y Entradas
                                 </a>
@@ -563,6 +570,8 @@
             {!!Html::script('js/app.js')!!}
               {!!Html::script('js/lightbox.js')!!}
         {!!Html::script('js/hola.js')!!}
+        {!!Html::script('js/h.js')!!}
+        
         {!!Html::script('js/maquinaria.js')!!}
             @section('scripts')
 

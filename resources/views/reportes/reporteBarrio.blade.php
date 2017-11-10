@@ -33,13 +33,8 @@ table th {
 }
 
 th {
-    background-color: #00bf;
+    background-color: #4f8ba0;
     color: white;
-}
-
-.bar {
-    background: #ffffcc
-    
 }
 
 th, td {
@@ -51,12 +46,16 @@ th, td {
     position: relative;
     overflow: hidden;
   }
-
+.bar {
+    background: #ffffcc
+    
+}
 /*tr:nth-child(even){background-color: #F0FDFF}
 */
 table tr:nth-child(2n-1) td {
   background: #F5F5F5;
 }
+</style>
 </style>
 </head>
 <body>

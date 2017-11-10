@@ -28,13 +28,13 @@
               <label class="control-label col-md-4">*Hora de    Entrada </label>
 
                     <div class="col-lg-3">
-                      {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de salida...','required'])!!}
+                      {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de entrada...','required'])!!}
                     </div>
                     <br><br> <br>
                     <label class="control-label col-md-4">*Kilometraje de Entrada </label>
 
                     <div class="col-lg-3">
-                      {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de salida...','required'])!!}
+                      {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese el kilometraje de entrada...','required'])!!}
                     </div>
                     <br><br> <br>
                     <label class="control-label col-md-4">*Numero de viajes </label>

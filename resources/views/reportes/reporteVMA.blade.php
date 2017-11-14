@@ -105,6 +105,8 @@ table tr:nth-child(2n-1) td {
                         $date = new DateTime($a->fechaFin);
                      ?>
                     <td><?php  echo $date->format('d/m/Y'); ?></td>
+                    @else
+                    <td align="center" style="color: red">Pendiente</td>
                   @endif
              </tr>
            @endforeach
@@ -125,9 +127,8 @@ table tr:nth-child(2n-1) td {
                  ?>
                  <td><?php  echo $date->format('d/m/Y'); ?></td>               
                  @else
-                   <td>Pendiente</td>
-
-                   @endif
+                    <td align="center" style="color: red">Pendiente</td>
+                  @endif
              </tr>
            @endforeach
       	</tbody>

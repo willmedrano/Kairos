@@ -34,12 +34,14 @@ class MantenimientoCorMaqController extends Controller
       from mantenimiento_correctivo_maqs m, maquinarias e
       where m.idMaquinaria=e.id and m.estadoMttC=1');
 
-      return View('mantenimientoCorrectivo.indexMaq',compact('maquinaria'));
+        $maq=Maquinaria::All();
+
+      return View('mantenimientoCorrectivo.indexMaq',compact('maquinaria','maq'));
     }
 
     public function busqEquipo(Request $request) //llevar a cabo Mttn
     {
-        $numE=$request->equipo;
+        $numE=$request->equipoM;
         $maquinaria =Maquinaria::where('nEquipo',$numE)->get();
         if ($maquinaria->last()!=null)
          {
@@ -57,6 +59,7 @@ class MantenimientoCorMaqController extends Controller
             //primero se evalua que no este en mttn preventivo
             $MP=MantenimientoPreMaq::where('idMaquinaria',$a->id)->where('estadoMtt',1)->get();
             if ($MP->last()!=null) {
+              Session::flash('update','• Este Equipo ya se encuentra en un mantenimiento');
               return $this->index();          
             }
             $MC=MantenimientoCorrectivoMaq::where('idMaquinaria',$a->id)->where('estadoMttC',1)->get();
@@ -88,7 +91,7 @@ class MantenimientoCorMaqController extends Controller
      */
     public function create()
     {
-        $matt=mantenimientoCorrectivoMaq::where('estadoMttC',0)->get();
+        $matt=mantenimientoCorrectivoMaq::All();
       return View('mantenimientoCorrectivo.mcRealizadosMaq',compact('matt'));
     }
 

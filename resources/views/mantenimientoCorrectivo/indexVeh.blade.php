@@ -38,8 +38,14 @@
                   <fieldset>
                     {!! Form::open(['url'=>['busqPlaca'],'method'=>'POST']) !!}
                     <div class="form-group">
-                      <div class="col-xl-2" >
-                        {!!Form::text('placa',null,['id'=>'placa','class'=>'form-control', 'placeholder'=>'Numero de Placa...','required'])!!}
+                      <div class="col-xl-4" >
+                        <label for=""># Placa: </label>
+                        <datalist id="dt">
+                          @foreach ($veh as $vh)
+                          <option value="{{ $vh->nPlaca }}">
+                            @endforeach
+                          </datalist>
+                        <input list="dt" name="placaV">                        
                         </div>
                       {!! Form::submit('Enviar',['class'=>'btn btn-pill-right btn-primary glyphicon glyphicon-floppy-disk '  ]) !!}
                    </div>

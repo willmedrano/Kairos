@@ -29,6 +29,7 @@ Route::get('/', function () {
 });
 Route::group(['middleware' => 'auth'], function () {
 Route::match(['get','post'],'/logout','HomeController@logout');
+Route::match(['get','post'],'acerca','HomeController@acerca');
 // Route::match(['get','post'],'/login.store','HomeController@login');
 
  // Route::group(['middleware'=>'acceso'], function(){

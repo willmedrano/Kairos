@@ -22,7 +22,7 @@ class Bitacora extends Model
             ->join('users', 'bitacoras.idUsuario', '=', 'users.id')
             
             ->select('bitacoras.*',  'users.name')
-            ->orderBy('bitacoras.id')
+            ->orderBy('bitacoras.id','desc')
             ->get();
    } 
 }

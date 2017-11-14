@@ -67,9 +67,9 @@
                               <tr align="center">                    
                                <th >N°</th>
                                <th >USUARIO</th>
-                               <th >ACCION</th>
-                               
-                               <th >FECHA</th>
+                               <th >ACCIÓN REALIZADA</th>
+                                <th >FECHA </th>
+                               <th >HORA </th>
                                
                                
                               </tr>
@@ -88,7 +88,7 @@
                                   $date = new DateTime($c->created_at); 
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                
+                                <td><?php  echo $date->format('g:i:s a'); ?></td>
                                 
                                
                                

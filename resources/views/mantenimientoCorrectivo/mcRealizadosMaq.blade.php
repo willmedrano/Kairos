@@ -82,7 +82,11 @@
                                     $date2 = new DateTime($m->fechaFinMtt);
                                   ?>
                                    <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
+                                    @if($m->estadoMttC==0)
                                    <td align="center"><?php  echo $date2->format('d/m/Y'); ?></td>
+                                   @else
+                                    <td align="center" style="color: red">Pendiente</td>
+                                   @endif
                                    <td align="center"><button type="submit"  class="btn btn-primary btn-sm fa fa-eye" data-toggle="modal" data-target="#ModalMtt{{$m->id}}"></button> </td>
                                  </tr>
                                @endforeach

@@ -76,8 +76,16 @@
                                       <input id="fechaFinal" name="fechaFinal" type="date" required="true"class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
                                     </div>
                                     <div class="col-md-3">      
-                                    {!!Form::label('lvm','Vehiculo-Equipo')!!}                        
-                                      <input id="vm" name="vm" type="text" required="true" class="form-control" >
+                                    {!!Form::label('lvm','Vehiculo-Equipo')!!}
+                                    <datalist id="dt">
+                                      @foreach ($vh as $v)
+                                      <option value="{{ $v->nPlaca }}">
+                                        @endforeach
+                                        @foreach ($mq as $m)
+                                      <option value="{{ $m->nEquipo }}">
+                                        @endforeach
+                                      </datalist>
+                                    <input list="dt" name="vm" type="text" required="true">     
                                     </div>
                                       <br>
                                       <br>
@@ -106,7 +114,15 @@
                                   <div class="box-body pad">
                                     <div class="col-md-3">      
                                     {!!Form::label('lvm','Orden de trabajo')!!}
-                                      <input id="orden" name="orden" type="number" required="true" class="form-control" >
+                                      <datalist id="dt">
+                                      @foreach ($orden1 as $od1)
+                                      <option value="{{ $od1->idOrden }}">
+                                        @endforeach
+                                        @foreach ($orden2 as $od2)
+                                      <option value="{{ $od2->idOrden }}">
+                                        @endforeach
+                                      </datalist>
+                                    <input list="dt" name="ordenDP" type="number" required="true">
                                     </div>
                                       <br>
 

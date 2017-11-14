@@ -72,7 +72,7 @@
         <footer class="sidebar-footer" >
                     <center>
                       <img  src="/Kairos/public/img/ues.png" class="" alt="User Image" width="50px" height="50px"><b>
-                     Todos los derechos reservados &copy UES-FMP
+                     Todos los derechos reservados &copy UES-FMP 2017
                      </b></center>
                     </footer>
     </div>

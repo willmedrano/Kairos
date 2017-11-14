@@ -49,4 +49,9 @@ class HomeController extends Controller
         return redirect('/home')->with('create','Backup  creado con éxito');
 
     }
+
+    public function acerca()
+    {
+      return view('/acerca');
+    }
 }

@@ -38,8 +38,14 @@
                   <fieldset>
                     {!! Form::open(['url'=>['busqEquipo'],'method'=>'POST']) !!}
                     <div class="form-group">
-                      <div class="col-xl-2" >
-                        {!!Form::text('equipo',null,['id'=>'equipo','class'=>'form-control', 'placeholder'=>'Numero de Equipo...','required'])!!}
+                      <div class="col-xl-4" >
+                        <label for=""># Equipo: </label>
+                        <datalist id="dt">
+                          @foreach ($maq as $ma)
+                          <option value="{{ $ma->nEquipo }}">
+                            @endforeach
+                          </datalist>
+                        <input list="dt" name="equipoM">                        
                         </div>
                       {!! Form::submit('Enviar',['class'=>'btn btn-pill-right btn-primary glyphicon glyphicon-floppy-disk '  ]) !!}
                    </div>
@@ -80,7 +86,7 @@
                                               <input type="hidden" name="opc" value="4">
                                          {!! Form::submit('Imprimir orden',['class'=>'btn btn-warning btn-sm fa fa-print']) !!}  </form>
                                       @endif
-                                    </div>
+                                    </div> {{--footer  --}}
                                  </div>
                                </div>
                                @endif

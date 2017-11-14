@@ -44,7 +44,7 @@ class MantenimientoPreController extends Controller
      */
     public function create()
     {
-      $matt=MantenimientoPreventivo::where('estadoMtt',0)->get();
+      $matt=MantenimientoPreventivo::All();
       return View('mantenimientoPreventivo.mpRealizados',compact('matt'));
     }
 
@@ -150,7 +150,11 @@ class MantenimientoPreController extends Controller
     }
     public function filtroMP()
     {
-      return view('reportes.FiltroMttnPreventivo');
+      $vh=Vehiculo::All();
+      $mq=Maquinaria::All();
+      $orden1=MantenimientoPreventivo::All();
+      $orden2=MantenimientoPreMaq::All();
+      return view('reportes.FiltroMttnPreventivo',compact('orden1','orden2','vh','mq'));
     }
     public function reporte(Request $request) //General
     {
@@ -214,8 +218,8 @@ class MantenimientoPreController extends Controller
 
     public function reporteMttnPDetalle(Request $request)//por orden
     {
-        $orden=$request->orden;
-        $matt=MantenimientoPreventivo::where('estadoMtt',0)->where('idOrden',$orden)->get();
+        $orden=$request->ordenD;
+        $matt=MantenimientoPreventivo::where('idOrden',$orden)->get();
 
           if($matt->last()!=null){
               $date = date('d-m-Y');
@@ -228,7 +232,7 @@ class MantenimientoPreController extends Controller
               return $pdf->stream('MPD por Vehiculo '.$date.'.pdf');
           }else{ 
 
-          $matt=MantenimientoPreMaq::where('estadoMtt',0)->where('idOrden',$orden)->get();
+          $matt=MantenimientoPreMaq::where('idOrden',$orden)->get();
 
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');

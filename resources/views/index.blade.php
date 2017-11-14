@@ -44,14 +44,7 @@
                         </span>
                         </a>
                         <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <a class="dropdown-item" href="/notificaciones">
-                            <i class="fa fa-bell icon"></i>
-                               Notificaciones
-                            </a>
-                            <a class="dropdown-item" href="/cambiousuario">
-                              <i class="fa fa-gear icon"></i>
-                                 Configuraciones
-                             </a>
+                          
                              <div class="dropdown-divider"></div>
                              <a class="dropdown-item" href="/Kairos/public/logout">
                                <i class="fa fa-power-off icon"></i>
@@ -538,6 +531,12 @@
                               </li>
                             </ul>
                           </li>
+                          <li><!-- Aqui inicia el menu de los Reportes i con sus respectivas opciones -->
+                            <a href="/Kairos/public/acerca">
+                              <i class="fa "></i>
+                                  Acerca de
+                            </a>
+                          </li>
                         </ul>
                       </nav>
                     </div>
@@ -555,7 +554,7 @@
                     <footer class="sidebar-footer"  >
                     <center>
                       <img  src="/Kairos/public/img/ues.png" class="" alt="User Image" width="50px" height="50px"><b>
-                     Todos los derechos reservados &copy UES-FMP
+                     Todos los derechos reservados &copy UES-FMP 2017
                      </b></center>
                     </footer>
                 </div>

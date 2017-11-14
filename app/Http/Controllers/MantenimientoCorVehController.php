@@ -10,6 +10,7 @@ use Input;
 use DB;
 use Response;
 use Kairos\Vehiculo;
+use Kairos\Maquinaria;
 use Kairos\TallerE;
 use Kairos\Motorista;
 use Kairos\MantenimientoCorrectivoVeh;
@@ -32,8 +33,9 @@ class MantenimientoCorVehController extends Controller
       v.nombre_img,v.semaforo,v.id
       from mantenimiento_correctivo_vehs m, vehiculos v
       where m.idVehiculo=v.id and m.estadoMttC=1');
+      $veh=Vehiculo::All();
 
-      return View('mantenimientoCorrectivo.indexVeh',compact('vehiculo'));
+      return View('mantenimientoCorrectivo.indexVeh',compact('vehiculo','veh'));
     }
 
     /**
@@ -43,13 +45,13 @@ class MantenimientoCorVehController extends Controller
      */
     public function create() //realizar mttn correctivo
     {
-      $matt=MantenimientoCorrectivoVeh::where('estadoMttC',0)->get();
+      $matt=MantenimientoCorrectivoVeh::All();
       return View('mantenimientoCorrectivo.mcRealizados',compact('matt'));
     }
 
     public function busqVehiculo(Request $request)
     {
-        $numP=$request->placa;
+        $numP=$request->placaV;
         $vehiculo =Vehiculo::where('nPlaca',$numP)->get();
         if ($vehiculo->last()!=null)
          {
@@ -67,6 +69,7 @@ class MantenimientoCorVehController extends Controller
           //primero se evalua que no este en mttn preventivo
           $MP=MantenimientoPreventivo::where('idVehiculo',$a->id)->where('estadoMtt',1)->get();
           if ($MP->last()!=null) {
+            Session::flash('update','• Este Vehiculo ya se encuentra en un mantenimiento');
             return $this->index();          
           }
           $MC=MantenimientoCorrectivoVeh::where('idVehiculo',$a->id)->where('estadoMttC',1)->get();
@@ -184,7 +187,11 @@ class MantenimientoCorVehController extends Controller
     }
     public function filtroMC()
     {
-      return view('reportes.FiltroMttnCorrectivo');
+      $vh=Vehiculo::All();
+      $mq=Maquinaria::All();
+      $orden1=MantenimientoCorrectivoVeh::All();
+      $orden2=MantenimientoCorrectivoMaq::All();
+      return view('reportes.FiltroMttnCorrectivo',compact('orden1','orden2','vh','mq'));
     }
 
     public function reporte(Request $request)//reporte Mttn Correctivo general
@@ -248,8 +255,8 @@ class MantenimientoCorVehController extends Controller
     }
     public function reporteMttnCDetalle(Request $request)
     {
-        $orden=$request->orden;
-        $matt=MantenimientoCorrectivoVeh::where('estadoMttC',0)->where('idOrden',$orden)->get();
+        $orden=$request->ordenDP;
+        $matt=MantenimientoCorrectivoVeh::where('idOrden',$orden)->get();
 
           if($matt->last()!=null){                         
               $date = date('d-m-Y');
@@ -262,7 +269,7 @@ class MantenimientoCorVehController extends Controller
               return $pdf->stream('MCD por Vehiculo '.$date.'.pdf');
           }else{
           
-          $matt=MantenimientoCorrectivoMaq::where('estadoMttC',0)->where('idOrden',$orden)->get();
+          $matt=MantenimientoCorrectivoMaq::where('idOrden',$orden)->get();
 
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');

@@ -106,7 +106,7 @@
                                 <td>{{ $c->total }}</td>
 
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}, {{$c->idUbc}}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
@@ -129,7 +129,7 @@
                                 <td>{{ $c->PrecioU }}</td>
                                 <td>{{ $c->total }}</td>
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}, {{$c->idUbc}}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
@@ -139,29 +139,7 @@
                                @endif
                                @endif
                               @endforeach
-                              @foreach ($cc2 as $c)
                               
-                                @if($c3->id==$c->id)
-                               
-                             @if($c->estadoVale==true)
-                              <tr>   
-                                <td><?php echo $cont;?></td>
-                                <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
-                                <td>{{ $c->nVale }}</td>
-                                <td>{{$c->galones}}</td>
-                                <td>{{ $c->PrecioU }}</td>
-                                <td>{{ $c->total }}</td>
-                                <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
-                                <?php 
-                                  $date = new DateTime($c->fecha); 
-                                ?>
-                                <td><?php  echo $date->format('d/m/Y'); ?></td>                                 
-                              </tr>
-                              <?php $cont++;?>
-                               @endif
-                               @endif
-                              @endforeach
                                @endforeach
                             </tbody>
                           </table>

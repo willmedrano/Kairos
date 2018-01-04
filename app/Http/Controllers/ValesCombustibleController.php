@@ -7,6 +7,8 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\BarrioCanton;
+use Kairos\ColoniaCaserio;
+
 use Kairos\SaEnVehiculo;
 use Kairos\SaEnMaquinaria;
 use Kairos\SaEnCamion;
@@ -73,7 +75,20 @@ class ValesCombustibleController extends Controller
         $asignados=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();*/
         $v =Vehiculo::find($id);
         $cc=ValesCombustible::disponibles($id);
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
         $cc2=ValesCombustible::disponiblesC($id);
+        foreach ($cc2 as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+        $caserio=ColoniaCaserio::find($c->idUbc);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc=$canton->nombre.", ".$caserio->nombre;
+       }
         $cc3=ValesCombustible::ALl();
 
       return view('Vales.valeVehiculos',compact('cc','cc2','v','cc3'));
@@ -92,6 +107,11 @@ class ValesCombustibleController extends Controller
     {
       $v =Maquinaria::find($id);
       $cc=ValesCombustible::disponiblesM($id);
+      foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        
+         
+       }
         $cc2=ValesCombustible::ALl();
 
       return view('Vales.valeMaquinaria',compact('cc','v','cc2'));
@@ -182,8 +202,33 @@ class ValesCombustibleController extends Controller
       $fch1=$request->fechaInicial;
       $fch2=$request->fechaFinal;
       $cc=SaEnVehiculo::disponibles();
-        $cc1=SaEnMaquinaria::disponibles();
+      foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
+       $cc1=SaEnMaquinaria::disponibles();
+       foreach ($cc1 as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        $caserio=ColoniaCaserio::find($c->idUbc2);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc2=$canton->nombre.", ".$caserio->nombre;
+         
+       }
+        
         $cc2=SaEnCamion::disponibles();
+
+
+
+         foreach ($cc2 as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+       
+       }
+
+
+
       $cc3=ValesCombustible::whereDate('updated_at', '>=' , $fch1)->whereDate('updated_at', '<=', $fch2)->get();
       
      
@@ -206,8 +251,21 @@ class ValesCombustibleController extends Controller
       $opcion=$request->idV;
       $v =Vehiculo::find($opcion);
         $cc=ValesCombustible::disponiblesR($opcion,$fch1,$fch2);
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
         $cc2=ValesCombustible::disponiblesCR($opcion,$fch1,$fch2);
-        $cc3=ValesCombustible::ALl();
+        foreach ($cc2 as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+        $caserio=ColoniaCaserio::find($c->idUbc);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc=$canton->nombre.", ".$caserio->nombre;
+       }
+        $cc3=ValesCombustible::All();
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');
           $vistaurl="reportes.reporteValeXV";
@@ -216,7 +274,7 @@ class ValesCombustibleController extends Controller
           $pdf = \App::make('dompdf.wrapper');
           $pdf->loadHTML($view);
           $pdf->setPaper('A4', 'landscape');
-          return $pdf->stream('Mttn Correctivo por Vehiculo '.$date.'.pdf');
+          return $pdf->stream('Vale por vehiculo '.$date.'.pdf');
       
 
     }
@@ -228,7 +286,12 @@ class ValesCombustibleController extends Controller
       $opcion=$request->idV;
         $v =Maquinaria::find($opcion);
       $cc=ValesCombustible::disponiblesMR($opcion,$fch1,$fch2);
-        $cc2=ValesCombustible::ALl();
+        $cc2=ValesCombustible::All();
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        
+         
+       }
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');
           $vistaurl="reportes.reporteValeXM";
@@ -245,11 +308,19 @@ class ValesCombustibleController extends Controller
       $fch1=$request->fechaInicial;
       $fch2=$request->fechaFinal;
       
-      $cc=ValesCombustible::disponiblesVAR(2,$fch1,$fch2);
+      $cc=ValesCombustible::disponiblesVAR(2,$fch1,$fch2);  
+      foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
         $cc1=ValesCombustible::disponiblesMAR(2,$fch1,$fch2);
-        $cc2=ValesCombustible::disponiblesCAR(2,$fch1,$fch2);
-        $cc3=ValesCombustible::All();
+          foreach ($cc1 as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
         
+        $cc3=ValesCombustible::All();
+      
         
           $date = date('d-m-Y');
           $date1 = date('g:i:s a');
@@ -267,8 +338,29 @@ class ValesCombustibleController extends Controller
     {
 
        $cc=SaEnVehiculo::disponibles();
+      foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
         $cc1=SaEnMaquinaria::disponibles();
+       foreach ($cc1 as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        $caserio=ColoniaCaserio::find($c->idUbc2);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc2=$canton->nombre.", ".$caserio->nombre;
+         
+       }
         $cc2=SaEnCamion::disponibles();
+
+
+
+         foreach ($cc2 as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+       
+       }
          $cc3=ValesCombustible::All();
 
       $date = date('d-m-Y');

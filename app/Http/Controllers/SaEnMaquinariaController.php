@@ -7,7 +7,9 @@ use Session;
 use Redirect;
 use DB;
 use Input;
+use Response;
 use Kairos\BarrioCanton;
+use Kairos\ColoniaCaserio;
 use Kairos\AsignarMotMaq;
 use Kairos\Actividad;
 use Kairos\SaEnMaquinaria;
@@ -23,6 +25,13 @@ class SaEnMaquinariaController extends Controller
     {
         //
         $cc=SaEnMaquinaria::disponibles();
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        $caserio=ColoniaCaserio::find($c->idUbc2);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc2=$canton->nombre.", ".$caserio->nombre;
+         
+       }
       return view('SaEnMaquinaria.index',compact('cc'));
        
         
@@ -37,7 +46,8 @@ class SaEnMaquinariaController extends Controller
     {
       $asignado=\Kairos\AsignarMotMaq::disponibles();
       $actividad= Actividad::Act2();
-       return view('SaEnMaquinaria.frmSaEnVehiculo',compact('asignado','actividad'));
+      $BC=BarrioCanton::All();
+       return view('SaEnMaquinaria.frmSaEnVehiculo',compact('asignado','actividad','BC'));
 
     }
 
@@ -61,10 +71,12 @@ class SaEnMaquinariaController extends Controller
             'idAsignacion'=>$request['selectMarca'],
             'idVale'=>$ids,
             'idActividad'=>$request['idActividad'],
+            'idUbc'=>$request['idUbc'],
+            'idUbc2'=>$request['idUbc2'],
             'fecha'=>$request['fecha'],
             'horasM'=>0,
             'tanqueS'=>1,
-            'tipoSalida'=>1,// esto se debe quitar
+            // esto se debe quitar longitud
             'horaSalida'=>$request['horaS'],
             'observacionS'=>$request['observacionesS'],
             'observacionE'=>"",
@@ -132,6 +144,7 @@ class SaEnMaquinariaController extends Controller
             $cc->horasM=$request['kilometrajeS'];
             $cc->observacionE=$request['observacionesE'];
             $cc->horaExtra=$request['horaExtra'];
+            $cc->longitud=$request['long'];
             $cc->estado=true;
             
         }
@@ -154,6 +167,12 @@ class SaEnMaquinariaController extends Controller
     {
         //
     }
+    public function nuevo($marca){
+        $nuevo=BarrioCanton::find($marca);
+        $modeloArray=ColoniaCaserio::where('idCC', '=', $nuevo->id)->get();
+        return Response::json($modeloArray);
+    }
+
    public function modelo($marca){
      $var=AsignarMotMaq::find($marca);
         $modeloArray=Maquinaria::where('id', '=', $var->idMaquinaria)->get();
@@ -167,7 +186,11 @@ class SaEnMaquinariaController extends Controller
 
       $cc=SaEnMaquinaria::disponiblesF($fch1,$fch2);
 
-
+foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+   
+         
+       }
       $date = date('d-m-Y');
       $date1 = date('g:i:s a');
       $vistaurl="reportes.reporteEntradaM";
@@ -177,6 +200,34 @@ class SaEnMaquinariaController extends Controller
       $pdf->setPaper('A4', 'landscape');
       return $pdf->stream('salida Entrada de vehiculo'.$date.'.pdf');
     }
+      public function reporte2(Request $request)//reporte Mttn C x VM
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      $opcion=$request->idV;
+      $v =Maquinaria::find($opcion);
+        $cc=ValesCombustible::disponiblesMR($opcion,$fch1,$fch2);
+      foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        $caserio=ColoniaCaserio::find($c->idUbc2);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc2=$canton->nombre.", ".$caserio->nombre;
+         
+       }
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteEntradaXM";
+          $opc=1;
+          $view =  \View::make($vistaurl, compact('cc','v','date','date1','fch1','fch2'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          $pdf->setPaper('A4', 'landscape');
+          return $pdf->stream('Salidas y entradas por maquinaria '.$date.'.pdf');
+      
+
+    }
+    
     public function Excel(Request $request)//reporte Mttn Correctivo general
     {
 

@@ -8,6 +8,7 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\BarrioCanton;
+use Kairos\ColoniaCaserio;
 use Kairos\AsignarMotVeh;
 use Kairos\Actividad;
 use Kairos\SaEnVehiculo;
@@ -25,8 +26,13 @@ class SaEnCamionController extends Controller
         $cc=SaEnCamion::disponibles();
         
        foreach ($cc as $c) {
-        $c->idCC=SaEnCamion::barrio($c->idCC);
-           
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+        $caserio=ColoniaCaserio::find($c->idUbc);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc=$canton->nombre.", ".$caserio->nombre;
        }
         
       return view('SaEnCamion.index',compact('cc','c2'));
@@ -70,10 +76,12 @@ class SaEnCamionController extends Controller
             'idActividad'=>$request['idActividad'],
             'fecha'=>$request['fecha'],
             'kilometrajeS'=>$request['kilometrajeS'],
-            'tanqueS'=>$request['idAccion'],
+            
             'tipo'=>1,  //recordatorio quitar esto de la tabla la proxima vez
             'nViajes'=>0,  //recordatorio quitar esto de la tabla la proxima vez
             'idCC'=>$request['idCC'], 
+            'idUbc'=>$request['idUbc'], 
+            'tanqueS'=>1,
             'horaSalida'=>$request['horaS'],
             'observacionS'=>$request['observacionesS'],
             'observacionE'=>"",
@@ -181,7 +189,15 @@ class SaEnCamionController extends Controller
 
       $cc=SaEnCamion::disponiblesF($fch1,$fch2);
       $c2=SaEnCamion::All();
+      foreach ($cc as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
 
+        $caserio=ColoniaCaserio::find($c->idUbc);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc=$canton->nombre.", ".$caserio->nombre;
+       }
       $date = date('d-m-Y');
       $date1 = date('g:i:s a');
       $vistaurl="reportes.reporteEntradaC";
@@ -190,6 +206,36 @@ class SaEnCamionController extends Controller
       $pdf->loadHTML($view);
       $pdf->setPaper('A4', 'landscape');
       return $pdf->stream('salida Entrada de Camiones'.$date.'.pdf');
+    }
+
+     public function reporte2(Request $request)//reporte Mttn C x VM
+    {
+
+      $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      $opcion=$request->idV;
+      $v =Vehiculo::find($opcion);
+        $cc=ValesCombustible::disponiblesCR($opcion,$fch1,$fch2);
+       foreach ($cc as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+        $caserio=ColoniaCaserio::find($c->idUbc);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc=$canton->nombre.", ".$caserio->nombre;
+       }
+          $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+          $vistaurl="reportes.reporteEntradaXC";
+          $opc=1;
+          $view =  \View::make($vistaurl, compact('cc','v','date','date1','fch1','fch2'))->render();
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          $pdf->setPaper('A4', 'landscape');
+          return $pdf->stream('Salidas y entradas por Camiones '.$date.'.pdf');
+      
+
     }
      public function Excel(Request $request)//reporte Mttn Correctivo general
     {

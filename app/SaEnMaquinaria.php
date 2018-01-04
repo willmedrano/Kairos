@@ -8,7 +8,7 @@ class SaEnMaquinaria extends Model
 {
     //
     protected $table="sa_en_maquinarias";
-    protected $fillable = ['idAsignacion','idVale','idActividad','fecha','horasM','tanqueS','horaSalida','observacionS','observacionE','tipoSalida','horaExtra' ];
+    protected $fillable = ['idAsignacion','idVale','idActividad','idUbc','idUbc2','fecha','horasM','tanqueS','horaSalida','observacionS','observacionE','longitud','horaExtra' ];
 
   public static function disponibles(){
        return DB::table('sa_en_maquinarias')
@@ -39,5 +39,8 @@ class SaEnMaquinaria extends Model
             ->orderBy('sa_en_maquinarias.id','desc')
             ->get();
    }
-  
+   public static function caserio($id){
+     $B=ColoniaCaserio::find($id);
+     return $B->nombre;
+   }
 }

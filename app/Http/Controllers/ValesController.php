@@ -9,6 +9,8 @@ use Redirect;
 use DB;
 use Input;
 use Kairos\BarrioCanton;
+use Kairos\ColoniaCaserio;
+
 use Kairos\SaEnVehiculo;
 use Kairos\SaEnMaquinaria;
 use Kairos\SaEnCamion;
@@ -23,13 +25,22 @@ class ValesController extends Controller
     {
     	
         $cc=ValesCombustible::disponiblesVA(2);
+         foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
+     
         $cc1=ValesCombustible::disponiblesMA(2);
-        $cc2=ValesCombustible::disponiblesCA(2);
+        foreach ($cc1 as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        
+         
+       }
         $cc3=ValesCombustible::All();
         
 
 
-      return view('Vales.valeAgricola',compact('cc','cc1','cc2','cc3'));
+      return view('Vales.valeAgricola',compact('cc','cc1','cc3'));
     }
 
     /**
@@ -40,8 +51,23 @@ class ValesController extends Controller
     public function create()
     {
         $cc=SaEnVehiculo::disponibles();
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
+     
         $cc1=SaEnMaquinaria::disponibles();
+         foreach ($cc1 as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        
+         
+       }
         $cc2=SaEnCamion::disponibles();
+         foreach ($cc2 as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+       }
          $cc3=ValesCombustible::All();
 
       return view('Vales.ValeTodos',compact('cc','cc1','cc2','cc3'));
@@ -72,11 +98,7 @@ class ValesController extends Controller
        /*  $vehiculo =Vehiculo::find($id);
         $motorista=Motorista::where('estadoMot',1)->where('tipoMot','Motorista')->get();
         $asignados=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();*/
-        $v =Vehiculo::find($id);
-        $cc=ValesCombustible::disponibles($id);
         
-
-      return view('Vales.valeVehiculos',compact('cc','v'));
        
        
     }
@@ -92,6 +114,11 @@ class ValesController extends Controller
     {
       $v =Maquinaria::find($id);
       $cc=ValesCombustible::disponiblesM($id);
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        
+         
+       }
       
         
 

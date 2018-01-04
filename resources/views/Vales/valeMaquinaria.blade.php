@@ -117,7 +117,7 @@
                                 <td>{{ $c->total }}</td>
             
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}, {{$c->idUbc}}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>

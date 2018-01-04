@@ -21,6 +21,8 @@ class CreateSaEnVehiculosTable extends Migration
             $table->foreign('idVale')->references('id')->on('vales_combustibles');
             $table->Integer('idActividad')->unsigned();
             $table->foreign('idActividad')->references('id')->on('actividads');
+            $table->Integer('idUbc')->unsigned();
+            $table->foreign('idUbc')->references('id')->on('colonia_caserios');
             $table->date('fecha');
             $table->Double('kilometrajeS');
             $table->Double('kilometrajeE')->default(0.0);

@@ -36,29 +36,29 @@
                   <div class="form-group">
 
                   <div  class=" col-md-3" id="idModelo" style="height: 220px;">
-                      
-                  
+
+
                     </div>
                   <label class="control-label col-md-2">* Motorista: </label>
                     <div class="col-lg-3">
                       <select name="selectMarca" id="selectMarca2" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
                         @foreach($asignado as $a)
-                        
+
 
                         <option value="{{$a->id}}">{{$a->nombresMot}} {{ $a->apellidosMot }}</option>
-                        
+
                         @endforeach
                       </select>
                     </div>
-                    
-                  
-                    
-                  
 
-                    
-                    
-                    <label class="control-label col-md-1">* Actividad: </label>
+
+
+
+
+                    <br><br>
+
+                    <label class="control-label col-md-2">* Actividad: </label>
                     <div class="col-lg-3">
                       <select name="idActividad" id="idActividad" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
@@ -69,11 +69,37 @@
                         @endforeach
                       </select>
                     </div>
+                    <label class="control-label col-md-1">* ubicación: </label>
+                    <div class="col-lg-3">
+                      <select name="idUbc" id="idUbc" class="validate[required] form-control">
 
+                      </select>
+                    </div>
                     <br><br>
+
+                    <label class="control-label col-md-2">* Comunica con: </label>
+                    <div class="col-lg-3">
+                      <select name="idUb" id="idUb" class="validate[required] form-control">
+                        <option value="0">Selecione una opción...</option>
+                        @foreach($BC as $b)
+                        @if(!($b->tipo=='Otros'))
+                        <option value="{{$b->id}}">{{$b->nombre }}</option>
+                        @endif
+                        @endforeach
+                      </select>
+                    </div>
+                    <label class="control-label col-md-1">* ubicación: </label>
+                    <div class="col-lg-3">
+                      <select name="idUbc2" id="idUbc2" class="validate[required] form-control">
+
+                      </select>
+                    </div>
+                    
+                    <br><br>
+
                     <label class="control-label col-md-2">* Fecha</label>
                             <div class="col-md-3">
-                              
+
                               <input id="fecha" name="fecha" type="date" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
                             </div>
                     <label class="control-label col-md-1">*Hora de    Salida </label>
@@ -82,14 +108,14 @@
                       {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de salida...','required'])!!}
                     </div>
                       <br><br><br>
-                    
+
                     <label class="control-label col-md-2">*Observaciones </label>
 
                     <div class="col-lg-4">
                       {!!Form::textArea('observacionesS',null,['id'=>'observacionesS','class'=>'form-control', 'rows'=>'4','cols'=>'50',  'placeholder'=>'Ingrese las observaciones...','required'])!!}
                     </div>
-                            
-                    
+
+
                   </div>
                 </div>
               </fieldset>
@@ -101,8 +127,8 @@
   {{-- {!!link_to_action("MotoristaController@index", $title = "Salir", $parameters = 1, $attributes = ["class"=>"btn btn-danger"])!!} --}}
 {!! Form::close() !!}
 
-              </div> 
-                          </div> 
+              </div>
+                          </div>
                         </div>
             </div>
           </div><!-- /.col-lg-12 -->
@@ -112,17 +138,17 @@
   </article>
 @stop
  @section('scripts')
-      
+
     @endsection
-    <?php 
+    <?php
 $time=time();
-    
+
     function dameFecha($fecha,$dia){
         list($year,$mon,$day)=explode('-',$fecha);
-        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));    
+        return date('Y-m-d',mktime(0,0,0,$mon,$day+$dia,$year));
     }
-   $total=0; 
+   $total=0;
 
 
-  
+
 ?>

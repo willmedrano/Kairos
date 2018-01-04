@@ -79,8 +79,8 @@
                                <th >KM SALIDA</th>
                                <th >HORA ENTRADA</th>
                                <th >KM ENTRADA</th>
-                               <th>OBSERVACIONES SALIDA</th>
-                               <th>OBSERVACIONES ENTRADA</th>
+                               <th>DETALLE SALIDA</th>
+                               <th>DETALLE ENTRADA</th>
 
                                <th>COMBUSTIBLE</th>
                                <th colspan="2"> <div align="center">ACCIÓN</div></th>
@@ -104,15 +104,12 @@
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
                                 <td>{{ $c->nPlaca }}</td>
-                                <td>{{ $c->act }}</td>
-                                @if($c->tanqueS==1)
+                                <td>{{ $c->idActividad }}</td>
                                 
-                                <td>{{ $c->nombre }}</td>
+                                
+                                
                                 <td>{{ $c->idCC }}</td>
-                                @else
-                                <td>{{ $c->idCC }}</td>
-                                <td>{{ $c->nombre }}</td>
-                                @endif
+                                <td>{{ $c->idUbc }}</td>
                                 
                                 <td>{{ $c->nViajes }}</td>
                                 <td>{{ $c->horaSalida }}</td>

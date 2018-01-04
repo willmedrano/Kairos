@@ -74,7 +74,7 @@ table tr:nth-child(2n-1) td {
       <?php $fecha1=explode('-', $fch1);
       $fecha2=explode('-', $fch2);?>
 
-              <div style="position: absolute;left: 270px; top: 210px; z-index: 1;"><h3> VALES DE COMBUSTIBLE ASIGNADOS AL VEHICULO CON {{"PLACA: ".$v->nEquipo}} </h3>                  
+              <div style="position: absolute;left: 270px; top: 210px; z-index: 1;"><h3> VALES DE COMBUSTIBLE ASIGNADOS A LA MAQUINARIA CON {{"No: ".$v->nEquipo}} </h3>                  
             </div>
             <div  style="position: absolute;left: 400px; top: 230px; z-index: 1;">
               <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0] ?> </h4>
@@ -116,7 +116,7 @@ table tr:nth-child(2n-1) td {
                                 <td>{{ $c->total }}</td>
             
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}, {{ $c->idUbc }}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>

@@ -8,7 +8,7 @@ class SaEnCamion extends Model
 {
     //
     protected $table="sa_en_camions";
-  protected $fillable = ['idAsignacion','idVale','idCC','idActividad','fecha','kilometrajeS','tanqueS','horaSalida','observacionS','observacionE','tipo','nViajes','horaExtra' ];
+  protected $fillable = ['idAsignacion','idVale','idCC','idUbc','idActividad','fecha','kilometrajeS','tanqueS','horaSalida','observacionS','observacionE','tipo','nViajes','horaExtra' ];
 
   public static function disponibles(){
        return DB::table('sa_en_camions')
@@ -16,11 +16,10 @@ class SaEnCamion extends Model
        ->join('asignar_mot_vehs', 'sa_en_camions.idAsignacion', '=', 'asignar_mot_vehs.id')
        ->join('vehiculos', 'asignar_mot_vehs.idVehiculo', '=', 'vehiculos.id')
        ->join('motoristas', 'asignar_mot_vehs.idMotorista', '=', 'motoristas.id')
-       ->join('actividads','sa_en_camions.idActividad', '=', 'actividads.id')
-       ->join('barrio_cantons','actividads.idCC', '=', 'barrio_cantons.id')
+       
           
             
-            ->select('vales_combustibles.*','motoristas.*','actividads.*','barrio_cantons.nombre','vehiculos.*','sa_en_camions.*')
+            ->select('vales_combustibles.*','motoristas.*','vehiculos.*','sa_en_camions.*')
             ->orderBy('sa_en_camions.id','desc')
             ->get();
    }
@@ -34,12 +33,11 @@ class SaEnCamion extends Model
        ->join('asignar_mot_vehs', 'sa_en_camions.idAsignacion', '=', 'asignar_mot_vehs.id')
        ->join('vehiculos', 'asignar_mot_vehs.idVehiculo', '=', 'vehiculos.id')
        ->join('motoristas', 'asignar_mot_vehs.idMotorista', '=', 'motoristas.id')
-       ->join('actividads','sa_en_camions.idActividad', '=', 'actividads.id')
-       ->join('barrio_cantons','actividads.idCC', '=', 'barrio_cantons.id')
+      
           ->where('sa_en_camions.fecha','>=',$fch1 )
        ->where('sa_en_camions.fecha','<=',$fch2 )
             
-            ->select('vales_combustibles.*','motoristas.*','actividads.*','barrio_cantons.nombre','vehiculos.*','sa_en_camions.*')
+            ->select('vales_combustibles.*','motoristas.*','vehiculos.*','sa_en_camions.*')
             ->orderBy('sa_en_camions.id','desc')
             ->get();
    }

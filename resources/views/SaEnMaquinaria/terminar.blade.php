@@ -27,21 +27,27 @@
               <br>
               <label class="control-label col-md-4">*Hora de    entrada </label>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                       {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de entrada...','required'])!!}
                     </div>
                     <br><br> <br>
                     <label class="control-label col-md-4">*Horas trabajadas </label>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                       {!!Form::text('kilometrajeS',null,['id'=>'kilometrajeS','class'=>'form-control', 'placeholder'=>'Ingrese las horas Maquina','required'])!!}
                     </div>
                     <br><br><br>
 
                     <label class="control-label col-md-4">*Horas Extra </label>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                       {!!Form::text('horaExtra',null,['id'=>'horaExtra','class'=>'form-control', 'placeholder'=>'Ingrese las horas Extra ','required'])!!}
+                    </div>
+                    <br><br><br>
+                     <label class="control-label col-md-4">*Longitud </label>
+
+                    <div class="col-lg-5">
+                      {!!Form::text('long',null,['id'=>'long','class'=>'form-control', 'placeholder'=>'Ingrese la longitud ','required'])!!}
                     </div>
                     <br><br><br>
                     <label class="control-label col-md-4">*Observaciones </label>

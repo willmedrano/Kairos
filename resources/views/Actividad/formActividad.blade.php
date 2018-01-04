@@ -67,6 +67,7 @@
                         <option value="1">Actividad Terraceria</option>
                         <option value="2">Actividad Agricola</option>
                         <option value="3">Misión fuera del municipio</option>
+                        <option value="4">Otro</option>
                       
                         
 

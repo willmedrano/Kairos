@@ -115,7 +115,7 @@ table tr:nth-child(2n-1) td {
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
                                 <td>{{ $c->nPlaca }}</td>
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}-{{ $c->idUbc }}</td>
 
                                 <td>{{ $c->horaSalida }}</td>
                                 

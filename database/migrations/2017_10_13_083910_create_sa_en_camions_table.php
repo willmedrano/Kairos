@@ -20,10 +20,10 @@ class CreateSaEnCamionsTable extends Migration
             $table->Integer('idVale')->unsigned();
             $table->foreign('idVale')->references('id')->on('vales_combustibles');
             $table->Integer('idCC')->unsigned();
-            $table->foreign('idCC')->references('id')->on('barrio_cantons');
-            
-            $table->Integer('idActividad')->unsigned();
-            $table->foreign('idActividad')->references('id')->on('actividads');
+            $table->foreign('idCC')->references('id')->on('colonia_caserios');
+            $table->Integer('idUbc')->unsigned();
+            $table->foreign('idUbc')->references('id')->on('colonia_caserios');
+            $table->string('idActividad');
             $table->date('fecha');
             $table->Double('kilometrajeS');
             $table->Double('kilometrajeE')->default(0.0);

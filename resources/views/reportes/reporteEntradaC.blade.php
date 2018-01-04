@@ -116,15 +116,11 @@ table tr:nth-child(2n-1) td {
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
                                 <td>{{ $c->nPlaca }}</td>
-                                <td>{{ $c->act }}</td>
-                                @if($c->tanqueS==1)
+                                <td>{{ $c->idActividad }}</td>
+                              
+                                <td>{{ $c->idCC }}</td>
+                                <td>{{ $c->idUbc }}</td>
                                 
-                                <td>{{ $c->nombre }}</td>
-                                <td>{{ $c2[$cont]->barrio($c->idCC) }}</td>
-                                @else
-                                <td>{{ $c2[$cont]->barrio($c->idCC) }}</td>
-                                <td>{{ $c->nombre }}</td>
-                                @endif
                                 
                                 <td>{{ $c->nViajes }}</td>
                                 <td>{{ $c->horaSalida }}</td>

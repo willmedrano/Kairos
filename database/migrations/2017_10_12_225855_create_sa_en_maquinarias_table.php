@@ -22,6 +22,10 @@ class CreateSaEnMaquinariasTable extends Migration
             $table->foreign('idVale')->references('id')->on('vales_combustibles');
             $table->Integer('idActividad')->unsigned();
             $table->foreign('idActividad')->references('id')->on('actividads');
+            $table->Integer('idUbc')->unsigned();
+            $table->foreign('idUbc')->references('id')->on('colonia_caserios');
+            $table->Integer('idUbc2')->unsigned();
+            $table->foreign('idUbc2')->references('id')->on('colonia_caserios');
             $table->date('fecha');
             $table->Integer('horasM');
             $table->integer('tanqueS');
@@ -30,7 +34,7 @@ class CreateSaEnMaquinariasTable extends Migration
             $table->string('horaEntrada')->default(0);
             $table->string('observacionS');
             $table->string('observacionE');
-            $table->string('tipoSalida');//quitar
+            $table->string('longitud')->default(0);
             $table->string('horaExtra')->default(0);
             $table->boolean('estado')->default(false);
 

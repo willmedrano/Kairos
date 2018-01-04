@@ -61,15 +61,24 @@
                     
                   
 
+                    <br><br>
                     
-                    
-                    <label class="control-label col-md-1">* Actividad: </label>
+                    <label class="control-label col-md-2">* Actividad: </label>
                     <div class="col-lg-3">
                       <select name="idActividad" id="idActividad" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
                         @foreach($actividad as $act)
                         <option value="{{$act->id}}">{{$act->act }} - {{$act->nombre  }}</option>
                         @endforeach
+                      </select>
+                    </div>
+
+                    
+
+                    <label class="control-label col-md-1">* ubicación: </label>
+                    <div class="col-lg-3">
+                      <select name="idUbc" id="idUbc" class="validate[required] form-control">
+                        
                       </select>
                     </div>
 

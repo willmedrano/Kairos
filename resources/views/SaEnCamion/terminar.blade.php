@@ -22,7 +22,7 @@
           
             ¿El Vehiculo ya Regreso?
             <br>
-              <input type="hidden" name="hi" value="{{ $c->estado }}">
+              <input type="hidden" name="hi" value="{{ $c->estadoC }}">
               <input type="hidden" name="bandera" value="1">
               <br>
               <label class="control-label col-md-4">*Hora de    Entrada </label>

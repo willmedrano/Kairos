@@ -103,8 +103,11 @@ Route::match(['get','post'],'filtroValeA','ValesCombustibleController@valeXA');
 Route::match(['get','post'],'reporteValeAll','ValesCombustibleController@reporteAll');
 Route::match(['get','post'],'reporteVale','ValesCombustibleController@reporte');
 Route::match(['get','post'],'reporteEntradaV','SaEnVehiculoController@reporte');
+Route::match(['get','post'],'reporteEntradaV2','SaEnVehiculoController@reporte2');
 Route::match(['get','post'],'reporteEntradaM','SaEnMaquinariaController@reporte');
+Route::match(['get','post'],'reporteEntradaM2','SaEnMaquinariaController@reporte2');
 Route::match(['get','post'],'reporteEntradaC','SaEnCamionController@reporte');
+Route::match(['get','post'],'reporteEntradaC2','SaEnCamionController@reporte2');
 Route::match(['get','post'],'filtroSaEnVehiculo','SaEnVehiculoController@filtroSa');
 Route::match(['get','post'],'bitacora','SaEnVehiculoController@bitacora');
 Route::match(['get','post'],'excelV','SaEnVehiculoController@excel');
@@ -112,6 +115,9 @@ Route::match(['get','post'],'excelV','SaEnVehiculoController@excel');
 Route::match(['get','post'],'excelM','SaEnMaquinariaController@excel');
   
 Route::match(['get','post'],'excelC','SaEnCamionController@excel');
+Route::match(['get','post'],'/salidaEntrada/create/{idMarca}','SaEnVehiculoController@nuevo');
+  
+Route::match(['get','post'],'/salidaEntrada2/create/{idMarca}','SaEnMaquinariaController@nuevo');
   });
 Route::match(['get','post'],'postGenerateBackup','HomeController@postGenerateBackup');
 Auth::routes();

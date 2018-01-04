@@ -117,7 +117,7 @@ table tr:nth-child(2n-1) td {
                                     <td>{{ $c->total }}</td>
 
                                     <td>{{ $c->act }}</td>
-                                    <td>{{ $c->nombre }}</td>
+                                    <td>{{ $c->nombre }}, {{ $c->idUbc}}</td>
                                     <?php 
                                       $date = new DateTime($c->fecha); 
                                       ?>
@@ -141,7 +141,7 @@ table tr:nth-child(2n-1) td {
                                 <td>{{ $c->PrecioU }}</td>
                                 <td>{{ $c->total }}</td>
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}, {{ $c->idUbc}}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
@@ -164,8 +164,8 @@ table tr:nth-child(2n-1) td {
                                 <td>{{$c->galones}}</td>
                                 <td>{{ $c->PrecioU }}</td>
                                 <td>{{ $c->total }}</td>
-                                <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->idActividad }}</td>
+                                <td>{{ $c->idCC }}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>

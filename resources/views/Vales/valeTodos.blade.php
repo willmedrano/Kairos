@@ -102,7 +102,7 @@
                                     <td>{{ $c->total }}</td>
 
                                     <td>{{ $c->act }}</td>
-                                    <td>{{ $c->nombre }}</td>
+                                    <td>{{ $c->nombre }}, {{ $c->idUbc }}</td>
                                     <?php 
                                       $date = new DateTime($c->fecha); 
                                       ?>
@@ -126,7 +126,7 @@
                                 <td>{{ $c->PrecioU }}</td>
                                 <td>{{ $c->total }}</td>
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}, {{ $c->idUbc }}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>
@@ -149,8 +149,8 @@
                                 <td>{{$c->galones}}</td>
                                 <td>{{ $c->PrecioU }}</td>
                                 <td>{{ $c->total }}</td>
-                                <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->idActividad }}</td>
+                                <td>{{ $c->idCC }}</td>
                                 <?php 
                                   $date = new DateTime($c->fecha); 
                                 ?>

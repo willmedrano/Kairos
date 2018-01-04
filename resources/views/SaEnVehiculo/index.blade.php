@@ -75,6 +75,7 @@
                                <th ># PLACA</th>
                                <th>ACTIVIDAD</th>
                                <th>DESTINO</th>
+                               
                                <th >HORA SALIDA</th>
                                <th >KM SALIDA</th>
                                <th >HORA ENTRADA</th>
@@ -104,8 +105,8 @@
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
                                 <td>{{ $c->nPlaca }}</td>
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
-
+                                <td>{{ $c->nombre }}- {{$c->idUbc}}</td>
+                                
                                 <td>{{ $c->horaSalida }}</td>
                                 <td>{{ $c->kilometrajeS }}</td>
                                 <td>{{$c->horaEntrada}}</td>

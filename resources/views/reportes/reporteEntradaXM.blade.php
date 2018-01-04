@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Reporte Por Vales de combustible</title>
+  <title> Reporte Salidas y entradas de Maquinaria </title>
   <style>
 body {
     font-family: 'Source Sans Pro', sans-serif;
@@ -70,96 +71,74 @@ table tr:nth-child(2n-1) td {
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div><!-- /.box-header -->
       <div class="box-body">
-      
+
       <?php $fecha1=explode('-', $fch1);
       $fecha2=explode('-', $fch2);?>
 
-              <div style="position: absolute;left: 270px; top: 210px; z-index: 1;"><h3> VALES DE COMBUSTIBLE ASIGNADOS AL VEHICULO CON {{"PLACA: ".$v->nPlaca}} </h3>                  
+              <div style="position: absolute;left: 380px; top: 210px; z-index: 1;" ><h3>Control de Entradas y Salidas de la maquinaria {{"No: ".$v->nEquipo}}</h3>                  
             </div>
-            <div  style="position: absolute;left: 400px; top: 230px; z-index: 1;">
+            <div  style="position: absolute;left: 480px; top: 230px; z-index: 1;">
               <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0] ?> </h4>
             </div>
-           
-
-              
-            
          
         <table class="table-wrapper" >
-	         <thead align="center">
-                              <tr align="center">                    
-                               <th >N°</th>
-                               <th >NOMBRE DE QUIEN RECIBE</th>
-                               <th >No VALE DE <br> COMBUSTIBLE</th>
-                               <th >CANTIDAD <br> GALONES</th>
-                               <th>VALOR EN $</th>
-                               <th>TOTAL EN $</th>
-                               <th>ACTIVIDAD</th>
-                               <th>LUGAR DE LA MISIÓN</th>
+           <thead>
+            <tr align="center">                    
+                               <th>No</th>
+                               <th >OPERARIO</th>
                                
-                               <th >FECHA</th> 
+                               <th>ACTIVIDAD</th>
+                               <th>CASERIO DONDE SE <br>INICIA LA ACTIVIDAD</th>
+                               <th>CASERIO CON QUE <br>COMUNICA LA CALLE</th>
+                               
+                               <th >LONGITUD DEL <br>PROYECTO</th>
+                               
+                               <th >HORA DE <br>INICIO </th>
+                                <th >HORA DE <br>FINALIZACIÓN </th>
+                                  <th >FECHA</th>                                                          
+
+                              
                                
                                
                               </tr>
                             </thead>
+                            <?php $cont=0;?>
                             <tbody id="hola" class="buscar">
-                              <?php $cont=1;?>
-                              @foreach ($cc3 as $c3)
                               @foreach ($cc as $c)
                               
-                            @if($c3->id==$c->id)
                                
-                             @if($c->estadoVale==true)
+                             
                               <tr>   
-                                <td><?php echo $cont;?></td>
+                                  <td><?php $cont++; echo $cont?></td>
                                 <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
-                                <td>{{ $c->nVale }}</td>
-                                <td>{{$c->galones}}</td>
-                                <td>{{ $c->PrecioU }}</td>
-                                <td>{{ $c->total }}</td>
+                                
+                                <?php  
+                                  $date = new DateTime($c->fecha); 
+                                ?>
+                                
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}, {{ $c->idUbc }}</td>
-                                <?php 
-                                  $date = new DateTime($c->fecha); 
-                                ?>
+                                <td>{{ $c->nombre }}, {{$c->idUbc}}</td>
+                                <td>{{ $c->idUbc2 }}</td>
+                                <td>{{$c->longitud}}</td>
+                                <td>{{ $c->horaSalida }}</td>
+                                
+                                <td>{{$c->horaEntrada}}</td>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                                                    
-                              </tr>
-                              <?php $cont++;?>
-                               @endif
-                                 @endif
-                              @endforeach
-                              @foreach ($cc2 as $c)
-                              
-                           @if($c3->id==$c->id)
+                                
+                                
                                
-                             @if($c->estadoVale==true)
-                              <tr>   
-                                <td><?php echo $cont;?></td>
-                                <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
-                                <td>{{ $c->nVale }}</td>
-                                <td>{{$c->galones}}</td>
-                                <td>{{ $c->PrecioU }}</td>
-                                <td>{{ $c->total }}</td>
 
-                                <td>{{ $c->idActividad }}</td>
-                                <td>{{ $c->idCC}}</td>
-                                <?php 
-                                  $date = new DateTime($c->fecha); 
-                                ?>
-                                <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                                                    
+                                 
+                                
+                                
+                                
+                                                                  
                               </tr>
-                              <?php $cont++;?>
-                               @endif
-                                @endif
-                               @endforeach
-
                               @endforeach
-                              
                             </tbody>
-    	</table>
-  	 </div><!-- /.box-body -->
-	  </div><!-- /.box -->
+      </table>
+     </div><!-- /.box-body -->
+    </div><!-- /.box -->
   </div>
 </body>
 </html>

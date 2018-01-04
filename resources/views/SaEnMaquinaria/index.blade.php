@@ -70,16 +70,19 @@
                                <th >N°</th>
                                <th >CONDUCTOR</th>
                                <th >FECHA</th>
-                               <th ># DE INVENTARIO</th>
+                               <th >EQUIPO</th>
                                <th>ACTIVIDAD</th>
-                               <th>DESTINO</th>
+                               <th>INICIO</th>
+                               <th>COMUNICA</th>
+                                <th>LONGITUD</th>
+
                                <th >HORA SALIDA</th>
-                                <th >HORA DE ENTRADA</th>
+                                <th >HORA ENTRADA</th>
                                <th >HORAS DE TRABAJO</th>
                                
                               
-                               <th>OBSERVACIONES SALIDA</th>
-                               <th>OBSERVACIONES ENTRADA</th>
+                               <th>DETALLE SALIDA</th>
+                               <th>DETALLE ENTRADA</th>
 
                                <th>COMBUSTIBLE</th>
                                <th colspan="2"> <div align="center">ACCIÓN</div></th>
@@ -101,9 +104,11 @@
                                   $date = new DateTime($c->fecha); 
                                 ?>
                                 <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                <td>{{ $c->nInventario }}</td>
+                                <td>{{ $c->nEquipo }}</td>
                                 <td>{{ $c->act }}</td>
-                                <td>{{ $c->nombre }}</td>
+                                <td>{{ $c->nombre }}-{{ $c->idUbc }}</td>
+                                <td>{{ $c->idUbc2 }}</td>
+                                <td>{{ $c->longitud }}</td>
 
                                 <td>{{ $c->horaSalida }}</td>
                                 

@@ -35,7 +35,7 @@
                 <div id="collapseOne" class="body">
                   <div class="form-group">
 
-                  <div  class=" col-md-3" id="idModelo" style="height: 220px;">
+                  <div  class=" col-md-3" id="idModelo" style="height: 250px;">
                       
                   
                     </div>
@@ -53,10 +53,14 @@
                     <br><br>
                   
 
-                    
+                    <label class="control-label col-md-2">* Actividad  </label>
+
+                    <div class="col-lg-3">
+                      {!!Form::text('idActividad',null,['id'=>'idActividad','class'=>'form-control', 'placeholder'=>'Ingrese el nombre de la actividad...','required'])!!}
+                    </div>
 
                     
-                    <label class="control-label col-md-2">* Actividad: </label>
+                   <!--  <label class="control-label col-md-2">* Actividad: </label>
                     <div class="col-lg-3">
                       <select name="idActividad" id="idActividad" class="validate[required] form-control">
                         <option value="0">Selecione una opción...</option>
@@ -64,18 +68,48 @@
                         <option value="{{$act->id}}">{{$act->act }} - {{$act->nombre  }}</option>
                         @endforeach
                       </select>
+                    </div> -->
+                    
+                  
+                    <br><br>
+                  <label class="control-label col-md-2">* Lugar de carga: </label>
+                    <div class="col-lg-3">
+                      <select name="idCoCa" id="idCoCa" class="validate[required] form-control">
+                        <option value="0">Selecione una opción...</option>
+                        @foreach($cc as $b)
+                        
+                        <option value="{{$b->id}}">{{$b->nombre }}</option>
+                        
+                        @endforeach
+                      </select>
                     </div>
-                    <label class="control-label col-md-1">*Acción </label>
-                    <div class="col-lg-2">
-                      <select name="idAccion" id="idAccion" class="validate[required] form-control">
-                        
-                        <option value="1">Cargar</option>
-                        <option value="2">Descargar</option>
-                        
+                    <label class="control-label col-md-1">* ubicación: </label>
+                    <div class="col-lg-3">
+                      <select name="idCC" id="idCC2" class="validate[required] form-control">
+
                       </select>
                     </div>
 
-                    <br><br><br>
+                    <br><br>
+                  <label class="control-label col-md-2">* Lugar de descarga: </label>
+                    <div class="col-lg-3">
+                      <select name="idUb" id="idUb" class="validate[required] form-control">
+                        <option value="0">Selecione una opción...</option>
+                        @foreach($cc as $b)
+                        
+                        <option value="{{$b->id}}">{{$b->nombre }}</option>
+                        
+                        @endforeach
+                      </select>
+                    </div>
+                    <label class="control-label col-md-1">* ubicación: </label>
+                    <div class="col-lg-3">
+                      <select name="idUbc" id="idUbc2" class="validate[required] form-control">
+
+                      </select>
+                    </div>
+                    
+                    <br><br>
                     <label class="control-label col-md-2">* Fecha</label>
                             <div class="col-md-3">
                               
@@ -86,7 +120,7 @@
                     <div class="col-lg-2">
                       {!!Form::Time('horaS',null,['id'=>'horaS','class'=>'form-control', 'placeholder'=>'Ingrese la hora de salida...','required'])!!}
                     </div>
-                      <br><br><br><br>
+                      <br><br><br>
                     <label class="control-label col-md-2">*Kilometraje de Salida </label>
 
                     <div class="col-lg-3">
@@ -94,19 +128,9 @@
                     </div>
                     
                     
-                            <label class="control-label col-md-1" id="labe">*Descarga </label>
-                            <div class="col-xs-3">
-                                <select class=" form-control" name="idCC">
-                            
-                             @foreach($cc as $c)
-                                @if($c->estadoB ==1)
-                                <option  value="{{ $c->id }}" >{{ $c->nombre }}</option>
-                                @endif
-                            @endforeach
-                           
-                        </select>
+                       
                             </div><br>                        
-                    <br><br><br>
+                    <br><br>
                     <label class="control-label col-md-2">*Observaciones </label>
 
                     <div class="col-lg-4">

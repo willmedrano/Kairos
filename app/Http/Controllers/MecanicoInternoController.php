@@ -19,7 +19,7 @@ class MecanicoInternoController extends Controller
      */
     public function index()
     {
-      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1)->get();
+      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1)->where('estadoMec',1)->get();
       return view('mecanicoI.index',compact('mecanico'));
     }
 
@@ -159,5 +159,15 @@ else{
     public function destroy($id)
     {
         //
+    }
+    public function activo()
+    {
+      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1)->where('estadoMec',1)->get();
+      return view('mecanicoI.index',compact('mecanico'));
+    }
+    public function desactivo()
+    {
+      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1)->where('estadoMec',0)->get();
+      return view('mecanicoI.index',compact('mecanico'));
     }
 }

@@ -56,6 +56,8 @@
                           </div>
                         </div>
                         <section class="example">
+                          {!!link_to_action("TallerExternoController@activo", $title = "activos", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+                          {!!link_to_action("TallerExternoController@desactivo", $title = "Desactivos", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead>
                                <tr>

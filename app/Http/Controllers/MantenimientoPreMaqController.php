@@ -39,7 +39,7 @@ class MantenimientoPreMaqController extends Controller
      */
     public function create()
     {
-      $matt=MantenimientoPreMaq::All(); 
+      $matt=MantenimientoPreMaq::where('estadoMtt',1)->get();
       return View('mantenimientoPreventivo.mpRealizadosMaq',compact('matt'));
     }
 
@@ -142,5 +142,15 @@ class MantenimientoPreMaqController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function finalizadas($id)    
+    {
+      $matt=MantenimientoPreMaq::where('estadoMtt',0)->get();
+      return View('mantenimientoPreventivo.mpRealizadosMaq',compact('matt'));
+    }
+    public function pendientes($id)    
+    {
+      $matt=MantenimientoPreMaq::where('estadoMtt',1)->get();
+      return View('mantenimientoPreventivo.mpRealizadosMaq',compact('matt'));
     }
 }

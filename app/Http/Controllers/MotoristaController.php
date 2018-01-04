@@ -22,8 +22,8 @@ class MotoristaController extends Controller
      */
     public function index()
     {
-      $motorista=Motorista::All();
-      return view('motorista.index',compact('motorista'));
+      $motorista=DB::select('SELECT * FROM motoristas where estadoMot=1 ');
+        return view('motorista.index',compact('motorista'));
 
     }
 
@@ -205,6 +205,16 @@ class MotoristaController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function desactivo($id)
+    {
+        $motorista=DB::select('SELECT * FROM motoristas where estadoMot=0 ');
+        return view('motorista.index',compact('motorista'));
+    }
+    public function activo($id)
+    {
+      $motorista=DB::select('SELECT * FROM motoristas where estadoMot=1 ');
+        return view('motorista.index',compact('motorista'));
     }
     public function reporte()
     {

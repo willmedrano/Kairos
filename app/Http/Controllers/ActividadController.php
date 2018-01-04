@@ -164,6 +164,16 @@ class ActividadController extends Controller
     {
         //
     }
+    public function finalizadas($id)  
+    {
+        $cc=Actividad::finalizadas();
+      return view('actividad.index',compact('cc'));
+    }
+    public function pendientes($id)     
+    {
+        $cc=Actividad::pendientes();
+      return view('actividad.index',compact('cc'));
+    }
     
 
 

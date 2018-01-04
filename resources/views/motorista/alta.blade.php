@@ -10,7 +10,7 @@
         <div class="container-fluid bd-example-row">
           {!!Form::model($motorista,['method'=>'PATCH','route'=>['motorista.update',$m->id]])!!}
               <label for="">¿Seguro que desea cambiar el estado del motorista?</label>
-              <input type="hidden" name="hi" value="{{ $m->estado }}">
+              {{-- <input type="hidden" name="hi" value="{{ $m->estado }}"> --}}
               <input type="hidden" name="hi2" value="2">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

@@ -19,8 +19,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-      $marca=\Kairos\Marca::All();
-      return view('marca.index',compact('marca'));
+    	$marca=Marca::where('tipoMar','Vehiculo')->get();
+      	return view('marca.index',compact('marca'));
     }
 
     /**
@@ -102,5 +102,15 @@ class MarcaController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function vehiculo($id)
+    {
+    	$marca=Marca::where('tipoMar','Vehiculo')->get();
+      	return view('marca.index',compact('marca'));
+    }
+    public function maquinaria($id)
+    {
+      $marca=Marca::where('tipoMar','Maquinaria')->get();
+      	return view('marca.index',compact('marca'));
     }
 }

@@ -91,7 +91,7 @@ class MantenimientoCorMaqController extends Controller
      */
     public function create()
     {
-        $matt=mantenimientoCorrectivoMaq::All();
+        $matt=mantenimientoCorrectivoMaq::where('estadoMttC',1)->get();
       return View('mantenimientoCorrectivo.mcRealizadosMaq',compact('matt'));
     }
 
@@ -184,6 +184,16 @@ class MantenimientoCorMaqController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function finalizadas($id)
+    {
+        $matt=mantenimientoCorrectivoMaq::where('estadoMttC',0)->get();
+      return View('mantenimientoCorrectivo.mcRealizadosMaq',compact('matt'));
+    }
+    public function pendientes($id)
+    {
+        $matt=mantenimientoCorrectivoMaq::where('estadoMttC',1)->get();
+      return View('mantenimientoCorrectivo.mcRealizadosMaq',compact('matt'));
     }
     public function mecanico($taller){
         $modeloArray=MecanicoInterno::where('idTaller', '=', $taller)->get();

@@ -32,7 +32,7 @@ class MantenimientoPreController extends Controller
       $vehiculo=DB::select('SELECT v.id,v.nPlaca,v.kilometrajeM,
       v.nombre_img,v.estadoVeh,v.semaforo,v.kilometrajeAux
       from vehiculos v
-      where v.estadoVeh=1 ');
+      where v.estadoVeh=1');
 
       return View('mantenimientoPreventivo.index',compact('vehiculo'));
     }
@@ -44,7 +44,7 @@ class MantenimientoPreController extends Controller
      */
     public function create()
     {
-      $matt=MantenimientoPreventivo::All();
+      $matt=MantenimientoPreventivo::where('estadoMtt',1)->get();
       return View('mantenimientoPreventivo.mpRealizados',compact('matt'));
     }
 
@@ -147,6 +147,16 @@ class MantenimientoPreController extends Controller
      */
     public function destroy($id)
     {
+    }
+    public function finalizadas($id)
+    {
+      $matt=MantenimientoPreventivo::where('estadoMtt',0)->get();
+      return View('mantenimientoPreventivo.mpRealizados',compact('matt'));
+    }
+    public function pendientes($id)
+    {
+      $matt=MantenimientoPreventivo::where('estadoMtt',1)->get();
+      return View('mantenimientoPreventivo.mpRealizados',compact('matt'));
     }
     public function filtroMP()
     {

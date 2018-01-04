@@ -19,7 +19,7 @@ class TallerExternoController extends Controller
      */
     public function index()
     {
-      $taller=\Kairos\TallerE::All();
+      $taller=\Kairos\TallerE::where('estadoTE',1)->get();
       return view('tallerExterno.index',compact('taller'));
     }
 
@@ -138,4 +138,16 @@ class TallerExternoController extends Controller
     {
         //
     }
+    public function activo($id)
+    {
+      $taller=\Kairos\TallerE::where('estadoTE',1)->get();
+      return view('tallerExterno.index',compact('taller'));
+    }
+    public function desactivo($id)
+    {
+      $taller=\Kairos\TallerE::where('estadoTE',0)->get();
+      return view('tallerExterno.index',compact('taller'));
+    }
+
+
 }

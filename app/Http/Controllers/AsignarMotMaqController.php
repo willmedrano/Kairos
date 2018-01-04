@@ -41,8 +41,8 @@ class AsignarMotMaqController extends Controller
     //  ver toda la maquinaria que ha sido asignada
     public function create()
     {
-      $asignado=\Kairos\AsignarMotMaq::All();
-      return View('asignar.maquinariaAsignada',compact('asignado'));
+      $asignado=\Kairos\AsignarMotMaq::where('estadoAsignacionMaq',1)->get();
+        return View('asignar.maquinariaAsignada',compact('asignado'));
       }
 
     /**
@@ -164,5 +164,15 @@ class AsignarMotMaqController extends Controller
     public function destroy($id)
     {
         //
+    }
+     public function finalizadas($id)
+      {
+          $asignado=\Kairos\AsignarMotMaq::where('estadoAsignacionMaq',0)->get();
+          return View('asignar.maquinariaAsignada',compact('asignado'));
+      }
+    public function pendientes($id)
+    {
+      $asignado=\Kairos\AsignarMotMaq::where('estadoAsignacionMaq',1)->get();
+        return View('asignar.maquinariaAsignada',compact('asignado'));
     }
 }

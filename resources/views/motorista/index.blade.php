@@ -38,13 +38,15 @@
   <div class="title-block">
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE MOTORISTA/OPERARIO</i></span>
        <p class="title-description"> Consulta de Motorista/Operario </p>
-   </div>
+   </div>   
    <section class="section">
+
        <div class="row sameheight-container">
           <div>
-            <div class=\ >
+            <div>
               <div class="panel panel-primary">
                 <fieldset>
+
                   <!--Begin Datatables-->
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
@@ -58,8 +60,10 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div>      
                         <section class="example">
+                          {!!link_to_action("MotoristaController@activo", $title = "activos", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+                          {!!link_to_action("MotoristaController@desactivo", $title = "Desactivos", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead align="center">
                               <tr>
@@ -110,7 +114,7 @@
                                       <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$m->id}}">A c t i v o</button></td>
                                   @endif
                                   @if($m->estadoMot==false)
-                                      <td><button type="submit"  class="btn btn-sm gris" data-toggle="modal" data-target="#gridSystemModal3{{$m->id}}">Desactivo</button></td>
+                                      <td><button type="submit"  class="btn btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$m->id}}">Desactivo</button></td>
                                   @endif
                                </tr>
                              @endforeach

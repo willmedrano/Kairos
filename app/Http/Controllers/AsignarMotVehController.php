@@ -40,7 +40,7 @@ class AsignarMotVehController extends Controller
        //  ver toda los vehiculos que han sido asignados
       public function create()
       {
-        $asignado=\Kairos\AsignarMotVeh::All();
+        $asignado=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();
         return View('asignar.VehiculoAsignado',compact('asignado'));
       }
 
@@ -166,6 +166,16 @@ class AsignarMotVehController extends Controller
       {
           //
       }
+      public function finalizadas($id)
+      {
+          $asignado=\Kairos\AsignarMotVeh::where('estadoAsignacion',0)->get();
+          return View('asignar.VehiculoAsignado',compact('asignado'));
+      }
+    public function pendientes($id)
+    {
+      $asignado=\Kairos\AsignarMotVeh::where('estadoAsignacion',1)->get();
+        return View('asignar.VehiculoAsignado',compact('asignado'));
+    }
       public function filtroVMA()
     {
       return view('reportes.FiltroVMA');

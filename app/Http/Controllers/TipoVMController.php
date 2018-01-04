@@ -18,8 +18,8 @@ class TipoVMController extends Controller
      */
     public function index()
     {
-      $tipo=\Kairos\TipoVmq::All();
-      return view('tipoVM.index',compact('tipo'));
+      $tipo=TipoVmq::where('TipoVM2','Vehiculo')->get();
+        return view('tipoVM.index',compact('tipo'));
     }
 
     /**
@@ -54,9 +54,10 @@ class TipoVMController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function vehiculo($id)
     {
-        //
+        $tipo=TipoVmq::where('TipoVM2','Vehiculo')->get();
+        return view('tipoVM.index',compact('tipo'));
     }
 
     /**
@@ -65,9 +66,10 @@ class TipoVMController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function maquinaria($id)
     {
-        //
+        $tipo=TipoVmq::where('TipoVM2','Maquinaria')->get();
+        return view('tipoVM.index',compact('tipo'));
     }
 
     /**

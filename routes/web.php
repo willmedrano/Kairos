@@ -36,6 +36,36 @@ Route::match(['get','post'],'acerca','HomeController@acerca');
 
 // });
 
+//rutas extras
+Route::match(['get','post'],'/motorista/desactivo/{id}','MotoristaController@desactivo');
+Route::match(['get','post'],'/motorista/activo/{id}','MotoristaController@activo');
+Route::match(['get','post'],'/marca/vehiculo/{id}','MarcaController@vehiculo');
+Route::match(['get','post'],'/marca/maquinaria/{id}','MarcaController@maquinaria');
+Route::match(['get','post'],'/tipoVM/vehiculo/{id}','TipoVMController@vehiculo');
+Route::match(['get','post'],'/tipoVM/maquinaria/{id}','TipoVMController@maquinaria');
+Route::match(['get','post'],'/barrioCanton/barrio/{id}','BarrioCantonController@barrio');
+Route::match(['get','post'],'/barrioCanton/canton/{id}','BarrioCantonController@canton');
+Route::match(['get','post'],'/actividad/finalizadas/{id}','ActividadController@finalizadas');
+Route::match(['get','post'],'/actividad/pendientes/{id}','ActividadController@pendientes');
+Route::match(['get','post'],'/asignarMotVeh/create/pendientes/{id}','AsignarMotVehController@pendientes');
+Route::match(['get','post'],'/asignarMotVeh/create/finalizadas/{id}','AsignarMotVehController@finalizadas');
+Route::match(['get','post'],'/asignarMotMaq/create/pendientes/{id}','AsignarMotMaqController@pendientes');
+Route::match(['get','post'],'/asignarMotMaq/create/finalizadas/{id}','AsignarMotMaqController@finalizadas');
+Route::match(['get','post'],'/tallerE/desactivo/{id}','TallerExternoController@desactivo');
+Route::match(['get','post'],'/tallerE/activo/{id}','TallerExternoController@activo');
+Route::match(['get','post'],'/mecanicoI/desactivo/{id}','MecanicoInternoController@desactivo');
+Route::match(['get','post'],'/mecanicoI/activo/{id}','MecanicoInternoController@activo');
+Route::match(['get','post'],'/mantenimientoPre/create/pendientes/{id}','MantenimientoPreController@pendientes');
+Route::match(['get','post'],'/mantenimientoPre/create/finalizadas/{id}','MantenimientoPreController@finalizadas');
+Route::match(['get','post'],'/mantenimientoPreMaq/create/pendientes/{id}','MantenimientoPreMaqController@pendientes');
+Route::match(['get','post'],'/mantenimientoPreMaq/create/finalizadas/{id}','MantenimientoPreMaqController@finalizadas');
+Route::match(['get','post'],'/mantenimientoCorVeh/create/pendientes/{id}','MantenimientoCorVehController@pendientes');
+Route::match(['get','post'],'/mantenimientoCorVeh/create/finalizadas/{id}','MantenimientoCorVehController@finalizadas');
+Route::match(['get','post'],'/mantenimientoCorMaq/create/pendientes/{id}','MantenimientoCorMaqController@pendientes');
+Route::match(['get','post'],'/mantenimientoCorMaq/create/finalizadas/{id}','MantenimientoCorMaqController@finalizadas');
+
+//
+
 Route::resource('coloniaCanton', 'ColoniaCantonController');
 Route::resource('barrioCaserio', 'BarrioCaserioController');
 

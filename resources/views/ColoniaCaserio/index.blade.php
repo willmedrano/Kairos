@@ -45,8 +45,7 @@
           <div>
             <div class=\ >
               <div class="panel panel-primary">
-                <fieldset>
-                  
+                <fieldset>                  
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">
@@ -76,19 +75,17 @@
                               @include('ColoniaCaserio.imagen')
                               @include('ColoniaCaserio.edit')
                               <tr>   
-                                <td>{{$c->id}}</td>
-                                
+                                <td>{{$c->id}}</td>                                
                                 <td>{{$c->nombre}}</td>
                                 @if($c->tipo=='Barrio')
                                   <td>Colonia</td>
                                 @else
                                 <td>Caserio</td>
-                                @endif
-                                
+                                @endif                                
                                 <td>
                                   <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>
                                 </td>
-                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>                                 
+                                <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$c->id}}">VER</button> </td>                                
                               </tr>
                               @endforeach
                             </tbody>

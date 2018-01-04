@@ -45,7 +45,7 @@ class MantenimientoCorVehController extends Controller
      */
     public function create() //realizar mttn correctivo
     {
-      $matt=MantenimientoCorrectivoVeh::All();
+      $matt=MantenimientoCorrectivoVeh::where('estadoMttC',1)->get();
       return View('mantenimientoCorrectivo.mcRealizados',compact('matt'));
     }
 
@@ -184,6 +184,16 @@ class MantenimientoCorVehController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function finalizadas($id) 
+    {
+      $matt=MantenimientoCorrectivoVeh::where('estadoMttC',0)->get();
+      return View('mantenimientoCorrectivo.mcRealizados',compact('matt'));
+    }
+    public function pendientes($id) 
+    {
+      $matt=MantenimientoCorrectivoVeh::where('estadoMttC',1)->get();
+      return View('mantenimientoCorrectivo.mcRealizados',compact('matt'));
     }
     public function filtroMC()
     {

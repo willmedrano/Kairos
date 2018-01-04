@@ -116,6 +116,18 @@ class BarrioCantonController extends Controller
     {
         //
     }
+    public function barrio($id)
+    {
+      
+        $cc=BarrioCanton::where('tipo','Barrio')->get();
+        return view('BarrioCanton.index',compact('cc'));
+    }
+    public function canton($id)
+    {
+        $cc=BarrioCanton::where('tipo','Cantón')->get();
+        return view('BarrioCanton.index',compact('cc'));
+    }
+
     public function reporte()
     {
 

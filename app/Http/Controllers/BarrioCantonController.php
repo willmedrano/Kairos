@@ -14,11 +14,8 @@ class BarrioCantonController extends Controller
 {
       public function index()
     {
-        //
-        $cc=BarrioCanton::All();
-        
-      return view('BarrioCanton.index',compact('cc'));
-       
+        $cc=BarrioCanton::where('tipo','Otros')->get();
+        return view('BarrioCanton.index',compact('cc'));      
         
     }
 

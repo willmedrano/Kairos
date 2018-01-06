@@ -48,6 +48,8 @@
             <div class=\ >
               <div class="panel panel-primary">
                 <fieldset>
+                  {!!link_to_action("SaEnVehiculoController@index", $title = "En proceso", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+                          {!!link_to_action("SaEnVehiculoController@edit", $title = "Completadas", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
                   
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
@@ -62,7 +64,7 @@
                             </div> 
                           </div> 
                         </div>
-                        <section class="example">
+                        <section class="example">                         
 
                           <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp Excel &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                           

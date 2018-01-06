@@ -18,9 +18,10 @@ class SaEnVehiculo extends Model
        ->join('motoristas', 'asignar_mot_vehs.idMotorista', '=', 'motoristas.id')
        ->join('actividads','sa_en_vehiculos.idActividad', '=', 'actividads.id')
        ->join('barrio_cantons','actividads.idCC', '=', 'barrio_cantons.id')
-
-
+       ->where('sa_en_vehiculos.estado','=',0)
+       
             ->select('vales_combustibles.*','motoristas.*','actividads.*','barrio_cantons.nombre','vehiculos.*','sa_en_vehiculos.*')
+           
             ->orderBy('sa_en_vehiculos.id','desc')
             ->get();
    }
@@ -42,5 +43,20 @@ class SaEnVehiculo extends Model
    public static function caserio($id){
      $B=ColoniaCaserio::find($id);
      return $B->nombre;
+   }
+   public static function completadas(){
+       return DB::table('sa_en_vehiculos')
+       ->join('vales_combustibles', 'sa_en_vehiculos.idVale', '=', 'vales_combustibles.id')
+       ->join('asignar_mot_vehs', 'sa_en_vehiculos.idAsignacion', '=', 'asignar_mot_vehs.id')
+       ->join('vehiculos', 'asignar_mot_vehs.idVehiculo', '=', 'vehiculos.id')
+       ->join('motoristas', 'asignar_mot_vehs.idMotorista', '=', 'motoristas.id')
+       ->join('actividads','sa_en_vehiculos.idActividad', '=', 'actividads.id')
+       ->join('barrio_cantons','actividads.idCC', '=', 'barrio_cantons.id')
+       ->where('sa_en_vehiculos.estado','=',1)
+       
+            ->select('vales_combustibles.*','motoristas.*','actividads.*','barrio_cantons.nombre','vehiculos.*','sa_en_vehiculos.*')
+           
+            ->orderBy('sa_en_vehiculos.id','desc')
+            ->get();
    }
 }

@@ -211,11 +211,6 @@ class MotoristaController extends Controller
         $motorista=DB::select('SELECT * FROM motoristas where estadoMot=0 ');
         return view('motorista.index',compact('motorista'));
     }
-    public function activo($id)
-    {
-      $motorista=DB::select('SELECT * FROM motoristas where estadoMot=1 ');
-        return view('motorista.index',compact('motorista'));
-    }
     public function reporte()
     {
       $motoristas=Motorista::All();

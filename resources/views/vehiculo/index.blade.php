@@ -50,10 +50,12 @@
     <span class=""><i class="fa fa-archive bigicon icon_nav" >ADMINISTRACIÓN DE VEHICULOS</i></span>
        <p class="title-description"> Consulta de vehiculos</p>
    </div>
-   <section class="section">
+   <section class="section">    
        <div class="row sameheight-container">
           <div>
-            <div class=\ >
+            {!!link_to_action("VehiculoController@index", $title = "Activos", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+           {!!link_to_action("VehiculoController@desactivo", $title = "Desactivos", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
+            <div>
               <div class="panel panel-primary">
                 <fieldset>
                   <div class="row table-responsive"> <!--Begin Datatables-->

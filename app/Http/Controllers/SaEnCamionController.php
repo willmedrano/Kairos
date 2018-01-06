@@ -121,7 +121,19 @@ class SaEnCamionController extends Controller
      */
     public function edit($id)
     {
-      
+      $cc=SaEnCamion::completadas();
+        
+       foreach ($cc as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+        $caserio=ColoniaCaserio::find($c->idUbc);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc=$canton->nombre.", ".$caserio->nombre;
+       }
+        
+      return view('SaEnCamion.index',compact('cc','c2'));
     }
 
     /**

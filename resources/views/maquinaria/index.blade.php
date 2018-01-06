@@ -52,7 +52,9 @@
    <section class="section">
        <div class="row sameheight-container">
           <div>
-            <div class=\ >
+            {!!link_to_action("MaquinariaController@index", $title = "Activos", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+           {!!link_to_action("MaquinariaController@desactivo", $title = "Desactivos", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
+            <div>
               <div class="panel panel-primary">
                 <fieldset>
                   <div class="row table-responsive"> <!--Begin Datatables-->

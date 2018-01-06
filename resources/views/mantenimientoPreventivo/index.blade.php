@@ -21,9 +21,10 @@
      <section class="section">
          <div class="row sameheight-container">
             <div>
-              <div class=\ >
+              <div>
                 <div class="panel panel-primary">
                   <fieldset>
+                    
                     <div class="row table-responsive"> <!--Begin Datatables-->
                       <div class="card table-responsive">
                         <div class="card-block table-responsive">

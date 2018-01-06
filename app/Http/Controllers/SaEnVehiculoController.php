@@ -44,6 +44,7 @@ class SaEnVehiculoController extends Controller
 
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -162,7 +163,7 @@ class SaEnVehiculoController extends Controller
      */
     public function show($id)
     {
-        //
+        
 
 
     }
@@ -174,9 +175,16 @@ class SaEnVehiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id)//completadas
     {
+        $cc=SaEnVehiculo::completadas();
 
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnVehiculo::caserio($c->idUbc);
+           
+       }
+     
+      return view('SaEnVehiculo.index',compact('cc'));
     }
 
     /**

@@ -103,11 +103,6 @@ class MarcaController extends Controller
     {
         //
     }
-    public function vehiculo($id)
-    {
-    	$marca=Marca::where('tipoMar','Vehiculo')->get();
-      	return view('marca.index',compact('marca'));
-    }
     public function maquinaria($id)
     {
       $marca=Marca::where('tipoMar','Maquinaria')->get();

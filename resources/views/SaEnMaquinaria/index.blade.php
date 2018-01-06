@@ -48,7 +48,8 @@
             <div class=\ >
               <div class="panel panel-primary">
                 <fieldset>
-                  
+                  {!!link_to_action("SaEnMaquinariaController@index", $title = "En proceso", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+                          {!!link_to_action("SaEnMaquinariaController@edit", $title = "Completadas", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
                   <div class="row table-responsive"> <!--Begin Datatables-->
                     <div class="card table-responsive">
                       <div class="card-block table-responsive">

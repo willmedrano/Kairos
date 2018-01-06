@@ -38,10 +38,7 @@ Route::match(['get','post'],'acerca','HomeController@acerca');
 
 //rutas extras
 Route::match(['get','post'],'/motorista/desactivo/{id}','MotoristaController@desactivo');
-Route::match(['get','post'],'/motorista/activo/{id}','MotoristaController@activo');
-Route::match(['get','post'],'/marca/vehiculo/{id}','MarcaController@vehiculo');
 Route::match(['get','post'],'/marca/maquinaria/{id}','MarcaController@maquinaria');
-Route::match(['get','post'],'/tipoVM/vehiculo/{id}','TipoVMController@vehiculo');
 Route::match(['get','post'],'/tipoVM/maquinaria/{id}','TipoVMController@maquinaria');
 Route::match(['get','post'],'/barrioCanton/barrio/{id}','BarrioCantonController@barrio');
 Route::match(['get','post'],'/barrioCanton/canton/{id}','BarrioCantonController@canton');
@@ -52,9 +49,7 @@ Route::match(['get','post'],'/asignarMotVeh/create/finalizadas/{id}','AsignarMot
 Route::match(['get','post'],'/asignarMotMaq/create/pendientes/{id}','AsignarMotMaqController@pendientes');
 Route::match(['get','post'],'/asignarMotMaq/create/finalizadas/{id}','AsignarMotMaqController@finalizadas');
 Route::match(['get','post'],'/tallerE/desactivo/{id}','TallerExternoController@desactivo');
-Route::match(['get','post'],'/tallerE/activo/{id}','TallerExternoController@activo');
 Route::match(['get','post'],'/mecanicoI/desactivo/{id}','MecanicoInternoController@desactivo');
-Route::match(['get','post'],'/mecanicoI/activo/{id}','MecanicoInternoController@activo');
 Route::match(['get','post'],'/mantenimientoPre/create/pendientes/{id}','MantenimientoPreController@pendientes');
 Route::match(['get','post'],'/mantenimientoPre/create/finalizadas/{id}','MantenimientoPreController@finalizadas');
 Route::match(['get','post'],'/mantenimientoPreMaq/create/pendientes/{id}','MantenimientoPreMaqController@pendientes');
@@ -63,6 +58,8 @@ Route::match(['get','post'],'/mantenimientoCorVeh/create/pendientes/{id}','Mante
 Route::match(['get','post'],'/mantenimientoCorVeh/create/finalizadas/{id}','MantenimientoCorVehController@finalizadas');
 Route::match(['get','post'],'/mantenimientoCorMaq/create/pendientes/{id}','MantenimientoCorMaqController@pendientes');
 Route::match(['get','post'],'/mantenimientoCorMaq/create/finalizadas/{id}','MantenimientoCorMaqController@finalizadas');
+Route::match(['get','post'],'/vehiculo/desactivo/{id}','VehiculoController@desactivo');
+Route::match(['get','post'],'/maquinaria/desactivo/{id}','MaquinariaController@desactivo');
 
 //
 

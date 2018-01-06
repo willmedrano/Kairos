@@ -63,6 +63,7 @@
                         <section class="example">
                           {!!link_to_action("BarrioCantonController@barrio", $title = "Barrios", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
                           {!!link_to_action("BarrioCantonController@canton", $title = "Cantones", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
+                          {!!link_to_action("BarrioCantonController@index", $title = "Otros", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead align="center">
                               <tr>                    

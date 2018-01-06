@@ -30,7 +30,7 @@ class VehiculoController extends Controller
       $vehiculo=DB::select('SELECT v.id,v.color,v.anio,v.nPlaca,v.nInventario,v.kilometraje,v.kilometrajeM,
       v.nombre_img,v.ObservacionVeh,v.estadoVeh,v.semaforo, t.tipoVM,mo.nomModelo,ma.nomMarca
       from vehiculos v, tipo_vmqs t,modelos mo, marcas ma
-      where v.idTipo=t.id and v.idModelo=mo.id and mo.idMarca=ma.id');
+      where v.idTipo=t.id and v.idModelo=mo.id and mo.idMarca=ma.id and v.estadoVeh=1');
 
       return View('vehiculo.index',compact('vehiculo'));
     }
@@ -173,6 +173,18 @@ class VehiculoController extends Controller
     {
         //
     }
+
+    public function desactivo($id)
+    {
+
+      $vehiculo=DB::select('SELECT v.id,v.color,v.anio,v.nPlaca,v.nInventario,v.kilometraje,v.kilometrajeM,
+      v.nombre_img,v.ObservacionVeh,v.estadoVeh,v.semaforo, t.tipoVM,mo.nomModelo,ma.nomMarca
+      from vehiculos v, tipo_vmqs t,modelos mo, marcas ma
+      where v.idTipo=t.id and v.idModelo=mo.id and mo.idMarca=ma.id and v.estadoVeh=0');
+
+      return View('vehiculo.index',compact('vehiculo'));
+    }
+
     public function modelo($marca){
         $modeloArray=Modelo::where('idMarca', '=', $marca)->get();
         return Response::json($modeloArray);

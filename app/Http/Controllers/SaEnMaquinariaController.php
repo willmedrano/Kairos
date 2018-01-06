@@ -113,9 +113,17 @@ class SaEnMaquinariaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) //completadas
     {
-      
+      $cc=SaEnMaquinaria::completadas();
+        foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        $caserio=ColoniaCaserio::find($c->idUbc2);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc2=$canton->nombre.", ".$caserio->nombre;
+         
+       }
+      return view('SaEnMaquinaria.index',compact('cc'));
     }
 
     /**

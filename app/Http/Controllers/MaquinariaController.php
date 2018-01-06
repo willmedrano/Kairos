@@ -27,7 +27,7 @@ class MaquinariaController extends Controller
       $maquinaria=DB::select('SELECT m.id,m.color,m.anio,m.nEquipo,m.nInventario,m.horaM,m.semaforo,
       m.nombre_img,m.ObservacionMaq,m.estadoMaq, t.tipoVM,mo.nomModelo,ma.nomMarca
       from maquinarias m, tipo_vmqs t,modelos mo, marcas ma
-      where m.idTipo=t.id and m.idModelo=mo.id and mo.idMarca=ma.id');
+      where m.idTipo=t.id and m.idModelo=mo.id and mo.idMarca=ma.id and m.estadoMaq=1');
 
       return View('maquinaria.index',compact('maquinaria'));
 
@@ -180,5 +180,16 @@ class MaquinariaController extends Controller
      $var=AsignarMotMaq::find($marca);
         $modeloArray=Maquinaria::where('id', '=', $var->idMaquinaria)->get();
         return Response::json($modeloArray);
+    }
+
+    public function desactivo()
+    {
+      $maquinaria=DB::select('SELECT m.id,m.color,m.anio,m.nEquipo,m.nInventario,m.horaM,m.semaforo,
+      m.nombre_img,m.ObservacionMaq,m.estadoMaq, t.tipoVM,mo.nomModelo,ma.nomMarca
+      from maquinarias m, tipo_vmqs t,modelos mo, marcas ma
+      where m.idTipo=t.id and m.idModelo=mo.id and mo.idMarca=ma.id and m.estadoMaq=0');
+
+      return View('maquinaria.index',compact('maquinaria'));
+
     }
 }

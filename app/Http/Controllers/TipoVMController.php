@@ -49,18 +49,6 @@ class TipoVMController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function vehiculo($id)
-    {
-        $tipo=TipoVmq::where('TipoVM2','Vehiculo')->get();
-        return view('tipoVM.index',compact('tipo'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

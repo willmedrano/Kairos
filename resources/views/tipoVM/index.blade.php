@@ -54,7 +54,7 @@
                           </div>
                         </div>
                         <section class="example">
-                          {!!link_to_action("TipoVMController@vehiculo", $title = "T_Vehiculos", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+                          {!!link_to_action("TipoVMController@index", $title = "T_Vehiculos", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
                           {!!link_to_action("TipoVMController@maquinaria", $title = "T_Maquinaria", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead>

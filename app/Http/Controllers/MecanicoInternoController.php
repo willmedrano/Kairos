@@ -160,11 +160,6 @@ else{
     {
         //
     }
-    public function activo()
-    {
-      $mecanico=\Kairos\MecanicoInterno::where('idTaller',1)->where('estadoMec',1)->get();
-      return view('mecanicoI.index',compact('mecanico'));
-    }
     public function desactivo()
     {
       $mecanico=\Kairos\MecanicoInterno::where('idTaller',1)->where('estadoMec',0)->get();

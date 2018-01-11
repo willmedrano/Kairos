@@ -314,7 +314,7 @@ foreach ($cc as $c) {
 
             $sheet->loadView('SaEnVehiculo.excel')->with('cc', $cc);;
         });
-    })->download('xls');
+    })->download('xlsx');
     }
 
 

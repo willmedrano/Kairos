@@ -77,9 +77,11 @@
                                          {!!Form::open(['route'=>['vale.show',$v->id],'method'=>'GET'])!!}
                                             <input type="submit" name="" value=" Vales de Combustible"   class="btn btn btn-primary btn-sm active " >
                                          {!!Form::close()!!}
-                                         <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$v->id}}">  Reporte de Entradas y Salidas</button>
+                                         <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$v->id}}">  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReporte Para Vehiculo &nbsp&nbsp&nbsp&nbsp</button>
                                          <br>
                                            <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal4{{$v->id}}">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReporte Para Camiones &nbsp&nbsp&nbsp&nbsp</button>
+                                          <br>
+                                          <button type="submit"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#gridSystemModalExC{{$v->id}}">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Excel Para Camiones &nbsp&nbsp&nbsp&nbsp</button>
                                           <br>
                                            <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$v->id}}">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReporte de combustible&nbsp&nbsp&nbsp&nbsp</button>
                                       </div>

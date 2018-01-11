@@ -94,6 +94,11 @@
                                          <a href="#"   class="btn btn-info btn-sm" data-id="{{ $c->id }}" data-toggle="modal" data-target="#Edit{{ $c->id }}">Modificar</a>
                                 </td>
                                 <td align="center">  
+                                  @if($c->tipo=="Otros")
+                                   {!!Form::open(['route'=>['barrioCanton.show',$c->id],'method'=>'GET'])!!}
+                                      <input type="submit" name="" value="Lugares"   class="btn btn btn-primary btn-sm active " >
+                                                        {!!Form::close()!!}
+                                  @endif()
                                   @if($c->tipo=="Cantón")
                                    {!!Form::open(['route'=>['barrioCanton.show',$c->id],'method'=>'GET'])!!}
                                       <input type="submit" name="" value="Caserios"   class="btn btn btn-primary btn-sm active " >

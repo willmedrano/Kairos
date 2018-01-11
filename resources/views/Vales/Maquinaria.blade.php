@@ -81,7 +81,10 @@
                                           <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal3{{$v->id}}">  Reporte de Entradas y Salidas</button>
                                          
                                           <br>
+                                          <button type="submit"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#gridSystemModalExM{{$v->id}}">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Excel de Entradas y Salidas &nbsp&nbsp&nbsp&nbsp</button>
+                                          <br>
                                            <button type="submit"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$v->id}}">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReporte de combustible&nbsp&nbsp&nbsp&nbsp</button>
+
                                      
                                       </div>
                                  </div>

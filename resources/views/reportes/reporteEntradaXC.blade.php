@@ -77,7 +77,7 @@ table tr:nth-child(2n-1) td {
               <div style="position: absolute;left: 380px; top: 210px; z-index: 1;" ><h3>FORMATO PARA CAMIONES {{"PLACA: ".$v->nPlaca." ".$v->nomModelo}}</h3>                  
             </div>
             <div  style="position: absolute;left: 450px; top: 230px; z-index: 1;">
-              <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0] ?> </h4>
+              <h4 class="box-title">del <?= $fecha1[2].'-'.$fecha1[1].'-'.$fecha1[0] ?> al <?= $fecha2[2].'-'.$fecha2[1].'-'.$fecha2[0]; ?> </h4>
             </div>
          
         <table class="table-wrapper" >
@@ -102,8 +102,9 @@ table tr:nth-child(2n-1) td {
                               
                                @foreach ($cc as $c)
                              
-                              <tr>   
-                                <td>{{$c->id}}</td>
+                              <tr>  
+                              <?php $cont++;?> 
+                                <td><?php echo $cont;?></td>
                                 <td>{{$c->nombresMot.' '.$c->apellidosMot}}</td>
                                 
                                 <?php 

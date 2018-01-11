@@ -268,7 +268,37 @@ class SaEnCamionController extends Controller
             
             $sheet->loadView('SaEnCamion.excel')->with('cc', $cc);;
         });
-    })->download('xls');
+    })->download('xlsx');
+    }
+
+      public function Excel2(Request $request)//reporte Mttn Correctivo general
+    {
+
+       $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      $opcion=$request->idV;
+       $dF =date("d-m-Y", strtotime("$fch2"));
+      $dI =date("d-m-Y", strtotime("$fch1"));
+      $v =Vehiculo::find($opcion);
+        $cc=ValesCombustible::disponiblesCR($opcion,$fch1,$fch2);
+       foreach ($cc as $c) {
+        $caserio=ColoniaCaserio::find($c->idCC);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idCC=$canton->nombre.", ".$caserio->nombre;
+
+        $caserio=ColoniaCaserio::find($c->idUbc);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc=$canton->nombre.", ".$caserio->nombre;
+       }
+       $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+    Excel::create("Salidas y entradas del Camion con placa ".$v->nPlaca." del ".$dI." al ".$dF."", function ($excel) use ($cc) {
+        $excel->setTitle("Title");
+        $excel->sheet("Hoja 1", function ($sheet) use ($cc) {
+            
+            $sheet->loadView('Vales.excelCamiones')->with('cc', $cc);;
+        });
+    })->download('xlsx');
     }
 
 }

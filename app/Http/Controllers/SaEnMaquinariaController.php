@@ -250,6 +250,32 @@ foreach ($cc as $c) {
             
             $sheet->loadView('SaEnMaquinaria.excel')->with('cc', $cc);;
         });
-    })->download('xls');
+    })->download('xlsx');
+    }
+      public function Excel2(Request $request)//reporte Mttn Correctivo general
+    {
+       $fch1=$request->fechaInicial;
+      $fch2=$request->fechaFinal;
+      $dF =date("d-m-Y", strtotime("$fch2"));
+      $dI =date("d-m-Y", strtotime("$fch1"));
+      $opcion=$request->idV;
+      $v =Maquinaria::find($opcion);
+        $cc=ValesCombustible::disponiblesMR($opcion,$fch1,$fch2);
+      foreach ($cc as $c) {
+        $c->idUbc=SaEnMaquinaria::caserio($c->idUbc);
+        $caserio=ColoniaCaserio::find($c->idUbc2);
+        $canton=BarrioCanton::find($caserio->idCC);
+        $c->idUbc2=$canton->nombre.", ".$caserio->nombre;
+         
+       }
+       $date = date('d-m-Y');
+          $date1 = date('g:i:s a');
+    Excel::create("Salidas y entradas del ".$v->nEquipo." del ".$dI." al ".$dF."", function ($excel) use ($cc) {
+        $excel->setTitle("Title");
+        $excel->sheet("Hoja 1", function ($sheet) use ($cc) {
+            
+            $sheet->loadView('Vales.ExcelMaquinaria')->with('cc', $cc);;
+        });
+    })->download('xlsx');
     }
 }

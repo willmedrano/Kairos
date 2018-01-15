@@ -58,19 +58,18 @@ table tr:nth-child(2n-1) td {
   <div class="col-md-12">
     <div class="box-body">
       <div class="box-header with-border">
-        <div style="position: absolute;left: 220px; top: 40px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
-        <div style="position: absolute;left: 280px; top: 80px; z-index: 1;">CIUDAD CENTENARIA</div>
-        <div style="position: absolute;left: 350px; top: 120px; z-index: 1;"><h5>Despacho Alcalde Telefax 2362-6700</h5></div>
-        <div style="position: absolute;left: 385px; top: 133px; z-index: 1;"><h5>Gerencia Teléfono 2362-6708</h5></div>
-        <div style="position: absolute;left: 120px; top: 133px; z-index: 1;"><h5>Depto. Cabañas, El Salvador, C.A.</h5></div>
-        <HR style="position: absolute;left: 23px; top: 163px; z-index: 1; color:blue;" width=90%>
-        <div style="position: absolute;left: 550px; top: 175px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
-        <div style="position: absolute;left: 550px; top: 190px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
-        <div style="position: absolute;left: 230px; top: 190px; z-index: 1;"><h2>Mantenimiento Preventivo </h2> </div>
-        <h3 align="right" style="position: absolute;left:20; top:20px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/sv.png" ></h3>
-        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+         <div style="position: absolute;left: 220px; top: 0px; z-index: 1;"><h2>Alcaldía Municipal de Ilobasco</h2></div>
+        <div style="position: absolute;left: 280px; top: 50px; z-index: 1;">CIUDAD CENTENARIA</div>
+        <div style="position: absolute;left: 350px; top: 80px; z-index: 1;"><h5>Despacho Alcalde Telefax 2362-6700</h5></div>
+        <div style="position: absolute;left: 385px; top: 93px; z-index: 1;"><h5>Gerencia Teléfono 2362-6708</h5></div>
+        <div style="position: absolute;left: 123px; top: 93px; z-index: 1;"><h5>Depto. Cabañas, El Salvador, C.A.</h5></div>
+        <HR style="position: absolute;left: 23px; top: 130px; z-index: 1; color:blue;" width=90%>
+        <div style="position: absolute;left: 550px; top: 138px; z-index: 1;">Fecha:  <?=  $date; ?> </div>
+        <div style="position: absolute;left: 550px; top: 153px; z-index: 1;">Impresión:  <?=  $date1; ?> </div>
+        <h3 align="right" style="position: absolute;left:20; top:0px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/sv.png" ></h3>
+        <h3 align="right" style="position: absolute; left:550px; top:0px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
         
-        <table class="" style="position: absolute;left:0; top:230px; px; z-index: 1;" >
+        <table class="" style="position: absolute;left:0; top:200px; px; z-index: 1;" >
           <thead>
              <tr>
                <th ><div align="center">Orden de trabajo</div></th>
@@ -83,8 +82,7 @@ table tr:nth-child(2n-1) td {
                @endforeach
                <th ><div align="center">Fecha de inicio</div></th>
                <th ><div align="center">Mecanico</div></th>
-               <th ><div align="center">Gasto Total $</div></th>                                   
-               
+               <th ><div align="center">Gasto Total $</div></th>
              </tr>
            </thead>
            <tbody >
@@ -116,7 +114,7 @@ table tr:nth-child(2n-1) td {
       </div><!-- /.box-header -->
 
       <div class="box-body">
-      <table style="position: absolute;left:0; top:320px; px; z-index: 1; " border="1" >
+      <table style="position: absolute;left:0; top:280px; px; z-index: 1; " border="1" >
            <thead>
             <tr>               
                <th colspan="2" ><div align="left">Observaciones o Falla/s reportadas</div></th> 

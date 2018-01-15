@@ -54,8 +54,8 @@
                           </div>
                         </div>
                         <section class="example">
-                          {!!link_to_action("MantenimientoPreController@finalizadas", $title = "Finalizadas", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
-                          {!!link_to_action("MantenimientoPreController@pendientes", $title = "Pendientes", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
+                          {!!link_to_action("MantenimientoCorVehController@finalizadas", $title = "Finalizadas", $parameters = 1, $attributes = ["class"=>"btn btn-primary btn-sm"])!!}
+                          {!!link_to_action("MantenimientoCorVehController@pendientes", $title = "Pendientes", $parameters = 1, $attributes = ["class"=>"btn btn-sm btn-info"])!!}
                           <table class="table table-bordered table-hover" style="width:100%" >
                             <thead>
                                <tr>

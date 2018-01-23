@@ -296,7 +296,7 @@ foreach ($cc as $c) {
     }
     public function bitacora()
     {
-        $cc=\Kairos\bitacora::barCan();
+        $cc=\Kairos\bitacora::paginate(100);
       return view('bitacora.bitacora',compact('cc'));
     }
     public function Excel(Request $request)//reporte Mttn Correctivo general

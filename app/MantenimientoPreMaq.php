@@ -8,7 +8,7 @@ class MantenimientoPreMaq extends Model
 {
   protected $table="mantenimiento_pre_maqs";
   protected $fillable = ['idOrden','idMecanico','idMaquinaria',
-  'fechaInicioMtt','fechaFinMtt','observacionInicioMtt','observacionFinalMtt'];
+  'fechaInicioMtt','fechaFinMtt','observacionInicioMtt','observacionFinalMtt','idMotorista'];
 
   public static function mecanicoNom($id){
     $m=MecanicoInterno::find($id);

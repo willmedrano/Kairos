@@ -84,7 +84,7 @@
                                       <option value="{{ $m->nEquipo }}">
                                         @endforeach
                                       </datalist>
-                                    <input list="dt" name="vm" type="text" required="true"> 
+                                    <input list="dt" name="vm" class="form-control" type="text" required="true"> 
                                     </div>
                                       <br>
                                       <br>
@@ -122,7 +122,7 @@
                                       <option value="{{ $od2->idOrden }}">
                                         @endforeach
                                       </datalist>
-                                    <input list="dt" name="ordenD" type="number" required="true">
+                                    <input list="dt" name="ordenD" class="form-control" type="number" required="true">
                                     </div>
                                       <br>
 

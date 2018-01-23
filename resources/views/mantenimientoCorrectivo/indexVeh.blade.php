@@ -37,15 +37,15 @@
                 <div class="panel panel-primary">
                   <fieldset>
                     {!! Form::open(['url'=>['busqPlaca'],'method'=>'POST']) !!}
-                    <div class="form-group">
-                      <div class="col-xl-4" >
+                    <div class="form-group ">
+                      <div class="col-md-3" >
                         <label for=""># Placa: </label>
                         <datalist id="dt">
                           @foreach ($veh as $vh)
                           <option value="{{ $vh->nPlaca }}">
                             @endforeach
                           </datalist>
-                        <input list="dt" name="placaV">                        
+                        <input list="dt" name="placaV" >                        
                         </div>
                       {!! Form::submit('Enviar',['class'=>'btn btn-pill-right btn-primary glyphicon glyphicon-floppy-disk '  ]) !!}
                    </div>

@@ -69,7 +69,7 @@ table tr:nth-child(2n-1) td {
         <h3 align="right" style="position: absolute;left:20; top:0px; px; z-index: 1;"><img class="al" width="110px" height="110px" src="img/sv.png" ></h3>
         <h3 align="right" style="position: absolute; left:550px; top:0px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
 
-        <table class="" style="position: absolute;left:0; top:200px; px; z-index: 1;" >
+        <table class="" style="position: absolute;left:0; top:170px; px; z-index: 1;" >
           <thead>
              <tr>
                <th ><div align="center">Nº Orden</div></th>
@@ -110,11 +110,11 @@ table tr:nth-child(2n-1) td {
        </table>
         </div>
 
-        <h3 align="right" style="position: absolute; left:550px; top:10px; z-index: 1;"><img class="al" width="120px" height="130px" src="img/alcaldia.png" ></h3>
+    
       </div><!-- /.box-header -->
 
       <div class="box-body">
-      <table style="position: absolute;left:0; top:280px; px; z-index: 1;" border="1" >
+      <table style="position: absolute;left:0; top:240px; px; z-index: 1;" border="1" >
            <thead>
             <tr>               
                <th colspan="2" ><div align="left">Observaciones o Falla/s reportadas</div></th> 
@@ -133,7 +133,7 @@ table tr:nth-child(2n-1) td {
                  ?>
 
                  @foreach($data as $d)
-                 {{ $d }} <br>
+                 {{ $d }} 
                  @endforeach</div></td> 
                    @else
                    <td colspan="2" height="230px"><div align="left">
@@ -172,16 +172,35 @@ table tr:nth-child(2n-1) td {
                  @endforeach
     
   	 <tr>
-                   <td>Nombre/ firma de quien reporta</td>
-                   <td></td>
+                   <td>Nombre/ firma de quien reporta
+                    <br><br>
+                    <div align="left">
+                    @if($opc==1) 
+                   {{$matt[0]->idMotorista}}
+                   @else
+                    {{$matt[0]->MotoristaNom($matt[0]->idMotorista)."    "}}
+                    @endif
+                           <b>Firma: ______________________</b> 
+                    </div>
+
+                   </td>
+
+                   
+                   <td>Firma de mecanico que recibe <br><br>
+                   ___________________</td>
+                  
                  </tr>
                  <tr><th colspan="2"></th></tr>                 
         </tbody>
       </table>
-      <div style="position: absolute;left:0; top:950px; px; z-index: 1; ">F. Autorizo reparación</div>
-      <HR style="position: absolute;left: 130px; top: 953px; z-index: 1; color:black;" width=20%>
-    <div style="position: absolute;left:300; top:950px; px; z-index: 1; ">F. Mecanico</div>
-      <HR style="position: absolute;left: 490px; top: 953px; z-index: 1; color:black;" width=20%>
+      <div style="position: absolute;left:10; top:900px; px; z-index: 1; ">F. Autorizo reparación
+        <br>
+        <br>
+        <br>
+      Sello</div>
+      <HR style="position: absolute;left: 140px; top: 903px; z-index: 1; color:black;" width=20%>
+    <div style="position: absolute;left:265; top:900px; px; z-index: 1; ">F. Mecanico que entrego</div>
+      <HR style="position: absolute;left: 490px; top: 903px; z-index: 1; color:black;" width=20%>
      </div><!-- /.box-body -->
 	  </div><!-- /.box -->
   </div>

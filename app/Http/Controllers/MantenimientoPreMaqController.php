@@ -10,6 +10,7 @@ use Input;
 use DB;
 use Response;
 use Kairos\Maquinaria;
+use Kairos\Motorista;
 use Kairos\MecanicoInterno;
 use Kairos\MantenimientoPreMaq;
 use Kairos\Bitacora;
@@ -65,8 +66,9 @@ class MantenimientoPreMaqController extends Controller
       'numTrabajo'=>$request['numTrabajo'],
       'fechaInicioMtt'=>$request['fechaInicioMtt'],
       'fechaFinMtt'=>$request['fechaInicioMtt'],
-      'observacionInicioMtt'=>$request['observacionInicioMtt'],
+      'observacionInicioMtt'=>$request['observacionInicioMtt'],      
       'observacionFinalMtt'=>"",
+      'idMotorista'=>$request['idMotorista'],
     ]);
     $m= Maquinaria::find($request['idMaquinaria']);
     $m->semaforo =2; //el estado del vehiculo cambia a mantt
@@ -98,6 +100,7 @@ class MantenimientoPreMaqController extends Controller
     public function edit($id) //llevar equipo a taller
     {
       $orden=Orden::All();
+      $motorista=Motorista::All();
       if ($orden->last()==null) {
         $idO=1;
       }else{
@@ -105,7 +108,7 @@ class MantenimientoPreMaqController extends Controller
       }
       $maquinaria =Maquinaria::where('id',$id)->get();
       $mecanico=MecanicoInterno::where('estadoMec',1)->where('idTaller',1)->get();
-      return View('mantenimientoPreventivo.preventivoMaq',compact('maquinaria','mecanico','idO'));
+      return View('mantenimientoPreventivo.preventivoMaq',compact('maquinaria','mecanico','idO','motorista'));
 
     }
 

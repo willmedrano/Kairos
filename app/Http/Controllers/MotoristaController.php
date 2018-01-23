@@ -184,7 +184,7 @@ class MotoristaController extends Controller
                $motorista->licencia=$request['licencia'];
                $motorista->fechaNacimiento=$request['fechaNacimiento'];
                $motorista->fechaContrato=$request['fechaContrato'];
-               $motorista->tipoMot=$request['tipoMot'];
+               $motorista->fechaDespido=$request['fechaContrato'];
                $motorista->observacionMot=$request['observacionMot'];
                Session::flash('update','• Motorista editado correctamente');
 

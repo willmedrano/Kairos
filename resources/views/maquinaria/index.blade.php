@@ -82,7 +82,7 @@
                                  <div class="card card-primary" align="center">
                                      <div class="card-header" >
                                          <div class="header-block" align="center">
-                                           <p class="title"> {{$m->nomModelo}} </p>
+                                           <p class="title"> {{$m->nEquipo}} </p>
                                          </div>
                                      </div>
                                      <div class="card-block">

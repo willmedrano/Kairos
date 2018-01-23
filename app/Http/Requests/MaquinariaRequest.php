@@ -25,13 +25,13 @@ class MaquinariaRequest extends FormRequest
     {
         return [
             'nEquipo'=>'unique:maquinarias',
-            'nInventario'=>'unique:maquinarias',
+           // 'nInventario'=>'unique:maquinarias',
         ];
     }
     public function messages(){
       return [
         'nEquipo.unique' => '¡Número de Equipo que ha ingresado ya se encuentra registrado!',
-        'nInventario.unique' => '¡Verifique el numero de Inventario ingresado al parecer ya ha sido asignado!',
+        //'nInventario.unique' => '¡Verifique el numero de Inventario ingresado al parecer ya ha sido asignado!',
 
          ];
     }

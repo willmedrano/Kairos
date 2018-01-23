@@ -52,8 +52,8 @@
                                <th >TIPO</th>
                                <th >MODELO</th>
                                <th >EQUIPO</th>
-                               <th >F_ASIGNACION</th>
-                               <th >FINALIZACIÓN</th>
+                               <th >INICIO</th>
+                               <th >FINAL</th>
                                <th >ASIGNACIÓN</th>
                              </tr>
                            </thead>

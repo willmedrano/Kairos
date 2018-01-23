@@ -106,7 +106,7 @@
                                <input id="fechaFinMtt" name="fechaFinMtt" type="date" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" max="<?php echo dameFecha(date("Y-m-d"),0);?>" >
                              </div>
                              <div class="col-md-3">
-                             {!!Form::number('gastoMP',null,['id'=>'gastoMP','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
+                             {!!Form::text('gastoMP',null,['id'=>'gastoMP','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
                             </div>
                             </div>
                           </section>

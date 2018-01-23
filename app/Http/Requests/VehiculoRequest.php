@@ -25,13 +25,13 @@ class VehiculoRequest extends FormRequest
     {
         return [
             'nPlaca'=>'unique:vehiculos',
-            'nInventario'=>'unique:vehiculos',
+            //'nInventario'=>'unique:vehiculos',
         ];
     }
     public function messages(){
       return [
         'nPlaca.unique' => '¡Número de Placa que ha ingresado ya se encuentra registrada!',
-        'nInventario.unique' => '¡Verifique el numero de Inventario ingresado al parecer ya ha sido asignado!',
+        //'nInventario.unique' => '¡Verifique el numero de Inventario ingresado al parecer ya ha sido asignado!',
 
          ];
     }

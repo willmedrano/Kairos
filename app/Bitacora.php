@@ -25,4 +25,8 @@ class Bitacora extends Model
             ->orderBy('bitacoras.id','desc')
             ->get();
    } 
+   public static function usrNom($id){
+    $n=User::find($id);
+    return $n->name;
+  }
 }

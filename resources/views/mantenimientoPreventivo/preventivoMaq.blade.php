@@ -80,6 +80,19 @@
                                  @endforeach
                                </select>
                               </div>
+                              <br><br>
+                              <div class="col-xl-2">
+                               <label>* Reporta</label>
+                             </div>                           
+
+                               <div class="col-xl-5" >
+                        <datalist id="idMotorista">
+                          @foreach ($motorista as $m)
+                          <option value="{{ $m->nombresMot. ' '.$m->apellidosMot }}">
+                            @endforeach
+                          </datalist>
+                        <input list="idMotorista" class="form-control" name="idMotorista" required="true" >                        
+                        </div>
                               <br><br><br>
                               <div class="col-xl-2">
                                 <label>* Observaciones</label>

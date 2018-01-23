@@ -103,7 +103,7 @@
                              </div>
                              <div class="col-md-3">
                                <label >* Gasto total $ </label>
-                             {!!Form::number('gastoMC',null,['id'=>'gastoMC','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
+                             {!!Form::text('gastoMC',null,['id'=>'gastoMC','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
                             </div>
                             </div>
                           </section>

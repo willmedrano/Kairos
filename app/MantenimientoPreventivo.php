@@ -8,7 +8,7 @@ class MantenimientoPreventivo extends Model
 {
   protected $table="mantenimiento_preventivos";
   protected $fillable = ['idOrden','idMecanico','idVehiculo',
-  'fechaInicioMtt','fechaFinMtt','observacionInicioMtt','observacionFinalMtt'];
+  'fechaInicioMtt','fechaFinMtt','observacionInicioMtt','observacionFinalMtt','idMotorista'];
 
   public static function mecanicoNom($id){
     $m=MecanicoInterno::find($id);

@@ -10,6 +10,7 @@ use DB;
 use Response;
 use Kairos\Vehiculo;
 use Kairos\Maquinaria;
+use Kairos\Motorista;
 use Kairos\MecanicoInterno;
 use Kairos\MantenimientoPreventivo;
 use Kairos\MantenimientoPreMaq;
@@ -71,6 +72,8 @@ class MantenimientoPreController extends Controller
       'fechaFinMtt'=>$request['fechaInicioMtt'],
       'observacionInicioMtt'=>$request['observacionInicioMtt'],
       'observacionFinalMtt'=>"",
+      'idMotorista'=>$request['idMotorista'],
+
     ]);
     $v= Vehiculo::find($request['idVehiculo']);
     $v->semaforo =2; //el estado del vehiculo cambia a mantt
@@ -104,6 +107,7 @@ class MantenimientoPreController extends Controller
     public function edit($id) //llevar el vehiculo a taller
     {
       $orden=Orden::All();
+      $motorista=Motorista::All();
       if ($orden->last()==null) {
         $idO=1;
       }else{
@@ -111,7 +115,7 @@ class MantenimientoPreController extends Controller
       }
       $vehiculo =Vehiculo::where('id',$id)->get();
       $mecanico=MecanicoInterno::where('estadoMec',1)->where('idTaller',1)->get();
-      return View('mantenimientoPreventivo.preventivo',compact('vehiculo','mecanico','idO'));
+      return View('mantenimientoPreventivo.preventivo',compact('vehiculo','mecanico','idO','motorista'));
     }
 
     /**

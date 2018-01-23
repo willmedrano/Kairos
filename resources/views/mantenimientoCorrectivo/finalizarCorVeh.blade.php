@@ -54,7 +54,7 @@
                                      <td align="center"><?php  echo $date->format('d/m/Y'); ?></td>
                                      <td align="center">{{$mt->tallerNom($mt->idMecanico)}}</td>
                                      <td align="center">{{$mt->mecanicoNom($mt->idMecanico)}}</td>
-                                     <td align="center">{{$mt->MotoristaNom($mt->idMotorista)}}</td>
+                                     <td align="center">{{$mt->idMotorista}}</td>
                                    </tr>
                                  @endforeach
                                  </tbody>
@@ -103,7 +103,7 @@
                              </div>
                              <div class="col-md-3">
                                <label >* Gasto total $ </label>
-                             {!!Form::number('gastoMC',null,['id'=>'gastoMC','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
+                             {!!Form::text('gastoMC',null,['id'=>'gastoMC','class'=>'form-control', 'placeholder'=>'Ej 50.20','required'])!!}
                             </div>
                             </div>
                           </section>

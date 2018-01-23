@@ -66,20 +66,16 @@
                              @endforeach
                              <div class="col-xl-2">
                                <label>* Reporta</label>
-                             </div>
-                             <div class="col-xl-5">
-                              @if($mot!=null)    
-                              <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
-                                     <option value="{{$mo}}">{{$mot }}</option>
-                               </select>
-                              @else
-                               <select name="idMotorista" id="idMotorista" class="validate[required] form-control">
-                                 @foreach($motorista as $m)
-                                     <option value="{{$m->id}}">{{$m->nombresMot. " ".$m->apellidosMot }}</option>
-                                 @endforeach
-                               </select>
-                               @endif
-                              </div>
+                             </div>                           
+
+                               <div class="col-xl-5" >
+                        <datalist id="idMotorista">
+                          @foreach ($motorista as $m)
+                          <option value="{{ $m->nombresMot. ' '.$m->apellidosMot }}">
+                            @endforeach
+                          </datalist>
+                        <input list="idMotorista" class="form-control" name="idMotorista" required="true" >                       
+                        </div>
                               <br><br><br>
                              <div class="col-xl-2">
                                <label>* Taller</label>

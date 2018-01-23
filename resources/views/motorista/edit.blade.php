@@ -77,8 +77,9 @@
                             </div>
                             <br><br><br>
                             <div class="form-group">
-                              <label class="control-label col-md-6">F/Nacimiento</label>
                               <label class="control-label col-md-6">F/Contrato</label>
+                              <label class="control-label col-md-6">F/Nacimiento</label>
+                              
                             </div>
                             <div class="form-group">
                               <div class="col-md-6">
@@ -112,6 +113,3 @@
         </div>
     </div>
 </div>
-@section('scripts')
-  {!!Html::script('js/validaciones.js')!!}
-  @endsection
